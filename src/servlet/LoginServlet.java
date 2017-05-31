@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.UserDAO;
 import entity.UserBean;
+import exception.ServletServiceException;
 
 /**
  * Servlet implementation class LoginServlet
@@ -37,7 +38,6 @@ public class LoginServlet extends HttpServlet {
 	     // formからの値を取得
 	     String login = request.getParameter("login");
 
-
 	     // 移譲する先のjspを格納する変数url
 	     String url = "/Login.jsp";
 
@@ -47,6 +47,7 @@ public class LoginServlet extends HttpServlet {
 	    	 //パラメーター取得
 	    	 String userID = request.getParameter("userID");
 		     String password = request.getParameter("password");
+
 
 		     //DAO,Beanをインスタンス化
   			 ArrayList<UserBean> userList = new ArrayList<UserBean>();
@@ -71,7 +72,7 @@ public class LoginServlet extends HttpServlet {
 		     if(flag){
 		    	 url="/Menu.jsp";
 		     }else{
-		    	 url="/Login.jsp";
+		    	 throw new ServletServiceException("ログインに失敗しました");
 		     }
 
 
