@@ -10,9 +10,9 @@
 <!-- ヘッダー -->
 	<%@include file="header.jsp" %>
 <div class="content" align="center">
-     <h2 class="message">従業員情報に保有資格を追加しました</h2>
-     <form action="/servlet" method="post">
-     <input type="submit" value="メニューに戻る">
+     <h2 class="message">ログアウトしました。<br>お疲れ様でした。</h2>
+     <form action="LogoutServlet" method="post">
+     <input type="submit" value="ログイン画面へ" name="move">
      </form>
      </div>
 </body>
