@@ -13,7 +13,7 @@
  <!-------------------------------------------------------------------------------->
 
      <div class="content">
-      <h2 class="page_title">従業員登録</h2>
+      <h2 class="page_title">従業員登録</h2></div>
       <p>登録したい従業員のデータを入力してください。</p>
       <form>
         <table class="employee_add">
@@ -23,11 +23,11 @@
          </tr>
          <tr>
            <th>氏名(漢字)</th>
-           <td>氏<input type="text" name="I_name">　名<input type="text" name="f_name"></td>
+           <td>氏<input type="text" name="l_name">　名<input type="text" name="f_name"></td>
          </tr>
          <tr>
            <th>氏名(カナ)</th>
-           <td>氏<input type="text" name="I_kana_name">　名<input type="text" name="f_kana_name"></td>
+           <td>氏<input type="text" name="l_kana_name">　名<input type="text" name="f_kana_name"></td>
          </tr>
          <tr>
            <th>性別</th>
@@ -82,6 +82,5 @@
         </table>
         <input type="submit" value="登録">
       </form>
-      </div>
    </body>
   </html>
