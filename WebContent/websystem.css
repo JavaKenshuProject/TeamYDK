@@ -102,7 +102,8 @@ h1{
 .menu_botan {
 	font-family: "ÉÅÉCÉäÉI", meiryo, Arial, sans-serif;
 	font-weight: 200;
-	width: 40%;
+	max-width:250px;
+	width: 45%;
 	height:10%;
 	background-color: #6ec2ac;
 	border-style: none;
@@ -165,12 +166,12 @@ h1{
 }
 
 .form_title{
-      background-color:#4496d3;
-      width:80%;
-      margin-left:0;
+      background-color:#339999;
+      width:78%;
+      margin-left:.1%;
       margin-right:0;
       margin-bottom:0;
-      padding-left:.5em;
+      padding:0 .7% 0 1%;
       font-weight:100;
       color:#fff;
 }
