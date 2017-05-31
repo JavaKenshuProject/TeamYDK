@@ -16,35 +16,30 @@
    <h2 class="page_title">メニュー</h2>
 
    <h3 class="menu_title">■従業員情報を編集する</h3>
-   <p>
-    <form action="ShowServlet" method="post">
-     <input type="submit" value="従業員一覧" name="page" class="menu_botan">
-    </form>
-    <form action="MenuServlet" method="post">
-     <input type="submit" value="従業員登録" name="page" class="menu_botan">
-    </form>
-   </p>
+      <form action="ShowServlet" method="post">
+       <input type="submit" value="従業員一覧" name="page" class="menu_botan">
+      </form>
+      <form action="MenuServlet" method="post">
+       <input type="submit" value="従業員登録" name="page" class="menu_botan">
+      </form>
    <h3 class="menu_title">■資格情報を編集する</h3>
-   <p>
-   <form action="MenuServlet" method="post">
-    <input type="submit" value="資格取得" name="page" class="menu_botan">
-   </form>
-   <form action="MenuServlet" method="post">
-    <input type="submit" value="資格追加" name="page" class="menu_botan">
-   </form>
-   </p>
+      <form action="LicenseServlet" method="post">
+       <input type="submit" value="資格取得" name="page" class="menu_botan">
+      </form>
+      <form action="MenuServlet" method="post">
+       <input type="submit" value="資格追加" name="page" class="menu_botan">
+      </form>
+
    <h3 class="menu_title">■システム利用者情報を編集する</h3>
-    <p>
-     <form action="MenuServlet" method="post">
-      <input type="submit" value="ユーザ登録" name="page" class="menu_botan">
-     </form>
-    </p>
-    <p>
+      <form action="MenuServlet" method="post">
+       <input type="submit" value="ユーザ登録" name="page" class="menu_botan">
+      </form>
+
+   <p>
     <form action="Logoutservlet" method="post">
      <input type="submit" value="ログアウト" class="menu_botan">
      </form>
     </p>
-   </form>
  </div>
 </body>
 </html>
