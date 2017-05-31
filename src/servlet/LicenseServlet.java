@@ -69,6 +69,7 @@ public class LicenseServlet extends HttpServlet {
 			request.setAttribute("employeeList", employeeList);
 			request.setAttribute("licenseList", licenseList);
 
+
 			/* 移動先の設定 */
 			url = "LicenseGet.jsp";
 		}
