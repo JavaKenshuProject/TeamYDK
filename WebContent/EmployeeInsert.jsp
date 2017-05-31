@@ -40,8 +40,10 @@
                 <option>1993</option>
                </select>年　
                <select name="birth_month">
-                <option>4</option>
-                <option>3</option>
+                <option>1</option>	<option>2</option>	<option>3</option>
+                <option>4</option>	<option>5</option>	<option>6</option>
+                <option>7</option>	<option>8</option>	<option>9</option>
+                <option>10</option>	<option>11</option>	<option>12</option>
                </select>月　
                <select name="birth_day">
                 <option>4</option>
@@ -64,8 +66,10 @@
                 <option>1993</option>
                </select>年　
                <select name="start_month">
-                <option>4</option>
-                <option>3</option>
+                <option>1</option>	<option>2</option>	<option>3</option>
+                <option>4</option>	<option>5</option>	<option>6</option>
+                <option>7</option>	<option>8</option>	<option>9</option>
+                <option>10</option>	<option>11</option>	<option>12</option>
                </select>月　
                <select name="start_day">
                 <option>4</option>
