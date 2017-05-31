@@ -42,8 +42,8 @@
       </form>
 
    <p>
-    <form action="Logoutservlet" method="post">
-     <input type="submit" value="ログアウト" class="menu_botan">
+    <form action="LogoutServlet" method="post">
+     <input type="submit" value="ログアウト" name="page" class="menu_botan">
      </form>
     </p>
  </div>
