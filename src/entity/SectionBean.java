@@ -1,8 +1,8 @@
 package entity;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 
-import com.sun.jmx.snmp.Timestamp;
 
 public class SectionBean implements Serializable {
 
