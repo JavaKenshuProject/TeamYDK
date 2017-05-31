@@ -55,7 +55,7 @@ public class MenuServlet extends HttpServlet {
 	    }
 
 	    if(page.equals("資格取得")){
-	    	url = "LicenseGet.jsp";
+	    	url = "/LicenseServlet";
 	    }
 
 	    if(page.equals("資格追加")){
