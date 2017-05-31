@@ -11,6 +11,6 @@
 	<form action="Cont" method="POST">
 		<input type="submit" name="all_emp" value="]‹Æˆõî•ñ">
 	</form>
-
+<h1></h1>
 </body>
 </html>
