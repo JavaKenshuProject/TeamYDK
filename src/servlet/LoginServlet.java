@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,6 +9,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import dao.UserDAO;
+import entity.UserBean;
 
 /**
  * Servlet implementation class LoginServlet
@@ -44,30 +48,42 @@ public class LoginServlet extends HttpServlet {
 	    	 String userID = request.getParameter("userID");
 		     String password = request.getParameter("password");
 
-/*		     //DAO,Beanをインスタンス化
+		     //DAO,Beanをインスタンス化
   			 ArrayList<UserBean> userList = new ArrayList<UserBean>();
 		     UserDAO dao = new UserDAO();
 
 		     //DAOからのreturnをBeanに格納
 		     try{
-		     	userList=dao.userAllGet()
+		     	userList=dao.userAllGet();
 		     }catch(Exception e){
-		     	e.printStackTrace
 		     }
 
+		     userList = (ArrayList<UserBean>)request.getAttribute("userList");
 
-		     //urlに格納する
-		     if(userID.equals()&&password.equals()){
+		     boolean flag = false;
+
+		     for(UserBean user:userList){
+		    	 if(user.getUser_id().equals("userID") && user.getPassword().equals("password") ){
+		    		 flag = true;
+		    	 }
+		     }
+
+		     if(flag){
 		    	 url="Menu.jsp";
 		     }else{
-		    	 //エラー画面へ
-		    	 url="error_seivlet.jsp";
-		     }
-*/
 
-	     }
+
+		     }
+
+
+
+			}
 
 	     RequestDispatcher rd = request.getRequestDispatcher(url);
 	        rd.forward(request, response);
 	}
+
 }
+
+
+
