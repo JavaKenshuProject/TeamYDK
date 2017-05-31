@@ -45,7 +45,7 @@
     <form action="LogoutServlet" method="post">
      <input type="submit" value="ログアウト" name="page" class="menu_botan">
      </form>
-    </p>
+    </p><!--  -->
  </div>
 </body>
 </html>
