@@ -2,9 +2,8 @@ package entity;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.ArrayList;
-
-import com.sun.jmx.snmp.Timestamp;
 
 public class EmployeeBean implements Serializable{
 
@@ -23,7 +22,7 @@ public class EmployeeBean implements Serializable{
 	private ArrayList<String> license_name;
 	private ArrayList<String> license_cd;
 	private String license_cd_SQLinsert;
-	private String get_license_date;
+	private ArrayList<String> get_license_date;
 	private Date get_license_SQLinsert;
 
 	public String getEmp_code() {
@@ -116,10 +115,10 @@ public class EmployeeBean implements Serializable{
 	public void setLicense_cd_SQLinsert(String license_cd_SQLinsert) {
 		this.license_cd_SQLinsert = license_cd_SQLinsert;
 	}
-	public String getGet_license_date() {
+	public ArrayList<String> getGet_license_date() {
 		return get_license_date;
 	}
-	public void setGet_license_date(String get_license_date) {
+	public void setGet_license_date(ArrayList<String> get_license_date) {
 		this.get_license_date = get_license_date;
 	}
 	public Date getGet_license_SQLinsert() {
