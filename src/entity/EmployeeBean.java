@@ -23,7 +23,7 @@ public class EmployeeBean implements Serializable{
 	private ArrayList<String> license_cd;
 	private String license_cd_SQLinsert;
 	private ArrayList<String> get_license_date;
-	private Date get_license_SQLinsert;
+	private Date get_license_date_SQLinsert;
 
 	public String getEmp_code() {
 		return emp_code;
@@ -122,9 +122,9 @@ public class EmployeeBean implements Serializable{
 		this.get_license_date = get_license_date;
 	}
 	public Date getGet_license_SQLinsert() {
-		return get_license_SQLinsert;
+		return get_license_date_SQLinsert;
 	}
 	public void setGet_license_SQLinsert(Date get_license_SQLinsert) {
-		this.get_license_SQLinsert = get_license_SQLinsert;
+		this.get_license_date_SQLinsert = get_license_date_SQLinsert;
 	}
 }
