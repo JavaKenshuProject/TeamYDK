@@ -28,5 +28,4 @@ public class UserBean implements Serializable{
 		this.update_date = update_date;
 	}
 
-
 }
