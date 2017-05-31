@@ -29,11 +29,11 @@
  -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=Windows-31J">
+<link rel="stylesheet" href="websystem.css" type="text/css">
+<%@ include file = "header.jsp" %>
 <title>Insert title here</title>
 </head>
 <body>
 	<h1 align="center">Error!!</h1>
-
-
 </body>
 </html>
