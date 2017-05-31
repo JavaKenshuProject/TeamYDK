@@ -48,33 +48,38 @@ public class LicenseServlet extends HttpServlet {
 
 		String url = null;
 
-		/* エンコーディング*/
+		/* エンコーディング */
 		request.setCharacterEncoding("Windows-31J");
 		response.setCharacterEncoding("Windows-31J");
 
-		/*web操作による有無*/
+		/* web操作による有無 */
 		String employee = request.getParameter("employee");
 		String license = request.getParameter("license");
+		String page = request.getParameter("page");
 
-		/* EmployeeDAOの生成 */
+		/* DAOの生成 */
 		EmployeeDAO emp = new EmployeeDAO();
-		ArrayList<EmployeeBean> employeeList = emp.employeeAllGet();
-
-		/* LicenseDAOの生成*/
 		LicenseDAO lic = new LicenseDAO();
-		ArrayList<LicenseBean> licenseList = lic.licenseAllGet();
 
+		if (page.equals("資格取得")) {
+			ArrayList<EmployeeBean> employeeList = emp.employeeAllGet();
+			ArrayList<LicenseBean> licenseList = lic.licenseAllGet();
 
-		/* セットする */
-		request.setAttribute("employeeList",employeeList);
-		request.setAttribute("licenseList", licenseList);
+			/* セットする */
+			request.setAttribute("employeeList", employeeList);
+			request.setAttribute("licenseList", licenseList);
 
-		/* 移動先の設定 */
-		url = "LicenseGet.jsp";
+			/* 移動先の設定 */
+			url = "LicenseGet.jsp";
+		}
 
-		/* 転送先*/
+		if (page.equals("取得")) {
+			url = "GetSuccess.jsp";
+		}
+
+		/* 転送先 */
 		RequestDispatcher rd = request.getRequestDispatcher(url);
-        rd.forward(request, response);
+		rd.forward(request, response);
 
 	}
 
