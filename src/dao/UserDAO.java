@@ -12,7 +12,7 @@ import exception.ServletServiceException;
 /**
  *
  * @author KIKUCHI
- * @version 1.00
+ * @version 1.01
  */
 public class UserDAO {
 	/**
@@ -41,7 +41,7 @@ public class UserDAO {
 			}
 
 		} catch (SQLException e) {
-			System.out.println("error:EmployeeDAO-userAllGet");
+			System.out.println("error:UserDAO-userAllGet");
 			e.printStackTrace();
 		} finally {
 			cm.closeConnection();
@@ -72,7 +72,7 @@ public class UserDAO {
 
 				con.commit();
 			} catch (SQLException e) {
-				System.out.println("error:EmployeeDAO-userRegist-commit:error");
+				System.out.println("error:UserDAO-userRegist-commit:error");
 				e.printStackTrace();
 				con.rollback();
 				throw e;
@@ -81,7 +81,7 @@ public class UserDAO {
 			}
 
 		} catch (SQLException e) {
-			System.out.println("error:EmployeeDAO-userRegist");
+			System.out.println("error:UserDAO-userRegist");
 			e.printStackTrace();
 		} finally {
 			cm.closeConnection();
@@ -111,7 +111,7 @@ public class UserDAO {
 
 				con.commit();
 			} catch (SQLException e) {
-				System.out.println("error:EmployeeDAO-userDelete-commit:error");
+				System.out.println("error:UserDAO-userDelete-commit:error");
 				e.printStackTrace();
 				con.rollback();
 				throw e;
@@ -120,7 +120,7 @@ public class UserDAO {
 			}
 
 		} catch (SQLException e) {
-			System.out.println("error:EmployeeDAO-userDelete");
+			System.out.println("error:UserDAO-userDelete");
 			e.printStackTrace();
 		} finally {
 			cm.closeConnection();
