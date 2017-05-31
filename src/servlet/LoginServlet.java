@@ -69,9 +69,9 @@ public class LoginServlet extends HttpServlet {
 		     }
 
 		     if(flag){
-		    	 url="Menu.jsp";
+		    	 url="/Menu.jsp";
 		     }else{
-		    	 url="Login.jsp";
+		    	 url="/Login.jsp";
 		     }
 
 
