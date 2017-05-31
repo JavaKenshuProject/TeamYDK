@@ -16,14 +16,18 @@
    <h2 class="page_title">ƒƒjƒ…[</h2>
 
    <h3 class="menu_title">¡]‹Æˆõî•ñ‚ð•ÒW‚·‚é</h3>
-    <p class="botan_box">
-      <form action="ShowServlet" method="post">
-       <input type="submit" value="]‹Æˆõˆê——" name="page" class="menu_botan">
-      </form>
+    <ul class="botans">
+      <li>
+        <form action="ShowServlet" method="post">
+         <input type="submit" value="]‹Æˆõˆê——" name="page" class="menu_botan">
+        </form>
+      </li>
+      <li>
       <form action="MenuServlet" method="post">
        <input type="submit" value="]‹Æˆõ“o˜^" name="page" class="menu_botan">
       </form>
-    </p>
+      </li>
+    </ul>
    <h3 class="menu_title">¡Ž‘Šiî•ñ‚ð•ÒW‚·‚é</h3>
       <form action="LicenseServlet" method="post">
        <input type="submit" value="Ž‘ŠiŽæ“¾" name="page" class="menu_botan">
