@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.EmployeeDAO;
+import dao.LicenseDAO;
 import entity.EmployeeBean;
+import entity.LicenseBean;
 
 /**
  * Servlet implementation class LicenseServlet
@@ -51,14 +53,21 @@ public class LicenseServlet extends HttpServlet {
 		response.setCharacterEncoding("Windows-31J");
 
 		/*web操作による有無*/
-		//String licenseGet = request.getParameter("submit");
+		String employee = request.getParameter("employee");
+		String license = request.getParameter("license");
 
 		/* EmployeeDAOの生成 */
 		EmployeeDAO emp = new EmployeeDAO();
 		ArrayList<EmployeeBean> employeeList = emp.employeeAllGet();
 
+		/* LicenseDAOの生成*/
+		LicenseDAO lic = new LicenseDAO();
+		ArrayList<LicenseBean> licenseList = lic.licenseAllGet();
+
+
 		/* セットする */
 		request.setAttribute("employeeList",employeeList);
+		request.setAttribute("licenseList", licenseList);
 
 		/* 移動先の設定 */
 		url = "LicenseGet.jsp";

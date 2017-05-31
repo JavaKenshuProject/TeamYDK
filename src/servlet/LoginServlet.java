@@ -39,7 +39,7 @@ public class LoginServlet extends HttpServlet {
 
 
 	     // 移譲する先のjspを格納する変数url
-	     String url = null;
+	     String url = "/Login.jsp";
 
 
 	     if(login.equals("ログイン")){
@@ -58,20 +58,20 @@ public class LoginServlet extends HttpServlet {
 		     }catch(Exception e){
 		     }
 
-		     userList = (ArrayList<UserBean>)request.getAttribute("userList");
+//		     userList = (ArrayList<UserBean>)request.getAttribute("userList");
 
 		     boolean flag = false;
 
 		     for(UserBean user:userList){
-		    	 if(user.getUser_id().equals("userID") && user.getPassword().equals("password") ){
+		    	 if((user.getUser_id().equals(userID)) && (user.getPassword().equals(password)) ){
 		    		 flag = true;
 		    	 }
 		     }
 
 		     if(flag){
-		    	 url="Menu.jsp";
+		    	 url="/Menu.jsp";
 		     }else{
-		    	 url="Login.jsp";
+		    	 url="/Login.jsp";
 		     }
 
 

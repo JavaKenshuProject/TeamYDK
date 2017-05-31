@@ -3,6 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="entity.EmployeeBean"%>
+<%@ page import="entity.LicenseBean"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=Windows-31J">
@@ -19,8 +20,9 @@
       <p>保有資格を追加する従業員を選んでください。</p>
       <%
       ArrayList<EmployeeBean> employeeList = (ArrayList<EmployeeBean>)request.getAttribute("employeeList");
+      ArrayList<LicenseBean> licenseList = (ArrayList<LicenseBean>)request.getAttribute("licenseList");
       %>
-      <form action="/LicenseServlet" method="post">
+      <form action="LicenseServlet" method="post">
         <table class="employee_table">
           <tr class="employee_title">
            <th></th>
@@ -44,7 +46,7 @@
         		  }
           %>
           <tr style="background-color:<%= color %>;">
-           <td><input type="radio" name="radio"></td>
+           <td><input type="radio" name="employee"></td>
            <td><%= employee.getEmp_code() %></td>
            <td><%= employee.getL_name() %><%= employee.getF_name() %></td>
            <td><%= employee.getL_kana_name() %><%= employee.getF_kana_name() %></td>
@@ -52,26 +54,34 @@
            <td><%= employee.getBirth_day() %></td>
            <td><%= employee.getSection_name() %></td>
            <td><%= employee.getEmp_date() %></td>
-           <td>基本情報</td>
+           <td><%= i %></td>
           </tr>
           <% } %>
           <% } %>
        </table>
 <!--------------------------------資格一覧の表-------------------------------->
-      <p>保有資格に追加する資格を選んでください。</p>
+     <p>保有資格に追加する資格を選んでください。</p>
       <table>
        <tr class="license_title">
         <th></th>
         <th>資格名</th>
        </tr>
-       <tr style="background-color:#eeeeee;">
+        <% if(licenseList != null ){
+        	  for(int i=0;i<licenseList.size();i++){
+        		  LicenseBean license = licenseList.get(i);
+        		  String color;
+        		  if(i%2 == 0){
+        			  color = "#eeeeee";
+        		  }else{
+        			  color = "#fdfdfd";
+        		  }
+          %>
+       <tr style="background-color:<%= color %>;">
         <td><input type="radio" name="license"></td>
-        <td>ITパスポート</td>
+        <td><%= license.getLicense_name() %></td>
        </tr>
-       <tr style="background-color:#fdfdfd;">
-        <td><input type="radio" name="license"></td>
-        <td>基本情報</td>
-       </tr>
+       <% } %>
+       <% } %>
       </table>
       <input type="submit" value="取得">
       </form>
