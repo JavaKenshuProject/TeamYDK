@@ -2,7 +2,7 @@
 
 body{
       background-color:#fdfdfd;
-      font-family:"メイリオ",'meiryo';
+      font-family:"メイリオ",meiryo,Arial,sans-serif;
       font-weight:200;
       margin:0;
       padding:0;
@@ -37,7 +37,7 @@ h1{
       }
 
 .page_title{
-      padding: .25em 0 .5em .55em;
+      padding: .25em 0 .25em .55em;
       border-left: 6px solid #669999;
       border-bottom: 1px solid #ccc;
       border-right: 1px solid #ccc;
@@ -84,11 +84,36 @@ h1{
      margin-bottom:20px;
      }
 
-.botan{
+
+
+/*-----------------------メニュー------------------------------*/
+.menu_title{
+	  padding:0;
+	  border-bottom: 1px solid #ccc;
+	  margin-bottom:0;
 
 }
 
+.menu_title:first-letter{
+	  color:#669999;
 
+}
+
+.menu_botan {
+	font-family: "メイリオ", meiryo, Arial, sans-serif;
+	font-weight: 200;
+	width: 40%;
+	height:10%;
+	background-color: #6ec2ac;
+	border-style: none;
+}
+
+.menu_botan:hover {
+	font-family: "メイリオ", meiryo, Arial, sans-serif;
+	font-weight: 200;
+	background-color: #28c198;
+	border-style: none;
+}
 
 /*-----------------------従業員一覧------------------------------*/
 .employee_title{
