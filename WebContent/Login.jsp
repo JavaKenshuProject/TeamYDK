@@ -18,7 +18,7 @@
          <div class="loginheader">
           <h2 class="logintitle">ÉçÉOÉCÉì</h2>
          </div>
-          <form action="/LoginServlet" method="post">
+          <form action="LoginServlet" method="post">
             <table align="center">
               <tr>
                <td>
