@@ -82,7 +82,9 @@ h1{
 
 .dateform{
      width:200px;
+     height:20px;
      margin-bottom:20px;
+     margin-top:20px;
      }
 
 
@@ -92,7 +94,7 @@ h1{
 	  font-weight:100;
 	  padding:0;
 	  border-bottom: 1px solid #ccc;
-	  margin-top:2%
+	  margin-top:2%;
 	  margin-bottom:2%;
 
 }
