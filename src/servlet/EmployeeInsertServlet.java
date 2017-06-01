@@ -72,7 +72,7 @@ public class EmployeeInsertServlet extends HttpServlet {
 			String f_name = request.getParameter("f_name"); // 名
 			String l_kana_name = request.getParameter("l_kana_name"); // 氏(カナ)
 			String f_kana_name = request.getParameter("f_kana_name"); // 名(カナ)
-			byte[] sex = request.getParameter("sex").getBytes(); // 性別
+			byte sex = (byte)Integer.parseInt(request.getParameter("sex")); // 性別
 			String birth_year = request.getParameter("birth_year"); // 生年
 			String birth_month = request.getParameter("birth_month"); // 月
 			String birthday = request.getParameter("birthday"); // 日
@@ -89,7 +89,7 @@ public class EmployeeInsertServlet extends HttpServlet {
 			empB.setF_name(f_name);
 			empB.setL_kana_name(l_kana_name);
 			empB.setF_kana_name(f_kana_name);
-			empB.setSex(sex[0]);
+			empB.setSex(sex);
 			empB.setBirth_day(birth_day);
 			empB.setSection_code(section_code);
 			empB.setEmp_date(emp_date);
