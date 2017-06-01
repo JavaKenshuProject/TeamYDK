@@ -14,18 +14,19 @@
 		<p>新しいユーザの情報を入力してください。</p>
 
 		<!------------------------------------ユーザ情報登録フォーム-------------------------------->
+		<h2 class="user_form_title">ユーザ情報登録フォーム</h2>
 		<form action="UserInsertServlet" method="post">
 			<table class="user_add">
 				<tr>
 					<th>ユーザID</th>
-					<td><input type="text" name="user_id"></td>
+					<td align="center"><input type="text" name="user_id" placeholder="ユーザIDを入力してください" class="user_add_date"></td>
 				</tr>
 				<tr>
 					<th>パスワード</th>
-					<td><input type="text" name="password"></td>
+					<td align="center"><input type="text" name="password" placeholder="パスワードを入力してください" class="user_add_date"></td>
 				</tr>
 			</table>
-			<input type="submit" value="登録" name="page">
+			<input type="submit" value="登録" name="page" class="botan_get">
 		</form>
 	</div>
 </body>
