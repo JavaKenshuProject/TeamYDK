@@ -88,8 +88,8 @@ public class EmployeeInsertServlet extends HttpServlet {
 	        empB.setBirth_day(birth);
 	        empB.setSection_code(section_code);
 	        empB.setEmp_date(start);
-//	        empB.setLicense(license[0]);
-
+//	        empB.setLicense_cd_SQLinsert(licB.getLicense_cd());
+//licenseのbeanのインスタンスか
 
 			url = "EmployeeInsertSuccess.jsp";
 		}
