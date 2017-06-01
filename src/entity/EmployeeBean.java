@@ -121,10 +121,11 @@ public class EmployeeBean implements Serializable{
 	public void setGet_license_date(ArrayList<String> get_license_date) {
 		this.get_license_date = get_license_date;
 	}
-	public Date getGet_license_SQLinsert() {
+	public Date getGet_license_date_SQLinsert() {
 		return get_license_date_SQLinsert;
 	}
-	public void setGet_license_SQLinsert(Date get_license_SQLinsert) {
+	public void setGet_license_date_SQLinsert(Date get_license_date_SQLinsert) {
 		this.get_license_date_SQLinsert = get_license_date_SQLinsert;
 	}
+
 }

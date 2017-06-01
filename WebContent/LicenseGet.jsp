@@ -21,6 +21,7 @@
 		<%
 			ArrayList<EmployeeBean> employeeList = (ArrayList<EmployeeBean>) request.getAttribute("employeeList");
 			ArrayList<LicenseBean> licenseList = (ArrayList<LicenseBean>) request.getAttribute("licenseList");
+			String color;
 		%>
 		<form action="LicenseServlet" method="post">
 			<table class="employee_table">
@@ -39,7 +40,6 @@
 					if (employeeList != null) {
 						for (int i = 0; i < employeeList.size(); i++) {
 							EmployeeBean employee = employeeList.get(i);
-							String color;
 							if (i % 2 == 0) {
 								color = "#dbffed";
 							} else {
@@ -75,7 +75,6 @@
 					if (licenseList != null) {
 						for (int i = 0; i < licenseList.size(); i++) {
 							LicenseBean license = licenseList.get(i);
-							String color;
 							if (i % 2 == 0) {
 								color = "#eeeeee";
 							} else {
