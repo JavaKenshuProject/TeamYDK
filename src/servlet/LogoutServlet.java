@@ -45,13 +45,13 @@ public class LogoutServlet extends HttpServlet {
 	   //セッション管理
 			HttpSession session =request.getSession() ;
 
-	     if(page.equals("ログアウト")){
+	     if((page != null) && (page.equals("ログアウト")) ){
 	    	// セッション破棄
 	            session.invalidate();
 	            url = "Logout.jsp";
 	     }
 
-	     if(move.equals("ログイン画面へ")){
+	     if((move != null) && (move.equals("ログイン画面へ")) ){
 	    	 url = "Login.jsp";
 	     }
 
