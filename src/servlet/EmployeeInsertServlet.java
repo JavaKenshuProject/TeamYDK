@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.EmployeeDAO;
 import dao.LicenseDAO;
-import entity.EmployeeBean;
 import entity.LicenseBean;
 
 /**
@@ -50,6 +49,8 @@ public class EmployeeInsertServlet extends HttpServlet {
 		LicenseDAO lic = new LicenseDAO();
 
 		if ((page!=null)&&(page.equals("従業員登録"))) {
+			ArrayList<LicenseBean> licenseList=lic.licenseAllGet();
+			request.setAttribute("licenseList",licenseList);
 			url="EmployeeInsert.jsp";
 		}
 
@@ -71,11 +72,9 @@ public class EmployeeInsertServlet extends HttpServlet {
 //	        String start_day[] = request.getParameterValues("start_day");		//　　日
 //	        String license[] =request.getParameterValues("license");		//資格チェック
 
-			ArrayList<EmployeeBean> employeeList = emp.employeeAllGet();
-			ArrayList<LicenseBean> licenseList = lic.licenseAllGet();
+
 			/* セットする */
-			request.setAttribute("employeeList",employeeList);
-			request.setAttribute("licenseList",licenseList);
+
 			url = "EmployeeInsertSuccess.jsp";
 		}
 
