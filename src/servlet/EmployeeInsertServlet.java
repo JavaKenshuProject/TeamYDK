@@ -87,8 +87,6 @@ public class EmployeeInsertServlet extends HttpServlet {
         String license[] =request.getParameterValues("license");		//資格チェック
         String  = request.getParameter("");		*/						//登録
 
+		}
+		}
 	}
-
-
-
-}
