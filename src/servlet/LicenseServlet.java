@@ -58,9 +58,13 @@ public class LicenseServlet extends HttpServlet {
 		String license = request.getParameter("license");
 		String page = request.getParameter("page");
 
-		/* DAOの生成 */
+		/* DAOのインスタンス化 */
 		EmployeeDAO emp = new EmployeeDAO();
 		LicenseDAO lic = new LicenseDAO();
+
+		/* Beanのインスタンス化*/
+		EmployeeBean empB = new EmployeeBean();
+		LicenseBean licB = new LicenseBean();
 
 		if (page.equals("資格取得")) {
 			ArrayList<EmployeeBean> employeeList = emp.employeeAllGet();
@@ -75,6 +79,9 @@ public class LicenseServlet extends HttpServlet {
 		}
 
 		if (page.equals("取得")) {
+			empB.set
+			emp.employeeUpdate(emp.employeeAllGet().get(Integer.parseInt(employee)));
+
 			url = "GetSuccess.jsp";
 		}
 
