@@ -33,6 +33,7 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		//エンコーディング指定
+		//テスト
 		 request.setCharacterEncoding("Windows-31J");
 	     response.setCharacterEncoding("Windows-31J");
 
