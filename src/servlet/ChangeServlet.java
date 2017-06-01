@@ -43,6 +43,7 @@ public class ChangeServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+
 		/* url宣言 */
 		String url = null;
 
@@ -50,15 +51,12 @@ public class ChangeServlet extends HttpServlet {
 		request.setCharacterEncoding("Windows-31J");
 		response.setCharacterEncoding("Windows-31J");
 
-		/* formの取得 */
-		String l_name = request.getParameter("l_name");
-		String f_name = request.getParameter("f_name");
-		String l_kana_name = request.getParameter("l_kana_name");
-		String f_kana_name = request.getParameter("f_kana_name");
-		byte[] sex = request.getParameter("sex").getBytes();
-		String job = request.getParameter("job");
-		String license = request.getParameter("license");
+
+		/* pageの取得 */
 		String page = request.getParameter("page");
+		if(page == null){
+			page = (String)request.getAttribute("page");
+		}
 
 		/* DAOのインスタンス化 */
 		EmployeeDAO emp = new EmployeeDAO();
@@ -70,16 +68,42 @@ public class ChangeServlet extends HttpServlet {
 		LicenseBean licB = new LicenseBean();
 
 		if(page.equals("変更")){
-			ArrayList<SectionBean> sectionList = sec.SectionAllGet();
 
+			ArrayList<SectionBean> sectionList = sec.SectionAllGet();
+			ArrayList<EmployeeBean> employeeList = emp.employeeAllGet();
+
+			int num = Integer.parseInt(request.getParameter("employee"));
+			empB = employeeList.get(num);
 			/* セットする */
 			request.setAttribute("sectionList", sectionList);
+			request.setAttribute("empB", empB);
 
 			url = "EmployeeChange.jsp";
 		}
 
 		if(page.equals("変更完了")){
+			/* formの入力 */
 
+			int num = Integer.parseInt(request.getParameter("hidden"));
+			String l_name = request.getParameter("l_name");
+			String f_name = request.getParameter("f_name");
+			String l_kana_name = request.getParameter("l_kana_name");
+			String f_kana_name = request.getParameter("f_kana_name");
+			int sex_num =Integer.parseInt(request.getParameter("sex"));
+			byte sex = (byte)sex_num;
+			String job = request.getParameter("job");
+
+			ArrayList<EmployeeBean> employeeList = emp.employeeAllGet();
+			empB = employeeList.get(num);
+			empB.setL_name(l_name);
+			empB.setF_name(f_name);
+			empB.setL_kana_name(l_kana_name);
+			empB.setF_kana_name(f_kana_name);
+			empB.setSex(sex);
+			empB.setSection_name(job);
+			emp.employeeUpdate(empB);
+
+			url = "ChangeSuccess.jsp";
 		}
 
 		/* 転送先 */
