@@ -67,7 +67,7 @@ public class EmployeeInsertServlet extends HttpServlet {
 		 */
 		if (page.equals("登録")) {
 			// formの取得
-			String emp_code = request.getParameter("emp_code"); // 従業員コード
+			String emp_cd = request.getParameter("emp_cd"); // 従業員コード
 			String l_name = request.getParameter("l_name"); // 氏
 			String f_name = request.getParameter("f_name"); // 名
 			String l_kana_name = request.getParameter("l_kana_name"); // 氏(カナ)
@@ -84,13 +84,14 @@ public class EmployeeInsertServlet extends HttpServlet {
 			String emp_date = start_year + "-" + start_month + "-" + start_day;
 			String license[] = request.getParameterValues("license"); // 資格チェック
 			//値のset
-			empB.setEmp_code(emp_code);
+			System.out.println(birth_day);
+			empB.setEmp_code(emp_cd);
 			empB.setL_name(l_name);
 			empB.setF_name(f_name);
 			empB.setL_kana_name(l_kana_name);
 			empB.setF_kana_name(f_kana_name);
 			empB.setSex(sex);
-			empB.setBirth_day(birth_day);
+			empB.setBirth_day(birth_year + "-" + birth_month + "-" + birthday);
 			empB.setSection_code(section_code);
 			empB.setEmp_date(emp_date);
 			empB.setLicense_cd_SQLinsert(licB.getLicense_cd());
