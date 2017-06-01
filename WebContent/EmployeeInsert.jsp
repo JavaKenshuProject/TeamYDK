@@ -17,7 +17,7 @@
 <div class="content">
 	<h2 class="page_title">従業員登録</h2>
 	<p>登録したい従業員のデータを入力してください。</p>
-	<form>
+	<form action= "EmployeeInsertServlet" method="post">
 		<table class="employee_add">
 			<tr>
 				<th>従業員コード</th>
