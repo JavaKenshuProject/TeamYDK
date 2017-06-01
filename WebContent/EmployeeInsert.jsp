@@ -3,11 +3,11 @@
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="entity.LicenseBean"%>
 
-<!DOCTYPE>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <link rel="stylesheet" href="websystem.css" type="text/css">
-<meta charset="Shift-JIS">
+<meta http-equiv="Content-Type" content="text/html; charset=Windows-31J">
 <title>従業員管理システム</title>
 </head>
 <body>
