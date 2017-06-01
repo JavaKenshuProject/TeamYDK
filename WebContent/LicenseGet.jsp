@@ -47,7 +47,7 @@
 							}
 				%>
 				<tr style="background-color:<%=color%>;">
-					<td><input type="radio" name="employee" value="<%= i %>"></td>
+					<td><input type="radio" name="employee" value="<%=i%>"></td>
 					<td><%=employee.getEmp_code()%></td>
 					<td><%=employee.getL_name()%><%=employee.getF_name()%></td>
 					<td><%=employee.getL_kana_name()%><%=employee.getF_kana_name()%></td>
@@ -55,7 +55,17 @@
 					<td><%=employee.getBirth_day()%></td>
 					<td><%=employee.getSection_name()%></td>
 					<td><%=employee.getEmp_date()%></td>
-					<td><%=i%></td>
+					<td>
+						<%
+						if (employee.getLicense_name() != null){
+							for (int j = 0; j < employee.getLicense_name().size(); j++) {
+						%> <%=employee.getLicense_name().get(j)%>
+						<% if(j!=employee.getLicense_name().size()-1){ %>
+							<br>
+						<% } %>
+						<% } %>
+						<% } %>
+					</td>
 				</tr>
 				<%
 					}
@@ -82,7 +92,7 @@
 							}
 				%>
 				<tr style="background-color:<%=color%>;">
-					<td><input type="radio" name="license" value="<%= i %>"></td>
+					<td><input type="radio" name="license" value="<%=i%>"></td>
 					<td><%=license.getLicense_name()%></td>
 				</tr>
 				<%
