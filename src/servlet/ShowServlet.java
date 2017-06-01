@@ -33,22 +33,21 @@ public class ShowServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		//移譲する先のjspを格納する変数url
+		String url = null;
+
 		//エンコーディング指定
 
 		request.setCharacterEncoding("Windows-31J");
 		response.setCharacterEncoding("Windows-31J");
 
 		//formからの値を取得
+	    String employee = request.getParameter("employee");
 	    String page = request.getParameter("page");
-		String employee = request.getParameter("employee");
 
-
-		//移譲する先のjspを格納する変数url
-		String url = null;
 
 		/* DAOの生成 */
 		EmployeeDAO emp = new EmployeeDAO();
-
 
 		if (page.equals("従業員一覧")){
 		ArrayList<EmployeeBean> employeeList = emp.employeeAllGet();
@@ -57,14 +56,14 @@ public class ShowServlet extends HttpServlet {
 		request.setAttribute("employeeList", employeeList);
 
 		//移動先の設定
-		url = "ShowServlet.jsp";
+		url = "ShowEmployee.jsp";
 
 		}if (page.equals("削除")) {
-		url = "DeleteSuccsess.jsp";
+		url = "EmployeeDelete.jsp";
 		}
 
 	if(page.equals("変更")){
-		url = "ChangeSuccess.jsp";
+		url = "ChangeServlet.jsp";
 	}
 	/* 転送先 */
 	RequestDispatcher rd = request.getRequestDispatcher(url);
