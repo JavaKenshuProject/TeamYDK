@@ -21,15 +21,15 @@
           <form action="LoginServlet" method="post">
             <table align="center">
               <tr>
-               <td>ユーザID</td>
+              <!-- <td>ユーザID</td>-->
                <td>
-                <input type="text"  name="userID" class="dateform">
+                <input type="text"  name="userID" placeholder="ユーザIDを入力してください" class="dateform">
                </td>
               </tr>
               <tr>
-               <td>パスワード</td>
+             <!-- <td>パスワード</td>-->
                <td>
-                <input type="password"  name="password" class="dateform">
+                <input type="password"  name="password" placeholder="パスワードを入力してください"  class="dateform">
                </td>
               </tr>
                <tr>
