@@ -233,7 +233,7 @@ public class EmployeeDAO {
 	/**
 	 * 従業員情報の更新及び、資格保有情報の追加
 	 * ---Bean内のm_employeeとt_get_licenseの、emp_code以外の情報のみ更新します
-	 * 保有資格を追加するためには、一覧から取得したEmployeeBeanの_SQLinsertにデータを格納してこのメソッドに渡してください。
+	 * 保有資格を追加するためには、一覧から取得したEmployeeBeanの_SQLinsertにデータを格納してこのメソッドに渡してください
 	 *
 	 * @param employee
 	 */

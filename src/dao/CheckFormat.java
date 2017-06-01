@@ -188,17 +188,17 @@ public class CheckFormat {
 		String call = "";
 		String temp = "が不正です<br>";
 
-
-
 		if ((employee.getEmp_code() == null) || (checkSize31J(employee.getEmp_code(), 4) == false)) {
 			call = call + "従業員コード" + temp;
 		}
 
-		if ((employee.getLicense_cd_SQLinsert() == null) || (checkSize31J(employee.getLicense_cd_SQLinsert(), 5) == false)) {
+		if ((employee.getLicense_cd_SQLinsert() == null)
+				|| (checkSize31J(employee.getLicense_cd_SQLinsert(), 5) == false)) {
 			call = call + "資格コード" + temp;
 		}
 
-		if ((employee.getGet_license_date_SQLinsert() == null) ||  (checkDate(employee.getGet_license_date_SQLinsert()) == false)) {
+		if ((employee.getGet_license_date_SQLinsert() == null)
+				|| (checkDate(employee.getGet_license_date_SQLinsert()) == false)) {
 			call = call + "取得日" + temp;
 		}
 
@@ -206,7 +206,6 @@ public class CheckFormat {
 			throw new ServletServiceException(call);
 		}
 	}
-
 
 	/**
 	 * UserBeanの中身がDBのテーブル内と適合しているかチェックします
@@ -263,9 +262,10 @@ public class CheckFormat {
 	 * @param employee
 	 * @throws ServletServiceException
 	 */
-	public static boolean checkPK_empCode(EmployeeBean employee, ArrayList<EmployeeBean> emp_list) throws ServletServiceException {
+	public static boolean checkPK_empCode(EmployeeBean employee, ArrayList<EmployeeBean> emp_list)
+			throws ServletServiceException {
 		boolean flag = true;
-		if (employee.getEmp_code() == null){
+		if (employee.getEmp_code() == null) {
 			throw new ServletServiceException("従業員コードが不正です");
 		}
 		for (EmployeeBean all_emp : emp_list) {
@@ -285,7 +285,7 @@ public class CheckFormat {
 	 * @param employee
 	 * @throws ServletServiceException
 	 */
-	public static boolean checkPK_t_get_license(EmployeeBean employee, ArrayList<EmployeeBean> emp_list){
+	public static boolean checkPK_t_get_license(EmployeeBean employee, ArrayList<EmployeeBean> emp_list) {
 		boolean flag = true;
 		for (EmployeeBean all_emp : emp_list) {
 			for (String string : all_emp.getLicense_cd()) {
@@ -309,9 +309,10 @@ public class CheckFormat {
 	 * @param license
 	 * @throws ServletServiceException
 	 */
-	public static boolean checkPK_license(LicenseBean license, ArrayList<LicenseBean> license_list) throws ServletServiceException {
+	public static boolean checkPK_license(LicenseBean license, ArrayList<LicenseBean> license_list)
+			throws ServletServiceException {
 		boolean flag = true;
-		if (license.getLicense_cd() == null){
+		if (license.getLicense_cd() == null) {
 			throw new ServletServiceException("資格コードが不正です");
 		}
 		for (LicenseBean all_license : license_list) {
@@ -331,7 +332,7 @@ public class CheckFormat {
 	 */
 	public static boolean checkPK_user(UserBean user, ArrayList<UserBean> user_list) throws ServletServiceException {
 		boolean flag = true;
-		if (user.getUser_id() == null){
+		if (user.getUser_id() == null) {
 			throw new ServletServiceException("ユーザIDが不正です");
 		}
 		for (UserBean all_user : user_list) {
