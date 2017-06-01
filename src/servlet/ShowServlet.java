@@ -63,6 +63,7 @@ public class ShowServlet extends HttpServlet {
 		}
 
 
+
 	    if(page.equals("変更")){
 		url = "ChangeServlet";
 		request.setAttribute(page, page);
