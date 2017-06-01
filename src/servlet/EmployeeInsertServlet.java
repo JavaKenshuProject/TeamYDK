@@ -43,7 +43,6 @@ public class EmployeeInsertServlet extends HttpServlet {
 		/* web操作による有無 */
 		String page = request.getParameter("page");
 
-
 		/* DAOの生成 */
 		EmployeeDAO emp = new EmployeeDAO();
 		LicenseDAO lic = new LicenseDAO();
@@ -55,7 +54,7 @@ public class EmployeeInsertServlet extends HttpServlet {
 		}
 
 		/* 移動先の設定 */
-		if ((page!=null)&&(page.equals("登録"))){
+		if (page.equals("登録")){
 //			//para
 //			String emp_code = request.getParameter("emp_code");			//従業員コード
 //	        String l_name = request.getParameter("l_name");				//氏
@@ -75,13 +74,9 @@ public class EmployeeInsertServlet extends HttpServlet {
 
 			/* セットする */
 
-			url = "/EmployeeInsertSuccess.jsp";
+			url = "EmployeeInsertSuccess.jsp";
 		}
 
-//        //メニューに戻る
-//        if((page!=null)&&(page.equals("メニューに戻る"))){
-//        	url="/MenuServlet";
-//        }
 
 		/* 転送先*/
 		RequestDispatcher rd = request.getRequestDispatcher(url);
