@@ -18,8 +18,7 @@
 
 	<!--------------------------------]‹Æˆõˆê——‚Ì•\-------------------------------->
 
-	<input type="submit" value="•ÏX">
-	<input type="submit" value="íœ">
+
 
 	<%
 		ArrayList<EmployeeBean> employeeList = (ArrayList<EmployeeBean>) request.getAttribute("employeeList");
