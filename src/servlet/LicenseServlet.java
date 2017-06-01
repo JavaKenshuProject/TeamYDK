@@ -56,7 +56,7 @@ public class LicenseServlet extends HttpServlet {
 		/* formの取得 */
 		String employee = request.getParameter("employee");
 		String license = request.getParameter("license");
-
+		String[] getLicenseDay = request.getParameterValues("getLicenseDay");
 		String page = request.getParameter("page");
 
 		/* DAOのインスタンス化 */
@@ -80,9 +80,10 @@ public class LicenseServlet extends HttpServlet {
 		}
 
 		if (page.equals("取得")) {
+			String licenseDay = getLicenseDay[0] + "-" + getLicenseDay[1] + "-" + getLicenseDay[2];
 			empB = emp.employeeAllGet().get(Integer.parseInt(employee));
 			licB = lic.licenseAllGet().get(Integer.parseInt(license));
-			empB.setGet_license_date_SQLinsert("2014-5-12");
+			empB.setGet_license_date_SQLinsert(licenseDay);
 			empB.setLicense_cd_SQLinsert(licB.getLicense_cd());
 			emp.employeeUpdate(empB);
 

@@ -107,7 +107,7 @@
 			<table>
 			 <tr>
 			  <td>
-			   <select>
+			   <select name="getLicenseDay">
 			     <% Calendar cal = Calendar.getInstance(); //カレンダーオブジェクトを取得
                     int year = cal.get(Calendar.YEAR);
 			        for(int j = 2000; j<=year; j++){ %>
@@ -119,7 +119,7 @@
 			  </select>年
 			 </td>
 			 <td>
-			  <select>
+			  <select name="getLicenseDay">
 			   <%
 			     for(int month= 1; month<=12; month++){
 			   %>
@@ -132,7 +132,7 @@
 			  </select>月
 			 </td>
 			 <td>
-		      <select>
+		      <select name="getLicenseDay">
 			    <%
 			     for(int day= 1; day<=31; day++){
 			    %>
