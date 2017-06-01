@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=Windows-31J"
     pageEncoding="Windows-31J"%>
+   <%@ page import="java.util.ArrayList"%>
+   <%@ page import="entity.LicenseBean"%>
+
 <!DOCTYPE>
   <html>
    <head>
@@ -46,8 +49,9 @@
                 <option>10</option>	<option>11</option>	<option>12</option>
                </select>月　
                <select name="birth_day">
-                <option>4</option>
-                <option>3</option>
+                <option>1</option>	<option>2</option>	<option>3</option>	<option>4</option>	<option>5</option>	<option>6</option>	<option>7</option>
+                <option>8</option>	<option>9</option>	<option>10</option>	<option>11</option>	<option>12</option>	<option>13</option>	<option>14</option>
+                <option>15</option>	<option>16</option>	<option>17</option>
                </select>日　
             </td>
          </tr>
@@ -77,13 +81,30 @@
                </select>日　
             </td>
          </tr>
+         <%
+         	ArrayList<LicenseBean> licenseList =
+         	 (ArrayList<LicenseBean>) request.getAttribute("licenseList");
+         %>
          <tr>
            <th>保有資格</th>
-           <td><input type="checkbox" name="license">基本情報<br>
-               <input type="checkbox" name="license">ITパスポート
-            </td>
          </tr>
-        </table>
+         				<%
+					if (licenseList != null) {
+						for (int i = 0; i < licenseList.size(); i++) {
+							LicenseBean license = licenseList.get(i);
+
+				%>
+				<tr>
+					<td><input type="checkbox" name="license" value="<%= i %>"></td>
+					<td><%=license.getLicense_name()%></td>
+				</tr>
+				<%
+					}
+				%>
+				<%
+					}
+				%>
+                   </table>
         <input type="submit" value="登録">
       </form></div>
    </body>
