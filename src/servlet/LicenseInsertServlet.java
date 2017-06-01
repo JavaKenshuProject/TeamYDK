@@ -64,7 +64,7 @@ public class LicenseInsertServlet extends HttpServlet {
 			url = "LicenseInsert.jsp";
 		}
 
-		if(page.equals("取得")){
+		if(page.equals("追加")){
 			licB.setLicense_cd(license_cd);
 			licB.setLicense_name(license_name);
 			lic.licenseInsert(licB);
