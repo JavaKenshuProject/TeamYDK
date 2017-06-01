@@ -47,7 +47,7 @@ public class EmployeeInsertServlet extends HttpServlet {
 		String page = request.getParameter("page");
 
 
-		/* EmployeeDAOの生成 */
+		/* DAOの生成 */
 		EmployeeDAO emp = new EmployeeDAO();
 		LicenseDAO lic = new LicenseDAO();
 
