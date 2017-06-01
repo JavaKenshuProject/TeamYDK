@@ -82,6 +82,7 @@ public class EmployeeInsertServlet extends HttpServlet {
 			String start_month = request.getParameter("start_month"); // 月
 			String start_day = request.getParameter("start_day"); // 日
 			String emp_date = start_year + "-" + start_month + "-" + start_day;
+			String section_code = request.getParameter("section_code"); // 日
 			String license[] = request.getParameterValues("license"); // 資格チェック
 			//値のset
 			System.out.println(birth_day);
@@ -94,6 +95,7 @@ public class EmployeeInsertServlet extends HttpServlet {
 			empB.setBirth_day(birth_day);
 			empB.setSection_code(section_code);
 			empB.setEmp_date(emp_date);
+			empB.setSection_code(section_code);
 			empB.setLicense_cd_SQLinsert(licB.getLicense_cd());
 			emp.employeeInsert(empB);
 			url = "EmployeeInsertSuccess.jsp";
