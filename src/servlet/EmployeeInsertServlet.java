@@ -12,8 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.EmployeeDAO;
 import dao.LicenseDAO;
+import dao.SectionDAO;
 import entity.EmployeeBean;
 import entity.LicenseBean;
+import entity.SectionBean;
 
 /**
  * Servlet implementation class EmployeeInsertServlet
@@ -62,10 +64,11 @@ public class EmployeeInsertServlet extends HttpServlet {
 			url = "EmployeeInsert.jsp";
 		}
 
+
 		/*test
 		 * 登録ボタンが押されたとき 以下の emp 情報を に セットして、 Emp.Ins.Successへ遷移
 		 */
-		if (page.equals("登録")) {
+		if ((page != null) && (page.equals("登録"))) {
 			// formの取得
 			String emp_cd = request.getParameter("emp_cd"); // 従業員コード
 			String l_name = request.getParameter("l_name"); // 氏
@@ -77,12 +80,22 @@ public class EmployeeInsertServlet extends HttpServlet {
 			String birth_month = request.getParameter("birth_month"); // 月
 			String birthday = request.getParameter("birth_day"); // 日
 			String birth_day = birth_year + "-" + birth_month + "-" + birthday;
-			String section_code = request.getParameter("section_code"); // 所属コード
+			//String section_code = request.getParameter("section_code"); // 所属コード
 			String start_year = request.getParameter("start_year"); // 入社年
 			String start_month = request.getParameter("start_month"); // 月
 			String start_day = request.getParameter("start_day"); // 日
 			String emp_date = start_year + "-" + start_month + "-" + start_day;
-			String section_code = request.getParameter("section_code"); // 日
+			//String section_code = request.getParameter("section_code"); // 日
+			SectionDAO section = new SectionDAO();
+			ArrayList<SectionBean> sec_list = section.SectionAllGet();
+			String section_code = null;
+			String section_name = request.getParameter("section_name");
+
+			for(SectionBean sec : sec_list){
+				if((section_name != null) && (sec.getSection_name().equals(section_name))){
+					section_code = sec.getSection_code();
+				}
+			}
 			String license[] = request.getParameterValues("license"); // 資格チェック
 			//値のset
 			System.out.println(birth_day);
@@ -95,7 +108,6 @@ public class EmployeeInsertServlet extends HttpServlet {
 			empB.setBirth_day(birth_day);
 			empB.setSection_code(section_code);
 			empB.setEmp_date(emp_date);
-			empB.setSection_code(section_code);
 			empB.setLicense_cd_SQLinsert(licB.getLicense_cd());
 			emp.employeeInsert(empB);
 			url = "EmployeeInsertSuccess.jsp";
