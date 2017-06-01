@@ -78,8 +78,11 @@ public class EmployeeInsertServlet extends HttpServlet {
 	        String start = start_year + "-" + start_month + "-" + start_day;
 	        String license[] =request.getParameterValues("license");		//資格チェック
 
-	        /* 移動先の設定 */
+	        /* 登録ボタンが押されたとき
+	         * 以下の emp 情報を　に セットして、
+	         * Emp.Ins.Successへ遷移 */
 		if (page.equals("登録")){
+
 
 			empB.setEmp_code(emp_code);
 	        empB.setL_name(l_name);
@@ -91,7 +94,6 @@ public class EmployeeInsertServlet extends HttpServlet {
 	        empB.setSection_code(section_code);
 	        empB.setEmp_date(start);
 	        empB.setLicense_cd_SQLinsert(licB.getLicense_cd());
-//licenseのbeanのインスタンスか
 
 			url = "EmployeeInsertSuccess.jsp";
 		}
