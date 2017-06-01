@@ -24,7 +24,7 @@
         </form>
        </td>
        <td>
-       <form action="MenuServlet" method="post">
+       <form action="EmployeeInsertServlet" method="post">
         <input type="submit" value="従業員登録" name="page" class="menu_botan">
        </form>
       </td>
@@ -39,7 +39,7 @@
         </form>
        </td>
        <td>
-        <form action="MenuServlet" method="post">
+        <form action="LicenseInsertServlet" method="post">
          <input type="submit" value="資格追加" name="page" class="menu_botan">
         </form>
        </td>
@@ -47,7 +47,7 @@
     </table>
 
    <h3 class="menu_title">■システム利用者情報を編集する</h3>
-      <form action="MenuServlet" method="post">
+      <form action="UserInsertServlet" method="post">
        <input type="submit" value="ユーザ登録" name="page" class="menu_botan">
       </form>
 
