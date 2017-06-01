@@ -214,6 +214,8 @@ p{
 
 .employee_table{
        width:100%;
+       max-height:500px;
+       -webkit-overflow-scrolling:auto;
 }
 
 /*-----------------------Ž‘Šiˆê——------------------------------*/
