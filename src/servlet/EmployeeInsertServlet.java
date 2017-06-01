@@ -75,7 +75,7 @@ public class EmployeeInsertServlet extends HttpServlet {
 
 			/* セットする */
 
-			url = "EmployeeInsertSuccess.jsp";
+			url = "/EmployeeInsertSuccess.jsp";
 		}
 
         //メニューに戻る
