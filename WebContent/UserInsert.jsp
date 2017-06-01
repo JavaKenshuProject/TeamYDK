@@ -18,14 +18,14 @@
 			<table class="user_add">
 				<tr>
 					<th>ユーザID</th>
-					<td><input type="text" name="userID"></td>
+					<td><input type="text" name="user_id"></td>
 				</tr>
 				<tr>
 					<th>パスワード</th>
 					<td><input type="text" name="password"></td>
 				</tr>
 			</table>
-			<input type="submit" value="追加" name="page">
+			<input type="submit" value="登録" name="page">
 		</form>
 	</div>
 </body>
