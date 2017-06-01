@@ -241,6 +241,20 @@ p{
 }*/
 
 /*-----------------------システム利用者登録フォーム------------------------------*/
+.user_form_title{
+      background-color:#339999;
+      width:432px;
+      margin:0 0 0 2px;
+      padding:0 0 0 15px;
+      font-weight:100;
+      color:#fff;
+}
+
+.user_add{
+	width:450px;
+	margin-left:0;
+}
+
 .user_add th{
       background-color:#669999;
       color:#ffffff;
@@ -252,9 +266,14 @@ p{
 .user_add td{
       background-color:#eeeeee;
       font-weight:100;
-      padding:10px;
+      padding:0;
 }
 
+.user_add_date{
+     width:200px;
+     height:20px;
+     padding:0;
+     }
 
 
 /*-----------------------資格追加登録フォーム------------------------------*/
@@ -273,7 +292,7 @@ p{
 }
 
 .botan_get{
-	margin:3% 0;
+	margin:3% .5%;
     font-family: "メイリオ", meiryo, Arial, sans-serif;
 	font-size:90%;
 	font-weight:400;
@@ -289,7 +308,6 @@ p{
 
 .botan_get:hover{
     font-family: "メイリオ", meiryo, Arial, sans-serif;
-	font-size:85%;
 	font-weight:400;
 	color:#fff;
 	width:100px;
