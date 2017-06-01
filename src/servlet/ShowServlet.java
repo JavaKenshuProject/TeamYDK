@@ -62,7 +62,8 @@ public class ShowServlet extends HttpServlet {
 		url = "DeleteServlet";
 		}
 
-	if(page.equals("変更")){
+
+	    if(page.equals("変更")){
 		url = "ChangeServlet";
 	}
 	/* 転送先 */
