@@ -12,7 +12,7 @@ import exception.ServletServiceException;
 /**
  *
  * @author KIKUCHI
- * @version 1.00
+ * @version 1.01
  */
 public class EmployeeDAO {
 
@@ -236,6 +236,8 @@ public class EmployeeDAO {
 	 * @param employee
 	 */
 	public void employeeUpdate(EmployeeBean employee) throws ServletServiceException {
+
+		CheckFormat.checkEmployeeBean(employee);
 
 		ArrayList<EmployeeBean> emp_all_list = new EmployeeDAO().employeeAllGet();
 		if (CheckFormat.checkPK_empCode(employee, emp_all_list)) {
