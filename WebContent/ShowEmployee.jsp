@@ -68,7 +68,7 @@
 				<td><%=employee.getEmp_date()%></td>
 				<td>
 						<%
-						if (employee.getLicense_name() != null){
+						if (employee.getLicense_name() != null){//test
 							for (int j = 0; j < employee.getLicense_name().size(); j++) {
 						%> <%=employee.getLicense_name().get(j)%>
 						<% if(j!=employee.getLicense_name().size()-1){ %>
