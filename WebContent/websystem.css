@@ -18,7 +18,7 @@ body{
       box-shadow:.3px .3px .3px #aaa;
       }
 
-h1{
+/*h1{
    color:#ffffff;
    font-weight:100;
    margin:0;
@@ -26,7 +26,25 @@ h1{
    padding-left:10%;
    text-align:left;
    }
+*/
+h1{
+	padding:0;
+	margin:0;
+}
+.title{
+   color:#ffffff;
+   font-weight:100;
+   font-size:30px;
+   margin:0;
+   padding-top:15px;
+   padding-left:10%;
+   text-align:left;
+   background:none;
+   box-shadow:none;
+   border:none;
+   outline:none;
 
+   }
 
 .content{
       width:70%;
@@ -214,7 +232,7 @@ p{
 
 .employee_table{
        width:100%;
-       max-height:500px;
+       max-height:100px;
        -webkit-overflow-scrolling:auto;
 }
 
