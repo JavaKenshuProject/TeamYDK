@@ -7,16 +7,14 @@
     <meta charset="Shift-JIS">
     <title>従業員管理システム</title>
    </head>
-   <body>
-
+<body>
  <!------------------------------------------ヘッダー------------------------------>
   <%@ include file ="header.jsp" %>
  <!-------------------------------------------------------------------------------->
-
      <div class="content" align="center">
      <h2 class="message">従業員情報を新規登録しました</h2>
-     <form action="/MenuServlet" method="post">
-     <input type="submit" value="メニューに戻る" name="page" >
+     <form action="MenuServlet" method="post">
+     <input type="submit" value="メニューに戻る" name="page" class="botan" >
      </form>
      </div>
    </body>
