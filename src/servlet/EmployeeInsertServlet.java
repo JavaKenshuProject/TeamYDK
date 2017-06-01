@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.EmployeeDAO;
 import dao.LicenseDAO;
+import entity.EmployeeBean;
 import entity.LicenseBean;
 
 /**
@@ -53,23 +54,42 @@ public class EmployeeInsertServlet extends HttpServlet {
 			url="EmployeeInsert.jsp";
 		}
 
-		/* 移動先の設定 */
+		//formの設定
+			String emp_code = request.getParameter("emp_code");			//従業員コード
+	        String l_name = request.getParameter("l_name");				//氏
+	        String f_name = request.getParameter("f_name");				//名
+	        String l_kana_name = request.getParameter("l_kana_name");		//氏(カナ)
+	        String f_kana_name = request.getParameter("f_kana_name");		//名(カナ)
+	        byte[] sex = request.getParameter("sex").getBytes();							//性別
+	        String birth_year = request.getParameter("birth_year");		//生年
+	        String birth_month = request.getParameter("birth_month");	//　　月
+	        String birth_day = request.getParameter("birth_day");		//　　日
+	        String birth = birth_year + "-" + birth_month + "-" + birth_day;
+	        String section_code = request.getParameter("section_code");		//所属コード
+	        String start_year = request.getParameter("start_year");		//入社年
+	        String start_month = request.getParameter("start_month");	//　　月
+	        String start_day = request.getParameter("start_day");		//　　日
+	        String start = start_year + "-" + start_month + "-" + start_day;
+	        String license[] =request.getParameterValues("license");		//資格チェック
+
+	    	EmployeeBean empB=new EmployeeBean();
+
+
+
+	        /* 移動先の設定 */
 		if (page.equals("登録")){
-//			// parameterの取得
-//			String emp_code = request.getParameter("emp_code");			//従業員コード
-//	        String l_name = request.getParameter("l_name");				//氏
-//	        String f_name = request.getParameter("f_name");				//名
-//	        String l_kana_name = request.getParameter("l_kana_name");		//氏(カナ)
-//	        String f_kana_name = request.getParameter("f_kana_name");		//名(カナ)
-//	        String sex = request.getParameter("sex");							//性別
-//	        String birth_year = request.getParameter("birth_year");		//生年
-//	        String birth_month = request.getParameter("birth_month");	//　　月
-//	        String birth_day = request.getParameter("birth_day");		//　　日
-//	        String section_code = request.getParameter("section_code");		//所属コード
-//	        String start_year = request.getParameter("start_year");		//入社年
-//	        String start_month = request.getParamete("start_month");	//　　月
-//	        String start_day = request.getParameter("start_day");		//　　日
-//	        String license[] =request.getParameterValues("license");		//資格チェック
+
+			empB.setEmp_code(emp_code);
+	        empB.setL_name(l_name);
+	        empB.setF_name(f_name);
+	        empB.setL_kana_name(l_kana_name);
+	        empB.setF_kana_name(f_kana_name);
+	        empB.setSex(sex[0]);
+	        empB.setBirth_day(birth);
+	        empB.setSection_code(section_code);
+	        empB.setEmp_date(start);
+//	        empB.setLicense(license[0]);
+
 
 			url = "EmployeeInsertSuccess.jsp";
 		}
