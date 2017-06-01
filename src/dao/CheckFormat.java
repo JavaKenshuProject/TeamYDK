@@ -233,8 +233,11 @@ public class CheckFormat {
 	 * @param employee
 	 * @throws ServletServiceException
 	 */
-	public static boolean checkPK_empCode(EmployeeBean employee, ArrayList<EmployeeBean> emp_list) {
+	public static boolean checkPK_empCode(EmployeeBean employee, ArrayList<EmployeeBean> emp_list) throws ServletServiceException {
 		boolean flag = true;
+		if (employee.getEmp_code() == null){
+			throw new ServletServiceException("従業員コードが不正です");
+		}
 		for (EmployeeBean all_emp : emp_list) {
 			if (all_emp.getEmp_code().equals(employee.getEmp_code())) {
 				flag = false;
@@ -252,7 +255,7 @@ public class CheckFormat {
 	 * @param employee
 	 * @throws ServletServiceException
 	 */
-	public static boolean checkPK_t_get_license(EmployeeBean employee, ArrayList<EmployeeBean> emp_list) {
+	public static boolean checkPK_t_get_license(EmployeeBean employee, ArrayList<EmployeeBean> emp_list){
 		boolean flag = true;
 		for (EmployeeBean all_emp : emp_list) {
 			for (String string : all_emp.getLicense_cd()) {
@@ -276,8 +279,11 @@ public class CheckFormat {
 	 * @param license
 	 * @throws ServletServiceException
 	 */
-	public static boolean checkPK_license(LicenseBean license, ArrayList<LicenseBean> license_list) {
+	public static boolean checkPK_license(LicenseBean license, ArrayList<LicenseBean> license_list) throws ServletServiceException {
 		boolean flag = true;
+		if (license.getLicense_cd() == null){
+			throw new ServletServiceException("資格コードが不正です");
+		}
 		for (LicenseBean all_license : license_list) {
 			if (all_license.getLicense_cd().equals(license.getLicense_cd())) {
 				flag = false;
@@ -293,8 +299,11 @@ public class CheckFormat {
 	 * @param user
 	 * @throws ServletServiceException
 	 */
-	public static boolean checkPK_user(UserBean user, ArrayList<UserBean> user_list) {
+	public static boolean checkPK_user(UserBean user, ArrayList<UserBean> user_list) throws ServletServiceException {
 		boolean flag = true;
+		if (user.getUser_id() == null){
+			throw new ServletServiceException("ユーザIDが不正です");
+		}
 		for (UserBean all_user : user_list) {
 			if (all_user.getUser_id().equals(user.getUser_id())) {
 				flag = false;

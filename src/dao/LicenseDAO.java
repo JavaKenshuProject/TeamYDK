@@ -55,6 +55,13 @@ public class LicenseDAO {
 	 */
 	public void licenseInsert(LicenseBean license) throws ServletServiceException {
 
+		CheckFormat.checkLicenseBean(license);
+
+		ArrayList<LicenseBean> license_all_list = new LicenseDAO().licenseAllGet();
+		if (!(CheckFormat.checkPK_license(license, license_all_list))) {
+			throw new ServletServiceException("資格コードが重複しています");
+		}
+
 		ConnectionManager cm = ConnectionManager.getInstance();
 
 		String license_sql = "INSERT INTO m_license (license_cd,license_name) VALUES (?,?)";
@@ -95,6 +102,11 @@ public class LicenseDAO {
 	 * @param license
 	 */
 	public void licenseDelete(LicenseBean license) throws ServletServiceException {
+
+		ArrayList<LicenseBean> license_all_list = new LicenseDAO().licenseAllGet();
+		if (CheckFormat.checkPK_license(license, license_all_list)) {
+			throw new ServletServiceException("資格コードが存在しません");
+		}
 
 		ConnectionManager cm = ConnectionManager.getInstance();
 

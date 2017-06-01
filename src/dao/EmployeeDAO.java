@@ -312,8 +312,6 @@ public class EmployeeDAO {
 	 */
 	public void employeeDelete(EmployeeBean employee) throws ServletServiceException {
 
-		CheckFormat.checkEmployeeBean(employee);
-
 		ArrayList<EmployeeBean> emp_all_list = new EmployeeDAO().employeeAllGet();
 		if (CheckFormat.checkPK_empCode(employee, emp_all_list)) {
 			throw new ServletServiceException("従業員コードが存在しません");

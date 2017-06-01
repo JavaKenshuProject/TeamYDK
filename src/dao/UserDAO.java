@@ -56,6 +56,13 @@ public class UserDAO {
 	 */
 	public void userInsert(UserBean user) throws ServletServiceException {
 
+		CheckFormat.checkUserBean(user);
+
+		ArrayList<UserBean> user_all_list = new UserDAO().userAllGet();
+		if (!(CheckFormat.checkPK_user(user, user_all_list))) {
+			throw new ServletServiceException("ユーザIDが重複しています");
+		}
+
 		ConnectionManager cm = ConnectionManager.getInstance();
 
 		String user_sql = "INSERT INTO m_user (user_id,password) VALUES (?,?)";
@@ -95,6 +102,11 @@ public class UserDAO {
 	 * @param user
 	 */
 	public void userDelete(UserBean user) throws ServletServiceException {
+
+		ArrayList<UserBean> user_all_list = new UserDAO().userAllGet();
+		if (CheckFormat.checkPK_user(user, user_all_list)) {
+			throw new ServletServiceException("ユーザIDが存在しません");
+		}
 
 		ConnectionManager cm = ConnectionManager.getInstance();
 
