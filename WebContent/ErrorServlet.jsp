@@ -34,11 +34,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-	<h1 align="center">Error!!</h1>
-
+<br>
+<br>
+<br>
 	<h3 align="center"><font color="red"><%out.println(exception.getMessage( ));%></font></h3>
-	<h3 align="center"><font color="red"><%=request.getAttribute("javax.servlet.error.exception_type")%></font></h3>
+	<!-- <h3 align="center"><font color="red"><%=request.getAttribute("javax.servlet.error.exception_type")%></font></h3> -->
+<br>
+<br>
+		<div align="center"><button type="button" onclick="history.back()">–ß‚é</button></div>
 
 </body>
 </html>

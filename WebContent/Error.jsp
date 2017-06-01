@@ -34,6 +34,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1 align="center">Error!!</h1>
+<br>
+<br>
+<br>
+	<h3 align="center">エラーが発生しました<br>
+					システムの管理者に連絡してください</h3>
+	<br>
+	<br>
+	<div align="center"><button type="button" onclick="history.back()">戻る</button></div>
 </body>
 </html>
