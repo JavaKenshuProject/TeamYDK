@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import entity.EmployeeBean;
 import exception.ServletServiceException;
 
-
 /**
  *
  * @author KIKUCHI
@@ -138,9 +137,9 @@ public class EmployeeDAO {
 				employee.setL_kana_name(emp_res.getString("l_kana_name"));
 				employee.setF_kana_name(emp_res.getString("f_kana_name"));
 				employee.setSex(emp_res.getByte("sex"));
-				employee.setBirth_day(CheckFormat.convertDate2String(emp_res.getDate("birth_day")) );
+				employee.setBirth_day(CheckFormat.convertDate2String(emp_res.getDate("birth_day")));
 				employee.setSection_code(emp_res.getString("section_code"));
-				employee.setEmp_date(CheckFormat.convertDate2String(emp_res.getDate("emp_date")) );
+				employee.setEmp_date(CheckFormat.convertDate2String(emp_res.getDate("emp_date")));
 				employee.setUpdate_date(emp_res.getTimestamp("update_date"));
 
 				employee = m_sectionGet(con, employee);
@@ -178,9 +177,7 @@ public class EmployeeDAO {
 		String m_emp_sql = "INSERT INTO m_employee (emp_code,l_name,f_name,l_kana_name,f_kana_name,sex,birth_day,section_code,emp_date) VALUES (?,?,?,?,?,?,?,?,?)";
 		String t_get_license_sql = "INSERT INTO t_get_license (emp_code,license_cd,get_license_date) VALUES (?,?,?)";
 
-		try (Connection con = cm.getConnection();
-				PreparedStatement emp_pstmt = con.prepareStatement(m_emp_sql);
-				) {
+		try (Connection con = cm.getConnection(); PreparedStatement emp_pstmt = con.prepareStatement(m_emp_sql);) {
 			try {
 				con.setAutoCommit(false);
 
@@ -191,25 +188,26 @@ public class EmployeeDAO {
 				emp_pstmt.setString(4, employee.getL_kana_name());
 				emp_pstmt.setString(5, employee.getF_kana_name());
 				emp_pstmt.setByte(6, employee.getSex());
-				emp_pstmt.setDate(7, CheckFormat.convertString2Date(employee.getBirth_day()) );
+				emp_pstmt.setDate(7, CheckFormat.convertString2Date(employee.getBirth_day()));
 				emp_pstmt.setString(8, employee.getSection_code());
-				emp_pstmt.setDate(9, CheckFormat.convertString2Date(employee.getEmp_date()) );
+				emp_pstmt.setDate(9, CheckFormat.convertString2Date(employee.getEmp_date()));
 
 				emp_pstmt.executeUpdate();
 
-				if((employee.getEmp_code() != null) && (employee.getLicense_cd_SQLinsert() != null) && (employee.getGet_license_date_SQLinsert() != null)){
-				try(PreparedStatement get_license_pstmt = con.prepareStatement(t_get_license_sql);){
-					// t_get_license
-					get_license_pstmt.setString(1, employee.getEmp_code());
-					get_license_pstmt.setString(2, employee.getLicense_cd_SQLinsert());
-					get_license_pstmt.setDate(3, CheckFormat.convertString2Date(employee.getGet_license_date_SQLinsert()) );
+				if ((employee.getEmp_code() != null) && (employee.getLicense_cd_SQLinsert() != null)
+						&& (employee.getGet_license_date_SQLinsert() != null)) {
+					try (PreparedStatement get_license_pstmt = con.prepareStatement(t_get_license_sql);) {
+						// t_get_license
+						get_license_pstmt.setString(1, employee.getEmp_code());
+						get_license_pstmt.setString(2, employee.getLicense_cd_SQLinsert());
+						get_license_pstmt.setDate(3,
+								CheckFormat.convertString2Date(employee.getGet_license_date_SQLinsert()));
 
-					get_license_pstmt.executeUpdate();
-				} catch (SQLException e) {
-					throw e;
+						get_license_pstmt.executeUpdate();
+					} catch (SQLException e) {
+						throw e;
+					}
 				}
-				}
-
 
 				con.commit();
 			} catch (SQLException e) {
@@ -231,8 +229,10 @@ public class EmployeeDAO {
 	}
 
 	/**
-	 * 従業員情報の更新及び、資格保有情報の追加 ---Bean内のm_employeeとt_get_licenseの、emp_code以外の情報のみ更新します
+	 * 従業員情報の更新及び、資格保有情報の追加
+	 * ---Bean内のm_employeeとt_get_licenseの、emp_code以外の情報のみ更新します
 	 * 保有資格を追加するためには、一覧から取得したEmployeeBeanの_SQLinsertにデータを格納してこのメソッドに渡してください。
+	 *
 	 * @param employee
 	 */
 	public void employeeUpdate(EmployeeBean employee) throws ServletServiceException {
@@ -253,9 +253,7 @@ public class EmployeeDAO {
 
 		String m_emp_sql = "UPDATE m_employee SET l_name = ?, f_name = ?, l_kana_name = ?, f_kana_name = ?, sex = ?, birth_day = ?, section_code = ?, emp_date = ? WHERE emp_code = ?";
 		String t_get_license_sql = "INSERT INTO t_get_license (emp_code,license_cd,get_license_date) VALUES (?,?,?)";
-		try (Connection con = cm.getConnection();
-				PreparedStatement emp_pstmt = con.prepareStatement(m_emp_sql);
-				) {
+		try (Connection con = cm.getConnection(); PreparedStatement emp_pstmt = con.prepareStatement(m_emp_sql);) {
 			try {
 				con.setAutoCommit(false);
 
@@ -265,25 +263,26 @@ public class EmployeeDAO {
 				emp_pstmt.setString(3, employee.getL_kana_name());
 				emp_pstmt.setString(4, employee.getF_kana_name());
 				emp_pstmt.setByte(5, employee.getSex());
-				emp_pstmt.setDate(6, CheckFormat.convertString2Date(employee.getBirth_day()) );
+				emp_pstmt.setDate(6, CheckFormat.convertString2Date(employee.getBirth_day()));
 				emp_pstmt.setString(7, employee.getSection_code());
-				emp_pstmt.setDate(8, CheckFormat.convertString2Date(employee.getEmp_date()) );
+				emp_pstmt.setDate(8, CheckFormat.convertString2Date(employee.getEmp_date()));
 				emp_pstmt.setString(9, employee.getEmp_code());
 
 				emp_pstmt.executeUpdate();
 
 				// t_get_license
-				if ((employee.getEmp_code() != null) && (employee.getLicense_cd_SQLinsert() != null) && (employee.getGet_license_date_SQLinsert() != null) && (flag) ) {
-					try(PreparedStatement get_license_pstmt = con.prepareStatement(t_get_license_sql);){
+				if ((employee.getEmp_code() != null) && (employee.getLicense_cd_SQLinsert() != null)
+						&& (employee.getGet_license_date_SQLinsert() != null) && (flag)) {
+					try (PreparedStatement get_license_pstmt = con.prepareStatement(t_get_license_sql);) {
 						get_license_pstmt.setString(1, employee.getEmp_code());
 						get_license_pstmt.setString(2, employee.getLicense_cd_SQLinsert());
-						get_license_pstmt.setDate(3, CheckFormat.convertString2Date(employee.getGet_license_date_SQLinsert()));
+						get_license_pstmt.setDate(3,
+								CheckFormat.convertString2Date(employee.getGet_license_date_SQLinsert()));
 						get_license_pstmt.executeUpdate();
-					}catch (SQLException e) {
+					} catch (SQLException e) {
 						throw e;
 					}
 				}
-
 
 				con.commit();
 			} catch (SQLException e) {
@@ -356,8 +355,5 @@ public class EmployeeDAO {
 		}
 
 	}
-
-
-
 
 }

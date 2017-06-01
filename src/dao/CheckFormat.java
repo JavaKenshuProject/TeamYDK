@@ -12,6 +12,11 @@ import entity.LicenseBean;
 import entity.UserBean;
 import exception.ServletServiceException;
 
+/**
+ *
+ * @author KIKUCHI
+ * @version 1.01
+ */
 public class CheckFormat {
 
 	/**
@@ -65,7 +70,7 @@ public class CheckFormat {
 	 * Date型の定数です
 	 */
 	static public final String DATE_PATTERN = "yyyy-MM-dd";
-	//String DATE_PATTERN ="yyyy/MM/dd HH:mm:ss";
+	// String DATE_PATTERN ="yyyy/MM/dd HH:mm:ss";
 
 	/**
 	 * 文字列型のDate型としての妥当性を精査します
@@ -86,12 +91,13 @@ public class CheckFormat {
 
 	/**
 	 * Date型のオブジェクトをString型に変換します
+	 *
 	 * @param date
 	 * @return
 	 */
-	public static String convertDate2String(Date date){
-		String  str;
-		if(date == null) {
+	public static String convertDate2String(Date date) {
+		String str;
+		if (date == null) {
 			str = null;
 		} else {
 			str = new SimpleDateFormat(DATE_PATTERN).format(date);
@@ -107,7 +113,7 @@ public class CheckFormat {
 	 * @return Date
 	 */
 	public static java.sql.Date convertString2Date(String source) {
-		if ((source != null) && (checkDate(source)) ) {
+		if ((source != null) && (checkDate(source))) {
 			Date date = Date.valueOf(source);
 			return date;
 		} else {
@@ -116,7 +122,8 @@ public class CheckFormat {
 	}
 
 	/**
-	 * EmployeeBeanの中身がDBのテーブル内と適合しているかチェックします     NULLcheck及びDATA型など検証が足りない部分あり!!!要修正!!!
+	 * EmployeeBeanの中身がDBのテーブル内と適合しているかチェックします
+	 * NULLcheck及びDATA型など検証が足りない部分あり!!!要修正!!!
 	 *
 	 * @param employee
 	 * @return void or throw
@@ -126,7 +133,7 @@ public class CheckFormat {
 		String KATAKANA = "^[\\u30A0-\\u30FF]+$";
 
 		String call = "";
-		String temp = "が不正です\n";
+		String temp = "が不正です<br>";
 
 		if ((employee.getEmp_code() == null) || (checkSize31J(employee.getEmp_code(), 4) == false)) {
 			call = call + "従業員コード" + temp;
@@ -145,7 +152,7 @@ public class CheckFormat {
 			call = call + "氏(カナ)" + temp;
 		}
 
-		if ((employee.getF_kana_name() == null) ||(checkSize31J(employee.getF_kana_name(), 24)) == false
+		if ((employee.getF_kana_name() == null) || (checkSize31J(employee.getF_kana_name(), 24)) == false
 				|| employee.getF_kana_name().matches(KATAKANA) == false) {
 			call = call + "名(カナ)" + temp;
 		}
@@ -155,7 +162,7 @@ public class CheckFormat {
 		}
 
 		if ((employee.getBirth_day() == null) || (checkDate(employee.getBirth_day()) == false)) {
-			call = call + "所属コード" + temp;
+			call = call + "生年月日" + temp;
 		}
 
 		if ((employee.getSection_code() == null) || (checkSize31J(employee.getSection_code(), 2) == false)) {
@@ -163,9 +170,8 @@ public class CheckFormat {
 		}
 
 		if ((employee.getEmp_date() == null) || (checkDate(employee.getEmp_date()) == false)) {
-			call = call + "所属コード" + temp;
+			call = call + "入社日" + temp;
 		}
-
 
 		if (!(call.equals(""))) {
 			throw new ServletServiceException(call);
@@ -221,39 +227,40 @@ public class CheckFormat {
 	}
 
 	/**
-	 * emp_Codeの重複を検査します
-	 * (employee(登録する従業員情報),ArrayList(全従業員情報))
+	 * emp_Codeの重複を検査します (employee(登録する従業員情報),ArrayList(全従業員情報))
 	 * 重複していた場合はfalseを返します
+	 *
 	 * @param employee
 	 * @throws ServletServiceException
 	 */
-	public static boolean checkPK_empCode(EmployeeBean employee,ArrayList<EmployeeBean> emp_list) {
-		 boolean flag = true;
+	public static boolean checkPK_empCode(EmployeeBean employee, ArrayList<EmployeeBean> emp_list) {
+		boolean flag = true;
 		for (EmployeeBean all_emp : emp_list) {
 			if (all_emp.getEmp_code().equals(employee.getEmp_code())) {
-				flag = false;;
-				//throw new ServletServiceException("従業員コードが重複しています");
+				flag = false;
+				;
+				// throw new ServletServiceException("従業員コードが重複しています");
 			}
 		}
 		return flag;
 	}
 
-
 	/**
-	 * emp_Codeとlicense_cdの重複を検査します
-	 * (employee(登録する従業員情報),ArrayList(全従業員情報))
+	 * emp_Codeとlicense_cdの重複を検査します (employee(登録する従業員情報),ArrayList(全従業員情報))
 	 * 重複していた場合はfalseを返します
+	 *
 	 * @param employee
 	 * @throws ServletServiceException
 	 */
-	public static boolean checkPK_t_get_license(EmployeeBean employee,ArrayList<EmployeeBean> emp_list) {
+	public static boolean checkPK_t_get_license(EmployeeBean employee, ArrayList<EmployeeBean> emp_list) {
 		boolean flag = true;
 		for (EmployeeBean all_emp : emp_list) {
-			for(String string : all_emp.getLicense_cd()){
-				for(String string2 : all_emp.getLicense_name()){
-					if (string.equals(employee.getLicense_cd_SQLinsert()) && string2.equals(employee.getLicense_name())) {
+			for (String string : all_emp.getLicense_cd()) {
+				for (String string2 : all_emp.getLicense_name()) {
+					if (string.equals(employee.getLicense_cd_SQLinsert())
+							&& string2.equals(employee.getLicense_name())) {
 						flag = false;
-						//throw new ServletServiceException("すでに登録された資格です");
+						// throw new ServletServiceException("すでに登録された資格です");
 					}
 				}
 			}
@@ -262,43 +269,39 @@ public class CheckFormat {
 		return flag;
 	}
 
-
 	/**
-	 * license_cdの重複を検査します
-	 * (license(登録する従業員情報),ArrayList(全従業員情報))
+	 * license_cdの重複を検査します (license(登録する従業員情報),ArrayList(全従業員情報))
 	 * 重複していた場合はfalseを返します
+	 *
 	 * @param license
 	 * @throws ServletServiceException
 	 */
-	public static boolean checkPK_license(LicenseBean license,ArrayList<LicenseBean> license_list) {
+	public static boolean checkPK_license(LicenseBean license, ArrayList<LicenseBean> license_list) {
 		boolean flag = true;
 		for (LicenseBean all_license : license_list) {
 			if (all_license.getLicense_cd().equals(license.getLicense_cd())) {
 				flag = false;
-				//throw new ServletServiceException("資格コードが重複しています");
+				// throw new ServletServiceException("資格コードが重複しています");
 			}
 		}
 		return flag;
 	}
 
-
 	/**
-	 * user_idの重複を検査します
-	 * (user(登録する従業員情報),ArrayList(全従業員情報))
-	 * 重複していた場合はfalseを返します
+	 * user_idの重複を検査します (user(登録する従業員情報),ArrayList(全従業員情報)) 重複していた場合はfalseを返します
+	 *
 	 * @param user
 	 * @throws ServletServiceException
 	 */
-	public static boolean checkPK_user(UserBean user,ArrayList<UserBean> user_list) {
+	public static boolean checkPK_user(UserBean user, ArrayList<UserBean> user_list) {
 		boolean flag = true;
 		for (UserBean all_user : user_list) {
 			if (all_user.getUser_id().equals(user.getUser_id())) {
 				flag = false;
-				//throw new ServletServiceException("ユーザIDが重複しています");
+				// throw new ServletServiceException("ユーザIDが重複しています");
 			}
 		}
 		return flag;
 	}
-
 
 }
