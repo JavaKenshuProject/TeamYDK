@@ -11,7 +11,7 @@
 	<div class="content" align="center">
 		<h2 class="message">ユーザ情報を登録しました</h2>
 		<form action="MenuServlet" method="post">
-			<input type="submit" value="メニューに戻る" name="page" class="botan">
+			<input type="submit" value="メニューに戻る" name="page" class="menu_return_botan">
 		</form>
 	</div>
 </body>
