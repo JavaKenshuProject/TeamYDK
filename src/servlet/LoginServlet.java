@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.UserDAO;
 import entity.UserBean;
@@ -53,6 +54,10 @@ public class LoginServlet extends HttpServlet {
   			 ArrayList<UserBean> userList = new ArrayList<UserBean>();
 		     UserDAO dao = new UserDAO();
 
+
+			 //セッション管理
+		     HttpSession session =request.getSession() ;
+
 		     //DAOからのreturnをBeanに格納
 		     try{
 		     	userList=dao.userAllGet();
@@ -66,6 +71,8 @@ public class LoginServlet extends HttpServlet {
 		     for(UserBean user:userList){
 		    	 if((user.getUser_id().equals(userID)) && (user.getPassword().equals(password)) ){
 		    		 flag = true;
+		    		 session.setAttribute("userID", userID);
+		    		 session.setAttribute("password", password);
 		    	 }
 		     }
 
