@@ -12,7 +12,7 @@ import exception.ServletServiceException;
 /**
  *
  * @author KIKUCHI
- * @version 1.00
+ * @version 1.10
  */
 public class LicenseDAO {
 	/**

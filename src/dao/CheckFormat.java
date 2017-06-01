@@ -15,7 +15,7 @@ import exception.ServletServiceException;
 /**
  *
  * @author KIKUCHI
- * @version 1.01
+ * @version 1.10
  */
 public class CheckFormat {
 
