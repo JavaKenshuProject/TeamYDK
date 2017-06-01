@@ -9,7 +9,8 @@
 </head>
 <body>
      <div class="header">
-       <h1>従業員管理システム</h1>
+     <form action="MenuServlet" method="post">
+       <h1><input type="submit" value="従業員管理システム" name="page" class="title"></h1></form>
      </div>
 </body>
 </html>
