@@ -11,7 +11,7 @@
 <body>
 	<div class="content" align="center">
 		<h2 class="message">]‹Æˆõî•ñ‚É•Û—LŽ‘Ši‚ð’Ç‰Á‚µ‚Ü‚µ‚½</h2>
-		<form action="/MenuServlet" method="post">
+		<form action="MenuServlet" method="post">
 			<input type="submit" value="ƒƒjƒ…[‚É–ß‚é" name="page">
 		</form>
 	</div>
