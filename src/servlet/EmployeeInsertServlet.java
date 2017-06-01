@@ -55,20 +55,20 @@ public class EmployeeInsertServlet extends HttpServlet {
 
 		/* 移動先の設定 */
 		if (page.equals("登録")){
-//			//para
+//			// parameterの取得
 //			String emp_code = request.getParameter("emp_code");			//従業員コード
 //	        String l_name = request.getParameter("l_name");				//氏
 //	        String f_name = request.getParameter("f_name");				//名
 //	        String l_kana_name = request.getParameter("l_kana_name");		//氏(カナ)
 //	        String f_kana_name = request.getParameter("f_kana_name");		//名(カナ)
 //	        String sex = request.getParameter("sex");							//性別
-//	        String birth_year[] = request.getParameterValues("birth_year");		//生年
-//	        String birth_month[] = request.getParameterValues("birth_month");	//　　月
-//	        String birth_day[] = request.getParameterValues("birth_day");		//　　日
+//	        String birth_year = request.getParameter("birth_year");		//生年
+//	        String birth_month = request.getParameter("birth_month");	//　　月
+//	        String birth_day = request.getParameter("birth_day");		//　　日
 //	        String section_code = request.getParameter("section_code");		//所属コード
-//	        String start_year[] = request.getParameterValues("start_year");		//入社年
-//	        String start_month[] = request.getParameterValues("start_month");	//　　月
-//	        String start_day[] = request.getParameterValues("start_day");		//　　日
+//	        String start_year = request.getParameter("start_year");		//入社年
+//	        String start_month = request.getParamete("start_month");	//　　月
+//	        String start_day = request.getParameter("start_day");		//　　日
 //	        String license[] =request.getParameterValues("license");		//資格チェック
 
 			url = "EmployeeInsertSuccess.jsp";
