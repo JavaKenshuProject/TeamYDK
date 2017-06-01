@@ -13,7 +13,7 @@
 	<!-- ヘッダー -->
 	<%@include file="header.jsp"%>
 	<!-------------------------------------------------------------------------------->
-
+  <div class="content">
 	<h2 class="page_title">従業員一覧</h2>
 
 	<!--------------------------------従業員一覧の表-------------------------------->
@@ -88,6 +88,6 @@
 		<input type="submit" value="削除" name="page">
 		<input type="submit" value="変更" name="page">
 	</form>
-
+</div>
 </body>
 </html>
