@@ -44,23 +44,23 @@ public class UserInsertServlet extends HttpServlet {
 
 		/* formの取得 */
 		String page = request.getParameter("page");
-		String userID = request.getParameter("userID");
+		String user_id = request.getParameter("user_id");
 		String password =request.getParameter("password");
 
 		/* DAOのインスタンス化 */
-		UserDAO user = new UserDAO();
+		UserDAO userD = new UserDAO();
 
 		/* Beanのインスタンス化*/
-		UserBean userB = new UserBean();
+		UserBean user = new UserBean();
 
 		if(page.equals("ユーザ登録")){
 			url = "UserInsert.jsp";
 		}
 
 		if(page.equals("登録")){
-			userB.setUser_id(userID);
-			userB.setPassword(password);
-			user.userInsert(userB);
+			user.setUser_id(user_id);
+			user.setPassword(password);
+			userD.userInsert(user);
 
 			url = "UserInsertSuccess.jsp";
 		}
