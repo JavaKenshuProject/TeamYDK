@@ -63,7 +63,7 @@ public class ShowServlet extends HttpServlet {
 		}
 
 	if(page.equals("変更")){
-		url = "ChangeServlet.jsp";
+		url = "ChangeServlet";
 	}
 	/* 転送先 */
 	RequestDispatcher rd = request.getRequestDispatcher(url);
