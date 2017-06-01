@@ -80,32 +80,33 @@
                 <option>3</option>
                </select>ì˙Å@
             </td>
-         </tr>
+         </tr></table>
+         <table>
          <%
          	ArrayList<LicenseBean> licenseList =
          	 (ArrayList<LicenseBean>) request.getAttribute("licenseList");
          %>
-         <tr>
+         <tr><th></th>
            <th>ï€óLéëäi</th>
-         </tr>
+
          				<%
 					if (licenseList != null) {
 						for (int i = 0; i < licenseList.size(); i++) {
 							LicenseBean license = licenseList.get(i);
 
 				%>
-				<tr>
-					<td><input type="checkbox" name="license" value="<%= i %>"></td>
+
+					</tr><td><input type="checkbox" name="license" value="<%= i %>"></td>
 					<td><%=license.getLicense_name()%></td>
-				</tr>
+
 				<%
 					}
 				%>
 				<%
 					}
 				%>
-                   </table>
-        <input type="submit" value="ìoò^">
+                  </tr> </table>
+        <input type="submit" value="ìoò^" class="botan">
       </form></div>
    </body>
   </html>
