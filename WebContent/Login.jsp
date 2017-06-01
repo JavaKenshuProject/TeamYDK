@@ -19,7 +19,7 @@
           <h2 class="logintitle">ログイン</h2>
          </div>
           <form action="LoginServlet" method="post">
-            <table align="center">
+            <table class="login_table">
               <tr>
               <!-- <td>ユーザID</td>-->
                <td>
