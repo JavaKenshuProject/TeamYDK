@@ -50,7 +50,7 @@ public class MenuServlet extends HttpServlet {
 	     String url = null;
 
 	     //メニューボタンの値から行き先をurlに格納する
-	    if(page.equals("メニューに戻る")){
+	    if(page.equals("メニューに戻る") || page.equals("従業員管理システム")){
 	    	url = "Menu.jsp";
 	    }
 
