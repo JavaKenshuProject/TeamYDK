@@ -67,15 +67,15 @@ public class EmployeeInsertServlet extends HttpServlet {
 	        String l_kana_name = request.getParameter("l_kana_name");		//氏(カナ)
 	        String f_kana_name = request.getParameter("f_kana_name");		//名(カナ)
 	        byte[] sex = request.getParameter("sex").getBytes();							//性別
-	        String birth_year = request.getParameter("birth_year");		//生年
-	        String birth_month = request.getParameter("birth_month");	//　　月
-	        String birth_day = request.getParameter("birth_day");		//　　日
-	        String birth = birth_year + "-" + birth_month + "-" + birth_day;
+	          String birth_year = request.getParameter("birth_year");		//生年
+	          String birth_month = request.getParameter("birth_month");	//　　月
+	          String birthday = request.getParameter("birthday");		//　　日
+	        String birth_day = birth_year + "-" + birth_month + "-" + birthday;
 	        String section_code = request.getParameter("section_code");		//所属コード
-	        String start_year = request.getParameter("start_year");		//入社年
-	        String start_month = request.getParameter("start_month");	//　　月
-	        String start_day = request.getParameter("start_day");		//　　日
-	        String start = start_year + "-" + start_month + "-" + start_day;
+	          String start_year = request.getParameter("start_year");		//入社年
+	          String start_month = request.getParameter("start_month");	//　　月
+	          String start_day = request.getParameter("start_day");		//　　日
+	        String emp_date = start_year + "-" + start_month + "-" + start_day;
 	        String license[] =request.getParameterValues("license");		//資格チェック
 
 	        /* 登録ボタンが押されたとき
@@ -83,16 +83,15 @@ public class EmployeeInsertServlet extends HttpServlet {
 	         * Emp.Ins.Successへ遷移 */
 		if (page.equals("登録")){
 
-
 			empB.setEmp_code(emp_code);
 	        empB.setL_name(l_name);
 	        empB.setF_name(f_name);
 	        empB.setL_kana_name(l_kana_name);
 	        empB.setF_kana_name(f_kana_name);
 	        empB.setSex(sex[0]);
-	        empB.setBirth_day(birth);
+	        empB.setBirth_day(birth_day);
 	        empB.setSection_code(section_code);
-	        empB.setEmp_date(start);
+	        empB.setEmp_date(emp_date);
 	        empB.setLicense_cd_SQLinsert(licB.getLicense_cd());
 
 			url = "EmployeeInsertSuccess.jsp";
