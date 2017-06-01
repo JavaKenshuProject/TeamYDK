@@ -71,12 +71,8 @@ public class EmployeeInsertServlet extends HttpServlet {
 //	        String start_day[] = request.getParameterValues("start_day");		//　　日
 //	        String license[] =request.getParameterValues("license");		//資格チェック
 
-
-			/* セットする */
-
 			url = "EmployeeInsertSuccess.jsp";
 		}
-
 
 		/* 転送先*/
 		RequestDispatcher rd = request.getRequestDispatcher(url);
