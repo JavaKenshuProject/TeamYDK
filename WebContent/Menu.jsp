@@ -55,5 +55,5 @@
      <input type="submit" value="ログアウト" name="page" class="menu_botan" id="logout">
      </form>
  </div>
-</body>
+</body><!--  -->
 </html>
