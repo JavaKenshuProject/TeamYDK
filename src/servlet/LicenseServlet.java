@@ -46,7 +46,7 @@ public class LicenseServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		/* url宣言*/
+		/* url宣言 */
 		String url = null;
 
 		/* エンコーディング */
