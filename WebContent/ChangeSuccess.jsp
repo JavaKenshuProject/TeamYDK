@@ -13,8 +13,8 @@
  <!-------------------------------------------------------------------------------->
      <div class="content" align="center">
      <h2 class="message">従業員情報を変更しました。</h2>
-     <form action="/Menu.servlet" method="post">
-     <input type="submit" value="メニューに戻る">
+     <form action="MenuServlet" method="post">
+     <input type="submit" value="メニューに戻る" name="page">
      </form>
      </div>
 </body>

@@ -56,6 +56,7 @@ public class LicenseServlet extends HttpServlet {
 		/* formの取得 */
 		String employee = request.getParameter("employee");
 		String license = request.getParameter("license");
+
 		String page = request.getParameter("page");
 
 		/* DAOのインスタンス化 */
