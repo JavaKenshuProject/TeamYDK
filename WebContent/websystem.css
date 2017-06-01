@@ -88,9 +88,11 @@ h1{
 
 /*-----------------------メニュー------------------------------*/
 .menu_title{
+	  font-weight:100;
 	  padding:0;
 	  border-bottom: 1px solid #ccc;
-	  margin-bottom:0;
+	  margin-top:2%
+	  margin-bottom:2%;
 
 }
 
@@ -101,11 +103,16 @@ h1{
 
 .menu_botan {
 	font-family: "メイリオ", meiryo, Arial, sans-serif;
+	font-size:125%;
 	font-weight: 200;
-	width:200px;
+	color:#fff;
+	width:300px;
 	height:45px;
 	background-color: #6ec2ac;
 	border-style: none;
+	border-radius: 10px;
+	margin-left:20px;
+	box-shadow:.5px .5px .5px #888;
 }
 
 .menu_botan:hover {
@@ -113,8 +120,21 @@ h1{
 	font-weight: 200;
 	background-color: #28c198;
 	border-style: none;
+	box-shadow:none;
 }
 
+.botan_box {
+
+	}
+
+.botan_box td{
+   padding-right:10%;
+   margin-bottom:5%;
+}
+
+#logout{
+	margin-top:5%;
+}
 
 /*-----------------------従業員一覧------------------------------*/
 .employee_title{
