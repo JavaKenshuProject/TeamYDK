@@ -33,7 +33,7 @@
 			</tr>
 			<tr>
 				<th>«•Ê</th>
-				<td><input type="radio" name="sex" value="0">’j <input type="radio" name="sex" value="1">—</td>
+				<td><input type="radio" name="sex" value="0">’j <input type="radio" name="sex" value="">—</td>
 			</tr>
 			<tr>
 				<th>¶”NŒŽ“ú</th>
@@ -85,16 +85,14 @@
 					%>
 
 				</tr>
-				<td><input type="checkbox" name="license" value="<%=i%>"></td>
-				<td><%=license.getLicense_name()%></td>
+				<tr><td><input type="checkbox" name="license" value="<%=i%>"></td>
+				<td><%=license.getLicense_name()%></td></tr>
 
 				<%
+							}
 					}
 				%>
-				<%
-					}
-				%>
-				</tr>
+
 			</table>
 			<input type="submit" name="page"  value="“o˜^" class="botan">
 		</form>
