@@ -47,7 +47,7 @@
 							}
 				%>
 				<tr style="background-color:<%=color%>;">
-					<td><input type="radio" name="employee"></td>
+					<td><input type="radio" name="employee" value="<%= i %>"></td>
 					<td><%=employee.getEmp_code()%></td>
 					<td><%=employee.getL_name()%><%=employee.getF_name()%></td>
 					<td><%=employee.getL_kana_name()%><%=employee.getF_kana_name()%></td>
@@ -82,7 +82,7 @@
 							}
 				%>
 				<tr style="background-color:<%=color%>;">
-					<td><input type="radio" name="license"></td>
+					<td><input type="radio" name="license" value="<%= i %>"></td>
 					<td><%=license.getLicense_name()%></td>
 				</tr>
 				<%
