@@ -24,7 +24,7 @@ public class MenuServlet extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	/** *
+	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -50,7 +50,7 @@ public class MenuServlet extends HttpServlet {
 	     String url = null;
 
 	     //メニューボタンの値から行き先をurlに格納する
-	    if(page.equals("メニュー画面に戻る")){
+	    if(page.equals("メニューに戻る")){
 	    	url = "Menu.jsp";
 	    }
 
