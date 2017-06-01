@@ -93,7 +93,7 @@ public class EmployeeInsertServlet extends HttpServlet {
 	        empB.setSection_code(section_code);
 	        empB.setEmp_date(emp_date);
 	        empB.setLicense_cd_SQLinsert(licB.getLicense_cd());
-	        empB.employeeInsert(employee);
+	        emp.employeeInsert(empB);
 			url = "EmployeeInsertSuccess.jsp";
 		}
 
