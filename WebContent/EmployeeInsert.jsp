@@ -33,7 +33,7 @@
 			</tr>
 			<tr>
 				<th>«•Ê</th>
-				<td><input type="radio" name="sex" value="man">’j <input type="radio" name="sex" value="lady">—</td>
+				<td><input type="radio" name="sex" value="0">’j <input type="radio" name="sex" value="1">—</td>
 			</tr>
 			<tr>
 				<th>¶”NŒŽ“ú</th>
