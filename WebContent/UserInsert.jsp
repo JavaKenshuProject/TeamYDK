@@ -13,8 +13,8 @@
 		<h2 class="page_title">ユーザ情報登録</h2>
 		<p>新しいユーザの情報を入力してください。</p>
 
-		<!------------------------------------資格追加登録フォーム-------------------------------->
-		<form action="LicenseInsertServlet" method="post">
+		<!------------------------------------ユーザ情報登録フォーム-------------------------------->
+		<form action="UserInsertServlet" method="post">
 			<table class="user_add">
 				<tr>
 					<th>ユーザID</th>
