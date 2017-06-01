@@ -59,7 +59,7 @@ public class ShowServlet extends HttpServlet {
 		url = "ShowEmployee.jsp";
 
 		}if (page.equals("削除")) {
-		url = "EmployeeDelete.jsp";
+		url = "DeleteServlet";
 		}
 
 	if(page.equals("変更")){
