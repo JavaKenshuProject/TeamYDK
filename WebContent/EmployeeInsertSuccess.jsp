@@ -15,7 +15,7 @@
 
      <div class="content" align="center">
      <h2 class="message">]‹Æˆõî•ñ‚ðV‹K“o˜^‚µ‚Ü‚µ‚½</h2>
-     <form action="EmployeeInsertServlet" method="post">
+     <form action="/MenuServlet" method="post">
      <input type="submit" value="ƒƒjƒ…[‚É–ß‚é" name="page" >
      </form>
      </div>
