@@ -1,7 +1,6 @@
 package entity;
 
 import java.io.Serializable;
-import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
@@ -13,9 +12,9 @@ public class EmployeeBean implements Serializable{
 	private String l_kana_name;
 	private String f_kana_name;
 	private byte sex;
-	private Date birth_day;
+	private String birth_day;
 	private String section_code;
-	private Date emp_date;
+	private String emp_date;
 	private Timestamp update_date;
 	private Timestamp section_update_date;
 	private String section_name;
@@ -23,7 +22,7 @@ public class EmployeeBean implements Serializable{
 	private ArrayList<String> license_cd;
 	private String license_cd_SQLinsert;
 	private ArrayList<String> get_license_date;
-	private Date get_license_date_SQLinsert;
+	private String get_license_date_SQLinsert;
 
 	public String getEmp_code() {
 		return emp_code;
@@ -61,10 +60,10 @@ public class EmployeeBean implements Serializable{
 	public void setSex(byte sex) {
 		this.sex = sex;
 	}
-	public Date getBirth_day() {
+	public String getBirth_day() {
 		return birth_day;
 	}
-	public void setBirth_day(Date birth_day) {
+	public void setBirth_day(String birth_day) {
 		this.birth_day = birth_day;
 	}
 	public String getSection_code() {
@@ -73,10 +72,10 @@ public class EmployeeBean implements Serializable{
 	public void setSection_code(String section_code) {
 		this.section_code = section_code;
 	}
-	public Date getEmp_date() {
+	public String getEmp_date() {
 		return emp_date;
 	}
-	public void setEmp_date(Date emp_date) {
+	public void setEmp_date(String emp_date) {
 		this.emp_date = emp_date;
 	}
 	public Timestamp getUpdate_date() {
@@ -121,10 +120,10 @@ public class EmployeeBean implements Serializable{
 	public void setGet_license_date(ArrayList<String> get_license_date) {
 		this.get_license_date = get_license_date;
 	}
-	public Date getGet_license_date_SQLinsert() {
+	public String getGet_license_date_SQLinsert() {
 		return get_license_date_SQLinsert;
 	}
-	public void setGet_license_date_SQLinsert(Date get_license_date_SQLinsert) {
+	public void setGet_license_date_SQLinsert(String get_license_date_SQLinsert) {
 		this.get_license_date_SQLinsert = get_license_date_SQLinsert;
 	}
 
