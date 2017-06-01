@@ -51,7 +51,7 @@ h1{
 .botan{
 	margin:5%;
     font-family: "メイリオ", meiryo, Arial, sans-serif;
-	font-size:80%;
+	font-size:90%;
 	font-weight:400;
 	color:#fff;
 	width:100px;
@@ -61,9 +61,20 @@ h1{
 	border-radius: 5px;
 	box-shadow:.5px .5px .5px #888;
 
-
 	}
 
+.botan:hover{
+    font-family: "メイリオ", meiryo, Arial, sans-serif;
+	font-size:85%;
+	font-weight:400;
+	color:#fff;
+	width:100px;
+	height:35px;
+	background-color: #6ec2ac;
+	border-style: none;
+	border-radius: 5px;
+	box-shadow:none;
+}
 
 /*-----------------------ログインフォーム------------------------------*/
 .loginform{
