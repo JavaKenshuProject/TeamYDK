@@ -85,8 +85,8 @@
 					}
 				%>
 		</table>
-		<input type="submit" value="íœ" name="page">
-		<input type="submit" value="•ÏX" name="page">
+		<input type="submit" value="íœ" name="page" class="botan_get">
+		<input type="submit" value="•ÏX" name="page" class="botan_get">
 	</form>
 </div>
 </body>
