@@ -62,7 +62,7 @@ public class EmployeeInsertServlet extends HttpServlet {
 			url = "EmployeeInsert.jsp";
 		}
 
-		/*
+		/*test
 		 * 登録ボタンが押されたとき 以下の emp 情報を に セットして、 Emp.Ins.Successへ遷移
 		 */
 		if (page.equals("登録")) {
@@ -75,7 +75,7 @@ public class EmployeeInsertServlet extends HttpServlet {
 			byte sex = (byte)Integer.parseInt(request.getParameter("sex")); // 性別
 			String birth_year = request.getParameter("birth_year"); // 生年
 			String birth_month = request.getParameter("birth_month"); // 月
-			String birthday = request.getParameter("birthday"); // 日
+			String birthday = request.getParameter("birth_day"); // 日
 			String birth_day = birth_year + "-" + birth_month + "-" + birthday;
 			String section_code = request.getParameter("section_code"); // 所属コード
 			String start_year = request.getParameter("start_year"); // 入社年
@@ -91,7 +91,7 @@ public class EmployeeInsertServlet extends HttpServlet {
 			empB.setL_kana_name(l_kana_name);
 			empB.setF_kana_name(f_kana_name);
 			empB.setSex(sex);
-			empB.setBirth_day(birth_year + "-" + birth_month + "-" + birthday);
+			empB.setBirth_day(birth_day);
 			empB.setSection_code(section_code);
 			empB.setEmp_date(emp_date);
 			empB.setLicense_cd_SQLinsert(licB.getLicense_cd());
