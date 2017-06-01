@@ -31,7 +31,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=Windows-31J">
 <link rel="stylesheet" href="websystem.css" type="text/css">
 <%@ include file = "header.jsp" %>
-<title>Insert title here</title>
+<title>従業員管理システム</title>
 </head>
 <body>
 <br>
@@ -41,6 +41,6 @@
 					システムの管理者に連絡してください</h3>
 	<br>
 	<br>
-	<div align="center"><button type="button" onclick="history.back()">戻る</button></div>
+	<div align="center"><button class="botan_get"  type="button" onclick="history.back()">戻る</button></div>
 </body>
 </html>

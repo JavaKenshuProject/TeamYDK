@@ -34,7 +34,7 @@ public class DeleteServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		throw new ServletServiceException("最初からやり直してください");
 	}
 
 	/**
@@ -51,7 +51,7 @@ public class DeleteServlet extends HttpServlet {
 		try{
 			String c_emp = request.getParameter("employee");
 			if(c_emp == null){
-				throw new ServletServiceException("チェックボックスをチェックしてください");
+				throw new ServletServiceException("チェックボックスにチェックを入れてください");
 			}
 			val = Integer.parseInt(c_emp);
 		}catch(NumberFormatException e){
