@@ -12,7 +12,7 @@ import exception.ServletServiceException;
 /**
  *
  * @author KIKUCHI
- * @version 1.10
+ * @version 1.20
  */
 public class EmployeeDAO {
 
@@ -196,6 +196,8 @@ public class EmployeeDAO {
 
 				if ((employee.getEmp_code() != null) && (employee.getLicense_cd_SQLinsert() != null)
 						&& (employee.getGet_license_date_SQLinsert() != null)) {
+					CheckFormat.checkTGetLicense(employee);
+
 					try (PreparedStatement get_license_pstmt = con.prepareStatement(t_get_license_sql);) {
 						// t_get_license
 						get_license_pstmt.setString(1, employee.getEmp_code());
@@ -244,13 +246,6 @@ public class EmployeeDAO {
 			throw new ServletServiceException("従業員コードが存在しません");
 		}
 
-		boolean flag = true;
-		if (CheckFormat.checkPK_t_get_license(employee, emp_all_list)) {
-			flag = true;
-		} else {
-			flag = false;
-		}
-
 		ConnectionManager cm = ConnectionManager.getInstance();
 
 		String m_emp_sql = "UPDATE m_employee SET l_name = ?, f_name = ?, l_kana_name = ?, f_kana_name = ?, sex = ?, birth_day = ?, section_code = ?, emp_date = ? WHERE emp_code = ?";
@@ -274,7 +269,9 @@ public class EmployeeDAO {
 
 				// t_get_license
 				if ((employee.getEmp_code() != null) && (employee.getLicense_cd_SQLinsert() != null)
-						&& (employee.getGet_license_date_SQLinsert() != null) && (flag)) {
+						&& (employee.getGet_license_date_SQLinsert() != null)
+						&& (CheckFormat.checkPK_t_get_license(employee, emp_all_list))) {
+					CheckFormat.checkTGetLicense(employee);
 					try (PreparedStatement get_license_pstmt = con.prepareStatement(t_get_license_sql);) {
 						get_license_pstmt.setString(1, employee.getEmp_code());
 						get_license_pstmt.setString(2, employee.getLicense_cd_SQLinsert());
@@ -322,20 +319,27 @@ public class EmployeeDAO {
 		String m_emp_sql = "DELETE FROM m_employee WHERE emp_code = ?";
 		String t_get_license_sql = "DELETE FROM t_get_license WHERE emp_code = ? ";
 
-		try (Connection con = cm.getConnection();
-				PreparedStatement emp_pstmt = con.prepareStatement(m_emp_sql);
-				PreparedStatement get_license_pstmt = con.prepareStatement(t_get_license_sql);) {
+		try (Connection con = cm.getConnection(); PreparedStatement emp_pstmt = con.prepareStatement(m_emp_sql);) {
 			try {
 				con.setAutoCommit(false);
 
 				// m_employee
 				emp_pstmt.setString(1, employee.getEmp_code());
+				emp_pstmt.executeUpdate();
 
 				// t_get_license
-				get_license_pstmt.setString(1, employee.getEmp_code());
-
-				get_license_pstmt.executeUpdate();
-				emp_pstmt.executeUpdate();
+				if ((employee.getEmp_code() != null) && (employee.getLicense_cd_SQLinsert() != null)
+						&& (employee.getGet_license_date_SQLinsert() != null)
+						&& !(CheckFormat.checkPK_t_get_license(employee, emp_all_list))) {
+					CheckFormat.checkTGetLicense(employee);
+					try (PreparedStatement get_license_pstmt = con.prepareStatement(t_get_license_sql);) {
+						// t_get_license
+						get_license_pstmt.setString(1, employee.getEmp_code());
+						get_license_pstmt.executeUpdate();
+					} catch (SQLException e) {
+						throw e;
+					}
+				}
 
 				con.commit();
 			} catch (SQLException e) {

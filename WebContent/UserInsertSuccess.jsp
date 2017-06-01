@@ -4,15 +4,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=Windows-31J">
-<link rel="stylesheet" href="websystem.css" type="text/css">
-<%@ include file="header.jsp"%>
 <title>従業員管理システム</title>
+<%@ include file="header.jsp"%>
 </head>
 <body>
 	<div class="content" align="center">
-		<h2 class="message">従業員情報に保有資格を追加しました</h2>
+		<h2 class="message">ユーザ情報を登録しました</h2>
 		<form action="MenuServlet" method="post">
-			<input type="submit" value="メニューに戻る" name="page">
+			<input type="submit" value="メニューに戻る" name="page" class="botan">
 		</form>
 	</div>
 </body>

@@ -15,7 +15,7 @@ import exception.ServletServiceException;
 /**
  *
  * @author KIKUCHI
- * @version 1.10
+ * @version 1.20
  */
 public class CheckFormat {
 
@@ -58,7 +58,7 @@ public class CheckFormat {
 	public static boolean checkSize31J(String string, int size) {
 		boolean flag;
 		Charset charset = Charset.forName("Windows-31J");
-		if (getByteLength(string, charset) <= size) {
+		if ((getByteLength(string, charset) <= size) && (getByteLength(string, charset) != 0)) {
 			flag = true;
 		} else {
 			flag = false;
@@ -123,7 +123,6 @@ public class CheckFormat {
 
 	/**
 	 * EmployeeBeanの中身がDBのテーブル内と適合しているかチェックします
-	 * NULLcheck及びDATA型など検証が足りない部分あり!!!要修正!!!
 	 *
 	 * @param employee
 	 * @return void or throw
@@ -177,6 +176,37 @@ public class CheckFormat {
 			throw new ServletServiceException(call);
 		}
 	}
+
+	/**
+	 * EmployeeBeanの中身がDBのテーブル内と適合しているかチェックします
+	 *
+	 * @param employee
+	 * @return void or throw
+	 * @throws ServletServiceException
+	 */
+	public static void checkTGetLicense(EmployeeBean employee) throws ServletServiceException {
+		String call = "";
+		String temp = "が不正です<br>";
+
+
+
+		if ((employee.getEmp_code() == null) || (checkSize31J(employee.getEmp_code(), 4) == false)) {
+			call = call + "従業員コード" + temp;
+		}
+
+		if ((employee.getLicense_cd_SQLinsert() == null) || (checkSize31J(employee.getLicense_cd_SQLinsert(), 5) == false)) {
+			call = call + "資格コード" + temp;
+		}
+
+		if ((employee.getGet_license_date_SQLinsert() == null) ||  (checkDate(employee.getGet_license_date_SQLinsert()) == false)) {
+			call = call + "取得日" + temp;
+		}
+
+		if (!(call.equals(""))) {
+			throw new ServletServiceException(call);
+		}
+	}
+
 
 	/**
 	 * UserBeanの中身がDBのテーブル内と適合しているかチェックします
