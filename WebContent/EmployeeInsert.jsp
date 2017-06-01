@@ -9,11 +9,11 @@
    </head>
    <body>
  <!------------------------------------------ƒwƒbƒ_[------------------------------>
-  <%@ include file ="header.jsp" %>>
+  <%@ include file ="header.jsp" %>
  <!-------------------------------------------------------------------------------->
 
      <div class="content">
-      <h2 class="page_title">]‹Æˆõ“o˜^</h2></div>
+      <h2 class="page_title">]‹Æˆõ“o˜^</h2>
       <p>“o˜^‚µ‚½‚¢]‹Æˆõ‚Ìƒf[ƒ^‚ð“ü—Í‚µ‚Ä‚­‚¾‚³‚¢B</p>
       <form>
         <table class="employee_add">
@@ -85,6 +85,6 @@
          </tr>
         </table>
         <input type="submit" value="“o˜^">
-      </form>
+      </form></div>
    </body>
   </html>
