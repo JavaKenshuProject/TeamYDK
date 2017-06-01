@@ -62,7 +62,7 @@ public class UserInsertServlet extends HttpServlet {
 			userB.setPassword(password);
 			user.userInsert(userB);
 
-			url = "LicenseInsertSuccess.jsp";
+			url = "UserInsertSuccess.jsp";
 		}
 
 		/* 転送先 */
