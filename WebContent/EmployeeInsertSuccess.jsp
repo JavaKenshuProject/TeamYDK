@@ -10,13 +10,13 @@
    <body>
 
  <!------------------------------------------ヘッダー------------------------------>
-  <%@ include file ="header.jsp" %>>
+  <%@ include file ="header.jsp" %>
  <!-------------------------------------------------------------------------------->
 
      <div class="content" align="center">
      <h2 class="message">従業員情報を新規登録しました</h2>
-     <form action="/servlet" method="post">
-     <input type="submit" value="メニューに戻る">
+     <form action="EmployeeInsertServlet" method="post">
+     <input type="submit" value="メニューに戻る" name="page" >
      </form>
      </div>
    </body>
