@@ -2,6 +2,7 @@
 	pageEncoding="Windows-31J"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ page import="java.util.ArrayList"%>
+<%@ page import="java.util.Calendar"%>
 <%@ page import="entity.EmployeeBean"%>
 <%@ page import="entity.LicenseBean"%>
 <html>
@@ -102,7 +103,50 @@
 					}
 				%>
 			</table>
-			<input type="submit" value="取得" name="page">
+			<p>資格を取得した日付を入力してください</p>
+			<table>
+			 <tr>
+			  <td>
+			   <select>
+			     <% Calendar cal = Calendar.getInstance(); //カレンダーオブジェクトを取得
+                    int year = cal.get(Calendar.YEAR);
+			        for(int j = 2000; j<=year; j++){ %>
+			       <option>
+			          <%=j %>
+			       </option>
+			   <%
+			}%>
+			  </select>年
+			 </td>
+			 <td>
+			  <select>
+			   <%
+			     for(int month= 1; month<=12; month++){
+			   %>
+			    <option>
+			      <%=month%>
+			    </option>
+		          <%
+			        }
+			       %>
+			  </select>月
+			 </td>
+			 <td>
+		      <select>
+			    <%
+			     for(int day= 1; day<=31; day++){
+			    %>
+			    <option>
+			     <%=day%>
+			    </option>
+		         <%
+			     }
+			 %>
+			 </select>日
+			</td>
+		   </tr>
+		  </table>
+			<input type="submit" value="取得" name="page" class="botan_get">
 		</form>
 	</div>
 </body>

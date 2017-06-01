@@ -44,17 +44,23 @@ public class EmployeeInsertServlet extends HttpServlet {
 		/* web操作による有無 */
 		String page = request.getParameter("page");
 
-		/* DAOの生成 */
+		/* DAOのインスタンス化 */
 		EmployeeDAO emp = new EmployeeDAO();
 		LicenseDAO lic = new LicenseDAO();
 
+		/* Beanのインスタンス化 */
+    	EmployeeBean empB=new EmployeeBean();
+    	LicenseBean licB=new LicenseBean();
+
+    	//従業員登録画面には、資格一覧も表示しなくてはいけない
 		if ((page!=null)&&(page.equals("従業員登録"))) {
 			ArrayList<LicenseBean> licenseList=lic.licenseAllGet();
+			//セットする
 			request.setAttribute("licenseList",licenseList);
 			url="EmployeeInsert.jsp";
 		}
 
-		//formの設定
+		//formの取得
 			String emp_code = request.getParameter("emp_code");			//従業員コード
 	        String l_name = request.getParameter("l_name");				//氏
 	        String f_name = request.getParameter("f_name");				//名
@@ -71,9 +77,6 @@ public class EmployeeInsertServlet extends HttpServlet {
 	        String start_day = request.getParameter("start_day");		//　　日
 	        String start = start_year + "-" + start_month + "-" + start_day;
 	        String license[] =request.getParameterValues("license");		//資格チェック
-
-	    	EmployeeBean empB=new EmployeeBean();
-	    	LicenseBean licB=new LicenseBean();
 
 	        /* 移動先の設定 */
 		if (page.equals("登録")){

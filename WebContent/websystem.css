@@ -46,7 +46,10 @@ h1{
 
 }
 
-
+p{
+	margin:2% 1% 2% 0;
+	padding:0;
+}
 /*----------------------------ボタン-------------------------*/
 .botan{
 	margin:5%;
@@ -60,8 +63,9 @@ h1{
 	border-style: none;
 	border-radius: 5px;
 	box-shadow:.5px .5px .5px #888;
-
 	}
+
+
 
 .botan:hover{
     font-family: "メイリオ", meiryo, Arial, sans-serif;
@@ -266,4 +270,32 @@ h1{
       background-color:#eeeeee;
       font-weight:100;
       padding:10px;
+}
+
+.botan_get{
+	margin:3% 0;
+    font-family: "メイリオ", meiryo, Arial, sans-serif;
+	font-size:90%;
+	font-weight:400;
+	color:#fff;
+	width:100px;
+	height:35px;
+	background-color: #6ec2ac;
+	border-style: none;
+	border-radius: 5px;
+	box-shadow:.5px .5px .5px #888;
+	}
+
+
+.botan_get:hover{
+    font-family: "メイリオ", meiryo, Arial, sans-serif;
+	font-size:85%;
+	font-weight:400;
+	color:#fff;
+	width:100px;
+	height:35px;
+	background-color: #6ec2ac;
+	border-style: none;
+	border-radius: 5px;
+	box-shadow:none;
 }

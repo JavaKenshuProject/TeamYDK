@@ -9,7 +9,7 @@
 <body>
 <!-- ヘッダー -->
 	<%@include file="header.jsp" %>
-<div class="content" align="center">
+	 <div class="content" align="center">
      <h2 class="message">ログアウトしました。<br>お疲れ様でした。</h2>
      <form action="LogoutServlet" method="post">
      <input type="submit" value="ログイン画面へ" name="move">
