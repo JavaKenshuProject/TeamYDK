@@ -50,25 +50,11 @@ public class MenuServlet extends HttpServlet {
 	     String url = null;
 
 	     //メニューボタンの値から行き先をurlに格納する
-	    if(page.equals("従業員登録")){
-	    	url = "EmployeeInsert.jsp";
+	    if(page.equals("メニュー画面に戻る")){
+	    	url = "Menu.jsp";
 	    }
 
-	    if(page.equals("資格取得")){
-	    	url = "/LicenseServlet";
-	    }
 
-	    if(page.equals("資格追加")){
-	    	url = "LicenseInsert.jsp";
-	    }
-
-	    if(page.equals("ユーザ登録")){
-	    	url = "UserInsert.jsp";
-	    }
-
-	    if(page.equals("ユーザ登録")){
-	    	url = "UserInsert.jsp";
-	    }
 
 	    RequestDispatcher rd = request.getRequestDispatcher(url);
 	    rd.forward(request, response);
