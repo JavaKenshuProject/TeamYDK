@@ -78,10 +78,10 @@ public class EmployeeInsertServlet extends HttpServlet {
 			url = "/EmployeeInsertSuccess.jsp";
 		}
 
-        //メニューに戻る
-        if((page!=null)&&(page.equals("メニューに戻る"))){
-        	url="/MenuServlet";
-        }
+//        //メニューに戻る
+//        if((page!=null)&&(page.equals("メニューに戻る"))){
+//        	url="/MenuServlet";
+//        }
 
 		/* 転送先*/
 		RequestDispatcher rd = request.getRequestDispatcher(url);
