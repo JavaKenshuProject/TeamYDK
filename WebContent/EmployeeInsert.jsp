@@ -3,11 +3,11 @@
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="entity.LicenseBean"%>
 
-<!DOCTYPE>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <link rel="stylesheet" href="websystem.css" type="text/css">
-<meta charset="Shift-JIS">
+<meta http-equiv="Content-Type" content="text/html; charset=Windows-31J">
 <title>従業員管理システム</title>
 </head>
 <body>
@@ -17,7 +17,7 @@
 <div class="content">
 	<h2 class="page_title">従業員登録</h2>
 	<p>登録したい従業員のデータを入力してください。</p>
-	<form>
+	<form action= "EmployeeInsertServlet" method="post">
 		<table class="employee_add">
 			<tr>
 				<th>従業員コード</th>
@@ -41,9 +41,8 @@
 						<option>1994</option>	<option>1993</option>
 					  </select>年
 					  <select name="birth_month">
-							<option>1</option>	<option>2</option>	<option>3</option>	<option>4</option>
-							<option>5</option>	<option>6</option>	<option>7</option>	<option>8</option>	<option>9</option>	<option>10</option>
-							<option>11</option>	<option>12</option>	</select>月
+							<option>1</option>	<option>2</option>
+						</select>月
 					   <select name="birth_day">
 							<option>1</option>
 							<option>2</option>
@@ -64,9 +63,7 @@
 							<option>1994</option>
 							<option>1993</option>
 					</select>年 <select name="start_month">
-							<option>1</option>	<option>2</option>	<option>3</option>	<option>4</option>
-							<option>5</option>	<option>6</option>	<option>7</option>	<option>8</option>	<option>9</option>	<option>10</option>
-							<option>11</option>	<option>12</option>
+							<option>1</option>	<option>2</option>
 					</select>月 <select name="start_day">
 							<option>4</option>
 							<option>3</option>

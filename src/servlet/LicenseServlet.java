@@ -79,8 +79,11 @@ public class LicenseServlet extends HttpServlet {
 		}
 
 		if (page.equals("取得")) {
-			empB.set
-			emp.employeeUpdate(emp.employeeAllGet().get(Integer.parseInt(employee)));
+			empB = emp.employeeAllGet().get(Integer.parseInt(employee));
+			licB = lic.licenseAllGet().get(Integer.parseInt(license));
+			empB.setGet_license_date_SQLinsert("2014-5-12");
+			empB.setLicense_cd_SQLinsert(licB.getLicense_cd());
+			emp.employeeUpdate(empB);
 
 			url = "GetSuccess.jsp";
 		}
