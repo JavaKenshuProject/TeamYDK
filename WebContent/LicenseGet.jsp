@@ -46,6 +46,15 @@
 							} else {
 								color = "#fdfdfd";
 							}
+							String sex = "";
+							switch (employee.getSex()) {
+							case 0:
+								sex = "’j";
+								break;
+							case 1:
+								sex = "—";
+								break;
+							}
 				%>
 				<tr style="background-color:<%=color%>;">
 					<td><input type="radio" name="employee" value="<%=i%>"></td>
