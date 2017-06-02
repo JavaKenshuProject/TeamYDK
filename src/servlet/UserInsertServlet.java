@@ -37,7 +37,7 @@ public class UserInsertServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		HttpSession session = request.getSession();
-		if(!(boolean)session.getAttribute("login")){
+		if(session.getAttribute("login") == null){
 			     RequestDispatcher rd = request.getRequestDispatcher("Login.jsp");
 			     rd.forward(request, response);
 		}
