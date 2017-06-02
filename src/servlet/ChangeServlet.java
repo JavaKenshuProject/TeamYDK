@@ -112,7 +112,7 @@ public class ChangeServlet extends HttpServlet {
 				String f_kana_name = request.getParameter("f_kana_name");
 				int sex_num = Integer.parseInt(request.getParameter("sex"));
 				byte sex = (byte) sex_num;
-				String section_code = request.getParameter("section_code");
+				String section_code = request.getParameter("job");
 
 				ArrayList<EmployeeBean> employeeList = emp.employeeAllGet();
 				empB = employeeList.get(num);
