@@ -58,7 +58,25 @@ public class CheckFormat {
 	public static boolean checkSize31J(String string, int size) {
 		boolean flag;
 		Charset charset = Charset.forName("Windows-31J");
-		if ((getByteLength(string, charset) <= size) && (getByteLength(string, charset) != 0)) {
+		if (getByteLength(string, charset) <= size) {
+			flag = true;
+		} else {
+			flag = false;
+		}
+		return flag;
+	}
+
+	/**
+	 * Windows-31Jでのバイト数をカウントします。 バイト数が0バイトの場合、falseを返します。
+	 *
+	 * @param string
+	 * @param size
+	 * @return boolean
+	 */
+	public static boolean checkZero31J(String string) {
+		boolean flag;
+		Charset charset = Charset.forName("Windows-31J");
+		if (getByteLength(string, charset) != 0) {
 			flag = true;
 		} else {
 			flag = false;
@@ -133,40 +151,51 @@ public class CheckFormat {
 
 		String call = "";
 		String temp = "が不正です<br>";
-		String void_c = "を確認してください<br>";
+		String void_c = "が文字数オーバーしています<br>";
+		String zero_c = "を入力してください<br>";
 		String kana = "をカタカナで記入してください<br>";
 
 		if (employee.getEmp_code() == null) {
 			call = call + "従業員コード" + temp;
-		}if (checkSize31J(employee.getEmp_code(), 4) == false) {
+		} else if (checkSize31J(employee.getEmp_code(), 4) == false) {
 			call = call + "従業員コード" + void_c;
+		} else if (checkZero31J(employee.getEmp_code()) == false) {
+			call = call + "従業員コード" + zero_c;
 		}
 
 		if (employee.getL_name() == null) {
 			call = call + "氏" + temp;
-		}else if (checkSize31J(employee.getL_name(), 16) == false) {
+		} else if (checkSize31J(employee.getL_name(), 16) == false) {
 			call = call + "氏" + void_c;
+		} else if (checkZero31J(employee.getL_name()) == false) {
+			call = call + "氏" + zero_c;
 		}
 
 		if (employee.getF_name() == null) {
 			call = call + "名" + temp;
-		}else if (checkSize31J(employee.getF_name(), 16) == false) {
+		} else if (checkSize31J(employee.getF_name(), 16) == false) {
 			call = call + "名" + void_c;
+		} else if (checkZero31J(employee.getF_name()) == false) {
+			call = call + "名" + zero_c;
 		}
 
 		if (employee.getL_kana_name() == null) {
 			call = call + "氏(カナ)" + temp;
-		}else if (checkSize31J(employee.getL_kana_name(), 24) == false) {
+		} else if (checkSize31J(employee.getL_kana_name(), 24) == false) {
 			call = call + "氏(カナ)" + void_c;
-		}else if (employee.getL_kana_name().matches(KATAKANA) == false) {
+		} else if (checkZero31J(employee.getL_kana_name()) == false) {
+			call = call + "氏(カナ)" + zero_c;
+		} else if (employee.getL_kana_name().matches(KATAKANA) == false) {
 			call = call + "氏(カナ)" + kana;
 		}
 
 		if (employee.getF_kana_name() == null) {
 			call = call + "名(カナ)" + temp;
-		}else if (checkSize31J(employee.getF_kana_name(), 24) == false) {
+		} else if (checkSize31J(employee.getF_kana_name(), 24) == false) {
 			call = call + "名(カナ)" + void_c;
-		}else if (employee.getF_kana_name().matches(KATAKANA) == false) {
+		} else if (checkZero31J(employee.getF_kana_name()) == false) {
+			call = call + "名(カナ)" + zero_c;
+		} else if (employee.getF_kana_name().matches(KATAKANA) == false) {
 			call = call + "名(カナ)" + kana;
 		}
 
@@ -180,8 +209,10 @@ public class CheckFormat {
 
 		if (employee.getSection_code() == null) {
 			call = call + "所属コード" + temp;
-		}else if (checkSize31J(employee.getSection_code(), 2) == false) {
+		} else if (checkSize31J(employee.getSection_code(), 2) == false) {
 			call = call + "所属コード" + void_c;
+		} else if (checkZero31J(employee.getSection_code()) == false) {
+			call = call + "所属コード" + zero_c;
 		}
 
 		if ((employee.getEmp_date() == null) || (checkDate(employee.getEmp_date()) == false)) {
@@ -203,24 +234,28 @@ public class CheckFormat {
 	public static void checkTGetLicense(EmployeeBean employee) throws ServletServiceException {
 		String call = "";
 		String temp = "が不正です<br>";
-		String void_c = "を確認してください<br>";
+		String void_c = "が文字数オーバーしています<br>";
+		String zero_c = "を入力してください<br>";
 
 		if (employee.getEmp_code() == null) {
 			call = call + "従業員コード" + temp;
-		}else if (checkSize31J(employee.getEmp_code(), 4) == false) {
+		} else if (checkSize31J(employee.getEmp_code(), 4) == false) {
 			call = call + "従業員コード" + void_c;
+		} else if (checkZero31J(employee.getEmp_code()) == false) {
+			call = call + "従業員コード" + zero_c;
 		}
 
-		if (employee.getLicense_cd_SQLinsert() == null){
+		if (employee.getLicense_cd_SQLinsert() == null) {
 			call = call + "資格コード" + temp;
-		}else if(checkSize31J(employee.getLicense_cd_SQLinsert(), 5) == false){
+		} else if (checkSize31J(employee.getLicense_cd_SQLinsert(), 5) == false) {
 			call = call + "資格コード" + void_c;
+		} else if (checkZero31J(employee.getLicense_cd_SQLinsert()) == false) {
+			call = call + "資格コード" + zero_c;
 		}
 
-		if (employee.getGet_license_date_SQLinsert() == null) {
+		if ((employee.getGet_license_date_SQLinsert() == null)
+				|| (checkDate(employee.getGet_license_date_SQLinsert()) == false)) {
 			call = call + "取得日" + temp;
-		}else if (checkDate(employee.getGet_license_date_SQLinsert()) == false) {
-			call = call + "取得日" + void_c;
 		}
 
 		if (!(call.equals(""))) {
@@ -238,18 +273,23 @@ public class CheckFormat {
 	public static void checkUserBean(UserBean user) throws ServletServiceException {
 		String call = "";
 		String temp = "が不正です\n";
-		String void_c = "を確認してください<br>";
+		String void_c = "が文字数オーバーしています<br>";
+		String zero_c = "を入力してください<br>";
 
 		if (checkSize31J(user.getUser_id(), 24) == false) {
 			call = call + "ユーザID" + temp;
-		}else if (checkSize31J(user.getUser_id(), 24) == false) {
+		} else if (checkSize31J(user.getUser_id(), 24) == false) {
 			call = call + "ユーザID" + void_c;
+		} else if (checkZero31J(user.getUser_id()) == false) {
+			call = call + "ユーザID" + zero_c;
 		}
 
 		if (user.getPassword() == null) {
 			call = call + "パスワード" + temp;
-		}else if (checkSize31J(user.getPassword(), 32) == false) {
+		} else if (checkSize31J(user.getPassword(), 32) == false) {
 			call = call + "パスワード" + void_c;
+		} else if (checkZero31J(user.getPassword()) == false) {
+			call = call + "パスワード" + zero_c;
 		}
 
 		if (!(call.equals(""))) {
@@ -267,18 +307,23 @@ public class CheckFormat {
 	public static void checkLicenseBean(LicenseBean license) throws ServletServiceException {
 		String call = "";
 		String temp = "が不正です\n";
-		String void_c = "を確認してください<br>";
+		String void_c = "が文字数オーバーしています<br>";
+		String zero_c = "を入力してください<br>";
 
 		if (license.getLicense_cd() == null) {
 			call = call + "資格コード" + temp;
-		}else if (checkSize31J(license.getLicense_cd(), 5) == false) {
+		} else if (checkSize31J(license.getLicense_cd(), 5) == false) {
 			call = call + "資格コード" + void_c;
+		} else if (checkZero31J(license.getLicense_cd()) == false) {
+			call = call + "資格コード" + zero_c;
 		}
 
 		if (license.getLicense_name() == null) {
 			call = call + "資格名" + temp;
-		}else if (checkSize31J(license.getLicense_name(), 100) == false) {
+		} else if (checkSize31J(license.getLicense_name(), 100) == false) {
 			call = call + "資格名" + void_c;
+		} else if (checkZero31J(license.getLicense_name()) == false) {
+			call = call + "資格名" + zero_c;
 		}
 
 		if (!(call.equals(""))) {
