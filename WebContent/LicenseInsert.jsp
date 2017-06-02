@@ -25,7 +25,7 @@
 					<td><input type="text" name="license_name"></td>
 				</tr>
 			</table>
-			<input type="submit" value="’Ç‰Á" name="page">
+			<input type="submit" value="’Ç‰Á" name="page" class="botan_get" >
 		</form>
 	</div>
 </body>
