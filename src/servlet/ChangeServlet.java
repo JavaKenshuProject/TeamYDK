@@ -112,7 +112,7 @@ public class ChangeServlet extends HttpServlet {
 				String f_kana_name = request.getParameter("f_kana_name");
 				int sex_num = Integer.parseInt(request.getParameter("sex"));
 				byte sex = (byte) sex_num;
-				String job = request.getParameter("job");
+				String section_code = request.getParameter("section_code");
 
 				ArrayList<EmployeeBean> employeeList = emp.employeeAllGet();
 				empB = employeeList.get(num);
@@ -121,7 +121,7 @@ public class ChangeServlet extends HttpServlet {
 				empB.setL_kana_name(l_kana_name);
 				empB.setF_kana_name(f_kana_name);
 				empB.setSex(sex);
-				empB.setSection_name(job);
+				empB.setSection_code(section_code);
 				emp.employeeUpdate(empB);
 
 				url = "ChangeSuccess.jsp";

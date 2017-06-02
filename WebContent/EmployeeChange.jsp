@@ -54,7 +54,7 @@
 									for (int i = 0; i < sectionList.size(); i++) {
 										SectionBean section = sectionList.get(i);
 							%>
-							<option><%=section.getSection_name()%></option>
+							<option value="<%= section.getSection_code() %>"><%=section.getSection_name()%></option>
 							<%
 								}
 							%>
