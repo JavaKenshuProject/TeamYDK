@@ -72,7 +72,7 @@ public class LoginServlet extends HttpServlet {
 		     for(UserBean user:userList){
 		    	 if((user.getUser_id().equals(userID)) && (user.getPassword().equals(password)) ){
 		    		 flag = true;
-		    		 session.setAttribute("login", (boolean)true);
+		    		 session.setAttribute("login", (String)"OK");
 		    	 }
 		     }
 
