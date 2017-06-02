@@ -96,7 +96,7 @@ public class ChangeServlet extends HttpServlet {
 				url = "EmployeeChange.jsp";
 			}
 
-			if (page.equals("変更完了")) {
+			if (page.equals("変更確定")) {
 				/* formの入力 */
 
 

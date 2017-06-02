@@ -65,7 +65,7 @@
 				</tr>
 			</table>
 			<input type="hidden" name="hidden" value="<%= num %>">
-			<input type="submit" value="•ÏXŠ®—¹" name="page">
+			<input type="submit"  class="botan_get"  value="•ÏXŠm’è" name="page">
 		</form>
 	</div>
 </body>
