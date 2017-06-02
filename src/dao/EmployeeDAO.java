@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import entity.EmployeeBean;
@@ -319,19 +320,17 @@ public class EmployeeDAO {
 		String m_emp_sql = "DELETE FROM m_employee WHERE emp_code = ?";
 		String t_get_license_sql = "DELETE FROM t_get_license WHERE emp_code = ? ";
 
-		try (Connection con = cm.getConnection(); PreparedStatement emp_pstmt = con.prepareStatement(m_emp_sql);) {
+		try (Connection con = cm.getConnection();) {
 			try {
 				con.setAutoCommit(false);
 
-				// m_employee
-				emp_pstmt.setString(1, employee.getEmp_code());
-				emp_pstmt.executeUpdate();
+				try (Statement stmt = con.createStatement();) {
+					stmt.execute("SET FOREIGN_KEY_CHECKS=0");
+				} catch (SQLException e) {
+					throw e;
+				}
 
 				// t_get_license
-				if ((employee.getEmp_code() != null) && (employee.getLicense_cd_SQLinsert() != null)
-						&& (employee.getGet_license_date_SQLinsert() != null)
-						&& !(CheckFormat.checkPK_t_get_license(employee, emp_all_list))) {
-					CheckFormat.checkTGetLicense(employee);
 					try (PreparedStatement get_license_pstmt = con.prepareStatement(t_get_license_sql);) {
 						// t_get_license
 						get_license_pstmt.setString(1, employee.getEmp_code());
@@ -339,6 +338,20 @@ public class EmployeeDAO {
 					} catch (SQLException e) {
 						throw e;
 					}
+
+
+				try (PreparedStatement emp_pstmt = con.prepareStatement(m_emp_sql);) {
+					// m_employee
+					emp_pstmt.setString(1, employee.getEmp_code());
+					emp_pstmt.executeUpdate();
+				} catch (SQLException e) {
+					throw e;
+				}
+
+				try (Statement stmt = con.createStatement();) {
+					stmt.execute("SET FOREIGN_KEY_CHECKS=1");
+				} catch (SQLException e) {
+					throw e;
 				}
 
 				con.commit();
