@@ -64,9 +64,8 @@ public class EmployeeInsertServlet extends HttpServlet {
 			url = "EmployeeInsert.jsp";
 		}
 
-
-		/*test
-		 * 登録ボタンが押されたとき 以下の emp 情報を に セットして、 Emp.Ins.Successへ遷移
+		/*
+		 * test 登録ボタンが押されたとき 以下の emp 情報を に セットして、 Emp.Ins.Successへ遷移
 		 */
 		if ((page != null) && (page.equals("登録"))) {
 			// formの取得
@@ -75,30 +74,33 @@ public class EmployeeInsertServlet extends HttpServlet {
 			String f_name = request.getParameter("f_name"); // 名
 			String l_kana_name = request.getParameter("l_kana_name"); // 氏(カナ)
 			String f_kana_name = request.getParameter("f_kana_name"); // 名(カナ)
-			byte sex = (byte)Integer.parseInt(request.getParameter("sex")); // 性別
+			byte sex = (byte) Integer.parseInt(request.getParameter("sex")); // 性別
 			String birth_year = request.getParameter("birth_year"); // 生年
 			String birth_month = request.getParameter("birth_month"); // 月
 			String birthday = request.getParameter("birth_day"); // 日
 			String birth_day = birth_year + "-" + birth_month + "-" + birthday;
-			//String section_code = request.getParameter("section_code"); // 所属コード
+			// String section_code = request.getParameter("section_code"); //
+			// 所属コード
 			String start_year = request.getParameter("start_year"); // 入社年
 			String start_month = request.getParameter("start_month"); // 月
 			String start_day = request.getParameter("start_day"); // 日
 			String emp_date = start_year + "-" + start_month + "-" + start_day;
-			//String section_code = request.getParameter("section_code"); // 日
+			// String section_code = request.getParameter("section_code"); // 日
 			SectionDAO section = new SectionDAO();
 			ArrayList<SectionBean> sec_list = section.SectionAllGet();
 			String section_code = null;
 			String section_name = request.getParameter("section_name");
 
-			for(SectionBean sec : sec_list){
-				if((section_name != null) && (sec.getSection_name().equals(section_name))){
+			for (SectionBean sec : sec_list) {
+				if ((section_name != null) && (sec.getSection_name().equals(section_name))) {
 					section_code = sec.getSection_code();
 				}
 			}
 			String license[] = request.getParameterValues("license"); // 資格チェック
-			//値のset
-			System.out.println(birth_day);
+			String get_year[] = request.getParameterValues("get_year"); // 取得年
+			String get_month[] = request.getParameterValues("get_month"); // 月
+			String get_day[] = request.getParameterValues("get_day"); // 日
+			ArrayList<String> getdate = new ArrayList<String>();
 			empB.setEmp_code(emp_cd);
 			empB.setL_name(l_name);
 			empB.setF_name(f_name);
@@ -108,8 +110,27 @@ public class EmployeeInsertServlet extends HttpServlet {
 			empB.setBirth_day(birth_day);
 			empB.setSection_code(section_code);
 			empB.setEmp_date(emp_date);
-			empB.setLicense_cd_SQLinsert(licB.getLicense_cd());
+			if (license != null) {
+				licB = lic.licenseAllGet().get(Integer.parseInt(license[0]));
+				empB.setLicense_cd_SQLinsert(licB.getLicense_cd());
+				getdate.add(get_year[0] + "-" + get_month[0] + "-" + get_day[0]);
+				empB.setGet_license_date_SQLinsert(getdate.get(0));
+
+			}else{
+				empB.setLicense_cd_SQLinsert(null);
+			}
 			emp.employeeInsert(empB);
+
+			if (license.length > 1) {
+				for (int i = 1; i < license.length; i++) {
+					licB = lic.licenseAllGet().get(Integer.parseInt(license[i]));
+					empB.setLicense_cd_SQLinsert(licB.getLicense_cd());
+					getdate.add(get_year[i] + "-" + get_month[i] + "-" + get_day[i]);
+					empB.setGet_license_date_SQLinsert(getdate.get(i));
+					emp.employeeUpdate(empB);
+				}
+			}
+
 			url = "EmployeeInsertSuccess.jsp";
 		}
 

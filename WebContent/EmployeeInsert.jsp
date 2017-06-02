@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=Windows-31J"
 	pageEncoding="Windows-31J"%>
 <%@ page import="java.util.ArrayList"%>
+<%@ page import="java.util.Calendar"%>
 <%@ page import="entity.LicenseBean" import="entity.SectionBean"
 	import="dao.SectionDAO"%>
 
@@ -15,6 +16,9 @@
 	<!------------------------------------------ヘッダー------------------------------>
 	<%@ include file="header.jsp"%>
 	<!-------------------------------------------------------------------------------->
+	<%  Calendar cal = Calendar.getInstance();
+		int year = cal.get(Calendar.YEAR);
+	%>
 	<div class="content">
 		<h2 class="page_title">従業員登録</h2>
 		<p>登録したい従業員のデータを入力してください。</p>
@@ -42,16 +46,19 @@
 				<tr>
 					<th>生年月日</th>
 					<td><select name="birth_year">
-							<option>1994</option>
-							<option>1993</option>
+						<%
+						for(int BY= 1900; BY<=year; BY++){
+						%>
+						<option><%= BY %></option>
+						<% } %>
 					</select>年 <select name="birth_month">
-							<option>1</option>
-							<option>2</option>
+							<% for(int BM=1; BM<=12; BM++){  %>
+							<option><%= BM %></option>
+							<% } %>
 					</select>月 <select name="birth_day">
-							<option>1</option>
-							<option>2</option>
-							<option>3</option>
-							<option>4</option>
+							<% for(int BD=1; BD<=31; BD++){  %>
+							<option><%= BD %></option>
+							<% } %>
 					</select>日</td>
 				</tr>
 				<tr>
@@ -73,42 +80,58 @@
 				<tr>
 					<th>入社日</th>
 					<td><select name="start_year">
-							<option>1994</option>
-							<option>1993</option>
+						<%
+						for(int SY= 1900; SY<=year; SY++){
+						%>
+						<option><%= SY %></option>
+						<% } %>
 					</select>年 <select name="start_month">
-							<option>1</option>
-							<option>2</option>
+							<% for(int SM=1; SM<=12; SM++) { %>
+							<option><%= SM %></option>
+							<% } %>
 					</select>月 <select name="start_day">
-							<option>4</option>
-							<option>3</option>
+							<% for(int SD=1; SD<=31; SD++)  {%>
+							<option><%= SD %></option>
+							<% } %>
 					</select>日</td>
 				</tr>
 			</table>
 			<table>
+				<tr>
 				<%
 					ArrayList<LicenseBean> licenseList = (ArrayList<LicenseBean>) request.getAttribute("licenseList");
 				%>
-				<tr>
-					<th></th>
 					<th>保有資格</th>
-
+				</tr>
 					<%
 						if (licenseList != null) {
 							for (int i = 0; i < licenseList.size(); i++) {
 								LicenseBean license = licenseList.get(i);
 					%>
-
-				</tr>
 				<tr>
 					<td><input type="checkbox" name="license" value="<%=i%>"></td>
-					<td><%=license.getLicense_name()%></td>
-				</tr>
+					 <td><%=license.getLicense_name()%></td>
 
+						<td><select name="get_year">
+						<%
+						for(int GY= 1900; GY<=year; GY++){
+						%>
+						<option><%= GY %></option>
+						<% } %>
+					</select>年 <select name="get_month">
+							<% for(int GM=1; GM<=12; GM++) { %>
+							<option><%= GM %></option>
+							<% } %>
+					</select>月 <select name="get_day">
+							<% for(int GD=1; GD<=31; GD++)  {%>
+							<option><%= GD %></option>
+							<% } %>
+					</select>日</td>
 				<%
 					}
 					}
 				%>
-
+				</tr>
 			</table>
 			<input type="submit" name="page" value="登録" class="botan">
 		</form>
