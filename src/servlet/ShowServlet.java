@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.EmployeeDAO;
 import entity.EmployeeBean;
@@ -35,6 +36,12 @@ public class ShowServlet extends HttpServlet {
 
 		//移譲する先のjspを格納する変数url
 		String url = null;
+
+		HttpSession session = request.getSession(true);
+
+		if((String)session.getAttribute("login") == null){
+			url = "Login.jsp";
+		}else{
 
 		//エンコーディング指定
 
@@ -68,6 +75,7 @@ public class ShowServlet extends HttpServlet {
 		url = "ChangeServlet";
 		request.setAttribute("page", page);
 	}
+		}
 	/* 転送先 */
 	RequestDispatcher rd = request.getRequestDispatcher(url);
 	rd.forward(request, response);

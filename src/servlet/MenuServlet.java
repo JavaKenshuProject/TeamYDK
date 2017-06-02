@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class MenuServlet
@@ -39,6 +40,16 @@ public class MenuServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
 
+		// 移譲する先のjspを格納する変数url
+	     String url = null;
+
+
+		HttpSession session = request.getSession(true);
+
+		if((String)session.getAttribute("login") == null){
+			url = "Login.jsp";
+		}else{
+
 		//エンコーディング指定
 		 request.setCharacterEncoding("Windows-31J");
 	     response.setCharacterEncoding("Windows-31J");
@@ -46,13 +57,14 @@ public class MenuServlet extends HttpServlet {
 	     // formからの値を取得
 	     String page = request.getParameter("page");
 
-	     // 移譲する先のjspを格納する変数url
-	     String url = null;
 
 	     //メニューボタンの値から行き先をurlに格納する
 	    if(page.equals("メニューに戻る") || page.equals("従業員管理システム")){
 	    	url = "Menu.jsp";
 	    }
+
+
+		}
 
 
 
