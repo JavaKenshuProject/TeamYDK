@@ -32,6 +32,7 @@ h1{
 	margin:0;
 }
 .title{
+   font-family:"ƒƒCƒŠƒI",meiryo,Arial,sans-serif;
    color:#ffffff;
    font-weight:100;
    font-size:30px;
@@ -43,6 +44,7 @@ h1{
    box-shadow:none;
    border:none;
    outline:none;
+
 
    }
 
