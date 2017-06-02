@@ -54,8 +54,8 @@ public class LicenseServlet extends HttpServlet {
 		response.setCharacterEncoding("Windows-31J");
 
 		/* formの取得 */
-		String employee = request.getParameter("employee");
-		String license = request.getParameter("license");
+		String employee = request.getParameter("employee"); //従業員一覧の上から順（0~）
+		String license = request.getParameter("license"); //資格一覧の上から順（0~）
 		String[] getLicenseDay = request.getParameterValues("getLicenseDay");
 		String page = request.getParameter("page");
 
