@@ -13,7 +13,7 @@ import exception.ServletServiceException;
 /**
  *
  * @author KIKUCHI
- * @version 1.20
+ * @version 1.30
  */
 public class EmployeeDAO {
 
@@ -172,6 +172,10 @@ public class EmployeeDAO {
 		if (!(CheckFormat.checkPK_empCode(employee, emp_all_list))) {
 			throw new ServletServiceException("従業員コードが重複しています");
 		}
+		if ((employee.getEmp_code() != null) && (employee.getLicense_cd_SQLinsert() != null)
+				&& (employee.getGet_license_date_SQLinsert() != null)) {
+			CheckFormat.checkTGetLicense(employee);
+		}
 
 		ConnectionManager cm = ConnectionManager.getInstance();
 
@@ -197,7 +201,6 @@ public class EmployeeDAO {
 
 				if ((employee.getEmp_code() != null) && (employee.getLicense_cd_SQLinsert() != null)
 						&& (employee.getGet_license_date_SQLinsert() != null)) {
-					CheckFormat.checkTGetLicense(employee);
 
 					try (PreparedStatement get_license_pstmt = con.prepareStatement(t_get_license_sql);) {
 						// t_get_license
