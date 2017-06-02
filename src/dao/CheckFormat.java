@@ -133,27 +133,41 @@ public class CheckFormat {
 
 		String call = "";
 		String temp = "が不正です<br>";
+		String void_c = "を確認してください<br>";
+		String kana = "をカタカナで記入してください<br>";
 
-		if ((employee.getEmp_code() == null) || (checkSize31J(employee.getEmp_code(), 4) == false)) {
+		if (employee.getEmp_code() == null) {
 			call = call + "従業員コード" + temp;
+		}if (checkSize31J(employee.getEmp_code(), 4) == false) {
+			call = call + "従業員コード" + void_c;
 		}
 
-		if ((employee.getL_name() == null) || (checkSize31J(employee.getL_name(), 16) == false)) {
+		if (employee.getL_name() == null) {
 			call = call + "氏" + temp;
+		}else if (checkSize31J(employee.getL_name(), 16) == false) {
+			call = call + "氏" + void_c;
 		}
 
-		if ((employee.getF_name() == null) || (checkSize31J(employee.getF_name(), 16) == false)) {
+		if (employee.getF_name() == null) {
 			call = call + "名" + temp;
+		}else if (checkSize31J(employee.getF_name(), 16) == false) {
+			call = call + "名" + void_c;
 		}
 
-		if ((employee.getL_kana_name() == null) || (checkSize31J(employee.getL_kana_name(), 24)) == false
-				|| employee.getL_kana_name().matches(KATAKANA) == false) {
+		if (employee.getL_kana_name() == null) {
 			call = call + "氏(カナ)" + temp;
+		}else if (checkSize31J(employee.getL_kana_name(), 24) == false) {
+			call = call + "氏(カナ)" + void_c;
+		}else if (employee.getL_kana_name().matches(KATAKANA) == false) {
+			call = call + "氏(カナ)" + kana;
 		}
 
-		if ((employee.getF_kana_name() == null) || (checkSize31J(employee.getF_kana_name(), 24)) == false
-				|| employee.getF_kana_name().matches(KATAKANA) == false) {
+		if (employee.getF_kana_name() == null) {
 			call = call + "名(カナ)" + temp;
+		}else if (checkSize31J(employee.getF_kana_name(), 24) == false) {
+			call = call + "名(カナ)" + void_c;
+		}else if (employee.getF_kana_name().matches(KATAKANA) == false) {
+			call = call + "名(カナ)" + kana;
 		}
 
 		if (!(employee.getSex() == 0 || employee.getSex() == 1)) {
@@ -164,8 +178,10 @@ public class CheckFormat {
 			call = call + "生年月日" + temp;
 		}
 
-		if ((employee.getSection_code() == null) || (checkSize31J(employee.getSection_code(), 2) == false)) {
+		if (employee.getSection_code() == null) {
 			call = call + "所属コード" + temp;
+		}else if (checkSize31J(employee.getSection_code(), 2) == false) {
+			call = call + "所属コード" + void_c;
 		}
 
 		if ((employee.getEmp_date() == null) || (checkDate(employee.getEmp_date()) == false)) {
@@ -187,19 +203,24 @@ public class CheckFormat {
 	public static void checkTGetLicense(EmployeeBean employee) throws ServletServiceException {
 		String call = "";
 		String temp = "が不正です<br>";
+		String void_c = "を確認してください<br>";
 
-		if ((employee.getEmp_code() == null) || (checkSize31J(employee.getEmp_code(), 4) == false)) {
+		if (employee.getEmp_code() == null) {
 			call = call + "従業員コード" + temp;
+		}else if (checkSize31J(employee.getEmp_code(), 4) == false) {
+			call = call + "従業員コード" + void_c;
 		}
 
-		if ((employee.getLicense_cd_SQLinsert() == null)
-				|| (checkSize31J(employee.getLicense_cd_SQLinsert(), 5) == false)) {
+		if (employee.getLicense_cd_SQLinsert() == null){
 			call = call + "資格コード" + temp;
+		}else if(checkSize31J(employee.getLicense_cd_SQLinsert(), 5) == false){
+			call = call + "資格コード" + void_c;
 		}
 
-		if ((employee.getGet_license_date_SQLinsert() == null)
-				|| (checkDate(employee.getGet_license_date_SQLinsert()) == false)) {
+		if (employee.getGet_license_date_SQLinsert() == null) {
 			call = call + "取得日" + temp;
+		}else if (checkDate(employee.getGet_license_date_SQLinsert()) == false) {
+			call = call + "取得日" + void_c;
 		}
 
 		if (!(call.equals(""))) {
@@ -217,13 +238,18 @@ public class CheckFormat {
 	public static void checkUserBean(UserBean user) throws ServletServiceException {
 		String call = "";
 		String temp = "が不正です\n";
+		String void_c = "を確認してください<br>";
 
-		if ((user.getUser_id() == null) || (checkSize31J(user.getUser_id(), 24) == false)) {
+		if (checkSize31J(user.getUser_id(), 24) == false) {
 			call = call + "ユーザID" + temp;
+		}else if (checkSize31J(user.getUser_id(), 24) == false) {
+			call = call + "ユーザID" + void_c;
 		}
 
-		if ((user.getPassword() == null) || (checkSize31J(user.getPassword(), 32) == false)) {
+		if (user.getPassword() == null) {
 			call = call + "パスワード" + temp;
+		}else if (checkSize31J(user.getPassword(), 32) == false) {
+			call = call + "パスワード" + void_c;
 		}
 
 		if (!(call.equals(""))) {
@@ -241,13 +267,18 @@ public class CheckFormat {
 	public static void checkLicenseBean(LicenseBean license) throws ServletServiceException {
 		String call = "";
 		String temp = "が不正です\n";
+		String void_c = "を確認してください<br>";
 
-		if ((license.getLicense_cd() == null) || (checkSize31J(license.getLicense_cd(), 5) == false)) {
+		if (license.getLicense_cd() == null) {
 			call = call + "資格コード" + temp;
+		}else if (checkSize31J(license.getLicense_cd(), 5) == false) {
+			call = call + "資格コード" + void_c;
 		}
 
-		if ((license.getLicense_name() == null) || (checkSize31J(license.getLicense_name(), 100) == false)) {
+		if (license.getLicense_name() == null) {
 			call = call + "資格名" + temp;
+		}else if (checkSize31J(license.getLicense_name(), 100) == false) {
+			call = call + "資格名" + void_c;
 		}
 
 		if (!(call.equals(""))) {

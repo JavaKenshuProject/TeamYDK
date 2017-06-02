@@ -331,14 +331,13 @@ public class EmployeeDAO {
 				}
 
 				// t_get_license
-					try (PreparedStatement get_license_pstmt = con.prepareStatement(t_get_license_sql);) {
-						// t_get_license
-						get_license_pstmt.setString(1, employee.getEmp_code());
-						get_license_pstmt.executeUpdate();
-					} catch (SQLException e) {
-						throw e;
-					}
-
+				try (PreparedStatement get_license_pstmt = con.prepareStatement(t_get_license_sql);) {
+					// t_get_license
+					get_license_pstmt.setString(1, employee.getEmp_code());
+					get_license_pstmt.executeUpdate();
+				} catch (SQLException e) {
+					throw e;
+				}
 
 				try (PreparedStatement emp_pstmt = con.prepareStatement(m_emp_sql);) {
 					// m_employee
