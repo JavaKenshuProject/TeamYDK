@@ -242,7 +242,7 @@ public class CheckFormat {
 	 * @return void or throw
 	 * @throws ServletServiceException
 	 */
-	public static String checkTGetLicense(EmployeeBean employee) throws ServletServiceException {
+	public static String checkTGetLicense(EmployeeBean employee) {
 		java.util.Date u_now = new java.util.Date();
 		java.sql.Date now = new java.sql.Date(u_now.getTime());
 
