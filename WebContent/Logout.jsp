@@ -12,7 +12,7 @@
 	 <div class="content" align="center">
      <h2 class="message">ログアウトしました。<br>お疲れ様でした。</h2>
      <form action="LogoutServlet" method="post">
-     <input type="submit" value="ログイン画面へ" name="move">
+     <input type="submit" value="ログイン画面へ" name="move" class="menu_return_botan">
      </form>
      </div>
 </body>
