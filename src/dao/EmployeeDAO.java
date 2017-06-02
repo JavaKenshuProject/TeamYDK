@@ -250,6 +250,12 @@ public class EmployeeDAO {
 			throw new ServletServiceException("従業員コードが存在しません");
 		}
 
+		if ((employee.getEmp_code() != null) && (employee.getLicense_cd_SQLinsert() != null)
+				&& (employee.getGet_license_date_SQLinsert() != null)
+				&& (CheckFormat.checkPK_t_get_license(employee, emp_all_list))) {
+			CheckFormat.checkTGetLicense(employee);
+		}
+
 		ConnectionManager cm = ConnectionManager.getInstance();
 
 		String m_emp_sql = "UPDATE m_employee SET l_name = ?, f_name = ?, l_kana_name = ?, f_kana_name = ?, sex = ?, birth_day = ?, section_code = ?, emp_date = ? WHERE emp_code = ?";
@@ -275,7 +281,6 @@ public class EmployeeDAO {
 				if ((employee.getEmp_code() != null) && (employee.getLicense_cd_SQLinsert() != null)
 						&& (employee.getGet_license_date_SQLinsert() != null)
 						&& (CheckFormat.checkPK_t_get_license(employee, emp_all_list))) {
-					CheckFormat.checkTGetLicense(employee);
 					try (PreparedStatement get_license_pstmt = con.prepareStatement(t_get_license_sql);) {
 						get_license_pstmt.setString(1, employee.getEmp_code());
 						get_license_pstmt.setString(2, employee.getLicense_cd_SQLinsert());
