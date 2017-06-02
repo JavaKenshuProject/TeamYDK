@@ -40,7 +40,6 @@
 	<h3 align="center">エラーが発生しました<br>
 					システムの管理者に連絡してください</h3>
 	<br>
-	<br>
 	<div align="center"><button class="botan_get"  type="button" onclick="history.back()">戻る</button></div>
 </body>
 </html>
