@@ -151,7 +151,7 @@ public class CheckFormat {
 
 		String call = "";
 		String temp = "が不正です<br>";
-		String void_c = "が文字数オーバーしています<br>";
+		String void_c = "の文字数が多すぎます<br>";
 		String zero_c = "を入力してください<br>";
 		String kana = "をカタカナで記入してください<br>";
 
@@ -234,7 +234,7 @@ public class CheckFormat {
 	public static void checkTGetLicense(EmployeeBean employee) throws ServletServiceException {
 		String call = "";
 		String temp = "が不正です<br>";
-		String void_c = "が文字数オーバーしています<br>";
+		String void_c = "の文字数が多すぎます<br>";
 		String zero_c = "を入力してください<br>";
 
 		if (employee.getEmp_code() == null) {
@@ -273,7 +273,7 @@ public class CheckFormat {
 	public static void checkUserBean(UserBean user) throws ServletServiceException {
 		String call = "";
 		String temp = "が不正です\n";
-		String void_c = "が文字数オーバーしています<br>";
+		String void_c = "の文字数が多すぎます<br>";
 		String zero_c = "を入力してください<br>";
 
 		if (checkSize31J(user.getUser_id(), 24) == false) {
@@ -307,7 +307,7 @@ public class CheckFormat {
 	public static void checkLicenseBean(LicenseBean license) throws ServletServiceException {
 		String call = "";
 		String temp = "が不正です\n";
-		String void_c = "が文字数オーバーしています<br>";
+		String void_c = "の文字数が多すぎます<br>";
 		String zero_c = "を入力してください<br>";
 
 		if (license.getLicense_cd() == null) {
