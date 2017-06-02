@@ -14,7 +14,6 @@
 		<p>新しいユーザの情報を入力してください。</p>
 
 		<!------------------------------------ユーザ情報登録フォーム-------------------------------->
-		<h2 class="user_form_title">ユーザ情報登録フォーム</h2>
 		<form action="UserInsertServlet" method="post">
 			<table class="user_add">
 				<tr>
