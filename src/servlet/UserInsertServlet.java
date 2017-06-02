@@ -36,14 +36,17 @@ public class UserInsertServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		HttpSession session = request.getSession();
-		if(session.getAttribute("login") == null){
-			     RequestDispatcher rd = request.getRequestDispatcher("Login.jsp");
-			     rd.forward(request, response);
-		}
+
 
 		/* url宣言 */
 		String url = null;
+
+		HttpSession session = request.getSession(true);
+
+		if((String)session.getAttribute("login") == null){
+			url = "Login.jsp";
+		}else{
+
 
 		/* エンコーディング */
 		request.setCharacterEncoding("Windows-31J");
@@ -71,7 +74,7 @@ public class UserInsertServlet extends HttpServlet {
 
 			url = "UserInsertSuccess.jsp";
 		}
-
+		}
 		/* 転送先 */
 		RequestDispatcher rd = request.getRequestDispatcher(url);
 		rd.forward(request, response);
