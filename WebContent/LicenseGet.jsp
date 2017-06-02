@@ -61,7 +61,7 @@
 					<td><%=employee.getEmp_code()%></td>
 					<td><%=employee.getL_name()%><%=employee.getF_name()%></td>
 					<td><%=employee.getL_kana_name()%><%=employee.getF_kana_name()%></td>
-					<td><%=employee.getSex()%></td>
+					<td><%=sex%></td>
 					<td><%=employee.getBirth_day()%></td>
 					<td><%=employee.getSection_name()%></td>
 					<td><%=employee.getEmp_date()%></td>
