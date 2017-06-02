@@ -272,6 +272,9 @@ public class CheckFormat {
 			call = call + "取得日" + temp;
 		} else if (now.compareTo(convertString2Date(employee.getGet_license_date_SQLinsert())) < 0) {
 			call = call + "取得日が未来を指定しています<br>";
+		} else if (convertString2Date(employee.getGet_license_date_SQLinsert())
+				.compareTo(convertString2Date(employee.getBirth_day())) < 0) {
+			call = call + "取得日が生年月日より昔です<br>";
 		}
 
 		return call;
