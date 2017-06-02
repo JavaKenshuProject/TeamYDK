@@ -34,7 +34,7 @@
               </tr>
                <tr>
                 <td>
-                <input type="submit" value="ログイン" name="login" class="botan">
+                <input type="submit" value="ログイン" name="login" id="login_botan" class="botan">
                 </td>
                </tr>
             </table>
