@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.EmployeeDAO;
 import dao.LicenseDAO;
@@ -40,6 +41,11 @@ public class EmployeeInsertServlet extends HttpServlet {
 
 		// 移譲する先のjspを格納する変数url
 		String url = null;
+		HttpSession session = request.getSession(true);
+
+		if((String)session.getAttribute("login") == null){
+			url = "Login.jsp";
+		}else{
 
 		// エンコーディング指定
 		request.setCharacterEncoding("Windows-31J");
@@ -132,6 +138,7 @@ public class EmployeeInsertServlet extends HttpServlet {
 			}
 
 			url = "EmployeeInsertSuccess.jsp";
+		}
 		}
 
 		/* 転送先 */

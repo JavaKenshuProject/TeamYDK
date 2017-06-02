@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.EmployeeDAO;
 import entity.EmployeeBean;
@@ -46,6 +47,11 @@ public class DeleteServlet extends HttpServlet {
 		response.setCharacterEncoding("Windows-31J");
 
 		String url = null;
+		HttpSession session = request.getSession(true);
+
+		if((String)session.getAttribute("login") == null){
+			url = "Login.jsp";
+		}else{
 
 		int val = -1;
 		try{
@@ -69,6 +75,7 @@ public class DeleteServlet extends HttpServlet {
 			throw new ServletServiceException("削除に失敗しました");
 		}
 
+		}
 		RequestDispatcher rd = request.getRequestDispatcher(url);
 		rd.forward(request, response);
 

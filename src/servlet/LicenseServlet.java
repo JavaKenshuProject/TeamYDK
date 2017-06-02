@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.EmployeeDAO;
 import dao.LicenseDAO;
@@ -48,6 +49,11 @@ public class LicenseServlet extends HttpServlet {
 
 		/* url宣言 */
 		String url = null;
+		HttpSession session = request.getSession(true);
+
+		if((String)session.getAttribute("login") == null){
+			url = "Login.jsp";
+		}else{
 
 		/* エンコーディング */
 		request.setCharacterEncoding("Windows-31J");
@@ -88,6 +94,7 @@ public class LicenseServlet extends HttpServlet {
 			emp.employeeUpdate(empB);
 
 			url = "GetSuccess.jsp";
+		}
 		}
 
 		/* 転送先 */
