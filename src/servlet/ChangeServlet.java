@@ -61,10 +61,6 @@ public class ChangeServlet extends HttpServlet {
 			request.setCharacterEncoding("Windows-31J");
 			response.setCharacterEncoding("Windows-31J");
 
-			String c_emp = request.getParameter("employee");
-			if (c_emp == null) {
-				throw new ServletServiceException("チェックボックスにチェックを入れてください");
-			}
 
 			/* pageの取得 */
 			String page = request.getParameter("page");
@@ -83,6 +79,11 @@ public class ChangeServlet extends HttpServlet {
 
 			if (page.equals("変更")) {
 
+				String c_emp = request.getParameter("employee");
+				if (c_emp == null) {
+					throw new ServletServiceException("チェックボックスにチェックを入れてください");
+				}
+
 				ArrayList<SectionBean> sectionList = sec.SectionAllGet();
 				ArrayList<EmployeeBean> employeeList = emp.employeeAllGet();
 
@@ -97,6 +98,12 @@ public class ChangeServlet extends HttpServlet {
 
 			if (page.equals("変更完了")) {
 				/* formの入力 */
+
+
+				String c_emp = request.getParameter("sex");
+				if (c_emp == null) {
+					throw new ServletServiceException("性別にチェックを入れてください");
+				}
 
 				int num = Integer.parseInt(request.getParameter("hidden"));
 				String l_name = request.getParameter("l_name");
