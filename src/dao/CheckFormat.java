@@ -146,8 +146,10 @@ public class CheckFormat {
 	 * @return void or throw
 	 * @throws ServletServiceException
 	 */
-	public static void checkEmployeeBean(EmployeeBean employee) throws ServletServiceException {
+	public static void checkEmployeeBean(EmployeeBean employee, boolean flag) throws ServletServiceException {
 		String KATAKANA = "^[\\u30A0-\\u30FF]+$";
+		java.util.Date u_now = new java.util.Date();
+		java.sql.Date now = new java.sql.Date(u_now.getTime());
 
 		String call = "";
 		String temp = "が不正です<br>";
@@ -205,6 +207,8 @@ public class CheckFormat {
 
 		if ((employee.getBirth_day() == null) || (checkDate(employee.getBirth_day()) == false)) {
 			call = call + "生年月日" + temp;
+		} else if (now.compareTo(convertString2Date(employee.getBirth_day())) < 0) {
+			call = call + "生年月日-あなたはまだ生まれていません・・・！<br>";
 		}
 
 		if (employee.getSection_code() == null) {
@@ -217,6 +221,13 @@ public class CheckFormat {
 
 		if ((employee.getEmp_date() == null) || (checkDate(employee.getEmp_date()) == false)) {
 			call = call + "入社日" + temp;
+		} else if (convertString2Date(employee.getEmp_date())
+				.compareTo(convertString2Date(employee.getBirth_day())) < 0) {
+			call = call + "入社日が生年月日より昔です<br>";
+		}
+
+		if (flag) {
+			call = call + checkTGetLicense(employee);
 		}
 
 		if (!(call.equals(""))) {
@@ -231,7 +242,10 @@ public class CheckFormat {
 	 * @return void or throw
 	 * @throws ServletServiceException
 	 */
-	public static void checkTGetLicense(EmployeeBean employee) throws ServletServiceException {
+	public static String checkTGetLicense(EmployeeBean employee) throws ServletServiceException {
+		java.util.Date u_now = new java.util.Date();
+		java.sql.Date now = new java.sql.Date(u_now.getTime());
+
 		String call = "";
 		String temp = "が不正です<br>";
 		String void_c = "が入力可能文字数を超えています<br>";
@@ -256,11 +270,11 @@ public class CheckFormat {
 		if ((employee.getGet_license_date_SQLinsert() == null)
 				|| (checkDate(employee.getGet_license_date_SQLinsert()) == false)) {
 			call = call + "取得日" + temp;
+		} else if (now.compareTo(convertString2Date(employee.getGet_license_date_SQLinsert())) < 0) {
+			call = call + "取得日が未来を指定しています<br>";
 		}
 
-		if (!(call.equals(""))) {
-			throw new ServletServiceException(call);
-		}
+		return call;
 	}
 
 	/**

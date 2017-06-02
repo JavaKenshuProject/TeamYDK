@@ -166,7 +166,7 @@ public class EmployeeDAO {
 	 */
 	public void employeeInsert(EmployeeBean employee) throws ServletServiceException {
 
-		CheckFormat.checkEmployeeBean(employee);
+		boolean flag = false;
 
 		ArrayList<EmployeeBean> emp_all_list = new EmployeeDAO().employeeAllGet();
 		if (!(CheckFormat.checkPK_empCode(employee, emp_all_list))) {
@@ -174,8 +174,10 @@ public class EmployeeDAO {
 		}
 		if ((employee.getEmp_code() != null) && (employee.getLicense_cd_SQLinsert() != null)
 				&& (employee.getGet_license_date_SQLinsert() != null)) {
-			CheckFormat.checkTGetLicense(employee);
+			flag =true;
 		}
+
+		CheckFormat.checkEmployeeBean(employee,flag);
 
 		ConnectionManager cm = ConnectionManager.getInstance();
 
@@ -243,7 +245,7 @@ public class EmployeeDAO {
 	 */
 	public void employeeUpdate(EmployeeBean employee) throws ServletServiceException {
 
-		CheckFormat.checkEmployeeBean(employee);
+		boolean flag = false;
 
 		ArrayList<EmployeeBean> emp_all_list = new EmployeeDAO().employeeAllGet();
 		if (CheckFormat.checkPK_empCode(employee, emp_all_list)) {
@@ -253,8 +255,11 @@ public class EmployeeDAO {
 		if ((employee.getEmp_code() != null) && (employee.getLicense_cd_SQLinsert() != null)
 				&& (employee.getGet_license_date_SQLinsert() != null)
 				&& (CheckFormat.checkPK_t_get_license(employee, emp_all_list))) {
-			CheckFormat.checkTGetLicense(employee);
+			System.out.println( (CheckFormat.checkPK_t_get_license(employee, emp_all_list)));
+			flag = true;
 		}
+
+		CheckFormat.checkEmployeeBean(employee,flag);
 
 		ConnectionManager cm = ConnectionManager.getInstance();
 
