@@ -20,7 +20,6 @@
 		<h2 class="page_title">メニュー</h2>
 		<p>変更したい情報を入力してください。</p>
 		<!------------------------------------従業員情報変更フォーム-------------------------------->
-		<h2 class="form_title">従業員情報変更フォーム</h2>
 		<%
 			ArrayList<SectionBean> sectionList = (ArrayList<SectionBean>) request.getAttribute("sectionList");
 			EmployeeBean empB = (EmployeeBean) request.getAttribute("empB");
