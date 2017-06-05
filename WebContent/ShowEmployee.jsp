@@ -26,6 +26,7 @@
 	%>
 	<form action="ShowServlet" method="post">
 		<table class="employee_table" style="text-align:center;">
+		<thead class="scrollHead">
 			<tr class="employee_title">
 				<th class="radio"></th>
 				<th class="no">従業員コード</th>
@@ -37,7 +38,8 @@
 				<th class="startday">入社日</th>
 				<th class="license">保有資格</th>
 			</tr>
-
+          </thead>
+          <tbody class="datebody">
 			<%
 					if (employeeList != null) {
 						for (int i = 0; i < employeeList.size(); i++) {
@@ -85,6 +87,7 @@
 				<%
 					}
 				%>
+				</tbody>
 		</table>
 		<input type="submit" value="削除" name="page" class="botan_get">
 		<input type="submit" value="変更" name="page" class="botan_get">
