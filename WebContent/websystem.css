@@ -425,7 +425,7 @@ word-break:break-all;
 	 background-color:#eeeeee;
       width:210px;
       text-align:center;
-      rules:rows;
+      padding:0;
       word-break:all-break;
 }
 }
