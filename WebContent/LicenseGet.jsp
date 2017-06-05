@@ -25,18 +25,21 @@
 			String color;
 		%>
 		<form action="LicenseServlet" method="post">
-			<table class="employee_table">
+			<table class="employee_table" style="text-align:center;">
+			  <thead class="scrollHead">
 				<tr class="employee_title">
-					<th></th>
-					<th>従業員コード</th>
-					<th>氏名</th>
-					<th>氏名(フリガナ)</th>
-					<th>性別</th>
-					<th>生年月日</th>
-					<th>所属部署</th>
-					<th>入社日</th>
-					<th>保有資格</th>
+					<th class="radio"></th>
+					<th class="no">従業員コード</th>
+					<th class="name">氏名</th>
+					<th class="name_kana">氏名(フリガナ)</th>
+					<th class="sex">性別</th>
+					<th class="birth">生年月日</th>
+					<th class="section">所属部署</th>
+					<th class="startday">入社日</th>
+					<th class="license">保有資格</th>
 				</tr>
+				</thead>
+				<tbody class="datebody">
 				<%
 					if (employeeList != null) {
 						for (int i = 0; i < employeeList.size(); i++) {
@@ -57,15 +60,15 @@
 							}
 				%>
 				<tr style="background-color:<%=color%>;">
-					<td><input type="radio" name="employee" value="<%=i%>"></td>
-					<td><%=employee.getEmp_code()%></td>
-					<td><%=employee.getL_name()%><%=employee.getF_name()%></td>
-					<td><%=employee.getL_kana_name()%><%=employee.getF_kana_name()%></td>
-					<td><%=sex%></td>
-					<td><%=employee.getBirth_day()%></td>
-					<td><%=employee.getSection_name()%></td>
-					<td><%=employee.getEmp_date()%></td>
-					<td>
+					<td class="radiotd"><input type="radio" name="employee" value="<%=i%>"></td>
+					<td class="notd"><%=employee.getEmp_code()%></td>
+					<td class="nametd"><%=employee.getL_name()%><%=employee.getF_name()%></td>
+					<td class="name_kanatd"><%=employee.getL_kana_name()%><%=employee.getF_kana_name()%></td>
+					<td class="sextd"><%=sex%></td>
+					<td class="birthtd"><%=employee.getBirth_day()%></td>
+					<td class="sectiontd"><%=employee.getSection_name()%></td>
+					<td class="startdaytd"><%=employee.getEmp_date()%></td>
+					<td class="licensetd">
 						<%
 						if (employee.getLicense_name() != null){
 							for (int j = 0; j < employee.getLicense_name().size(); j++) {
@@ -83,14 +86,18 @@
 				<%
 					}
 				%>
+			</tbody>
 			</table>
 			<!--------------------------------資格一覧の表-------------------------------->
 			<p>保有資格に追加する資格を選んでください。</p>
 			<table>
+				<thead class="scrollHead">
 				<tr class="license_title">
-					<th></th>
-					<th>資格名</th>
+					<th class="radio"></th>
+					<th class="license_name">資格名</th>
 				</tr>
+				</thead>
+				<tbody class="datebody">
 				<%
 					if (licenseList != null) {
 						for (int i = 0; i < licenseList.size(); i++) {
@@ -102,8 +109,8 @@
 							}
 				%>
 				<tr style="background-color:<%=color%>;">
-					<td><input type="radio" name="license" value="<%=i%>"></td>
-					<td><%=license.getLicense_name()%></td>
+					<td class="radiotd"><input type="radio" name="license" value="<%=i%>"></td>
+					<td class="licensetd"><%=license.getLicense_name()%></td>
 				</tr>
 				<%
 					}
@@ -111,6 +118,7 @@
 				<%
 					}
 				%>
+				</tbody>
 			</table>
 			<p>資格を取得した日付を入力してください</p>
 			<table>
