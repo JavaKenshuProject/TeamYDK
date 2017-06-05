@@ -26,17 +26,17 @@
 			<table class="employee_add">
 				<tr>
 					<th>従業員コード</th>
-					<td><input type="text" name="emp_cd"></td>
+					<td><input type="text" name="emp_cd" placeholder="L001"></td>
 				</tr>
 				<tr>
 					<th>氏名(漢字)</th>
-					<td>氏<input type="text" name="l_name"> 名<input
-						type="text" name="f_name"></td>
+					<td>氏<input type="text" name="l_name" placeholder="田中" > 名<input
+						type="text" name="f_name" placeholder="一郎"></td>
 				</tr>
 				<tr>
 					<th>氏名(カナ)</th>
-					<td>氏<input type="text" name="l_kana_name"> 名<input
-						type="text" name="f_kana_name"></td>
+					<td>氏<input type="text" name="l_kana_name" placeholder="タナカ"> 名<input
+						type="text" name="f_kana_name" placeholder="イチロウ"></td>
 				</tr>
 				<tr>
 					<th>性別</th>
