@@ -486,10 +486,20 @@ word-break:break-all;
 
 
 .license_name{
-  width:148px;
+  width:300px;
  word-break:break-all;
 }
 
+.license_nametd{
+  width:300px;
+ word-break:break-all;
+}
+
+.radio_license{
+	width:29px;
+    padding:0;
+    margin:0;
+}
 .botan_get{
 	margin:3% .5%;
     font-family: "ƒƒCƒŠƒI", meiryo, Arial, sans-serif;
