@@ -121,7 +121,7 @@ public class EmployeeInsertServlet extends HttpServlet {
 			if (license != null) {
 				licB = lic.licenseAllGet().get(Integer.parseInt(license[0]));
 				empB.setLicense_cd_SQLinsert(licB.getLicense_cd());
-				getdate.add(get_year[0] + "-" + get_month[0] + "-" + get_day[0]);
+				getdate.add(get_year[Integer.parseInt(license[0])] + "-" + get_month[Integer.parseInt(license[0])] + "-" + get_day[Integer.parseInt(license[0])]);
 				empB.setGet_license_date_SQLinsert(getdate.get(0));
 			}
 
@@ -131,7 +131,7 @@ public class EmployeeInsertServlet extends HttpServlet {
 				for (int i = 1; i < license.length; i++) {
 					licB = lic.licenseAllGet().get(Integer.parseInt(license[i]));
 					empB.setLicense_cd_SQLinsert(licB.getLicense_cd());
-					getdate.add(get_year[i] + "-" + get_month[i] + "-" + get_day[i]);
+					getdate.add(get_year[Integer.parseInt(license[i])] + "-" + get_month[Integer.parseInt(license[i])] + "-" + get_day[Integer.parseInt(license[i])]);
 					empB.setGet_license_date_SQLinsert(getdate.get(i));
 					emp.employeeUpdate(empB);
 				}
