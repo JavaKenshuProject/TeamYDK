@@ -96,12 +96,15 @@
 					</select>“ú</td>
 				</tr>
 				</table>
+				<div class="licensediv">
 				<table class="license_insert">
 				<tr>
 				<%
 					ArrayList<LicenseBean> licenseList = (ArrayList<LicenseBean>) request.getAttribute("licenseList");
 				%>
-					<th class="license_insert_th" rowspan="<%=licenseList.size() %>">•Û—LŽ‘Ši</th>
+					<th class="license_insert_th" style="vertical-align: middle;">•Û—LŽ‘Ši</th></tr></table>
+
+					<table class="scroll">
 
 					<%
 						if (licenseList != null) {
@@ -131,7 +134,7 @@
 					}
 				%>
 
-			</table>
+			</table></div>
 			<input type="submit" name="page" value="“o˜^" class="botan">
 		</form>
 	</div>
