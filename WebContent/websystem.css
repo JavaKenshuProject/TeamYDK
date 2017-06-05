@@ -406,7 +406,7 @@ word-break:break-all;
       font-weight:300;
       font-size:20px;
       padding:0;
-      word-break:all-break;
+      word-break:break-all;
       width:170px;
 }
 
@@ -426,7 +426,7 @@ word-break:break-all;
       width:210px;
       text-align:center;
       padding:0;
-      word-break:all-break;
+      word-break:break-all;
 }
 }
 /*-----------------------システム利用者登録フォーム------------------------------*/
