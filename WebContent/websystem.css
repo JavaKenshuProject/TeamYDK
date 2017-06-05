@@ -400,14 +400,14 @@ word-break:break-all;
 	  width:900px;
       margin:0 auto;
 }
-.license_insert th{
+.license_insert_th{
       background-color:#669999;
       color:#ffffff;
       font-weight:300;
       font-size:20px;
       padding:10px;
       word-break:all-break;
-      width:120px;
+      width:93.5px;
 }
 
 .check{
