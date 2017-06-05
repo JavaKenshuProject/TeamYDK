@@ -90,10 +90,10 @@
 			</table>
 			<!--------------------------------資格一覧の表-------------------------------->
 			<p>保有資格に追加する資格を選んでください。</p>
-			<table>
+			<table style="text-align:center;">
 				<thead class="scrollHead">
 				<tr class="license_title">
-					<th class="radio"></th>
+					<th class="radio_license"></th>
 					<th class="license_name">資格名</th>
 				</tr>
 				</thead>
@@ -110,7 +110,7 @@
 				%>
 				<tr style="background-color:<%=color%>;">
 					<td class="radiotd"><input type="radio" name="license" value="<%=i%>"></td>
-					<td class="licensetd"><%=license.getLicense_name()%></td>
+					<td class="license_nametd"><%=license.getLicense_name()%></td>
 				</tr>
 				<%
 					}
