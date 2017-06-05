@@ -17,6 +17,7 @@ import dao.SectionDAO;
 import entity.EmployeeBean;
 import entity.LicenseBean;
 import entity.SectionBean;
+import exception.ServletServiceException;
 
 /**
  * Servlet implementation class EmployeeInsertServlet
@@ -74,6 +75,9 @@ public class EmployeeInsertServlet extends HttpServlet {
 		 * test 登録ボタンが押されたとき 以下の emp 情報を に セットして、 Emp.Ins.Successへ遷移
 		 */
 		if ((page != null) && (page.equals("登録"))) {
+			if(request.getParameter("sex") == null){
+				throw new ServletServiceException("性別にチェックを入れてください<br>");
+			}
 			// formの取得
 			String emp_cd = request.getParameter("emp_cd"); // 従業員コード
 			String l_name = request.getParameter("l_name"); // 氏
