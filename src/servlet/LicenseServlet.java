@@ -15,6 +15,7 @@ import dao.EmployeeDAO;
 import dao.LicenseDAO;
 import entity.EmployeeBean;
 import entity.LicenseBean;
+import exception.ServletServiceException;
 
 /**
  * Servlet implementation class LicenseServlet
@@ -86,6 +87,18 @@ public class LicenseServlet extends HttpServlet {
 		}
 
 		if (page.equals("取得")) {
+			String call = "";
+			if(employee == null){
+				call = call + "保有資格を追加する従業員にチェックを入れてください<br>";
+			}
+			if(license == null){
+				call = call + "保有資格に追加する資格へチェックを入れてください<br>";
+			}
+
+			if(!(call.equals(""))){
+				throw new ServletServiceException(call);
+			}
+
 			String licenseDay = getLicenseDay[0] + "-" + getLicenseDay[1] + "-" + getLicenseDay[2];
 			empB = emp.employeeAllGet().get(Integer.parseInt(employee));
 			licB = lic.licenseAllGet().get(Integer.parseInt(license));
