@@ -30,12 +30,12 @@
 				</tr>
 				<tr>
 					<th>氏名(漢字)</th>
-					<td>氏　<input type="text" name="l_name" placeholder="田中" > 名　<input
+					<td>氏&nbsp;<input type="text" name="l_name" placeholder="田中" >　名&nbsp;<input
 						type="text" name="f_name" placeholder="一郎"></td>
 				</tr>
 				<tr>
 					<th>氏名(カナ)</th>
-					<td>氏　<input type="text" name="l_kana_name" placeholder="タナカ"> 名　<input
+					<td>氏&nbsp;<input type="text" name="l_kana_name" placeholder="タナカ">　名&nbsp;<input
 						type="text" name="f_kana_name" placeholder="イチロウ"></td>
 				</tr>
 				<tr>
