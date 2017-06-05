@@ -12,10 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.EmployeeDAO;
-import dao.LicenseDAO;
 import dao.SectionDAO;
 import entity.EmployeeBean;
-import entity.LicenseBean;
 import entity.SectionBean;
 import exception.ServletServiceException;
 
@@ -70,12 +68,10 @@ public class ChangeServlet extends HttpServlet {
 
 			/* DAOのインスタンス化 */
 			EmployeeDAO emp = new EmployeeDAO();
-			LicenseDAO lic = new LicenseDAO();
 			SectionDAO sec = new SectionDAO();
 
 			/* Beanのインスタンス化 */
 			EmployeeBean empB = new EmployeeBean();
-			LicenseBean licB = new LicenseBean();
 
 			if (page.equals("変更")) {
 
