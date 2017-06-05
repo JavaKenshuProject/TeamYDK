@@ -66,7 +66,17 @@
 									for (int i = 0; i < sectionList.size(); i++) {
 										SectionBean section = sectionList.get(i);
 							%>
+							<%
+							if(section.getSection_name() == empB.getSection_name()){
+							%>
+							<option value="<%= section.getSection_code() %>" selected><%=section.getSection_name()%></option>
+							<%
+							}else{
+							%>
 							<option value="<%= section.getSection_code() %>"><%=section.getSection_name()%></option>
+							<%
+							}
+							%>
 							<%
 								}
 							%>
