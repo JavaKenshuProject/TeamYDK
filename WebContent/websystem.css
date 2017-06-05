@@ -526,3 +526,10 @@ word-break:break-all;
 	border-radius: 5px;
 	box-shadow:none;
 }
+
+/*-----------------------エラーページ------------------------------*/
+.error_message{
+   font-family: "メイリオ", meiryo, Arial, sans-serif;
+	font-weight:300;
+	color:red;
+}

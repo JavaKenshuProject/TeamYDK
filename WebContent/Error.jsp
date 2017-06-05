@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=Windows-31J"
     pageEncoding="Windows-31J" isErrorPage="true"%>
+ <link rel="stylesheet" href="websystem.css" type="text/css">
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- ------------------------------------------------------------------------------------------------------------------------------
@@ -37,7 +38,7 @@
 <br>
 <br>
 <br>
-	<h3 align="center">エラーが発生しました<br>
+	<h3 align="center" class="error_message">エラーが発生しました<br>
 					システムの管理者に連絡してください</h3>
 	<br>
 	<div align="center"><button class="botan_get"  type="button" onclick="history.back()">戻る</button></div>

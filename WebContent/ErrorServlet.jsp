@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=Windows-31J"
     pageEncoding="Windows-31J" isErrorPage="true"%>
+<link rel="stylesheet" href="websystem.css" type="text/css">
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- ------------------------------------------------------------------------------------------------------------------------------
@@ -37,7 +38,7 @@
 <br>
 <br>
 <br>
-	<h3 align="center"><font color="red"><%out.println(exception.getMessage( ));%></font></h3>
+	<h3 align="center" class="error_message"><%out.println(exception.getMessage( ));%></h3>
 	<!-- <h3 align="center"><font color="red"><%=request.getAttribute("javax.servlet.error.exception_type")%></font></h3> -->
 <br>
 <br>
