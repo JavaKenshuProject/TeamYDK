@@ -67,9 +67,9 @@
 										SectionBean section = sectionList.get(i);
 							%>
 							<%
-							if(section.getSection_name() == empB.getSection_name()){
+							if(section.getSection_name().equals(empB.getSection_name())){
 							%>
-							<option value="<%= section.getSection_code() %>" selected><%=section.getSection_name()%></option>
+							<option value="<%= section.getSection_code() %>" selected="selected"><%=section.getSection_name()%></option>
 							<%
 							}else{
 							%>
