@@ -407,25 +407,23 @@ word-break:break-all;
       font-size:20px;
       padding:10px;
       word-break:all-break;
-      width:93.5px;
+      width:175px;
 }
 
 .check{
 	  background-color:#eeeeee;
       width:20px;
-      rules:rows;
 }
 
 .license_insert_name{
 	  background-color:#eeeeee;
-      width:250px;
-      rules:rows;
-      word-break:all-break;
+      width:500px;
+      word-wrap:break-word;
 }
 
 .license_day{
 	 background-color:#eeeeee;
-      width:170px;
+      width:210px;
       text-align:center;
       rules:rows;
       word-break:all-break;
