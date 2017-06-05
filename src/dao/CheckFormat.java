@@ -256,16 +256,6 @@ public class CheckFormat {
 		String void_c = "が入力可能文字数を超えています<br>";
 		String zero_c = "を入力してください<br>";
 
-		if (employee.getEmp_code() == null) {
-			call = call + "従業員コード" + temp;
-		} else if (checkSize31J(employee.getEmp_code(), 4) == false) {
-			call = call + "従業員コード" + void_c;
-		} else if (checkZero31J(employee.getEmp_code()) == false) {
-			call = call + "従業員コード" + zero_c;
-		} else if ((employee.getEmp_code().matches(ALPHA_NUMBER) == false)) {
-			call = call + "従業員コードは半角英数字のみで入力してください<br>";
-		}
-
 		if (employee.getLicense_cd_SQLinsert() == null) {
 			call = call + "資格コード" + temp;
 		} else if (checkSize31J(employee.getLicense_cd_SQLinsert(), 5) == false) {
