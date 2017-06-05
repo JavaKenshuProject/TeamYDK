@@ -7,7 +7,7 @@
 <head>
 <link rel="stylesheet" href="websystem.css" type="text/css">
 <meta http-equiv="Content-Type" content="text/html; Windows-31J">
-<title>Insert title here</title>
+<title>従業員管理システム</title>
 </head>
 <body>
 	<!-- ヘッダー -->
@@ -25,18 +25,21 @@
 		String color;
 	%>
 	<form action="ShowServlet" method="post">
-		<table class="employee_table">
+		<table class="employee_table" style="text-align:center;">
+		 <thead class="scrollHead">
 			<tr class="employee_title">
-				<th></th>
-				<th>従業員コード</th>
-				<th>氏名</th>
-				<th>氏名(フリガナ)</th>
-				<th>性別</th>
-				<th>生年月日</th>
-				<th>所属部署</th>
-				<th>入社日</th>
-				<th>保有資格</th>
+				<th class="radio"></th>
+				<th class="no">従業員コード</th>
+				<th class="name">氏名</th>
+				<th class="name_kana">氏名(フリガナ)</th>
+				<th class="sex">性別</th>
+				<th class="birth">生年月日</th>
+				<th class="section">所属部署</th>
+				<th class="startday">入社日</th>
+				<th class="license">保有資格</th>
 			</tr>
+			 </thead>
+	       <tbody class="datebody">
 			<%
 					if (employeeList != null) {
 						for (int i = 0; i < employeeList.size(); i++) {
@@ -57,16 +60,16 @@
 							}
 
 				%>
-			<tr style="background-color:<%=color%>;">
-				<td><input type="radio" name="employee" value="<%=i%>"></td>
-				<td><%=employee.getEmp_code()%></td>
-				<td><%=employee.getL_name()%><%=employee.getF_name()%></td>
-				<td><%=employee.getL_kana_name()%><%=employee.getF_kana_name()%></td>
-				<td><%=sex%></td>
-				<td><%=employee.getBirth_day()%></td>
-				<td><%=employee.getSection_name()%></td>
-				<td><%=employee.getEmp_date()%></td>
-				<td>
+			 <tr style="background-color:<%=color%>;">
+				<td class="radiotd"><input type="radio" name="employee" value="<%=i%>"></td>
+				<td class="notd"><%=employee.getEmp_code()%></td>
+				<td class="nametd"><%=employee.getL_name()%><%=employee.getF_name()%></td>
+				<td class="name_kanatd"><%=employee.getL_kana_name()%><%=employee.getF_kana_name()%></td>
+				<td class="sextd"><%=sex%></td>
+				<td class="birthtd"><%=employee.getBirth_day()%></td>
+				<td class="sectiontd"><%=employee.getSection_name()%></td>
+				<td class="startdaytd"><%=employee.getEmp_date()%></td>
+				<td class="licensetd">
 						<%
 						if (employee.getLicense_name() != null){//test
 							for (int j = 0; j < employee.getLicense_name().size(); j++) {
@@ -84,10 +87,11 @@
 				<%
 					}
 				%>
+			</tbody>
 		</table>
 		<input type="submit" value="削除" name="page" class="botan_get">
 		<input type="submit" value="変更" name="page" class="botan_get">
 	</form>
-</div>
+	</div>
 </body>
 </html>
