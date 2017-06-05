@@ -52,7 +52,7 @@
       </form>
 
     <form action="LogoutServlet" method="post">
-     <input type="submit" value="ログアウト" name="page" class="menu_botan" id="logout">
+     <input type="submit" value="ログアウト" name="page" class="logout_botan">
      </form>
  </div>
 </body>
