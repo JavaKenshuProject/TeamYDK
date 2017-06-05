@@ -213,11 +213,28 @@ p{
    margin-bottom:5%;
 }
 
-#logout{
+.logout_botan{
+	font-family: "メイリオ", meiryo, Arial, sans-serif;
+	font-size:125%;
+	font-weight: 200;
+	color:#fff;
+	width:300px;
+	height:45px;
+	background-color:#7575ff;
+	border-style: none;
+	border-radius: 10px;
 	margin-top:5%;
+	margin-left:20px;
+	box-shadow:.5px .5px .5px #888;
 }
 
-
+.logout_botan:hover {
+	font-family: "メイリオ", meiryo, Arial, sans-serif;
+	font-weight: 200;
+	background-color: #75baff;
+	border-style: none;
+	box-shadow:none;
+}
 
 /*-----------------------従業員一覧&資格取得------------------------------*/
 .employee_title{
