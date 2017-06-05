@@ -44,13 +44,11 @@ h1{
    box-shadow:none;
    border:none;
    outline:none;
-
-
    }
 
 /*-----------------------------------コンテンツページのdiv----------------------------------------*/
 .content{
-      width:70%;
+      width:960px;
       margin-top:0;
       margin-left:auto;
       margin-right:auto;
@@ -234,16 +232,109 @@ p{
 .employee_title{
       background-color:#669999;
       font-weight:100;
-      font-size:20px;
+      font-size:15px;
       color:#ffffff;
-      padding:10px;
+      padding:0;
+      margin:0;
 }
 
 .employee_table{
-       width:100%;
-       max-height:100px;
-       -webkit-overflow-scrolling:auto;
+      /* width:960px;*/
+
 }
+
+.employee_table th,td{
+	 table-layout:fixed;
+}
+
+thead.scrollHead,tbody.datebody{
+  display:block;
+}
+
+.datebody{
+	overflow-y:scroll;
+	height:300px;
+}
+
+.radio{
+width:28px;
+padding:0;
+margin:0;
+}
+.radiotd{
+width:29px;
+padding:0;
+margin:0;
+align:center;
+}
+
+.no{
+  width:96px;
+  word:break;
+}
+.notd{
+  width:100px;
+   word-break:break-all;
+}
+.name{
+  width:138px;
+  align:center;
+   word-break:break-all;
+}
+.nametd{
+  width:145px;
+  align:center;
+  word-break:break-all;
+}
+.name_kana{
+width:161px;
+ word-break:break-all;
+}
+.name_kanatd{
+width:170px;
+word-break:break-all;
+}
+.sex{
+ width:44px;
+ word-break:break-all;
+}
+.sextd{
+ width:45px;
+ word-break:break-all;
+}
+.birth{
+ width:97px;
+ word-break:break-all;
+}
+.birthtd{
+ width:100px;
+word-break:break-all;
+}
+.section{
+ width:96px;
+ word-break:break-all;
+}
+.sectiontd{
+ width:100px;
+ word-break:break-all;
+}
+.startday{
+ width:98px;
+ word-break:break-all;
+}
+.startdaytd{
+ width:100px;
+ word-break:break-all;
+}
+.license{
+  width:145px;
+ word-break:break-all;
+}
+.licensetd{
+  width:150px;
+word-break:break-all;
+}
+
 
 /*-----------------------資格一覧------------------------------*/
 .license_title{
@@ -333,6 +424,8 @@ p{
      height:20px;
      padding:0 0 0 5px;
      }
+
+
 
 
 /*-----------------------資格追加登録フォーム------------------------------*/
