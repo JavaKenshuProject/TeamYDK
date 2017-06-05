@@ -146,13 +146,13 @@ public class CheckFormat {
 	 * @return void or throw
 	 * @throws ServletServiceException
 	 */
-	public static void checkEmployeeBean(EmployeeBean employee, boolean flag) throws ServletServiceException {
+	public static void checkEmployeeBean(EmployeeBean employee, boolean flag,String call) throws ServletServiceException {
 		String KATAKANA = "^[\\u30A0-\\u30FF]+$";
 		String ALPHA_NUMBER = "^[0-9a-zA-Z]+$";
 		java.util.Date u_now = new java.util.Date();
 		java.sql.Date now = new java.sql.Date(u_now.getTime());
 
-		String call = "";
+		//String call = "";
 		String temp = "が不正です<br>";
 		String void_c = "が入力可能文字数を超えています<br>";
 		String zero_c = "を入力してください<br>";

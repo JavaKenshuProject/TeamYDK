@@ -167,17 +167,18 @@ public class EmployeeDAO {
 	public void employeeInsert(EmployeeBean employee) throws ServletServiceException {
 
 		boolean flag = false;
+		String call = "";
 
 		ArrayList<EmployeeBean> emp_all_list = new EmployeeDAO().employeeAllGet();
 		if (!(CheckFormat.checkPK_empCode(employee, emp_all_list))) {
-			throw new ServletServiceException("従業員コードが重複しています");
+			call = call + "従業員コードが重複しています<br>";
 		}
 		if ((employee.getEmp_code() != null) && (employee.getLicense_cd_SQLinsert() != null)
 				&& (employee.getGet_license_date_SQLinsert() != null)) {
 			flag =true;
 		}
 
-		CheckFormat.checkEmployeeBean(employee,flag);
+		CheckFormat.checkEmployeeBean(employee,flag,call);
 
 		ConnectionManager cm = ConnectionManager.getInstance();
 
@@ -246,10 +247,11 @@ public class EmployeeDAO {
 	public void employeeUpdate(EmployeeBean employee) throws ServletServiceException {
 
 		boolean flag = false;
+		String call = "";
 
 		ArrayList<EmployeeBean> emp_all_list = new EmployeeDAO().employeeAllGet();
 		if (CheckFormat.checkPK_empCode(employee, emp_all_list)) {
-			throw new ServletServiceException("従業員コードが存在しません");
+			call = call + "従業員コードが存在しません<br>";
 		}
 
 		if ((employee.getEmp_code() != null) && (employee.getLicense_cd_SQLinsert() != null)
@@ -257,12 +259,12 @@ public class EmployeeDAO {
 			if(CheckFormat.checkPK_t_get_license(employee, emp_all_list)){
 				flag = true;
 			}else{
-				throw new ServletServiceException("すでに取得済みの資格です<br>");
+				call = call + "すでに取得済みの資格です<br>";
 			}
 
 		}
 
-		CheckFormat.checkEmployeeBean(employee,flag);
+		CheckFormat.checkEmployeeBean(employee,flag,call);
 
 		ConnectionManager cm = ConnectionManager.getInstance();
 
