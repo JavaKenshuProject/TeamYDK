@@ -40,7 +40,7 @@
 				</tr>
 				<tr>
 					<th>«•Ê</th>
-					<td><input type="radio" name="sex" value="0">’j <input
+					<td><input type="radio" name="sex" value="0" checked="checked">’j <input
 						type="radio" name="sex" value="1">—</td>
 				</tr>
 				<tr>
