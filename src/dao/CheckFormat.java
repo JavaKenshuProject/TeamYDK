@@ -341,11 +341,16 @@ public class CheckFormat {
 		String void_c = "が入力可能文字数を超えています<br>";
 		String zero_c = "を入力してください<br>";
 		boolean flag = false;
+		boolean flag2 = false;
 
 		for(LicenseBean license_loop : license_list){
 			if(license.getLicense_name().equals(license_loop.getLicense_name())){
 				flag = true;
 			}
+		}
+
+		if (!(CheckFormat.checkPK_license(license, license_list))) {
+			flag2 = true;
 		}
 
 		if (license.getLicense_cd() == null) {
@@ -356,6 +361,8 @@ public class CheckFormat {
 			call = call + "資格コード" + zero_c;
 		} else if ((license.getLicense_cd().matches(ALPHA_NUMBER) == false)) {
 			call = call + "資格コードは半角英数字のみで入力してください<br>";
+		}else if(flag2){
+			call = call + "資格コードが重複しています<br>";
 		}
 
 		if (license.getLicense_name() == null) {
