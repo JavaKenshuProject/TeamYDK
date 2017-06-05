@@ -22,22 +22,22 @@ public class UserDAO {
 
 		ConnectionManager cm = ConnectionManager.getInstance();
 
-		ArrayList<UserBean> UserList = new ArrayList<UserBean>();
+		ArrayList<UserBean> userList = new ArrayList<UserBean>();
 
-		String user_sql = "SELECT * FROM m_user";
+		String userSql = "SELECT * FROM m_user";
 		try (Connection con = cm.getConnection();
-				PreparedStatement user_pstmt = con.prepareStatement(user_sql);
-				ResultSet user_res = user_pstmt.executeQuery();) {
+				PreparedStatement userPstmt = con.prepareStatement(userSql);
+				ResultSet userRes = userPstmt.executeQuery();) {
 
-			while (user_res.next()) {
+			while (userRes.next()) {
 				UserBean user = new UserBean();
 
 				// m_employee
-				user.setUser_id(user_res.getString("user_id"));
-				user.setPassword(user_res.getString("password"));
-				user.setUpdate_date(user_res.getTimestamp("update_date"));
+				user.setUser_id(userRes.getString("user_id"));
+				user.setPassword(userRes.getString("password"));
+				user.setUpdate_date(userRes.getTimestamp("update_date"));
 
-				UserList.add(user);
+				userList.add(user);
 			}
 
 		} catch (SQLException e) {
@@ -46,7 +46,7 @@ public class UserDAO {
 		} finally {
 			cm.closeConnection();
 		}
-		return UserList;
+		return userList;
 	}
 
 	/**
@@ -57,8 +57,8 @@ public class UserDAO {
 	public void userInsert(UserBean user) throws ServletServiceException {
 
 		String call = "";
-		ArrayList<UserBean> user_all_list = new UserDAO().userAllGet();
-		if (!(CheckFormat.checkPK_user(user, user_all_list))) {
+		ArrayList<UserBean> userAllList = new UserDAO().userAllGet();
+		if (!(CheckFormat.checkPkUser(user, userAllList))) {
 			call = call + "ユーザIDが重複しています";
 		}
 
@@ -66,17 +66,17 @@ public class UserDAO {
 
 		ConnectionManager cm = ConnectionManager.getInstance();
 
-		String user_sql = "INSERT INTO m_user (user_id,password) VALUES (?,?)";
+		String userSql = "INSERT INTO m_user (user_id,password) VALUES (?,?)";
 
-		try (Connection con = cm.getConnection(); PreparedStatement user_pstmt = con.prepareStatement(user_sql);) {
+		try (Connection con = cm.getConnection(); PreparedStatement userPstmt = con.prepareStatement(userSql);) {
 			try {
 				con.setAutoCommit(false);
 
 				// m_employee
-				user_pstmt.setString(1, user.getUser_id());
-				user_pstmt.setString(2, user.getPassword());
+				userPstmt.setString(1, user.getUser_id());
+				userPstmt.setString(2, user.getPassword());
 
-				user_pstmt.executeUpdate();
+				userPstmt.executeUpdate();
 
 				con.commit();
 			} catch (SQLException e) {
@@ -104,16 +104,16 @@ public class UserDAO {
 	 */
 	public void userDelete(UserBean user) throws ServletServiceException {
 
-		ArrayList<UserBean> user_all_list = new UserDAO().userAllGet();
-		if (CheckFormat.checkPK_user(user, user_all_list)) {
+		ArrayList<UserBean> userAllList = new UserDAO().userAllGet();
+		if (CheckFormat.checkPkUser(user, userAllList)) {
 			throw new ServletServiceException("ユーザIDが存在しません");
 		}
 
 		ConnectionManager cm = ConnectionManager.getInstance();
 
-		String user_sql = "DELETE FROM m_user WHERE user_id = ?";
+		String userSql = "DELETE FROM m_user WHERE user_id = ?";
 
-		try (Connection con = cm.getConnection(); PreparedStatement user_pstmt = con.prepareStatement(user_sql);) {
+		try (Connection con = cm.getConnection(); PreparedStatement user_pstmt = con.prepareStatement(userSql);) {
 			try {
 				con.setAutoCommit(false);
 

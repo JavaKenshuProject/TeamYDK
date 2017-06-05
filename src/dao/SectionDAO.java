@@ -21,21 +21,21 @@ public class SectionDAO {
 
 		ConnectionManager cm = ConnectionManager.getInstance();
 
-		ArrayList<SectionBean> SectionList = new ArrayList<SectionBean>();
+		ArrayList<SectionBean> sectionList = new ArrayList<SectionBean>();
 
-		String section_sql = "SELECT * FROM m_section";
+		String sectionSql = "SELECT * FROM m_section";
 		try (Connection con = cm.getConnection();
-				PreparedStatement section_pstmt = con.prepareStatement(section_sql);
-				ResultSet section_res = section_pstmt.executeQuery();) {
+				PreparedStatement sectionPstmt = con.prepareStatement(sectionSql);
+				ResultSet sectionRes = sectionPstmt.executeQuery();) {
 
-			while (section_res.next()) {
+			while (sectionRes.next()) {
 				SectionBean section = new SectionBean();
 
 				// m_employee
-				section.setSection_code(section_res.getString("section_code"));
-				section.setSection_name(section_res.getString("section_name"));
+				section.setSection_code(sectionRes.getString("section_code"));
+				section.setSection_name(sectionRes.getString("section_name"));
 
-				SectionList.add(section);
+				sectionList.add(section);
 			}
 
 		} catch (SQLException e) {
@@ -44,7 +44,7 @@ public class SectionDAO {
 		} finally {
 			cm.closeConnection();
 		}
-		return SectionList;
+		return sectionList;
 	}
 
 }

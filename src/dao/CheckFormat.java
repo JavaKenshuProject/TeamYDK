@@ -148,60 +148,60 @@ public class CheckFormat {
 	 */
 	public static void checkEmployeeBean(EmployeeBean employee, boolean flag, String call)
 			throws ServletServiceException {
-		String KATAKANA = "^[\\u30A0-\\u30FF]+$";
-		String ALPHA_NUMBER = "^[0-9a-zA-Z]+$";
-		java.util.Date u_now = new java.util.Date();
-		java.sql.Date now = new java.sql.Date(u_now.getTime());
+		String katakana = "^[\\u30A0-\\u30FF]+$";
+		String alphaNumber = "^[0-9a-zA-Z]+$";
+		java.util.Date uNow = new java.util.Date();
+		java.sql.Date now = new java.sql.Date(uNow.getTime());
 
 		// String call = "";
 		String temp = "が不正です<br>";
-		String void_c = "が入力可能文字数を超えています<br>";
-		String zero_c = "を入力してください<br>";
+		String voidC = "が入力可能文字数を超えています<br>";
+		String zeroC = "を入力してください<br>";
 		String kana = "をカタカナで記入してください<br>";
 
 		if (employee.getEmp_code() == null) {
 			call = call + "従業員コード" + temp;
 		} else if (checkSize31J(employee.getEmp_code(), 4) == false) {
-			call = call + "従業員コード" + void_c;
+			call = call + "従業員コード" + voidC;
 		} else if (checkZero31J(employee.getEmp_code()) == false) {
-			call = call + "従業員コード" + zero_c;
-		} else if ((employee.getEmp_code().matches(ALPHA_NUMBER) == false)) {
+			call = call + "従業員コード" + zeroC;
+		} else if ((employee.getEmp_code().matches(alphaNumber) == false)) {
 			call = call + "従業員コードは半角英数字のみで入力してください<br>";
 		}
 
 		if (employee.getL_name() == null) {
 			call = call + "氏" + temp;
 		} else if (checkSize31J(employee.getL_name(), 16) == false) {
-			call = call + "氏" + void_c;
+			call = call + "氏" + voidC;
 		} else if (checkZero31J(employee.getL_name()) == false) {
-			call = call + "氏" + zero_c;
+			call = call + "氏" + zeroC;
 		}
 
 		if (employee.getF_name() == null) {
 			call = call + "名" + temp;
 		} else if (checkSize31J(employee.getF_name(), 16) == false) {
-			call = call + "名" + void_c;
+			call = call + "名" + voidC;
 		} else if (checkZero31J(employee.getF_name()) == false) {
-			call = call + "名" + zero_c;
+			call = call + "名" + zeroC;
 		}
 
 		if (employee.getL_kana_name() == null) {
 			call = call + "氏(カナ)" + temp;
 		} else if (checkSize31J(employee.getL_kana_name(), 24) == false) {
-			call = call + "氏(カナ)" + void_c;
+			call = call + "氏(カナ)" + voidC;
 		} else if (checkZero31J(employee.getL_kana_name()) == false) {
-			call = call + "氏(カナ)" + zero_c;
-		} else if (employee.getL_kana_name().matches(KATAKANA) == false) {
+			call = call + "氏(カナ)" + zeroC;
+		} else if (employee.getL_kana_name().matches(katakana) == false) {
 			call = call + "氏(カナ)" + kana;
 		}
 
 		if (employee.getF_kana_name() == null) {
 			call = call + "名(カナ)" + temp;
 		} else if (checkSize31J(employee.getF_kana_name(), 24) == false) {
-			call = call + "名(カナ)" + void_c;
+			call = call + "名(カナ)" + voidC;
 		} else if (checkZero31J(employee.getF_kana_name()) == false) {
-			call = call + "名(カナ)" + zero_c;
-		} else if (employee.getF_kana_name().matches(KATAKANA) == false) {
+			call = call + "名(カナ)" + zeroC;
+		} else if (employee.getF_kana_name().matches(katakana) == false) {
 			call = call + "名(カナ)" + kana;
 		}
 
@@ -218,9 +218,9 @@ public class CheckFormat {
 		if (employee.getSection_code() == null) {
 			call = call + "所属コード" + temp;
 		} else if (checkSize31J(employee.getSection_code(), 2) == false) {
-			call = call + "所属コード" + void_c;
+			call = call + "所属コード" + voidC;
 		} else if (checkZero31J(employee.getSection_code()) == false) {
-			call = call + "所属コード" + zero_c;
+			call = call + "所属コード" + zeroC;
 		}
 
 		if ((employee.getEmp_date() == null) || (checkDate(employee.getEmp_date()) == false)) {
@@ -247,22 +247,22 @@ public class CheckFormat {
 	 * @throws ServletServiceException
 	 */
 	public static String checkTGetLicense(EmployeeBean employee) {
-		String ALPHA_NUMBER = "^[0-9a-zA-Z]+$";
-		java.util.Date u_now = new java.util.Date();
-		java.sql.Date now = new java.sql.Date(u_now.getTime());
+		String alphaNumber = "^[0-9a-zA-Z]+$";
+		java.util.Date uNow = new java.util.Date();
+		java.sql.Date now = new java.sql.Date(uNow.getTime());
 
 		String call = "";
 		String temp = "が不正です<br>";
-		String void_c = "が入力可能文字数を超えています<br>";
-		String zero_c = "を入力してください<br>";
+		String voidC = "が入力可能文字数を超えています<br>";
+		String zeroC = "を入力してください<br>";
 
 		if (employee.getLicense_cd_SQLinsert() == null) {
 			call = call + "資格コード" + temp;
 		} else if (checkSize31J(employee.getLicense_cd_SQLinsert(), 5) == false) {
-			call = call + "資格コード" + void_c;
+			call = call + "資格コード" + voidC;
 		} else if (checkZero31J(employee.getLicense_cd_SQLinsert()) == false) {
-			call = call + "資格コード" + zero_c;
-		} else if ((employee.getLicense_cd_SQLinsert().matches(ALPHA_NUMBER) == false)) {
+			call = call + "資格コード" + zeroC;
+		} else if ((employee.getLicense_cd_SQLinsert().matches(alphaNumber) == false)) {
 			call = call + "資格コードは半角英数字のみで入力してください<br>";
 		}
 
@@ -287,28 +287,28 @@ public class CheckFormat {
 	 * @throws ServletServiceException
 	 */
 	public static void checkUserBean(UserBean user, String call) throws ServletServiceException {
-		String ALPHA_NUMBER = "^[0-9a-zA-Z]+$";
+		String alphaNumber = "^[0-9a-zA-Z]+$";
 		String temp = "が不正です\n";
-		String void_c = "が入力可能文字数を超えています<br>";
-		String zero_c = "を入力してください<br>";
+		String voidC = "が入力可能文字数を超えています<br>";
+		String zeroC = "を入力してください<br>";
 
 		if (checkSize31J(user.getUser_id(), 24) == false) {
 			call = call + "ユーザID" + temp;
 		} else if (checkSize31J(user.getUser_id(), 24) == false) {
-			call = call + "ユーザID" + void_c;
+			call = call + "ユーザID" + voidC;
 		} else if (checkZero31J(user.getUser_id()) == false) {
-			call = call + "ユーザID" + zero_c;
-		} else if ((user.getUser_id().matches(ALPHA_NUMBER) == false)) {
+			call = call + "ユーザID" + zeroC;
+		} else if ((user.getUser_id().matches(alphaNumber) == false)) {
 			call = call + "ユーザIDは半角英数字のみで入力してください<br>";
 		}
 
 		if (user.getPassword() == null) {
 			call = call + "パスワード" + temp;
 		} else if (checkSize31J(user.getPassword(), 32) == false) {
-			call = call + "パスワード" + void_c;
+			call = call + "パスワード" + voidC;
 		} else if (checkZero31J(user.getPassword()) == false) {
-			call = call + "パスワード" + zero_c;
-		} else if ((user.getPassword().matches(ALPHA_NUMBER) == false)) {
+			call = call + "パスワード" + zeroC;
+		} else if ((user.getPassword().matches(alphaNumber) == false)) {
 			call = call + "パスワードは半角英数字のみで入力してください<br>";
 		}
 
@@ -325,27 +325,27 @@ public class CheckFormat {
 	 * @throws ServletServiceException
 	 */
 	public static void checkLicenseBean(LicenseBean license, String call) throws ServletServiceException {
-		String ALPHA_NUMBER = "^[0-9a-zA-Z]+$";
+		String alphaNumber = "^[0-9a-zA-Z]+$";
 		String temp = "が不正です\n";
-		String void_c = "が入力可能文字数を超えています<br>";
-		String zero_c = "を入力してください<br>";
+		String voidC = "が入力可能文字数を超えています<br>";
+		String zeroC = "を入力してください<br>";
 
 		if (license.getLicense_cd() == null) {
 			call = call + "資格コード" + temp;
 		} else if (checkSize31J(license.getLicense_cd(), 5) == false) {
-			call = call + "資格コード" + void_c;
+			call = call + "資格コード" + voidC;
 		} else if (checkZero31J(license.getLicense_cd()) == false) {
-			call = call + "資格コード" + zero_c;
-		} else if ((license.getLicense_cd().matches(ALPHA_NUMBER) == false)) {
+			call = call + "資格コード" + zeroC;
+		} else if ((license.getLicense_cd().matches(alphaNumber) == false)) {
 			call = call + "資格コードは半角英数字のみで入力してください<br>";
 		}
 
 		if (license.getLicense_name() == null) {
 			call = call + "資格名" + temp;
 		} else if (checkSize31J(license.getLicense_name(), 100) == false) {
-			call = call + "資格名" + void_c;
+			call = call + "資格名" + voidC;
 		} else if (checkZero31J(license.getLicense_name()) == false) {
-			call = call + "資格名" + zero_c;
+			call = call + "資格名" + zeroC;
 		}
 
 		if (!(call.equals(""))) {
@@ -360,7 +360,7 @@ public class CheckFormat {
 	 * @param employee
 	 * @throws ServletServiceException
 	 */
-	public static boolean checkPK_empCode(EmployeeBean employee, ArrayList<EmployeeBean> emp_list)
+	public static boolean checkPkEmpCode(EmployeeBean employee, ArrayList<EmployeeBean> emp_list)
 			throws ServletServiceException {
 		boolean flag = true;
 		if (employee.getEmp_code() == null) {
@@ -383,7 +383,7 @@ public class CheckFormat {
 	 * @param employee
 	 * @throws ServletServiceException
 	 */
-	public static boolean checkPK_t_get_license(EmployeeBean employee, ArrayList<EmployeeBean> emp_list) {
+	public static boolean checkPkTGetLicense(EmployeeBean employee, ArrayList<EmployeeBean> emp_list) {
 		boolean flag = true;
 		for (EmployeeBean all_emp : emp_list) {
 			for (String string : all_emp.getLicense_cd()) {
@@ -405,7 +405,7 @@ public class CheckFormat {
 	 * @param license
 	 * @throws ServletServiceException
 	 */
-	public static boolean checkPK_license(LicenseBean license, ArrayList<LicenseBean> license_list)
+	public static boolean checkPkLicense(LicenseBean license, ArrayList<LicenseBean> license_list)
 			throws ServletServiceException {
 		boolean flag = true;
 		if (license.getLicense_cd() == null) {
@@ -426,7 +426,7 @@ public class CheckFormat {
 	 * @param user
 	 * @throws ServletServiceException
 	 */
-	public static boolean checkPK_user(UserBean user, ArrayList<UserBean> user_list) throws ServletServiceException {
+	public static boolean checkPkUser(UserBean user, ArrayList<UserBean> user_list) throws ServletServiceException {
 		boolean flag = true;
 		if (user.getUser_id() == null) {
 			throw new ServletServiceException("ユーザIDが不正です");

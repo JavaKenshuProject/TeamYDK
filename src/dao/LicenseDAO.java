@@ -22,21 +22,21 @@ public class LicenseDAO {
 
 		ConnectionManager cm = ConnectionManager.getInstance();
 
-		ArrayList<LicenseBean> LicenseList = new ArrayList<LicenseBean>();
+		ArrayList<LicenseBean> licenseList = new ArrayList<LicenseBean>();
 
-		String license_sql = "SELECT * FROM m_license";
+		String licenseSql = "SELECT * FROM m_license";
 		try (Connection con = cm.getConnection();
-				PreparedStatement license_pstmt = con.prepareStatement(license_sql);
-				ResultSet license_res = license_pstmt.executeQuery();) {
+				PreparedStatement licensePstmt = con.prepareStatement(licenseSql);
+				ResultSet licenseRes = licensePstmt.executeQuery();) {
 
-			while (license_res.next()) {
+			while (licenseRes.next()) {
 				LicenseBean license = new LicenseBean();
 
 				// m_employee
-				license.setLicense_cd(license_res.getString("license_cd"));
-				license.setLicense_name(license_res.getString("license_name"));
+				license.setLicense_cd(licenseRes.getString("license_cd"));
+				license.setLicense_name(licenseRes.getString("license_name"));
 
-				LicenseList.add(license);
+				licenseList.add(license);
 			}
 
 		} catch (SQLException e) {
@@ -45,7 +45,7 @@ public class LicenseDAO {
 		} finally {
 			cm.closeConnection();
 		}
-		return LicenseList;
+		return licenseList;
 	}
 
 	/**
@@ -55,15 +55,15 @@ public class LicenseDAO {
 	 */
 	public void licenseInsert(LicenseBean license) throws ServletServiceException {
 
-		ArrayList<LicenseBean> license_all_list = new LicenseDAO().licenseAllGet();
+		ArrayList<LicenseBean> licenseAllList = new LicenseDAO().licenseAllGet();
 		String call = "";
-		for (LicenseBean license_loop : license_all_list) {
-			if (license.getLicense_name().equals(license_loop.getLicense_name())) {
+		for (LicenseBean licenseLoop : licenseAllList) {
+			if (license.getLicense_name().equals(licenseLoop.getLicense_name())) {
 				call = call + "資格コードが重複しています<br>";
 			}
 		}
 
-		if (!(CheckFormat.checkPK_license(license, license_all_list))) {
+		if (!(CheckFormat.checkPkLicense(license, licenseAllList))) {
 			call = call + "資格名が重複しています<br>";
 		}
 
@@ -74,15 +74,15 @@ public class LicenseDAO {
 		String license_sql = "INSERT INTO m_license (license_cd,license_name) VALUES (?,?)";
 
 		try (Connection con = cm.getConnection();
-				PreparedStatement license_pstmt = con.prepareStatement(license_sql);) {
+				PreparedStatement licensePstmt = con.prepareStatement(license_sql);) {
 			try {
 				con.setAutoCommit(false);
 
 				// m_employee
-				license_pstmt.setString(1, license.getLicense_cd());
-				license_pstmt.setString(2, license.getLicense_name());
+				licensePstmt.setString(1, license.getLicense_cd());
+				licensePstmt.setString(2, license.getLicense_name());
 
-				license_pstmt.executeUpdate();
+				licensePstmt.executeUpdate();
 
 				con.commit();
 			} catch (SQLException e) {
@@ -110,24 +110,24 @@ public class LicenseDAO {
 	 */
 	public void licenseDelete(LicenseBean license) throws ServletServiceException {
 
-		ArrayList<LicenseBean> license_all_list = new LicenseDAO().licenseAllGet();
-		if (CheckFormat.checkPK_license(license, license_all_list)) {
+		ArrayList<LicenseBean> licenseAllList = new LicenseDAO().licenseAllGet();
+		if (CheckFormat.checkPkLicense(license, licenseAllList)) {
 			throw new ServletServiceException("資格コードが存在しません");
 		}
 
 		ConnectionManager cm = ConnectionManager.getInstance();
 
-		String license_sql = "DELETE FROM m_license WHERE license_cd = ?";
+		String licenseSql = "DELETE FROM m_license WHERE license_cd = ?";
 
 		try (Connection con = cm.getConnection();
-				PreparedStatement license_pstmt = con.prepareStatement(license_sql);) {
+				PreparedStatement licensePstmt = con.prepareStatement(licenseSql);) {
 			try {
 				con.setAutoCommit(false);
 
 				// m_employee
-				license_pstmt.setString(1, license.getLicense_cd());
+				licensePstmt.setString(1, license.getLicense_cd());
 
-				license_pstmt.executeUpdate();
+				licensePstmt.executeUpdate();
 
 				con.commit();
 			} catch (SQLException e) {

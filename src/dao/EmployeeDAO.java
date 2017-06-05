@@ -25,13 +25,13 @@ public class EmployeeDAO {
 	 * @return
 	 * @throws SQLException
 	 */
-	private EmployeeBean m_sectionGet(Connection con, EmployeeBean employee) throws SQLException {
-		String section_sql = "SELECT * FROM m_section WHERE section_code = ?";
+	private EmployeeBean mSectionGet(Connection con, EmployeeBean employee) throws SQLException {
+		String sectionSql = "SELECT * FROM m_section WHERE section_code = ?";
 
-		try (PreparedStatement section_pstmt = con.prepareStatement(section_sql);) {
+		try (PreparedStatement sectionPstmt = con.prepareStatement(sectionSql);) {
 
-			section_pstmt.setString(1, employee.getSection_code());
-			try (ResultSet section_res = section_pstmt.executeQuery();) {
+			sectionPstmt.setString(1, employee.getSection_code());
+			try (ResultSet section_res = sectionPstmt.executeQuery();) {
 				if (section_res.next()) {
 					// m_section
 					employee.setSection_name(section_res.getString("section_name"));
@@ -55,23 +55,23 @@ public class EmployeeDAO {
 	 * @return
 	 * @throws SQLException
 	 */
-	private EmployeeBean t_get_licenseGet(Connection con, EmployeeBean employee) throws SQLException {
-		String get_license_sql = "SELECT * FROM t_get_license WHERE emp_code = ?";
-		try (PreparedStatement get_license_pstmt = con.prepareStatement(get_license_sql);) {
+	private EmployeeBean tGetLicenseGet(Connection con, EmployeeBean employee) throws SQLException {
+		String getLicenseSql = "SELECT * FROM t_get_license WHERE emp_code = ?";
+		try (PreparedStatement getLicensePstmt = con.prepareStatement(getLicenseSql);) {
 
-			get_license_pstmt.setString(1, employee.getEmp_code());
-			try (ResultSet get_license_res = get_license_pstmt.executeQuery();) {
-				ArrayList<String> license_cd = new ArrayList<String>();
-				ArrayList<String> license_date = new ArrayList<String>();
+			getLicensePstmt.setString(1, employee.getEmp_code());
+			try (ResultSet getLicenseRes = getLicensePstmt.executeQuery();) {
+				ArrayList<String> licenseCd = new ArrayList<String>();
+				ArrayList<String> licenseDate = new ArrayList<String>();
 
-				while (get_license_res.next()) {
-					license_cd.add(get_license_res.getString("license_cd"));
-					license_date.add(CheckFormat.convertDate2String(get_license_res.getDate("get_license_date")));
+				while (getLicenseRes.next()) {
+					licenseCd.add(getLicenseRes.getString("license_cd"));
+					licenseDate.add(CheckFormat.convertDate2String(getLicenseRes.getDate("get_license_date")));
 				}
 
 				// t_get_license
-				employee.setLicense_cd(license_cd);
-				employee.setGet_license_date(license_date);
+				employee.setLicense_cd(licenseCd);
+				employee.setGet_license_date(licenseDate);
 			} catch (SQLException e) {
 				throw e;
 			}
@@ -89,25 +89,25 @@ public class EmployeeDAO {
 	 * @return
 	 * @throws SQLException
 	 */
-	private EmployeeBean m_licenseGet(Connection con, EmployeeBean employee) throws SQLException {
+	private EmployeeBean mLicenseGet(Connection con, EmployeeBean employee) throws SQLException {
 
-		String license_sql = "SELECT * FROM m_license WHERE license_cd = ?";
-		ArrayList<String> license_name = new ArrayList<String>();
-		try (PreparedStatement license_pstmt = con.prepareStatement(license_sql);) {
+		String licenseSql = "SELECT * FROM m_license WHERE license_cd = ?";
+		ArrayList<String> licenseName = new ArrayList<String>();
+		try (PreparedStatement licensePstmt = con.prepareStatement(licenseSql);) {
 			for (int i = 0; employee.getLicense_cd().size() > i; i++) {
 				String license_ = employee.getLicense_cd().get(i);
-				license_pstmt.setString(1, license_);
-				try (ResultSet license_res = license_pstmt.executeQuery();) {
+				licensePstmt.setString(1, license_);
+				try (ResultSet licenseRes = licensePstmt.executeQuery();) {
 
-					if (license_res.next()) {
+					if (licenseRes.next()) {
 						// m_license
-						license_name.add(license_res.getString("license_name"));
+						licenseName.add(licenseRes.getString("license_name"));
 					}
 				} catch (SQLException e) {
 					throw e;
 				}
 			}
-			employee.setLicense_name(license_name);
+			employee.setLicense_name(licenseName);
 		} catch (SQLException e) {
 			throw e;
 		}
@@ -143,9 +143,9 @@ public class EmployeeDAO {
 				employee.setEmp_date(CheckFormat.convertDate2String(emp_res.getDate("emp_date")));
 				employee.setUpdate_date(emp_res.getTimestamp("update_date"));
 
-				employee = m_sectionGet(con, employee);
-				employee = t_get_licenseGet(con, employee);
-				employee = m_licenseGet(con, employee);
+				employee = mSectionGet(con, employee);
+				employee = tGetLicenseGet(con, employee);
+				employee = mLicenseGet(con, employee);
 
 				employeeList.add(employee);
 			}
@@ -169,8 +169,8 @@ public class EmployeeDAO {
 		boolean flag = false;
 		String call = "";
 
-		ArrayList<EmployeeBean> emp_all_list = new EmployeeDAO().employeeAllGet();
-		if (!(CheckFormat.checkPK_empCode(employee, emp_all_list))) {
+		ArrayList<EmployeeBean> empAllList = new EmployeeDAO().employeeAllGet();
+		if (!(CheckFormat.checkPkEmpCode(employee, empAllList))) {
 			call = call + "従業員コードが重複しています<br>";
 		}
 		if ((employee.getEmp_code() != null) && (employee.getLicense_cd_SQLinsert() != null)
@@ -182,10 +182,10 @@ public class EmployeeDAO {
 
 		ConnectionManager cm = ConnectionManager.getInstance();
 
-		String m_emp_sql = "INSERT INTO m_employee (emp_code,l_name,f_name,l_kana_name,f_kana_name,sex,birth_day,section_code,emp_date) VALUES (?,?,?,?,?,?,?,?,?)";
-		String t_get_license_sql = "INSERT INTO t_get_license (emp_code,license_cd,get_license_date) VALUES (?,?,?)";
+		String mEmpSql = "INSERT INTO m_employee (emp_code,l_name,f_name,l_kana_name,f_kana_name,sex,birth_day,section_code,emp_date) VALUES (?,?,?,?,?,?,?,?,?)";
+		String tGetLicenseSql = "INSERT INTO t_get_license (emp_code,license_cd,get_license_date) VALUES (?,?,?)";
 
-		try (Connection con = cm.getConnection(); PreparedStatement emp_pstmt = con.prepareStatement(m_emp_sql);) {
+		try (Connection con = cm.getConnection(); PreparedStatement emp_pstmt = con.prepareStatement(mEmpSql);) {
 			try {
 				con.setAutoCommit(false);
 
@@ -205,7 +205,7 @@ public class EmployeeDAO {
 				if ((employee.getEmp_code() != null) && (employee.getLicense_cd_SQLinsert() != null)
 						&& (employee.getGet_license_date_SQLinsert() != null)) {
 
-					try (PreparedStatement get_license_pstmt = con.prepareStatement(t_get_license_sql);) {
+					try (PreparedStatement get_license_pstmt = con.prepareStatement(tGetLicenseSql);) {
 						// t_get_license
 						get_license_pstmt.setString(1, employee.getEmp_code());
 						get_license_pstmt.setString(2, employee.getLicense_cd_SQLinsert());
@@ -249,14 +249,14 @@ public class EmployeeDAO {
 		boolean flag = false;
 		String call = "";
 
-		ArrayList<EmployeeBean> emp_all_list = new EmployeeDAO().employeeAllGet();
-		if (CheckFormat.checkPK_empCode(employee, emp_all_list)) {
+		ArrayList<EmployeeBean> empAllList = new EmployeeDAO().employeeAllGet();
+		if (CheckFormat.checkPkEmpCode(employee, empAllList)) {
 			call = call + "従業員コードが存在しません<br>";
 		}
 
 		if ((employee.getEmp_code() != null) && (employee.getLicense_cd_SQLinsert() != null)
 				&& (employee.getGet_license_date_SQLinsert() != null)) {
-			if (CheckFormat.checkPK_t_get_license(employee, emp_all_list)) {
+			if (CheckFormat.checkPkTGetLicense(employee, empAllList)) {
 				flag = true;
 			} else {
 				call = call + "すでに取得済みの資格です<br>";
@@ -268,9 +268,9 @@ public class EmployeeDAO {
 
 		ConnectionManager cm = ConnectionManager.getInstance();
 
-		String m_emp_sql = "UPDATE m_employee SET l_name = ?, f_name = ?, l_kana_name = ?, f_kana_name = ?, sex = ?, birth_day = ?, section_code = ?, emp_date = ? WHERE emp_code = ?";
-		String t_get_license_sql = "INSERT INTO t_get_license (emp_code,license_cd,get_license_date) VALUES (?,?,?)";
-		try (Connection con = cm.getConnection(); PreparedStatement emp_pstmt = con.prepareStatement(m_emp_sql);) {
+		String mEmpSql = "UPDATE m_employee SET l_name = ?, f_name = ?, l_kana_name = ?, f_kana_name = ?, sex = ?, birth_day = ?, section_code = ?, emp_date = ? WHERE emp_code = ?";
+		String tGetLicenseSql = "INSERT INTO t_get_license (emp_code,license_cd,get_license_date) VALUES (?,?,?)";
+		try (Connection con = cm.getConnection(); PreparedStatement emp_pstmt = con.prepareStatement(mEmpSql);) {
 			try {
 				con.setAutoCommit(false);
 
@@ -290,8 +290,8 @@ public class EmployeeDAO {
 				// t_get_license
 				if ((employee.getEmp_code() != null) && (employee.getLicense_cd_SQLinsert() != null)
 						&& (employee.getGet_license_date_SQLinsert() != null)
-						&& (CheckFormat.checkPK_t_get_license(employee, emp_all_list))) {
-					try (PreparedStatement get_license_pstmt = con.prepareStatement(t_get_license_sql);) {
+						&& (CheckFormat.checkPkTGetLicense(employee, empAllList))) {
+					try (PreparedStatement get_license_pstmt = con.prepareStatement(tGetLicenseSql);) {
 						get_license_pstmt.setString(1, employee.getEmp_code());
 						get_license_pstmt.setString(2, employee.getLicense_cd_SQLinsert());
 						get_license_pstmt.setDate(3,
@@ -328,15 +328,15 @@ public class EmployeeDAO {
 	 */
 	public void employeeDelete(EmployeeBean employee) throws ServletServiceException {
 
-		ArrayList<EmployeeBean> emp_all_list = new EmployeeDAO().employeeAllGet();
-		if (CheckFormat.checkPK_empCode(employee, emp_all_list)) {
+		ArrayList<EmployeeBean> empAllList = new EmployeeDAO().employeeAllGet();
+		if (CheckFormat.checkPkEmpCode(employee, empAllList)) {
 			throw new ServletServiceException("従業員コードが存在しません");
 		}
 
 		ConnectionManager cm = ConnectionManager.getInstance();
 
-		String m_emp_sql = "DELETE FROM m_employee WHERE emp_code = ?";
-		String t_get_license_sql = "DELETE FROM t_get_license WHERE emp_code = ? ";
+		String mEmpSql = "DELETE FROM m_employee WHERE emp_code = ?";
+		String tGetLicenseSql = "DELETE FROM t_get_license WHERE emp_code = ? ";
 
 		try (Connection con = cm.getConnection();) {
 			try {
@@ -349,7 +349,7 @@ public class EmployeeDAO {
 				}
 
 				// t_get_license
-				try (PreparedStatement get_license_pstmt = con.prepareStatement(t_get_license_sql);) {
+				try (PreparedStatement get_license_pstmt = con.prepareStatement(tGetLicenseSql);) {
 					// t_get_license
 					get_license_pstmt.setString(1, employee.getEmp_code());
 					get_license_pstmt.executeUpdate();
@@ -357,7 +357,7 @@ public class EmployeeDAO {
 					throw e;
 				}
 
-				try (PreparedStatement emp_pstmt = con.prepareStatement(m_emp_sql);) {
+				try (PreparedStatement emp_pstmt = con.prepareStatement(mEmpSql);) {
 					// m_employee
 					emp_pstmt.setString(1, employee.getEmp_code());
 					emp_pstmt.executeUpdate();
