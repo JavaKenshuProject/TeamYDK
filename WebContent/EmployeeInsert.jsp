@@ -101,7 +101,7 @@
 				<%
 					ArrayList<LicenseBean> licenseList = (ArrayList<LicenseBean>) request.getAttribute("licenseList");
 				%>
-					<th rowspan="<%=licenseList.size() %>">•Û—LŽ‘Ši</th>
+					<th class="license_insert_th" rowspan="<%=licenseList.size() %>">•Û—LŽ‘Ši</th>
 
 					<%
 						if (licenseList != null) {
