@@ -18,11 +18,11 @@
 			<table class="user_add">
 				<tr>
 					<th>ユーザID</th>
-					<td align="center"><input type="text" name="user_id" placeholder="登録するユーザIDを入力してください" class="user_add_date"></td>
+					<td align="center"><input type="text" name="user_id" placeholder="新規ユーザIDを入力してください" class="user_add_date"></td>
 				</tr>
 				<tr>
 					<th>パスワード</th>
-					<td align="center"><input type="text" name="password" placeholder="登録するパスワードを入力してください" class="user_add_date"></td>
+					<td align="center"><input type="text" name="password" placeholder="新規パスワードを入力してください" class="user_add_date"></td>
 				</tr>
 			</table>
 			<input type="submit" value="登録" name="page" class="botan_get">
