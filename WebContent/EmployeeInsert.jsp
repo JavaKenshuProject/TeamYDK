@@ -113,7 +113,7 @@
 
 						<td class="license_day"><select name="get_year">
 						<%
-						for(int GY= year; GY>=1900; GY++){
+						for(int GY= year; GY>=1900; GY--){
 						%>
 						<option><%= GY %></option>
 						<% } %>

@@ -127,7 +127,7 @@
 			   <select name="getLicenseDay">
 			     <% Calendar cal = Calendar.getInstance(); //カレンダーオブジェクトを取得
                     int year = cal.get(Calendar.YEAR);
-			        for(int j = year; j>=1900; j++){ %>
+			        for(int j = year; j>=1900; j--){ %>
 			       <option>
 			          <%=j %>
 			       </option>
