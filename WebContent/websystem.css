@@ -405,20 +405,39 @@ word-break:break-all;
 }*/
 
 /*-----------------------è]ã∆àıìoò^ÇÃï€óLéëäiÉtÉHÅ[ÉÄ------------------------------*/
-.license_insert{
+
+.licensediv{
 	  width:900px;
       margin:0 auto;
+      height:300px;
+      padding:0;
+      position:relative;
 }
 .license_insert_th{
       background-color:#669999;
       color:#ffffff;
       font-weight:300;
       font-size:20px;
+      line-height:300px;
       padding:0;
+      margin:0 0 0 .5px;
       word-break:break-all;
-      width:167px;
+      width:164.5px;
+      height:300px;
+      position:absolute;
+      left:1.5px;
+      top:0px;
 }
-
+.scroll{
+	overflow-y:scroll;
+	padding:0;
+	height:300px;
+	width:732px;
+	display:block;
+	position:absolute;
+	left:166.5px;
+	top:0px;
+}
 .check{
 	  background-color:#eeeeee;
       width:20px;
@@ -426,13 +445,13 @@ word-break:break-all;
 
 .license_insert_name{
 	  background-color:#eeeeee;
-      width:500px;
+      width:503px;
       word-break:break-all;
 }
 
 .license_day{
 	 background-color:#eeeeee;
-      width:210px;
+      width:307px;
       text-align:center;
       padding:0;
       word-break:break-all;
