@@ -55,19 +55,19 @@ public class DeleteServlet extends HttpServlet {
 
 		int val = -1;
 		try{
-			String c_emp = request.getParameter("employee");
-			if(c_emp == null){
+			String cEmp = request.getParameter("employee");
+			if(cEmp == null){
 				throw new ServletServiceException("チェックボックスにチェックを入れてください");
 			}
-			val = Integer.parseInt(c_emp);
+			val = Integer.parseInt(cEmp);
 		}catch(NumberFormatException e){
 			throw new ServletException();
 		}
 
 		if(val != -1){
 			EmployeeDAO dao = new EmployeeDAO();
-			ArrayList<EmployeeBean> emp_list = dao.employeeAllGet();
-			dao.employeeDelete(emp_list.get(val));
+			ArrayList<EmployeeBean> empList = dao.employeeAllGet();
+			dao.employeeDelete(empList.get(val));
 			url = "DeleteSuccess.jsp";
 		}
 

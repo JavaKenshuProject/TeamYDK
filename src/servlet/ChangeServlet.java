@@ -75,8 +75,8 @@ public class ChangeServlet extends HttpServlet {
 
 			if (page.equals("変更")) {
 
-				String c_emp = request.getParameter("employee");
-				if (c_emp == null) {
+				String cEmp = request.getParameter("employee");
+				if (cEmp == null) {
 					throw new ServletServiceException("チェックボックスにチェックを入れてください");
 				}
 
@@ -96,28 +96,27 @@ public class ChangeServlet extends HttpServlet {
 				/* formの入力 */
 
 
-				String c_emp = request.getParameter("sex");
-				if (c_emp == null) {
+				String cEmp = request.getParameter("sex");
+				if (cEmp == null) {
 					throw new ServletServiceException("性別にチェックを入れてください");
 				}
 
 				int num = Integer.parseInt(request.getParameter("hidden"));
-				String l_name = request.getParameter("l_name");
-				String f_name = request.getParameter("f_name");
-				String l_kana_name = request.getParameter("l_kana_name");
-				String f_kana_name = request.getParameter("f_kana_name");
-				int sex_num = Integer.parseInt(request.getParameter("sex"));
-				byte sex = (byte) sex_num;
-				String section_code = request.getParameter("job");
+				String lName = request.getParameter("l_name");
+				String fName = request.getParameter("f_name");
+				String lKanaName = request.getParameter("l_kana_name");
+				String fKanaName = request.getParameter("f_kana_name");
+				byte sex = (byte)Integer.parseInt(request.getParameter("sex"));
+				String sectionCode = request.getParameter("job");
 
 				ArrayList<EmployeeBean> employeeList = emp.employeeAllGet();
 				empB = employeeList.get(num);
-				empB.setL_name(l_name);
-				empB.setF_name(f_name);
-				empB.setL_kana_name(l_kana_name);
-				empB.setF_kana_name(f_kana_name);
+				empB.setL_name(lName);
+				empB.setF_name(fName);
+				empB.setL_kana_name(lKanaName);
+				empB.setF_kana_name(fKanaName);
 				empB.setSex(sex);
-				empB.setSection_code(section_code);
+				empB.setSection_code(sectionCode);
 				emp.employeeUpdate(empB);
 
 				url = "ChangeSuccess.jsp";

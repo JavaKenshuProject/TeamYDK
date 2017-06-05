@@ -49,7 +49,6 @@ public class ShowServlet extends HttpServlet {
 		response.setCharacterEncoding("Windows-31J");
 
 		//formからの値を取得
-	    String employee = request.getParameter("employee");
 	    String page = request.getParameter("page");
 
 

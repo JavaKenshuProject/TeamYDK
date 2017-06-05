@@ -57,8 +57,8 @@ public class LicenseInsertServlet extends HttpServlet {
 
 		/* formの取得 */
 		String page = request.getParameter("page");
-		String license_name = request.getParameter("license_name");
-		String license_cd =request.getParameter("license_cd");
+		String licenseName = request.getParameter("license_name");
+		String licenseCd =request.getParameter("license_cd");
 
 		/* DAOのインスタンス化 */
 		LicenseDAO lic = new LicenseDAO();
@@ -71,8 +71,8 @@ public class LicenseInsertServlet extends HttpServlet {
 		}
 
 		if(page.equals("追加")){
-			licB.setLicense_cd(license_cd);
-			licB.setLicense_name(license_name);
+			licB.setLicense_cd(licenseCd);
+			licB.setLicense_name(licenseName);
 			lic.licenseInsert(licB);
 
 			url = "LicenseInsertSuccess.jsp";

@@ -54,7 +54,7 @@ public class UserInsertServlet extends HttpServlet {
 
 		/* formの取得 */
 		String page = request.getParameter("page");
-		String user_id = request.getParameter("user_id");
+		String userId = request.getParameter("user_id");
 		String password =request.getParameter("password");
 
 		/* DAOのインスタンス化 */
@@ -68,7 +68,7 @@ public class UserInsertServlet extends HttpServlet {
 		}
 
 		if(page.equals("登録")){
-			user.setUser_id(user_id);
+			user.setUser_id(userId);
 			user.setPassword(password);
 			userD.userInsert(user);
 
