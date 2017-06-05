@@ -32,13 +32,13 @@
 					<td><%=empB.getEmp_code()%></td>
 				<tr>
 					<th>Ž–¼(Š¿Žš)</th>
-					<td>Ž<input type="text" name="l_name" class="textbox">
-						–¼<input type="text" name="f_name" class="textbox"></td>
+					<td>Ž<input type="text" name="l_name" class="textbox" value="<%= empB.getL_name() %>">
+						–¼<input type="text" name="f_name" class="textbox" value="<%= empB.getF_name() %>"></td>
 				</tr>
 				<tr>
 					<th>Ž–¼(ƒJƒi)</th>
-					<td>Ž<input type="text" name="l_kana_name">
-						–¼<input type="text" name="f_kana_name"></td>
+					<td>Ž<input type="text" name="l_kana_name" value="<%= empB.getL_kana_name() %>">
+						–¼<input type="text" name="f_kana_name" value="<%= empB.getF_kana_name() %>"></td>
 				</tr>
 				<tr>
 					<th>«•Ê</th>
