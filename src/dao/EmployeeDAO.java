@@ -13,7 +13,7 @@ import exception.ServletServiceException;
 /**
  *
  * @author KIKUCHI
- * @version 1.30
+ * @version 1.35
  */
 public class EmployeeDAO {
 
@@ -253,10 +253,13 @@ public class EmployeeDAO {
 		}
 
 		if ((employee.getEmp_code() != null) && (employee.getLicense_cd_SQLinsert() != null)
-				&& (employee.getGet_license_date_SQLinsert() != null)
-				&& (CheckFormat.checkPK_t_get_license(employee, emp_all_list))) {
-			System.out.println( (CheckFormat.checkPK_t_get_license(employee, emp_all_list)));
-			flag = true;
+				&& (employee.getGet_license_date_SQLinsert() != null)) {
+			if(CheckFormat.checkPK_t_get_license(employee, emp_all_list)){
+				flag = true;
+			}else{
+				throw new ServletServiceException("すでに取得済みの資格です<br>");
+			}
+
 		}
 
 		CheckFormat.checkEmployeeBean(employee,flag);

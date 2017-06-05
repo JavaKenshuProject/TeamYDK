@@ -15,7 +15,7 @@ import exception.ServletServiceException;
 /**
  *
  * @author KIKUCHI
- * @version 1.20
+ * @version 1.30
  */
 public class CheckFormat {
 
@@ -382,12 +382,10 @@ public class CheckFormat {
 		boolean flag = true;
 		for (EmployeeBean all_emp : emp_list) {
 			for (String string : all_emp.getLicense_cd()) {
-				for (String string2 : all_emp.getLicense_name()) {
 					if (string.equals(employee.getLicense_cd_SQLinsert())
-							&& string2.equals(employee.getLicense_name())) {
+							&& all_emp.getEmp_code().equals(employee.getEmp_code())) {
 						flag = false;
 						// throw new ServletServiceException("すでに登録された資格です");
-					}
 				}
 			}
 
