@@ -42,8 +42,21 @@
 				</tr>
 				<tr>
 					<th>«•Ê</th>
-					<td><input type="radio" name="sex" value="0">’j <input
-						type="radio" name="sex" value="1">—</td>
+					<td>
+					<%
+					if(empB.getSex()==0){
+					%>
+						<input type="radio" name="sex" value="0"  checked="checked">’j
+						<input type="radio" name="sex" value="1">—
+					<%
+					}else{
+					%>
+						<input type="radio" name="sex" value="0">’j
+						<input type="radio" name="sex" value="1"  checked="checked">—
+					<%
+					}
+					%>
+					</td>
 				</tr>
 				<tr>
 					<th>Š‘®•”</th>
