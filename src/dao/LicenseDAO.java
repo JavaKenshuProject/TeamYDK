@@ -55,9 +55,8 @@ public class LicenseDAO {
 	 */
 	public void licenseInsert(LicenseBean license) throws ServletServiceException {
 
-		CheckFormat.checkLicenseBean(license);
-
 		ArrayList<LicenseBean> license_all_list = new LicenseDAO().licenseAllGet();
+		CheckFormat.checkLicenseBean(license,license_all_list);
 		if (!(CheckFormat.checkPK_license(license, license_all_list))) {
 			throw new ServletServiceException("資格コードが重複しています");
 		}

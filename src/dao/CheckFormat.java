@@ -148,6 +148,7 @@ public class CheckFormat {
 	 */
 	public static void checkEmployeeBean(EmployeeBean employee, boolean flag) throws ServletServiceException {
 		String KATAKANA = "^[\\u30A0-\\u30FF]+$";
+		String ALPHA_NUMBER = "^[0-9a-zA-Z]+$";
 		java.util.Date u_now = new java.util.Date();
 		java.sql.Date now = new java.sql.Date(u_now.getTime());
 
@@ -163,6 +164,8 @@ public class CheckFormat {
 			call = call + "従業員コード" + void_c;
 		} else if (checkZero31J(employee.getEmp_code()) == false) {
 			call = call + "従業員コード" + zero_c;
+		} else if ((employee.getEmp_code().matches(ALPHA_NUMBER) == false)) {
+			call = call + "従業員コードは半角英数字のみで入力してください<br>";
 		}
 
 		if (employee.getL_name() == null) {
@@ -243,6 +246,7 @@ public class CheckFormat {
 	 * @throws ServletServiceException
 	 */
 	public static String checkTGetLicense(EmployeeBean employee) {
+		String ALPHA_NUMBER = "^[0-9a-zA-Z]+$";
 		java.util.Date u_now = new java.util.Date();
 		java.sql.Date now = new java.sql.Date(u_now.getTime());
 
@@ -257,6 +261,8 @@ public class CheckFormat {
 			call = call + "従業員コード" + void_c;
 		} else if (checkZero31J(employee.getEmp_code()) == false) {
 			call = call + "従業員コード" + zero_c;
+		} else if ((employee.getEmp_code().matches(ALPHA_NUMBER) == false)) {
+			call = call + "従業員コードは半角英数字のみで入力してください<br>";
 		}
 
 		if (employee.getLicense_cd_SQLinsert() == null) {
@@ -265,6 +271,8 @@ public class CheckFormat {
 			call = call + "資格コード" + void_c;
 		} else if (checkZero31J(employee.getLicense_cd_SQLinsert()) == false) {
 			call = call + "資格コード" + zero_c;
+		} else if ((employee.getLicense_cd_SQLinsert().matches(ALPHA_NUMBER) == false)) {
+			call = call + "資格コードは半角英数字のみで入力してください<br>";
 		}
 
 		if ((employee.getGet_license_date_SQLinsert() == null)
@@ -288,6 +296,7 @@ public class CheckFormat {
 	 * @throws ServletServiceException
 	 */
 	public static void checkUserBean(UserBean user) throws ServletServiceException {
+		String ALPHA_NUMBER = "^[0-9a-zA-Z]+$";
 		String call = "";
 		String temp = "が不正です\n";
 		String void_c = "が入力可能文字数を超えています<br>";
@@ -299,6 +308,8 @@ public class CheckFormat {
 			call = call + "ユーザID" + void_c;
 		} else if (checkZero31J(user.getUser_id()) == false) {
 			call = call + "ユーザID" + zero_c;
+		} else if ((user.getUser_id().matches(ALPHA_NUMBER) == false)) {
+			call = call + "ユーザIDは半角英数字のみで入力してください<br>";
 		}
 
 		if (user.getPassword() == null) {
@@ -307,6 +318,8 @@ public class CheckFormat {
 			call = call + "パスワード" + void_c;
 		} else if (checkZero31J(user.getPassword()) == false) {
 			call = call + "パスワード" + zero_c;
+		} else if ((user.getPassword().matches(ALPHA_NUMBER) == false)) {
+			call = call + "パスワードは半角英数字のみで入力してください<br>";
 		}
 
 		if (!(call.equals(""))) {
@@ -321,11 +334,19 @@ public class CheckFormat {
 	 * @return void or throw
 	 * @throws ServletServiceException
 	 */
-	public static void checkLicenseBean(LicenseBean license) throws ServletServiceException {
+	public static void checkLicenseBean(LicenseBean license,ArrayList<LicenseBean> license_list) throws ServletServiceException {
+		String ALPHA_NUMBER = "^[0-9a-zA-Z]+$";
 		String call = "";
 		String temp = "が不正です\n";
 		String void_c = "が入力可能文字数を超えています<br>";
 		String zero_c = "を入力してください<br>";
+		boolean flag = false;
+
+		for(LicenseBean license_loop : license_list){
+			if(license.getLicense_name().equals(license_loop.getLicense_name())){
+				flag = true;
+			}
+		}
 
 		if (license.getLicense_cd() == null) {
 			call = call + "資格コード" + temp;
@@ -333,6 +354,8 @@ public class CheckFormat {
 			call = call + "資格コード" + void_c;
 		} else if (checkZero31J(license.getLicense_cd()) == false) {
 			call = call + "資格コード" + zero_c;
+		} else if ((license.getLicense_cd().matches(ALPHA_NUMBER) == false)) {
+			call = call + "資格コードは半角英数字のみで入力してください<br>";
 		}
 
 		if (license.getLicense_name() == null) {
@@ -341,7 +364,11 @@ public class CheckFormat {
 			call = call + "資格名" + void_c;
 		} else if (checkZero31J(license.getLicense_name()) == false) {
 			call = call + "資格名" + zero_c;
+		} else if(flag){
+			call = call + "資格名が重複しています<br>";
 		}
+
+
 
 		if (!(call.equals(""))) {
 			throw new ServletServiceException(call);
@@ -382,10 +409,10 @@ public class CheckFormat {
 		boolean flag = true;
 		for (EmployeeBean all_emp : emp_list) {
 			for (String string : all_emp.getLicense_cd()) {
-					if (string.equals(employee.getLicense_cd_SQLinsert())
-							&& all_emp.getEmp_code().equals(employee.getEmp_code())) {
-						flag = false;
-						// throw new ServletServiceException("すでに登録された資格です");
+				if (string.equals(employee.getLicense_cd_SQLinsert())
+						&& all_emp.getEmp_code().equals(employee.getEmp_code())) {
+					flag = false;
+					// throw new ServletServiceException("すでに登録された資格です");
 				}
 			}
 
