@@ -367,7 +367,7 @@ word-break:break-all;
       font-weight:300;
       font-size:20px;
       padding:0;
-      word-break:all-break;
+      word-break:break-all;
       width:170px;
 }
 
@@ -376,7 +376,7 @@ word-break:break-all;
       font-weight:100;
       padding:10px;
       width:730px;
-      word-break:all-break;
+      word-break:break-all;
 }
 
 .form_title{
