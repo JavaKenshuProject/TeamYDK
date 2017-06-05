@@ -33,8 +33,8 @@ public class LicenseDAO {
 				LicenseBean license = new LicenseBean();
 
 				// m_employee
-				license.setLicense_cd(licenseRes.getString("license_cd"));
-				license.setLicense_name(licenseRes.getString("license_name"));
+				license.setLicenseCd(licenseRes.getString("license_cd"));
+				license.setLicenseName(licenseRes.getString("license_name"));
 
 				licenseList.add(license);
 			}
@@ -58,7 +58,7 @@ public class LicenseDAO {
 		ArrayList<LicenseBean> licenseAllList = new LicenseDAO().licenseAllGet();
 		String call = "";
 		for (LicenseBean licenseLoop : licenseAllList) {
-			if (license.getLicense_name().equals(licenseLoop.getLicense_name())) {
+			if (license.getLicenseName().equals(licenseLoop.getLicenseName())) {
 				call = call + "資格コードが重複しています<br>";
 			}
 		}
@@ -79,8 +79,8 @@ public class LicenseDAO {
 				con.setAutoCommit(false);
 
 				// m_employee
-				licensePstmt.setString(1, license.getLicense_cd());
-				licensePstmt.setString(2, license.getLicense_name());
+				licensePstmt.setString(1, license.getLicenseCd());
+				licensePstmt.setString(2, license.getLicenseName());
 
 				licensePstmt.executeUpdate();
 
@@ -125,7 +125,7 @@ public class LicenseDAO {
 				con.setAutoCommit(false);
 
 				// m_employee
-				licensePstmt.setString(1, license.getLicense_cd());
+				licensePstmt.setString(1, license.getLicenseCd());
 
 				licensePstmt.executeUpdate();
 

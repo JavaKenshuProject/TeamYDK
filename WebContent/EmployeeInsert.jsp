@@ -71,7 +71,7 @@
 
 								for (SectionBean sec : sec_list) {
 							%>
-							<option><%=sec.getSection_name()%></option>
+							<option><%=sec.getSectionName()%></option>
 							<%
 								}
 							%>
@@ -112,7 +112,7 @@
 								LicenseBean license = licenseList.get(i);
 					%>
 					<td class="check"><input type="checkbox" name="license" value="<%=i%>"></td>
-					 <td class="license_insert_name"><%=license.getLicense_name()%></td>
+					 <td class="license_insert_name"><%=license.getLicenseName()%></td>
 
 						<td class="license_day"><select name="get_year">
 						<%

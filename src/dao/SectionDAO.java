@@ -32,8 +32,8 @@ public class SectionDAO {
 				SectionBean section = new SectionBean();
 
 				// m_employee
-				section.setSection_code(sectionRes.getString("section_code"));
-				section.setSection_name(sectionRes.getString("section_name"));
+				section.setSectionCode(sectionRes.getString("section_code"));
+				section.setSectionName(sectionRes.getString("section_name"));
 
 				sectionList.add(section);
 			}

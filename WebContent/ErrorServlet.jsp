@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=Windows-31J"
-    pageEncoding="Windows-31J" isErrorPage="true"%>
+	pageEncoding="Windows-31J" isErrorPage="true"%>
 <link rel="stylesheet" href="websystem.css" type="text/css">
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -31,18 +31,24 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=Windows-31J">
 <link rel="stylesheet" href="websystem.css" type="text/css">
-<%@ include file = "header.jsp" %>
+<%@ include file="header.jsp"%>
 <title>従業員管理システム</title>
 </head>
 <body>
-<br>
-<br>
-<br>
-	<h3 align="center" class="error_message"><%out.println(exception.getMessage( ));%></h3>
+	<br>
+	<br>
+	<br>
+	<h3 align="center" class="error_message">
+		<%
+			out.println(exception.getMessage());
+		%>
+	</h3>
 	<!-- <h3 align="center"><font color="red"><%=request.getAttribute("javax.servlet.error.exception_type")%></font></h3> -->
-<br>
-<br>
-		<div align="center"><button  class="botan_get"  type="button"  onclick="history.back()">戻る</button></div>
+	<br>
+	<br>
+	<div align="center">
+		<button class="botan_get" type="button" onclick="history.back()">戻る</button>
+	</div>
 
 </body>
 </html>

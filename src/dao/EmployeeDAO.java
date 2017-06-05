@@ -30,12 +30,12 @@ public class EmployeeDAO {
 
 		try (PreparedStatement sectionPstmt = con.prepareStatement(sectionSql);) {
 
-			sectionPstmt.setString(1, employee.getSection_code());
+			sectionPstmt.setString(1, employee.getSectionCode());
 			try (ResultSet section_res = sectionPstmt.executeQuery();) {
 				if (section_res.next()) {
 					// m_section
-					employee.setSection_name(section_res.getString("section_name"));
-					employee.setSection_update_date(section_res.getTimestamp("update_date"));
+					employee.setSectionName(section_res.getString("section_name"));
+					employee.setSectionUpdateDate(section_res.getTimestamp("update_date"));
 				}
 			} catch (SQLException e) {
 				throw e;
@@ -59,7 +59,7 @@ public class EmployeeDAO {
 		String getLicenseSql = "SELECT * FROM t_get_license WHERE emp_code = ?";
 		try (PreparedStatement getLicensePstmt = con.prepareStatement(getLicenseSql);) {
 
-			getLicensePstmt.setString(1, employee.getEmp_code());
+			getLicensePstmt.setString(1, employee.getEmpCode());
 			try (ResultSet getLicenseRes = getLicensePstmt.executeQuery();) {
 				ArrayList<String> licenseCd = new ArrayList<String>();
 				ArrayList<String> licenseDate = new ArrayList<String>();
@@ -70,8 +70,8 @@ public class EmployeeDAO {
 				}
 
 				// t_get_license
-				employee.setLicense_cd(licenseCd);
-				employee.setGet_license_date(licenseDate);
+				employee.setLicenseCd(licenseCd);
+				employee.setGetLicenseDate(licenseDate);
 			} catch (SQLException e) {
 				throw e;
 			}
@@ -94,8 +94,8 @@ public class EmployeeDAO {
 		String licenseSql = "SELECT * FROM m_license WHERE license_cd = ?";
 		ArrayList<String> licenseName = new ArrayList<String>();
 		try (PreparedStatement licensePstmt = con.prepareStatement(licenseSql);) {
-			for (int i = 0; employee.getLicense_cd().size() > i; i++) {
-				String license_ = employee.getLicense_cd().get(i);
+			for (int i = 0; employee.getLicenseCd().size() > i; i++) {
+				String license_ = employee.getLicenseCd().get(i);
 				licensePstmt.setString(1, license_);
 				try (ResultSet licenseRes = licensePstmt.executeQuery();) {
 
@@ -107,7 +107,7 @@ public class EmployeeDAO {
 					throw e;
 				}
 			}
-			employee.setLicense_name(licenseName);
+			employee.setLicenseName(licenseName);
 		} catch (SQLException e) {
 			throw e;
 		}
@@ -132,16 +132,16 @@ public class EmployeeDAO {
 				EmployeeBean employee = new EmployeeBean();
 
 				// m_employee
-				employee.setEmp_code(emp_res.getString("emp_code"));
-				employee.setL_name(emp_res.getString("l_name"));
-				employee.setF_name(emp_res.getString("f_name"));
-				employee.setL_kana_name(emp_res.getString("l_kana_name"));
-				employee.setF_kana_name(emp_res.getString("f_kana_name"));
+				employee.setEmpCode(emp_res.getString("emp_code"));
+				employee.setLName(emp_res.getString("l_name"));
+				employee.setFName(emp_res.getString("f_name"));
+				employee.setLKanaName(emp_res.getString("l_kana_name"));
+				employee.setFKanaName(emp_res.getString("f_kana_name"));
 				employee.setSex(emp_res.getByte("sex"));
-				employee.setBirth_day(CheckFormat.convertDate2String(emp_res.getDate("birth_day")));
-				employee.setSection_code(emp_res.getString("section_code"));
-				employee.setEmp_date(CheckFormat.convertDate2String(emp_res.getDate("emp_date")));
-				employee.setUpdate_date(emp_res.getTimestamp("update_date"));
+				employee.setBirthDay(CheckFormat.convertDate2String(emp_res.getDate("birth_day")));
+				employee.setSectionCode(emp_res.getString("section_code"));
+				employee.setEmpDate(CheckFormat.convertDate2String(emp_res.getDate("emp_date")));
+				employee.setUpdateDate(emp_res.getTimestamp("update_date"));
 
 				employee = mSectionGet(con, employee);
 				employee = tGetLicenseGet(con, employee);
@@ -173,8 +173,8 @@ public class EmployeeDAO {
 		if (!(CheckFormat.checkPkEmpCode(employee, empAllList))) {
 			call = call + "従業員コードが重複しています<br>";
 		}
-		if ((employee.getEmp_code() != null) && (employee.getLicense_cd_SQLinsert() != null)
-				&& (employee.getGet_license_date_SQLinsert() != null)) {
+		if ((employee.getEmpCode() != null) && (employee.getLicenseCdSQLinsert() != null)
+				&& (employee.getGetLicenseDateSQLinsert() != null)) {
 			flag = true;
 		}
 
@@ -190,27 +190,27 @@ public class EmployeeDAO {
 				con.setAutoCommit(false);
 
 				// m_employee
-				emp_pstmt.setString(1, employee.getEmp_code());
-				emp_pstmt.setString(2, employee.getL_name());
-				emp_pstmt.setString(3, employee.getF_name());
-				emp_pstmt.setString(4, employee.getL_kana_name());
-				emp_pstmt.setString(5, employee.getF_kana_name());
+				emp_pstmt.setString(1, employee.getEmpCode());
+				emp_pstmt.setString(2, employee.getLName());
+				emp_pstmt.setString(3, employee.getFName());
+				emp_pstmt.setString(4, employee.getLKanaName());
+				emp_pstmt.setString(5, employee.getFKanaName());
 				emp_pstmt.setByte(6, employee.getSex());
-				emp_pstmt.setDate(7, CheckFormat.convertString2Date(employee.getBirth_day()));
-				emp_pstmt.setString(8, employee.getSection_code());
-				emp_pstmt.setDate(9, CheckFormat.convertString2Date(employee.getEmp_date()));
+				emp_pstmt.setDate(7, CheckFormat.convertString2Date(employee.getBirthDay()));
+				emp_pstmt.setString(8, employee.getSectionCode());
+				emp_pstmt.setDate(9, CheckFormat.convertString2Date(employee.getEmpDate()));
 
 				emp_pstmt.executeUpdate();
 
-				if ((employee.getEmp_code() != null) && (employee.getLicense_cd_SQLinsert() != null)
-						&& (employee.getGet_license_date_SQLinsert() != null)) {
+				if ((employee.getEmpCode() != null) && (employee.getLicenseCdSQLinsert() != null)
+						&& (employee.getGetLicenseDateSQLinsert() != null)) {
 
 					try (PreparedStatement get_license_pstmt = con.prepareStatement(tGetLicenseSql);) {
 						// t_get_license
-						get_license_pstmt.setString(1, employee.getEmp_code());
-						get_license_pstmt.setString(2, employee.getLicense_cd_SQLinsert());
+						get_license_pstmt.setString(1, employee.getEmpCode());
+						get_license_pstmt.setString(2, employee.getLicenseCdSQLinsert());
 						get_license_pstmt.setDate(3,
-								CheckFormat.convertString2Date(employee.getGet_license_date_SQLinsert()));
+								CheckFormat.convertString2Date(employee.getGetLicenseDateSQLinsert()));
 
 						get_license_pstmt.executeUpdate();
 					} catch (SQLException e) {
@@ -254,8 +254,8 @@ public class EmployeeDAO {
 			call = call + "従業員コードが存在しません<br>";
 		}
 
-		if ((employee.getEmp_code() != null) && (employee.getLicense_cd_SQLinsert() != null)
-				&& (employee.getGet_license_date_SQLinsert() != null)) {
+		if ((employee.getEmpCode() != null) && (employee.getLicenseCdSQLinsert() != null)
+				&& (employee.getGetLicenseDateSQLinsert() != null)) {
 			if (CheckFormat.checkPkTGetLicense(employee, empAllList)) {
 				flag = true;
 			} else {
@@ -275,27 +275,27 @@ public class EmployeeDAO {
 				con.setAutoCommit(false);
 
 				// m_employee
-				emp_pstmt.setString(1, employee.getL_name());
-				emp_pstmt.setString(2, employee.getF_name());
-				emp_pstmt.setString(3, employee.getL_kana_name());
-				emp_pstmt.setString(4, employee.getF_kana_name());
+				emp_pstmt.setString(1, employee.getLName());
+				emp_pstmt.setString(2, employee.getFName());
+				emp_pstmt.setString(3, employee.getLKanaName());
+				emp_pstmt.setString(4, employee.getFKanaName());
 				emp_pstmt.setByte(5, employee.getSex());
-				emp_pstmt.setDate(6, CheckFormat.convertString2Date(employee.getBirth_day()));
-				emp_pstmt.setString(7, employee.getSection_code());
-				emp_pstmt.setDate(8, CheckFormat.convertString2Date(employee.getEmp_date()));
-				emp_pstmt.setString(9, employee.getEmp_code());
+				emp_pstmt.setDate(6, CheckFormat.convertString2Date(employee.getBirthDay()));
+				emp_pstmt.setString(7, employee.getSectionCode());
+				emp_pstmt.setDate(8, CheckFormat.convertString2Date(employee.getEmpDate()));
+				emp_pstmt.setString(9, employee.getEmpCode());
 
 				emp_pstmt.executeUpdate();
 
 				// t_get_license
-				if ((employee.getEmp_code() != null) && (employee.getLicense_cd_SQLinsert() != null)
-						&& (employee.getGet_license_date_SQLinsert() != null)
+				if ((employee.getEmpCode() != null) && (employee.getLicenseCdSQLinsert() != null)
+						&& (employee.getGetLicenseDateSQLinsert() != null)
 						&& (CheckFormat.checkPkTGetLicense(employee, empAllList))) {
 					try (PreparedStatement get_license_pstmt = con.prepareStatement(tGetLicenseSql);) {
-						get_license_pstmt.setString(1, employee.getEmp_code());
-						get_license_pstmt.setString(2, employee.getLicense_cd_SQLinsert());
+						get_license_pstmt.setString(1, employee.getEmpCode());
+						get_license_pstmt.setString(2, employee.getLicenseCdSQLinsert());
 						get_license_pstmt.setDate(3,
-								CheckFormat.convertString2Date(employee.getGet_license_date_SQLinsert()));
+								CheckFormat.convertString2Date(employee.getGetLicenseDateSQLinsert()));
 						get_license_pstmt.executeUpdate();
 					} catch (SQLException e) {
 						throw e;
@@ -351,7 +351,7 @@ public class EmployeeDAO {
 				// t_get_license
 				try (PreparedStatement get_license_pstmt = con.prepareStatement(tGetLicenseSql);) {
 					// t_get_license
-					get_license_pstmt.setString(1, employee.getEmp_code());
+					get_license_pstmt.setString(1, employee.getEmpCode());
 					get_license_pstmt.executeUpdate();
 				} catch (SQLException e) {
 					throw e;
@@ -359,7 +359,7 @@ public class EmployeeDAO {
 
 				try (PreparedStatement emp_pstmt = con.prepareStatement(mEmpSql);) {
 					// m_employee
-					emp_pstmt.setString(1, employee.getEmp_code());
+					emp_pstmt.setString(1, employee.getEmpCode());
 					emp_pstmt.executeUpdate();
 				} catch (SQLException e) {
 					throw e;

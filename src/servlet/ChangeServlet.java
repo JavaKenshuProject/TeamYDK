@@ -59,7 +59,6 @@ public class ChangeServlet extends HttpServlet {
 			request.setCharacterEncoding("Windows-31J");
 			response.setCharacterEncoding("Windows-31J");
 
-
 			/* pageの取得 */
 			String page = request.getParameter("page");
 			if (page == null) {
@@ -95,7 +94,6 @@ public class ChangeServlet extends HttpServlet {
 			if (page.equals("変更確定")) {
 				/* formの入力 */
 
-
 				String cEmp = request.getParameter("sex");
 				if (cEmp == null) {
 					throw new ServletServiceException("性別にチェックを入れてください");
@@ -106,17 +104,17 @@ public class ChangeServlet extends HttpServlet {
 				String fName = request.getParameter("f_name");
 				String lKanaName = request.getParameter("l_kana_name");
 				String fKanaName = request.getParameter("f_kana_name");
-				byte sex = (byte)Integer.parseInt(request.getParameter("sex"));
+				byte sex = (byte) Integer.parseInt(request.getParameter("sex"));
 				String sectionCode = request.getParameter("job");
 
 				ArrayList<EmployeeBean> employeeList = emp.employeeAllGet();
 				empB = employeeList.get(num);
-				empB.setL_name(lName);
-				empB.setF_name(fName);
-				empB.setL_kana_name(lKanaName);
-				empB.setF_kana_name(fKanaName);
+				empB.setLName(lName);
+				empB.setFName(fName);
+				empB.setLKanaName(lKanaName);
+				empB.setFKanaName(fKanaName);
 				empB.setSex(sex);
-				empB.setSection_code(sectionCode);
+				empB.setSectionCode(sectionCode);
 				emp.employeeUpdate(empB);
 
 				url = "ChangeSuccess.jsp";

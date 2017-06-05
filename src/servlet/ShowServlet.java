@@ -21,70 +21,64 @@ import entity.EmployeeBean;
 public class ShowServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ShowServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public ShowServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-		//移譲する先のjspを格納する変数url
+		// 移譲する先のjspを格納する変数url
 		String url = null;
 
 		HttpSession session = request.getSession(true);
 
-		if((String)session.getAttribute("login") == null){
+		if ((String) session.getAttribute("login") == null) {
 			url = "Login.jsp";
-		}else{
+		} else {
 
-		//エンコーディング指定
+			// エンコーディング指定
 
-		request.setCharacterEncoding("Windows-31J");
-		response.setCharacterEncoding("Windows-31J");
+			request.setCharacterEncoding("Windows-31J");
+			response.setCharacterEncoding("Windows-31J");
 
-		//formからの値を取得
-	    String page = request.getParameter("page");
+			// formからの値を取得
+			String page = request.getParameter("page");
 
+			/* DAOの生成 */
+			EmployeeDAO emp = new EmployeeDAO();
 
-		/* DAOの生成 */
-		EmployeeDAO emp = new EmployeeDAO();
+			if (page.equals("従業員一覧")) {
+				ArrayList<EmployeeBean> employeeList = emp.employeeAllGet();
 
-		if (page.equals("従業員一覧")){
-		ArrayList<EmployeeBean> employeeList = emp.employeeAllGet();
+				// セットする
+				request.setAttribute("employeeList", employeeList);
 
-		//セットする
-		request.setAttribute("employeeList", employeeList);
+				// 移動先の設定
+				url = "ShowEmployee.jsp";
 
-		//移動先の設定
-		url = "ShowEmployee.jsp";
+			}
+			if (page.equals("削除")) {
+				url = "DeleteServlet";
+			}
 
-		}if (page.equals("削除")) {
-		url = "DeleteServlet";
+			if (page.equals("変更")) {
+				url = "ChangeServlet";
+				request.setAttribute("page", page);
+			}
 		}
-
-
-
-	    if(page.equals("変更")){
-		url = "ChangeServlet";
-		request.setAttribute("page", page);
-	}
-		}
-	/* 転送先 */
-	RequestDispatcher rd = request.getRequestDispatcher(url);
-	rd.forward(request, response);
-
+		/* 転送先 */
+		RequestDispatcher rd = request.getRequestDispatcher(url);
+		rd.forward(request, response);
 
 	}
 
-
-	}
-
-
-
-
+}

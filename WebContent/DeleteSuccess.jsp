@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=Windows-31J"
-    pageEncoding="Windows-31J"%>
+	pageEncoding="Windows-31J"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,14 +8,15 @@
 <title>従業員管理システム</title>
 </head>
 <body>
-<!------------------------------------------ヘッダー------------------------------>
-     <%@include file="header.jsp" %>
- <!-------------------------------------------------------------------------------->
-     <div class="content" align="center">
-     <h2 class="message">従業員情報を削除しました。</h2>
-     <form action="MenuServlet" method="post">
-     <input type="submit"  name="page" value="メニューに戻る" class="menu_return_botan">
-     </form>
-     </div>
+	<!------------------------------------------ヘッダー------------------------------>
+	<%@include file="header.jsp"%>
+	<!-------------------------------------------------------------------------------->
+	<div class="content" align="center">
+		<h2 class="message">従業員情報を削除しました。</h2>
+		<form action="MenuServlet" method="post">
+			<input type="submit" name="page" value="メニューに戻る"
+				class="menu_return_botan">
+		</form>
+	</div>
 </body>
 </html>

@@ -6,53 +6,53 @@ import java.util.ArrayList;
 
 public class EmployeeBean implements Serializable{
 
-	private String emp_code;
-	private String l_name;
-	private String f_name;
-	private String l_kana_name;
-	private String f_kana_name;
+	private String empCode;
+	private String lName;
+	private String fName;
+	private String lKanaName;
+	private String fKanaName;
 	private byte sex;
-	private String birth_day;
-	private String section_code;
-	private String emp_date;
-	private Timestamp update_date;
-	private Timestamp section_update_date;
-	private String section_name;
-	private ArrayList<String> license_name;
-	private ArrayList<String> license_cd;
-	private String license_cd_SQLinsert;
-	private ArrayList<String> get_license_date;
-	private String get_license_date_SQLinsert;
+	private String birthDay;
+	private String sectionCode;
+	private String empDate;
+	private Timestamp updateDate;
+	private Timestamp sectionUpdateDate;
+	private String sectionName;
+	private ArrayList<String> licenseName;
+	private ArrayList<String> licenseCd;
+	private String licenseCdSQLinsert;
+	private ArrayList<String> getLicenseDate;
+	private String getLicenseDateSQLinsert;
 
-	public String getEmp_code() {
-		return emp_code;
+	public String getEmpCode() {
+		return empCode;
 	}
-	public void setEmp_code(String emp_code) {
-		this.emp_code = emp_code;
+	public void setEmpCode(String empCode) {
+		this.empCode = empCode;
 	}
-	public String getL_name() {
-		return l_name;
+	public String getLName() {
+		return lName;
 	}
-	public void setL_name(String l_name) {
-		this.l_name = l_name;
+	public void setLName(String lName) {
+		this.lName = lName;
 	}
-	public String getF_name() {
-		return f_name;
+	public String getFName() {
+		return fName;
 	}
-	public void setF_name(String f_name) {
-		this.f_name = f_name;
+	public void setFName(String fName) {
+		this.fName = fName;
 	}
-	public String getL_kana_name() {
-		return l_kana_name;
+	public String getLKanaName() {
+		return lKanaName;
 	}
-	public void setL_kana_name(String l_kana_name) {
-		this.l_kana_name = l_kana_name;
+	public void setLKanaName(String lKanaName) {
+		this.lKanaName = lKanaName;
 	}
-	public String getF_kana_name() {
-		return f_kana_name;
+	public String getFKanaName() {
+		return fKanaName;
 	}
-	public void setF_kana_name(String f_kana_name) {
-		this.f_kana_name = f_kana_name;
+	public void setFKanaName(String fKanaName) {
+		this.fKanaName = fKanaName;
 	}
 	public byte getSex() {
 		return sex;
@@ -60,71 +60,71 @@ public class EmployeeBean implements Serializable{
 	public void setSex(byte sex) {
 		this.sex = sex;
 	}
-	public String getBirth_day() {
-		return birth_day;
+	public String getBirthDay() {
+		return birthDay;
 	}
-	public void setBirth_day(String birth_day) {
-		this.birth_day = birth_day;
+	public void setBirthDay(String birthDay) {
+		this.birthDay = birthDay;
 	}
-	public String getSection_code() {
-		return section_code;
+	public String getSectionCode() {
+		return sectionCode;
 	}
-	public void setSection_code(String section_code) {
-		this.section_code = section_code;
+	public void setSectionCode(String sectionCode) {
+		this.sectionCode = sectionCode;
 	}
-	public String getEmp_date() {
-		return emp_date;
+	public String getEmpDate() {
+		return empDate;
 	}
-	public void setEmp_date(String emp_date) {
-		this.emp_date = emp_date;
+	public void setEmpDate(String empDate) {
+		this.empDate = empDate;
 	}
-	public Timestamp getUpdate_date() {
-		return update_date;
+	public Timestamp getUpdateDate() {
+		return updateDate;
 	}
-	public void setUpdate_date(Timestamp update_date) {
-		this.update_date = update_date;
+	public void setUpdateDate(Timestamp updateDate) {
+		this.updateDate = updateDate;
 	}
-	public Timestamp getSection_update_date() {
-		return section_update_date;
+	public Timestamp getSectionUpdateDate() {
+		return sectionUpdateDate;
 	}
-	public void setSection_update_date(Timestamp section_update_date) {
-		this.section_update_date = section_update_date;
+	public void setSectionUpdateDate(Timestamp sectionUpdateDate) {
+		this.sectionUpdateDate = sectionUpdateDate;
 	}
-	public String getSection_name() {
-		return section_name;
+	public String getSectionName() {
+		return sectionName;
 	}
-	public void setSection_name(String section_name) {
-		this.section_name = section_name;
+	public void setSectionName(String sectionName) {
+		this.sectionName = sectionName;
 	}
-	public ArrayList<String> getLicense_name() {
-		return license_name;
+	public ArrayList<String> getLicenseName() {
+		return licenseName;
 	}
-	public void setLicense_name(ArrayList<String> license_name) {
-		this.license_name = license_name;
+	public void setLicenseName(ArrayList<String> licenseName) {
+		this.licenseName = licenseName;
 	}
-	public ArrayList<String> getLicense_cd() {
-		return license_cd;
+	public ArrayList<String> getLicenseCd() {
+		return licenseCd;
 	}
-	public void setLicense_cd(ArrayList<String> license_cd) {
-		this.license_cd = license_cd;
+	public void setLicenseCd(ArrayList<String> licenseCd) {
+		this.licenseCd = licenseCd;
 	}
-	public String getLicense_cd_SQLinsert() {
-		return license_cd_SQLinsert;
+	public String getLicenseCdSQLinsert() {
+		return licenseCdSQLinsert;
 	}
-	public void setLicense_cd_SQLinsert(String license_cd_SQLinsert) {
-		this.license_cd_SQLinsert = license_cd_SQLinsert;
+	public void setLicenseCdSQLinsert(String licenseCdSQLinsert) {
+		this.licenseCdSQLinsert = licenseCdSQLinsert;
 	}
-	public ArrayList<String> getGet_license_date() {
-		return get_license_date;
+	public ArrayList<String> getGetLicenseDate() {
+		return getLicenseDate;
 	}
-	public void setGet_license_date(ArrayList<String> get_license_date) {
-		this.get_license_date = get_license_date;
+	public void setGetLicenseDate(ArrayList<String> getLicenseDate) {
+		this.getLicenseDate = getLicenseDate;
 	}
-	public String getGet_license_date_SQLinsert() {
-		return get_license_date_SQLinsert;
+	public String getGetLicenseDateSQLinsert() {
+		return getLicenseDateSQLinsert;
 	}
-	public void setGet_license_date_SQLinsert(String get_license_date_SQLinsert) {
-		this.get_license_date_SQLinsert = get_license_date_SQLinsert;
+	public void setGetLicenseDateSQLinsert(String getLicenseDateSQLinsert) {
+		this.getLicenseDateSQLinsert = getLicenseDateSQLinsert;
 	}
 
 }

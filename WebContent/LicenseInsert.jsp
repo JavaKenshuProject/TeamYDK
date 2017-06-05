@@ -18,14 +18,16 @@
 			<table class="license_add">
 				<tr>
 					<th>資格コード</th>
-					<td><input type="text" name="license_cd" placeholder="例) L0001"></td>
+					<td><input type="text" name="license_cd"
+						placeholder="例) L0001"></td>
 				</tr>
 				<tr>
 					<th>資格名</th>
-					<td><input type="text" name="license_name" placeholder="例) ITパスポート"></td>
+					<td><input type="text" name="license_name"
+						placeholder="例) ITパスポート"></td>
 				</tr>
 			</table>
-			<input type="submit" value="追加" name="page" class="botan_get" >
+			<input type="submit" value="追加" name="page" class="botan_get">
 		</form>
 	</div>
 </body>

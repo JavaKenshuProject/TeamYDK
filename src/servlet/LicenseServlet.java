@@ -52,62 +52,62 @@ public class LicenseServlet extends HttpServlet {
 		String url = null;
 		HttpSession session = request.getSession(true);
 
-		if((String)session.getAttribute("login") == null){
+		if ((String) session.getAttribute("login") == null) {
 			url = "Login.jsp";
-		}else{
+		} else {
 
-		/* エンコーディング */
-		request.setCharacterEncoding("Windows-31J");
-		response.setCharacterEncoding("Windows-31J");
+			/* エンコーディング */
+			request.setCharacterEncoding("Windows-31J");
+			response.setCharacterEncoding("Windows-31J");
 
-		/* formの取得 */
-		String employee = request.getParameter("employee"); //従業員一覧の上から順（0~）
-		String license = request.getParameter("license"); //資格一覧の上から順（0~）
-		String[] getLicenseDay = request.getParameterValues("getLicenseDay");
-		String page = request.getParameter("page");
+			/* formの取得 */
+			String employee = request.getParameter("employee"); // 従業員一覧の上から順（0~）
+			String license = request.getParameter("license"); // 資格一覧の上から順（0~）
+			String[] getLicenseDay = request.getParameterValues("getLicenseDay");
+			String page = request.getParameter("page");
 
-		/* DAOのインスタンス化 */
-		EmployeeDAO emp = new EmployeeDAO();
-		LicenseDAO lic = new LicenseDAO();
+			/* DAOのインスタンス化 */
+			EmployeeDAO emp = new EmployeeDAO();
+			LicenseDAO lic = new LicenseDAO();
 
-		/* Beanのインスタンス化*/
-		EmployeeBean empB = new EmployeeBean();
-		LicenseBean licB = new LicenseBean();
+			/* Beanのインスタンス化 */
+			EmployeeBean empB = new EmployeeBean();
+			LicenseBean licB = new LicenseBean();
 
-		if (page.equals("資格取得")) {
-			ArrayList<EmployeeBean> employeeList = emp.employeeAllGet();
-			ArrayList<LicenseBean> licenseList = lic.licenseAllGet();
+			if (page.equals("資格取得")) {
+				ArrayList<EmployeeBean> employeeList = emp.employeeAllGet();
+				ArrayList<LicenseBean> licenseList = lic.licenseAllGet();
 
-			/* セットする */
-			request.setAttribute("employeeList", employeeList);
-			request.setAttribute("licenseList", licenseList);
+				/* セットする */
+				request.setAttribute("employeeList", employeeList);
+				request.setAttribute("licenseList", licenseList);
 
-			/* 移動先の設定 */
-			url = "LicenseGet.jsp";
-		}
-
-		if (page.equals("取得")) {
-			String call = "";
-			if(employee == null){
-				call = call + "保有資格を追加する従業員にチェックを入れてください<br>";
-			}
-			if(license == null){
-				call = call + "保有資格に追加する資格へチェックを入れてください<br>";
+				/* 移動先の設定 */
+				url = "LicenseGet.jsp";
 			}
 
-			if(!(call.equals(""))){
-				throw new ServletServiceException(call);
+			if (page.equals("取得")) {
+				String call = "";
+				if (employee == null) {
+					call = call + "保有資格を追加する従業員にチェックを入れてください<br>";
+				}
+				if (license == null) {
+					call = call + "保有資格に追加する資格へチェックを入れてください<br>";
+				}
+
+				if (!(call.equals(""))) {
+					throw new ServletServiceException(call);
+				}
+
+				String licenseDay = getLicenseDay[0] + "-" + getLicenseDay[1] + "-" + getLicenseDay[2];
+				empB = emp.employeeAllGet().get(Integer.parseInt(employee));
+				licB = lic.licenseAllGet().get(Integer.parseInt(license));
+				empB.setGetLicenseDateSQLinsert(licenseDay);
+				empB.setLicenseCdSQLinsert(licB.getLicenseCd());
+				emp.employeeUpdate(empB);
+
+				url = "GetSuccess.jsp";
 			}
-
-			String licenseDay = getLicenseDay[0] + "-" + getLicenseDay[1] + "-" + getLicenseDay[2];
-			empB = emp.employeeAllGet().get(Integer.parseInt(employee));
-			licB = lic.licenseAllGet().get(Integer.parseInt(license));
-			empB.setGet_license_date_SQLinsert(licenseDay);
-			empB.setLicense_cd_SQLinsert(licB.getLicense_cd());
-			emp.employeeUpdate(empB);
-
-			url = "GetSuccess.jsp";
-		}
 		}
 
 		/* 転送先 */

@@ -12,7 +12,8 @@
 	<div class="content" align="center">
 		<h2 class="message">従業員情報に保有資格を追加しました</h2>
 		<form action="MenuServlet" method="post">
-			<input type="submit" value="メニューに戻る" name="page" class="menu_return_botan">
+			<input type="submit" value="メニューに戻る" name="page"
+				class="menu_return_botan">
 		</form>
 	</div>
 </body>

@@ -47,36 +47,36 @@ public class LicenseInsertServlet extends HttpServlet {
 		String url = null;
 		HttpSession session = request.getSession(true);
 
-		if((String)session.getAttribute("login") == null){
+		if ((String) session.getAttribute("login") == null) {
 			url = "Login.jsp";
-		}else{
+		} else {
 
-		/* エンコーディング */
-		request.setCharacterEncoding("Windows-31J");
-		response.setCharacterEncoding("Windows-31J");
+			/* エンコーディング */
+			request.setCharacterEncoding("Windows-31J");
+			response.setCharacterEncoding("Windows-31J");
 
-		/* formの取得 */
-		String page = request.getParameter("page");
-		String licenseName = request.getParameter("license_name");
-		String licenseCd =request.getParameter("license_cd");
+			/* formの取得 */
+			String page = request.getParameter("page");
+			String licenseName = request.getParameter("license_name");
+			String licenseCd = request.getParameter("license_cd");
 
-		/* DAOのインスタンス化 */
-		LicenseDAO lic = new LicenseDAO();
+			/* DAOのインスタンス化 */
+			LicenseDAO lic = new LicenseDAO();
 
-		/* Beanのインスタンス化*/
-		LicenseBean licB = new LicenseBean();
+			/* Beanのインスタンス化 */
+			LicenseBean licB = new LicenseBean();
 
-		if(page.equals("資格追加")){
-			url = "LicenseInsert.jsp";
-		}
+			if (page.equals("資格追加")) {
+				url = "LicenseInsert.jsp";
+			}
 
-		if(page.equals("追加")){
-			licB.setLicense_cd(licenseCd);
-			licB.setLicense_name(licenseName);
-			lic.licenseInsert(licB);
+			if (page.equals("追加")) {
+				licB.setLicenseCd(licenseCd);
+				licB.setLicenseName(licenseName);
+				lic.licenseInsert(licB);
 
-			url = "LicenseInsertSuccess.jsp";
-		}
+				url = "LicenseInsertSuccess.jsp";
+			}
 		}
 
 		/* 転送先 */

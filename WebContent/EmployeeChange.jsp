@@ -29,33 +29,31 @@
 			<table class="employee_add">
 				<tr>
 					<th>従業員コード</th>
-					<td><%=empB.getEmp_code()%></td>
+					<td><%=empB.getEmpCode()%></td>
 				<tr>
 					<th>氏名(漢字)</th>
-					<td>氏<input type="text" name="l_name" class="textbox" value="<%= empB.getL_name() %>">
-						名<input type="text" name="f_name" class="textbox" value="<%= empB.getF_name() %>"></td>
+					<td>氏<input type="text" name="l_name" class="textbox"
+						value="<%=empB.getLName()%>"> 名<input type="text"
+						name="f_name" class="textbox" value="<%=empB.getFName()%>"></td>
 				</tr>
 				<tr>
 					<th>氏名(カナ)</th>
-					<td>氏<input type="text" name="l_kana_name" value="<%= empB.getL_kana_name() %>">
-						名<input type="text" name="f_kana_name" value="<%= empB.getF_kana_name() %>"></td>
+					<td>氏<input type="text" name="l_kana_name"
+						value="<%=empB.getLKanaName()%>"> 名<input type="text"
+						name="f_kana_name" value="<%=empB.getFKanaName()%>"></td>
 				</tr>
 				<tr>
 					<th>性別</th>
 					<td>
-					<%
-					if(empB.getSex()==0){
-					%>
-						<input type="radio" name="sex" value="0"  checked="checked">男
-						<input type="radio" name="sex" value="1">女
-					<%
-					}else{
-					%>
-						<input type="radio" name="sex" value="0">男
-						<input type="radio" name="sex" value="1"  checked="checked">女
-					<%
-					}
-					%>
+						<%
+							if (empB.getSex() == 0) {
+						%> <input type="radio" name="sex" value="0" checked="checked">男
+						<input type="radio" name="sex" value="1">女 <%
+ 	} else {
+ %> <input type="radio" name="sex" value="0">男 <input
+						type="radio" name="sex" value="1" checked="checked">女 <%
+ 	}
+ %>
 					</td>
 				</tr>
 				<tr>
@@ -67,15 +65,16 @@
 										SectionBean section = sectionList.get(i);
 							%>
 							<%
-							if(section.getSection_name().equals(empB.getSection_name())){
+								if (section.getSectionName().equals(empB.getSectionName())) {
 							%>
-							<option value="<%= section.getSection_code() %>" selected="selected"><%=section.getSection_name()%></option>
+							<option value="<%=section.getSectionCode()%>"
+								selected="selected"><%=section.getSectionName()%></option>
 							<%
-							}else{
+								} else {
 							%>
-							<option value="<%= section.getSection_code() %>"><%=section.getSection_name()%></option>
+							<option value="<%=section.getSectionCode()%>"><%=section.getSectionName()%></option>
 							<%
-							}
+								}
 							%>
 							<%
 								}
@@ -86,8 +85,8 @@
 					</select></td>
 				</tr>
 			</table>
-			<input type="hidden" name="hidden" value="<%= num %>">
-			<input type="submit"  class="botan_get"  value="変更確定" name="page">
+			<input type="hidden" name="hidden" value="<%=num%>"> <input
+				type="submit" class="botan_get" value="変更確定" name="page">
 		</form>
 	</div>
 </body>

@@ -22,26 +22,30 @@ import exception.ServletServiceException;
 public class DeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public DeleteServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public DeleteServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		throw new ServletServiceException("最初からやり直してください");
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("Windows-31J");
 		response.setCharacterEncoding("Windows-31J");
@@ -49,31 +53,31 @@ public class DeleteServlet extends HttpServlet {
 		String url = null;
 		HttpSession session = request.getSession(true);
 
-		if((String)session.getAttribute("login") == null){
+		if ((String) session.getAttribute("login") == null) {
 			url = "Login.jsp";
-		}else{
+		} else {
 
-		int val = -1;
-		try{
-			String cEmp = request.getParameter("employee");
-			if(cEmp == null){
-				throw new ServletServiceException("チェックボックスにチェックを入れてください");
+			int val = -1;
+			try {
+				String cEmp = request.getParameter("employee");
+				if (cEmp == null) {
+					throw new ServletServiceException("チェックボックスにチェックを入れてください");
+				}
+				val = Integer.parseInt(cEmp);
+			} catch (NumberFormatException e) {
+				throw new ServletException();
 			}
-			val = Integer.parseInt(cEmp);
-		}catch(NumberFormatException e){
-			throw new ServletException();
-		}
 
-		if(val != -1){
-			EmployeeDAO dao = new EmployeeDAO();
-			ArrayList<EmployeeBean> empList = dao.employeeAllGet();
-			dao.employeeDelete(empList.get(val));
-			url = "DeleteSuccess.jsp";
-		}
+			if (val != -1) {
+				EmployeeDAO dao = new EmployeeDAO();
+				ArrayList<EmployeeBean> empList = dao.employeeAllGet();
+				dao.employeeDelete(empList.get(val));
+				url = "DeleteSuccess.jsp";
+			}
 
-		if(url == null){
-			throw new ServletServiceException("削除に失敗しました");
-		}
+			if (url == null) {
+				throw new ServletServiceException("削除に失敗しました");
+			}
 
 		}
 		RequestDispatcher rd = request.getRequestDispatcher(url);

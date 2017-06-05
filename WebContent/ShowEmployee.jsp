@@ -13,85 +13,88 @@
 	<!-- ヘッダー -->
 	<%@include file="header.jsp"%>
 	<!-------------------------------------------------------------------------------->
-  <div class="content">
-	<h2 class="page_title">従業員一覧</h2>
+	<div class="content">
+		<h2 class="page_title">従業員一覧</h2>
 
-	<!--------------------------------従業員一覧の表-------------------------------->
+		<!--------------------------------従業員一覧の表-------------------------------->
 
 
 
-	<%
-		ArrayList<EmployeeBean> employeeList = (ArrayList<EmployeeBean>) request.getAttribute("employeeList");
-		String color;
-	%>
-	<form action="ShowServlet" method="post">
-		<table class="employee_table" style="text-align:center;">
-		<thead class="scrollHead">
-			<tr class="employee_title">
-				<th class="radio"></th>
-				<th class="no">従業員コード</th>
-				<th class="name">氏名</th>
-				<th class="name_kana">氏名(フリガナ)</th>
-				<th class="sex">性別</th>
-				<th class="birth">生年月日</th>
-				<th class="section">所属部署</th>
-				<th class="startday">入社日</th>
-				<th class="license">保有資格</th>
-			</tr>
-          </thead>
-          <tbody class="datebody">
-			<%
-					if (employeeList != null) {
-						for (int i = 0; i < employeeList.size(); i++) {
-							EmployeeBean employee = employeeList.get(i);
-							if (i % 2 == 0) {
-								color = "#dbffed";
-							} else {
-								color = "#fdfdfd";
-							}
-							String sex = "";
-							switch (employee.getSex()) {
-							case 0:
-								sex = "男";
-								break;
-							case 1:
-								sex = "女";
-								break;
-							}
-
-				%>
-			 <tr style="background-color:<%=color%>;">
-				<td class="radiotd"><input type="radio" name="employee" value="<%=i%>"></td>
-				<td class="notd"><%=employee.getEmp_code()%></td>
-				<td class="nametd"><%=employee.getL_name()%><%=employee.getF_name()%></td>
-				<td class="name_kanatd"><%=employee.getL_kana_name()%><%=employee.getF_kana_name()%></td>
-				<td class="sextd"><%=sex%></td>
-				<td class="birthtd"><%=employee.getBirth_day()%></td>
-				<td class="sectiontd"><%=employee.getSection_name()%></td>
-				<td class="startdaytd"><%=employee.getEmp_date()%></td>
-				<td class="licensetd">
-						<%
-						if (employee.getLicense_name() != null){//test
-							for (int j = 0; j < employee.getLicense_name().size(); j++) {
-						%> <%=employee.getLicense_name().get(j)%>
-						<% if(j!=employee.getLicense_name().size()-1){ %>
-							<br>
-						<% } %>
-						<% } %>
-						<% } %>
-					</td>
-				</tr>
-				<%
-					}
-				%>
-				<%
-					}
-				%>
+		<%
+			ArrayList<EmployeeBean> employeeList = (ArrayList<EmployeeBean>) request.getAttribute("employeeList");
+			String color;
+		%>
+		<form action="ShowServlet" method="post">
+			<table class="employee_table" style="text-align: center;">
+				<thead class="scrollHead">
+					<tr class="employee_title">
+						<th class="radio"></th>
+						<th class="no">従業員コード</th>
+						<th class="name">氏名</th>
+						<th class="name_kana">氏名(フリガナ)</th>
+						<th class="sex">性別</th>
+						<th class="birth">生年月日</th>
+						<th class="section">所属部署</th>
+						<th class="startday">入社日</th>
+						<th class="license">保有資格</th>
+					</tr>
+				</thead>
+				<tbody class="datebody">
+					<%
+						if (employeeList != null) {
+							for (int i = 0; i < employeeList.size(); i++) {
+								EmployeeBean employee = employeeList.get(i);
+								if (i % 2 == 0) {
+									color = "#dbffed";
+								} else {
+									color = "#fdfdfd";
+								}
+								String sex = "";
+								switch (employee.getSex()) {
+								case 0:
+									sex = "男";
+									break;
+								case 1:
+									sex = "女";
+									break;
+								}
+					%>
+					<tr style="background-color:<%=color%>;">
+						<td class="radiotd"><input type="radio" name="employee"
+							value="<%=i%>"></td>
+						<td class="notd"><%=employee.getEmpCode()%></td>
+						<td class="nametd"><%=employee.getLName()%><%=employee.getFName()%></td>
+						<td class="name_kanatd"><%=employee.getLKanaName()%><%=employee.getFKanaName()%></td>
+						<td class="sextd"><%=sex%></td>
+						<td class="birthtd"><%=employee.getBirthDay()%></td>
+						<td class="sectiontd"><%=employee.getSectionName()%></td>
+						<td class="startdaytd"><%=employee.getEmpDate()%></td>
+						<td class="licensetd">
+							<%
+								if (employee.getLicenseName() != null) {//test
+											for (int j = 0; j < employee.getLicenseName().size(); j++) {
+							%> <%=employee.getLicenseName().get(j)%> <%
+ 	if (j != employee.getLicenseName().size() - 1) {
+ %> <br> <%
+ 	}
+ %> <%
+ 	}
+ %> <%
+ 	}
+ %>
+						</td>
+					</tr>
+					<%
+						}
+					%>
+					<%
+						}
+					%>
 				</tbody>
-		</table>
-		<input type="submit" value="削除" name="page" class="botan_get">
-		<input type="submit" value="変更" name="page" class="botan_get">
-	</form>
+			</table>
+			<input type="submit" value="削除" name="page" class="botan_get">
+			<input type="submit" value="変更" name="page" class="botan_get">
+		</form>
 	</div>
 </body>
 </html>

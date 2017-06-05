@@ -33,9 +33,9 @@ public class UserDAO {
 				UserBean user = new UserBean();
 
 				// m_employee
-				user.setUser_id(userRes.getString("user_id"));
+				user.setUserId(userRes.getString("user_id"));
 				user.setPassword(userRes.getString("password"));
-				user.setUpdate_date(userRes.getTimestamp("update_date"));
+				user.setUpdateDate(userRes.getTimestamp("update_date"));
 
 				userList.add(user);
 			}
@@ -73,7 +73,7 @@ public class UserDAO {
 				con.setAutoCommit(false);
 
 				// m_employee
-				userPstmt.setString(1, user.getUser_id());
+				userPstmt.setString(1, user.getUserId());
 				userPstmt.setString(2, user.getPassword());
 
 				userPstmt.executeUpdate();
@@ -118,7 +118,7 @@ public class UserDAO {
 				con.setAutoCommit(false);
 
 				// m_employee
-				user_pstmt.setString(1, user.getUser_id());
+				user_pstmt.setString(1, user.getUserId());
 
 				user_pstmt.executeUpdate();
 

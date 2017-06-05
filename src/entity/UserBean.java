@@ -5,15 +5,15 @@ import java.sql.Timestamp;
 
 public class UserBean implements Serializable{
 
-	private String user_id;
+	private String userId;
 	private String password;
-	private Timestamp update_date;
+	private Timestamp updateDate;
 
-	public String getUser_id() {
-		return user_id;
+	public String getUserId() {
+		return userId;
 	}
-	public void setUser_id(String user_id) {
-		this.user_id = user_id;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 	public String getPassword() {
 		return password;
@@ -21,11 +21,11 @@ public class UserBean implements Serializable{
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public Timestamp getUpdate_date() {
-		return update_date;
+	public Timestamp getUpdateDate() {
+		return updateDate;
 	}
-	public void setUpdate_date(Timestamp update_date) {
-		this.update_date = update_date;
+	public void setUpdateDate(Timestamp updateDate) {
+		this.updateDate = updateDate;
 	}
 
 }

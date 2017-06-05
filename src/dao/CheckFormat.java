@@ -159,49 +159,49 @@ public class CheckFormat {
 		String zeroC = "を入力してください<br>";
 		String kana = "をカタカナで記入してください<br>";
 
-		if (employee.getEmp_code() == null) {
+		if (employee.getEmpCode() == null) {
 			call = call + "従業員コード" + temp;
-		} else if (checkSize31J(employee.getEmp_code(), 4) == false) {
+		} else if (checkSize31J(employee.getEmpCode(), 4) == false) {
 			call = call + "従業員コード" + voidC;
-		} else if (checkZero31J(employee.getEmp_code()) == false) {
+		} else if (checkZero31J(employee.getEmpCode()) == false) {
 			call = call + "従業員コード" + zeroC;
-		} else if ((employee.getEmp_code().matches(alphaNumber) == false)) {
+		} else if ((employee.getEmpCode().matches(alphaNumber) == false)) {
 			call = call + "従業員コードは半角英数字のみで入力してください<br>";
 		}
 
-		if (employee.getL_name() == null) {
+		if (employee.getLName() == null) {
 			call = call + "氏" + temp;
-		} else if (checkSize31J(employee.getL_name(), 16) == false) {
+		} else if (checkSize31J(employee.getLName(), 16) == false) {
 			call = call + "氏" + voidC;
-		} else if (checkZero31J(employee.getL_name()) == false) {
+		} else if (checkZero31J(employee.getLName()) == false) {
 			call = call + "氏" + zeroC;
 		}
 
-		if (employee.getF_name() == null) {
+		if (employee.getFName() == null) {
 			call = call + "名" + temp;
-		} else if (checkSize31J(employee.getF_name(), 16) == false) {
+		} else if (checkSize31J(employee.getFName(), 16) == false) {
 			call = call + "名" + voidC;
-		} else if (checkZero31J(employee.getF_name()) == false) {
+		} else if (checkZero31J(employee.getFName()) == false) {
 			call = call + "名" + zeroC;
 		}
 
-		if (employee.getL_kana_name() == null) {
+		if (employee.getLKanaName() == null) {
 			call = call + "氏(カナ)" + temp;
-		} else if (checkSize31J(employee.getL_kana_name(), 24) == false) {
+		} else if (checkSize31J(employee.getLKanaName(), 24) == false) {
 			call = call + "氏(カナ)" + voidC;
-		} else if (checkZero31J(employee.getL_kana_name()) == false) {
+		} else if (checkZero31J(employee.getLKanaName()) == false) {
 			call = call + "氏(カナ)" + zeroC;
-		} else if (employee.getL_kana_name().matches(katakana) == false) {
+		} else if (employee.getLKanaName().matches(katakana) == false) {
 			call = call + "氏(カナ)" + kana;
 		}
 
-		if (employee.getF_kana_name() == null) {
+		if (employee.getFKanaName() == null) {
 			call = call + "名(カナ)" + temp;
-		} else if (checkSize31J(employee.getF_kana_name(), 24) == false) {
+		} else if (checkSize31J(employee.getFKanaName(), 24) == false) {
 			call = call + "名(カナ)" + voidC;
-		} else if (checkZero31J(employee.getF_kana_name()) == false) {
+		} else if (checkZero31J(employee.getFKanaName()) == false) {
 			call = call + "名(カナ)" + zeroC;
-		} else if (employee.getF_kana_name().matches(katakana) == false) {
+		} else if (employee.getFKanaName().matches(katakana) == false) {
 			call = call + "名(カナ)" + kana;
 		}
 
@@ -209,24 +209,24 @@ public class CheckFormat {
 			call = call + "性別" + temp;
 		}
 
-		if ((employee.getBirth_day() == null) || (checkDate(employee.getBirth_day()) == false)) {
+		if ((employee.getBirthDay() == null) || (checkDate(employee.getBirthDay()) == false)) {
 			call = call + "生年月日" + temp;
-		} else if (now.compareTo(convertString2Date(employee.getBirth_day())) < 0) {
+		} else if (now.compareTo(convertString2Date(employee.getBirthDay())) < 0) {
 			call = call + "生年月日-あなたはまだ生まれていません・・・！<br>";
 		}
 
-		if (employee.getSection_code() == null) {
+		if (employee.getSectionCode() == null) {
 			call = call + "所属コード" + temp;
-		} else if (checkSize31J(employee.getSection_code(), 2) == false) {
+		} else if (checkSize31J(employee.getSectionCode(), 2) == false) {
 			call = call + "所属コード" + voidC;
-		} else if (checkZero31J(employee.getSection_code()) == false) {
+		} else if (checkZero31J(employee.getSectionCode()) == false) {
 			call = call + "所属コード" + zeroC;
 		}
 
-		if ((employee.getEmp_date() == null) || (checkDate(employee.getEmp_date()) == false)) {
+		if ((employee.getEmpDate() == null) || (checkDate(employee.getEmpDate()) == false)) {
 			call = call + "入社日" + temp;
-		} else if (convertString2Date(employee.getEmp_date())
-				.compareTo(convertString2Date(employee.getBirth_day())) < 0) {
+		} else if (convertString2Date(employee.getEmpDate())
+				.compareTo(convertString2Date(employee.getBirthDay())) < 0) {
 			call = call + "入社日が生年月日より昔です<br>";
 		}
 
@@ -256,23 +256,23 @@ public class CheckFormat {
 		String voidC = "が入力可能文字数を超えています<br>";
 		String zeroC = "を入力してください<br>";
 
-		if (employee.getLicense_cd_SQLinsert() == null) {
+		if (employee.getLicenseCdSQLinsert() == null) {
 			call = call + "資格コード" + temp;
-		} else if (checkSize31J(employee.getLicense_cd_SQLinsert(), 5) == false) {
+		} else if (checkSize31J(employee.getLicenseCdSQLinsert(), 5) == false) {
 			call = call + "資格コード" + voidC;
-		} else if (checkZero31J(employee.getLicense_cd_SQLinsert()) == false) {
+		} else if (checkZero31J(employee.getLicenseCdSQLinsert()) == false) {
 			call = call + "資格コード" + zeroC;
-		} else if ((employee.getLicense_cd_SQLinsert().matches(alphaNumber) == false)) {
+		} else if ((employee.getLicenseCdSQLinsert().matches(alphaNumber) == false)) {
 			call = call + "資格コードは半角英数字のみで入力してください<br>";
 		}
 
-		if ((employee.getGet_license_date_SQLinsert() == null)
-				|| (checkDate(employee.getGet_license_date_SQLinsert()) == false)) {
+		if ((employee.getGetLicenseDateSQLinsert() == null)
+				|| (checkDate(employee.getGetLicenseDateSQLinsert()) == false)) {
 			call = call + "取得日" + temp;
-		} else if (now.compareTo(convertString2Date(employee.getGet_license_date_SQLinsert())) < 0) {
+		} else if (now.compareTo(convertString2Date(employee.getGetLicenseDateSQLinsert())) < 0) {
 			call = call + "取得日が未来を指定しています<br>";
-		} else if (convertString2Date(employee.getGet_license_date_SQLinsert())
-				.compareTo(convertString2Date(employee.getBirth_day())) < 0) {
+		} else if (convertString2Date(employee.getGetLicenseDateSQLinsert())
+				.compareTo(convertString2Date(employee.getBirthDay())) < 0) {
 			call = call + "取得日が生年月日より昔です<br>";
 		}
 
@@ -292,13 +292,13 @@ public class CheckFormat {
 		String voidC = "が入力可能文字数を超えています<br>";
 		String zeroC = "を入力してください<br>";
 
-		if (checkSize31J(user.getUser_id(), 24) == false) {
+		if (checkSize31J(user.getUserId(), 24) == false) {
 			call = call + "ユーザID" + temp;
-		} else if (checkSize31J(user.getUser_id(), 24) == false) {
+		} else if (checkSize31J(user.getUserId(), 24) == false) {
 			call = call + "ユーザID" + voidC;
-		} else if (checkZero31J(user.getUser_id()) == false) {
+		} else if (checkZero31J(user.getUserId()) == false) {
 			call = call + "ユーザID" + zeroC;
-		} else if ((user.getUser_id().matches(alphaNumber) == false)) {
+		} else if ((user.getUserId().matches(alphaNumber) == false)) {
 			call = call + "ユーザIDは半角英数字のみで入力してください<br>";
 		}
 
@@ -330,21 +330,21 @@ public class CheckFormat {
 		String voidC = "が入力可能文字数を超えています<br>";
 		String zeroC = "を入力してください<br>";
 
-		if (license.getLicense_cd() == null) {
+		if (license.getLicenseCd() == null) {
 			call = call + "資格コード" + temp;
-		} else if (checkSize31J(license.getLicense_cd(), 5) == false) {
+		} else if (checkSize31J(license.getLicenseCd(), 5) == false) {
 			call = call + "資格コード" + voidC;
-		} else if (checkZero31J(license.getLicense_cd()) == false) {
+		} else if (checkZero31J(license.getLicenseCd()) == false) {
 			call = call + "資格コード" + zeroC;
-		} else if ((license.getLicense_cd().matches(alphaNumber) == false)) {
+		} else if ((license.getLicenseCd().matches(alphaNumber) == false)) {
 			call = call + "資格コードは半角英数字のみで入力してください<br>";
 		}
 
-		if (license.getLicense_name() == null) {
+		if (license.getLicenseName() == null) {
 			call = call + "資格名" + temp;
-		} else if (checkSize31J(license.getLicense_name(), 100) == false) {
+		} else if (checkSize31J(license.getLicenseName(), 100) == false) {
 			call = call + "資格名" + voidC;
-		} else if (checkZero31J(license.getLicense_name()) == false) {
+		} else if (checkZero31J(license.getLicenseName()) == false) {
 			call = call + "資格名" + zeroC;
 		}
 
@@ -363,11 +363,11 @@ public class CheckFormat {
 	public static boolean checkPkEmpCode(EmployeeBean employee, ArrayList<EmployeeBean> emp_list)
 			throws ServletServiceException {
 		boolean flag = true;
-		if (employee.getEmp_code() == null) {
+		if (employee.getEmpCode() == null) {
 			throw new ServletServiceException("従業員コードが不正です");
 		}
 		for (EmployeeBean all_emp : emp_list) {
-			if (all_emp.getEmp_code().equals(employee.getEmp_code())) {
+			if (all_emp.getEmpCode().equals(employee.getEmpCode())) {
 				flag = false;
 				;
 				// throw new ServletServiceException("従業員コードが重複しています");
@@ -386,9 +386,9 @@ public class CheckFormat {
 	public static boolean checkPkTGetLicense(EmployeeBean employee, ArrayList<EmployeeBean> emp_list) {
 		boolean flag = true;
 		for (EmployeeBean all_emp : emp_list) {
-			for (String string : all_emp.getLicense_cd()) {
-				if (string.equals(employee.getLicense_cd_SQLinsert())
-						&& all_emp.getEmp_code().equals(employee.getEmp_code())) {
+			for (String string : all_emp.getLicenseCd()) {
+				if (string.equals(employee.getLicenseCdSQLinsert())
+						&& all_emp.getEmpCode().equals(employee.getEmpCode())) {
 					flag = false;
 					// throw new ServletServiceException("すでに登録された資格です");
 				}
@@ -408,11 +408,11 @@ public class CheckFormat {
 	public static boolean checkPkLicense(LicenseBean license, ArrayList<LicenseBean> license_list)
 			throws ServletServiceException {
 		boolean flag = true;
-		if (license.getLicense_cd() == null) {
+		if (license.getLicenseCd() == null) {
 			throw new ServletServiceException("資格コードが不正です");
 		}
 		for (LicenseBean all_license : license_list) {
-			if (all_license.getLicense_cd().equals(license.getLicense_cd())) {
+			if (all_license.getLicenseCd().equals(license.getLicenseCd())) {
 				flag = false;
 				// throw new ServletServiceException("資格コードが重複しています");
 			}
@@ -428,11 +428,11 @@ public class CheckFormat {
 	 */
 	public static boolean checkPkUser(UserBean user, ArrayList<UserBean> user_list) throws ServletServiceException {
 		boolean flag = true;
-		if (user.getUser_id() == null) {
+		if (user.getUserId() == null) {
 			throw new ServletServiceException("ユーザIDが不正です");
 		}
 		for (UserBean all_user : user_list) {
-			if (all_user.getUser_id().equals(user.getUser_id())) {
+			if (all_user.getUserId().equals(user.getUserId())) {
 				flag = false;
 				// throw new ServletServiceException("ユーザIDが重複しています");
 			}

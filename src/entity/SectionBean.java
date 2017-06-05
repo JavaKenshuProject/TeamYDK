@@ -6,26 +6,26 @@ import java.sql.Timestamp;
 
 public class SectionBean implements Serializable {
 
-	private String section_code;
-	private String section_name;
-	private Timestamp update_date;
+	private String sectionCode;
+	private String sectionName;
+	private Timestamp updateDate;
 
-	public String getSection_code() {
-		return section_code;
+	public String getSectionCode() {
+		return sectionCode;
 	}
-	public void setSection_code(String section_code) {
-		this.section_code = section_code;
+	public void setSectionCode(String sectionCode) {
+		this.sectionCode = sectionCode;
 	}
-	public String getSection_name() {
-		return section_name;
+	public String getSectionName() {
+		return sectionName;
 	}
-	public void setSection_name(String section_name) {
-		this.section_name = section_name;
+	public void setSectionName(String sectionName) {
+		this.sectionName = sectionName;
 	}
-	public Timestamp getUpdate_date() {
-		return update_date;
+	public Timestamp getUpdateDate() {
+		return updateDate;
 	}
-	public void setUpdate_date(Timestamp update_date) {
-		this.update_date = update_date;
+	public void setUpdateDate(Timestamp updateDate) {
+		this.updateDate = updateDate;
 	}
 }

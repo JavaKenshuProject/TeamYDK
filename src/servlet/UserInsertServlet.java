@@ -20,65 +20,64 @@ import entity.UserBean;
 public class UserInsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public UserInsertServlet() {
-        super();
-    }
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public UserInsertServlet() {
+		super();
+	}
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
 		/* url宣言 */
 		String url = null;
 
 		HttpSession session = request.getSession(true);
 
-		if((String)session.getAttribute("login") == null){
+		if ((String) session.getAttribute("login") == null) {
 			url = "Login.jsp";
-		}else{
+		} else {
 
+			/* エンコーディング */
+			request.setCharacterEncoding("Windows-31J");
+			response.setCharacterEncoding("Windows-31J");
 
-		/* エンコーディング */
-		request.setCharacterEncoding("Windows-31J");
-		response.setCharacterEncoding("Windows-31J");
+			/* formの取得 */
+			String page = request.getParameter("page");
+			String userId = request.getParameter("user_id");
+			String password = request.getParameter("password");
 
-		/* formの取得 */
-		String page = request.getParameter("page");
-		String userId = request.getParameter("user_id");
-		String password =request.getParameter("password");
+			/* DAOのインスタンス化 */
+			UserDAO userD = new UserDAO();
 
-		/* DAOのインスタンス化 */
-		UserDAO userD = new UserDAO();
+			/* Beanのインスタンス化 */
+			UserBean user = new UserBean();
 
-		/* Beanのインスタンス化*/
-		UserBean user = new UserBean();
+			if (page.equals("ユーザ登録")) {
+				url = "UserInsert.jsp";
+			}
 
-		if(page.equals("ユーザ登録")){
-			url = "UserInsert.jsp";
-		}
+			if (page.equals("登録")) {
+				user.setUserId(userId);
+				user.setPassword(password);
+				userD.userInsert(user);
 
-		if(page.equals("登録")){
-			user.setUser_id(userId);
-			user.setPassword(password);
-			userD.userInsert(user);
-
-			url = "UserInsertSuccess.jsp";
-		}
+				url = "UserInsertSuccess.jsp";
+			}
 		}
 		/* 転送先 */
 		RequestDispatcher rd = request.getRequestDispatcher(url);
 		rd.forward(request, response);
 	}
 
-
-	}
+}

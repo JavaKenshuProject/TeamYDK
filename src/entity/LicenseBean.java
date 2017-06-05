@@ -4,20 +4,20 @@ import java.io.Serializable;
 
 public class LicenseBean implements Serializable{
 
-	private String license_cd;
-	private String license_name;
+	private String licenseCd;
+	private String licenseName;
 
-	public String getLicense_cd() {
-		return license_cd;
+	public String getLicenseCd() {
+		return licenseCd;
 	}
-	public void setLicense_cd(String license_cd) {
-		this.license_cd = license_cd;
+	public void setLicenseCd(String licenseCd) {
+		this.licenseCd = licenseCd;
 	}
-	public String getLicense_name() {
-		return license_name;
+	public String getLicenseName() {
+		return licenseName;
 	}
-	public void setLicense_name(String license_name) {
-		this.license_name = license_name;
+	public void setLicenseName(String licenseName) {
+		this.licenseName = licenseName;
 	}
 
 }
