@@ -56,12 +56,13 @@ public class UserDAO {
 	 */
 	public void userInsert(UserBean user) throws ServletServiceException {
 
-		CheckFormat.checkUserBean(user);
-
+		String call = "";
 		ArrayList<UserBean> user_all_list = new UserDAO().userAllGet();
 		if (!(CheckFormat.checkPK_user(user, user_all_list))) {
-			throw new ServletServiceException("ユーザIDが重複しています");
+			call = call + "ユーザIDが重複しています";
 		}
+
+		CheckFormat.checkUserBean(user, call);
 
 		ConnectionManager cm = ConnectionManager.getInstance();
 

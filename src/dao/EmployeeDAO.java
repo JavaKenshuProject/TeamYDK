@@ -175,10 +175,10 @@ public class EmployeeDAO {
 		}
 		if ((employee.getEmp_code() != null) && (employee.getLicense_cd_SQLinsert() != null)
 				&& (employee.getGet_license_date_SQLinsert() != null)) {
-			flag =true;
+			flag = true;
 		}
 
-		CheckFormat.checkEmployeeBean(employee,flag,call);
+		CheckFormat.checkEmployeeBean(employee, flag, call);
 
 		ConnectionManager cm = ConnectionManager.getInstance();
 
@@ -256,15 +256,15 @@ public class EmployeeDAO {
 
 		if ((employee.getEmp_code() != null) && (employee.getLicense_cd_SQLinsert() != null)
 				&& (employee.getGet_license_date_SQLinsert() != null)) {
-			if(CheckFormat.checkPK_t_get_license(employee, emp_all_list)){
+			if (CheckFormat.checkPK_t_get_license(employee, emp_all_list)) {
 				flag = true;
-			}else{
+			} else {
 				call = call + "すでに取得済みの資格です<br>";
 			}
 
 		}
 
-		CheckFormat.checkEmployeeBean(employee,flag,call);
+		CheckFormat.checkEmployeeBean(employee, flag, call);
 
 		ConnectionManager cm = ConnectionManager.getInstance();
 

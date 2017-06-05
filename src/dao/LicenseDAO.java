@@ -56,7 +56,18 @@ public class LicenseDAO {
 	public void licenseInsert(LicenseBean license) throws ServletServiceException {
 
 		ArrayList<LicenseBean> license_all_list = new LicenseDAO().licenseAllGet();
-		CheckFormat.checkLicenseBean(license,license_all_list);
+		String call = "";
+		for (LicenseBean license_loop : license_all_list) {
+			if (license.getLicense_name().equals(license_loop.getLicense_name())) {
+				call = call + "資格コードが重複しています<br>";
+			}
+		}
+
+		if (!(CheckFormat.checkPK_license(license, license_all_list))) {
+			call = call + "資格名が重複しています<br>";
+		}
+
+		CheckFormat.checkLicenseBean(license, call);
 
 		ConnectionManager cm = ConnectionManager.getInstance();
 

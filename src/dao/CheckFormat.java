@@ -146,13 +146,14 @@ public class CheckFormat {
 	 * @return void or throw
 	 * @throws ServletServiceException
 	 */
-	public static void checkEmployeeBean(EmployeeBean employee, boolean flag,String call) throws ServletServiceException {
+	public static void checkEmployeeBean(EmployeeBean employee, boolean flag, String call)
+			throws ServletServiceException {
 		String KATAKANA = "^[\\u30A0-\\u30FF]+$";
 		String ALPHA_NUMBER = "^[0-9a-zA-Z]+$";
 		java.util.Date u_now = new java.util.Date();
 		java.sql.Date now = new java.sql.Date(u_now.getTime());
 
-		//String call = "";
+		// String call = "";
 		String temp = "が不正です<br>";
 		String void_c = "が入力可能文字数を超えています<br>";
 		String zero_c = "を入力してください<br>";
@@ -295,9 +296,8 @@ public class CheckFormat {
 	 * @return void or throw
 	 * @throws ServletServiceException
 	 */
-	public static void checkUserBean(UserBean user) throws ServletServiceException {
+	public static void checkUserBean(UserBean user, String call) throws ServletServiceException {
 		String ALPHA_NUMBER = "^[0-9a-zA-Z]+$";
-		String call = "";
 		String temp = "が不正です\n";
 		String void_c = "が入力可能文字数を超えています<br>";
 		String zero_c = "を入力してください<br>";
@@ -334,24 +334,11 @@ public class CheckFormat {
 	 * @return void or throw
 	 * @throws ServletServiceException
 	 */
-	public static void checkLicenseBean(LicenseBean license,ArrayList<LicenseBean> license_list) throws ServletServiceException {
+	public static void checkLicenseBean(LicenseBean license, String call) throws ServletServiceException {
 		String ALPHA_NUMBER = "^[0-9a-zA-Z]+$";
-		String call = "";
 		String temp = "が不正です\n";
 		String void_c = "が入力可能文字数を超えています<br>";
 		String zero_c = "を入力してください<br>";
-		boolean flag = false;
-		boolean flag2 = false;
-
-		for(LicenseBean license_loop : license_list){
-			if(license.getLicense_name().equals(license_loop.getLicense_name())){
-				flag = true;
-			}
-		}
-
-		if (!(CheckFormat.checkPK_license(license, license_list))) {
-			flag2 = true;
-		}
 
 		if (license.getLicense_cd() == null) {
 			call = call + "資格コード" + temp;
@@ -361,8 +348,6 @@ public class CheckFormat {
 			call = call + "資格コード" + zero_c;
 		} else if ((license.getLicense_cd().matches(ALPHA_NUMBER) == false)) {
 			call = call + "資格コードは半角英数字のみで入力してください<br>";
-		}else if(flag2){
-			call = call + "資格コードが重複しています<br>";
 		}
 
 		if (license.getLicense_name() == null) {
@@ -371,11 +356,7 @@ public class CheckFormat {
 			call = call + "資格名" + void_c;
 		} else if (checkZero31J(license.getLicense_name()) == false) {
 			call = call + "資格名" + zero_c;
-		} else if(flag){
-			call = call + "資格名が重複しています<br>";
 		}
-
-
 
 		if (!(call.equals(""))) {
 			throw new ServletServiceException(call);
