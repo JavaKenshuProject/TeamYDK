@@ -95,24 +95,23 @@
 							<% } %>
 					</select>“ú</td>
 				</tr>
-			</table>
-			<table>
+				</table>
+				<table class="license_insert">
 				<tr>
 				<%
 					ArrayList<LicenseBean> licenseList = (ArrayList<LicenseBean>) request.getAttribute("licenseList");
 				%>
-					<th>•Û—LŽ‘Ši</th>
-				</tr>
+					<th rowspan="<%=licenseList.size() %>">•Û—LŽ‘Ši</th>
+
 					<%
 						if (licenseList != null) {
 							for (int i = 0; i < licenseList.size(); i++) {
 								LicenseBean license = licenseList.get(i);
 					%>
-				<tr>
-					<td><input type="checkbox" name="license" value="<%=i%>"></td>
-					 <td><%=license.getLicense_name()%></td>
+					<td class="check"><input type="checkbox" name="license" value="<%=i%>"></td>
+					 <td class="license_insert_name"><%=license.getLicense_name()%></td>
 
-						<td><select name="get_year">
+						<td class="license_day"><select name="get_year">
 						<%
 						for(int GY= 1900; GY<=year; GY++){
 						%>
@@ -126,12 +125,12 @@
 							<% for(int GD=1; GD<=31; GD++)  {%>
 							<option><%= GD %></option>
 							<% } %>
-					</select>“ú</td>
+					</select>“ú</td></tr>
 				<%
 					}
 					}
 				%>
-				</tr>
+
 			</table>
 			<input type="submit" name="page" value="“o˜^" class="botan">
 		</form>
