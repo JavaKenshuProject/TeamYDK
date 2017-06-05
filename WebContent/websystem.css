@@ -418,7 +418,7 @@ word-break:break-all;
 .license_insert_name{
 	  background-color:#eeeeee;
       width:500px;
-      word-wrap:break-word;
+      word-break:all-break;
 }
 
 .license_day{
