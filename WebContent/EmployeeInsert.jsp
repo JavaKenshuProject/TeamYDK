@@ -47,7 +47,7 @@
 					<th>¶”NŒŽ“ú</th>
 					<td><select name="birth_year">
 						<%
-						for(int BY= 1900; BY<=year; BY++){
+						for(int BY= year; BY>=1900; BY--){
 						%>
 						<option><%= BY %></option>
 						<% } %>
@@ -81,7 +81,7 @@
 					<th>“üŽÐ“ú</th>
 					<td><select name="start_year">
 						<%
-						for(int SY= 1900; SY<=year; SY++){
+						for(int SY= year; SY>=1900; SY--){
 						%>
 						<option><%= SY %></option>
 						<% } %>
@@ -113,7 +113,7 @@
 
 						<td class="license_day"><select name="get_year">
 						<%
-						for(int GY= 1900; GY<=year; GY++){
+						for(int GY= year; GY>=1900; GY++){
 						%>
 						<option><%= GY %></option>
 						<% } %>
