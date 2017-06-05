@@ -128,7 +128,7 @@ public class EmployeeInsertServlet extends HttpServlet {
 			emp.employeeInsert(empB);
 
 			if (license != null) {
-				for (int i = 0; i < license.length; i++) {
+				for (int i = 1; i < license.length; i++) {
 					licB = lic.licenseAllGet().get(Integer.parseInt(license[i]));
 					empB.setLicense_cd_SQLinsert(licB.getLicense_cd());
 					getdate.add(get_year[i] + "-" + get_month[i] + "-" + get_day[i]);
