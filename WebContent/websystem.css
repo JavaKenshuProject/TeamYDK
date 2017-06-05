@@ -228,7 +228,7 @@ p{
 
 
 
-/*-----------------------]‹Æˆõˆê——------------------------------*/
+/*-----------------------]‹Æˆõˆê——&‘Šiæ“¾------------------------------*/
 .employee_title{
       background-color:#669999;
       font-weight:100;
@@ -358,7 +358,8 @@ word-break:break-all;
 
 /*-----------------------]‹Æˆõ“o˜^ƒtƒH[ƒ€------------------------------*/
 .employee_add{
-      width:80%;
+      width:900px;
+      margin:0 auto;
 }
 .employee_add th{
       background-color:#669999;
@@ -366,12 +367,16 @@ word-break:break-all;
       font-weight:300;
       font-size:20px;
       padding:10px;
+      word-break:all-break;
+      width:170px;
 }
 
 .employee_add td{
       background-color:#eeeeee;
       font-weight:100;
       padding:10px;
+      width:730px;
+      word-break:all-break;
 }
 
 .form_title{
@@ -390,6 +395,42 @@ word-break:break-all;
 
 }*/
 
+/*-----------------------]‹Æˆõ“o˜^‚Ì•Û—L‘ŠiƒtƒH[ƒ€------------------------------*/
+.license_insert{
+	  width:900px;
+      margin:0 auto;
+}
+.license_insert th{
+      background-color:#669999;
+      color:#ffffff;
+      font-weight:300;
+      font-size:20px;
+      padding:10px;
+      word-break:all-break;
+      width:134px;
+}
+
+.check{
+	  background-color:#eeeeee;
+      width:20px;
+      rules:rows;
+}
+
+.license_insert_name{
+	  background-color:#eeeeee;
+      width:250px;
+      rules:rows;
+      word-break:all-break;
+}
+
+.license_day{
+	 background-color:#eeeeee;
+      width:170px;
+      text-align:center;
+      rules:rows;
+      word-break:all-break;
+}
+}
 /*-----------------------ƒVƒXƒeƒ€—˜—pÒ“o˜^ƒtƒH[ƒ€------------------------------*/
 .user_form_title{
       background-color:#339999;
@@ -441,6 +482,12 @@ word-break:break-all;
       background-color:#eeeeee;
       font-weight:100;
       padding:10px;
+}
+
+
+.license_name{
+  width:148px;
+ word-break:break-all;
 }
 
 .botan_get{
