@@ -328,7 +328,7 @@ public class CheckFormat {
 	 */
 	public static void checkUserBean(UserBean user, String call) throws ServletServiceException {
 
-		if (isCheckSize31J(user.getUserId(), 24) == false) {
+		if (user.getUserId() == null) {
 			call = call + "ユーザID" + TEMP;
 		} else if (isCheckSize31J(user.getUserId(), 24) == false) {
 			call = call + "ユーザID" + VOID_C;
