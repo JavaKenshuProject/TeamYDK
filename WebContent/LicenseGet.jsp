@@ -20,9 +20,9 @@
 		<!--------------------------------従業員一覧の表-------------------------------->
 		<p>保有資格を追加する従業員を選んでください。</p>
 		<%
-			ArrayList<EmployeeBean> employeeList = (ArrayList<EmployeeBean>) request.getAttribute("employeeList");
-			ArrayList<LicenseBean> licenseList = (ArrayList<LicenseBean>) request.getAttribute("licenseList");
-			String color;
+			ArrayList<EmployeeBean> employeeList = (ArrayList<EmployeeBean>) request.getAttribute("employeeList"); // EmployeeBeanのリストを宣言 */
+			ArrayList<LicenseBean> licenseList = (ArrayList<LicenseBean>) request.getAttribute("licenseList"); // LicenseBeanのリストを宣言 */
+			String color; // colorの格納変数
 		%>
 		<form action="LicenseServlet" method="post">
 			<table class="employee_table" style="text-align: center;">
@@ -41,14 +41,17 @@
 				</thead>
 				<tbody class="datebody">
 					<%
+						/* employeeListがnullでないとき */
 						if (employeeList != null) {
 							for (int i = 0; i < employeeList.size(); i++) {
 								EmployeeBean employee = employeeList.get(i);
+								/* 色の設定 */
 								if (i % 2 == 0) {
 									color = "#dbffed";
 								} else {
 									color = "#fdfdfd";
 								}
+								/* 性別の設定 */
 								String sex = "";
 								switch (employee.getSex()) {
 								case 0:
@@ -56,6 +59,9 @@
 									break;
 								case 1:
 									sex = "女";
+									break;
+								default:
+									/* DO NOTHING */
 									break;
 								}
 					%>
@@ -76,11 +82,15 @@
 							%> <%=employee.getLicenseName().get(j)%> <%
  	if (j != employee.getLicenseName().size() - 1) {
  %> <br> <%
- 	}
+ 	} else {
+ 						/* DO NOTHING */
+ 					}
  %> <%
  	}
  %> <%
- 	}
+ 	} else {
+ 				/* DO NOTHING */
+ 			}
  %>
 						</td>
 					</tr>
@@ -88,6 +98,8 @@
 						}
 					%>
 					<%
+						} else {
+							/* DO NOTHING */
 						}
 					%>
 				</tbody>
@@ -103,9 +115,11 @@
 				</thead>
 				<tbody class="datebody">
 					<%
+						/* licenseListがnullでないとき */
 						if (licenseList != null) {
 							for (int i = 0; i < licenseList.size(); i++) {
 								LicenseBean license = licenseList.get(i);
+								/* 色の設定 */
 								if (i % 2 == 0) {
 									color = "#eeeeee";
 								} else {
@@ -121,6 +135,8 @@
 						}
 					%>
 					<%
+						} else {
+							/* DO NOTHING */
 						}
 					%>
 				</tbody>
@@ -130,7 +146,8 @@
 				<tr>
 					<td><select name="getLicenseDay">
 							<%
-								Calendar cal = Calendar.getInstance(); //カレンダーオブジェクトを取得
+								/* 日付の設定*/
+								Calendar cal = Calendar.getInstance(); /* カレンダーオブジェクトを取得 */
 								int year = cal.get(Calendar.YEAR);
 								for (int j = year; j >= 1900; j--) {
 							%>

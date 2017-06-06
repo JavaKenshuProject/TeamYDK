@@ -22,7 +22,7 @@
 
 		<%
 			ArrayList<EmployeeBean> employeeList = (ArrayList<EmployeeBean>) request.getAttribute("employeeList"); //EmployeeBean‚ÌƒŠƒXƒg‚ðéŒ¾
-			String color; /* color‚ÌŠi”[•Ï”*/
+			String color; /* color‚ÌŠi”[•Ï” */
 		%>
 		<form action="ShowServlet" method="post">
 			<table class="employee_table" style="text-align: center;">
@@ -51,7 +51,7 @@
 								} else {
 									color = "#fdfdfd";
 								}
-
+								/* «•Ê‚ÌÝ’è */
 								String sex = "";
 								switch (employee.getSex()) {
 								case 0:
@@ -59,6 +59,9 @@
 									break;
 								case 1:
 									sex = "—";
+									break;
+								default:
+									/* DO NOTHING */
 									break;
 								}
 					%>
@@ -74,16 +77,20 @@
 						<td class="startdaytd"><%=employee.getEmpDate()%></td>
 						<td class="licensetd">
 							<%
-								if (employee.getLicenseName() != null) {//test
+								if (employee.getLicenseName() != null) {
 											for (int j = 0; j < employee.getLicenseName().size(); j++) {
 							%> <%=employee.getLicenseName().get(j)%> <%
  	if (j != employee.getLicenseName().size() - 1) {
  %> <br> <%
- 	}
+ 	} else {
+ 						/* DO NOTHING */
+ 					}
  %> <%
  	}
  %> <%
- 	}
+ 	} else {
+ 				/* DO NOTHING */
+ 			}
  %>
 						</td>
 					</tr>
@@ -91,6 +98,8 @@
 						}
 					%>
 					<%
+						} else {
+							/* DO NOTHING */
 						}
 					%>
 				</tbody>

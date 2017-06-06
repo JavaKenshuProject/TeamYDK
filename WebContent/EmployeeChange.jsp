@@ -37,7 +37,7 @@
 						name="f_name" class="textbox" value="<%=empB.getFName()%>"></td>
 				</tr>
 				<tr>
-					<th>氏名(カナ)</th>
+					<th>氏名(フリガナ)</th>
 					<td>氏<input type="text" name="l_kana_name"
 						value="<%=empB.getLKanaName()%>"> 名<input type="text"
 						name="f_kana_name" value="<%=empB.getFKanaName()%>"></td>
@@ -67,8 +67,7 @@
 							<%
 								if (section.getSectionName().equals(empB.getSectionName())) {
 							%>
-							<option value="<%=section.getSectionCode()%>"
-								selected="selected"><%=section.getSectionName()%></option>
+							<option value="<%=section.getSectionCode()%>" selected="selected"><%=section.getSectionName()%></option>
 							<%
 								} else {
 							%>
@@ -80,6 +79,8 @@
 								}
 							%>
 							<%
+								} else {
+									/* DO NOTHING */
 								}
 							%>
 					</select></td>

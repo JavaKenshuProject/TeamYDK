@@ -16,7 +16,8 @@
 	<!------------------------------------------ヘッダー------------------------------>
 	<%@ include file="header.jsp"%>
 	<!-------------------------------------------------------------------------------->
-	<%  Calendar cal = Calendar.getInstance();
+	<%
+		Calendar cal = Calendar.getInstance();
 		int year = cal.get(Calendar.YEAR);
 	%>
 	<div class="content">
@@ -30,35 +31,47 @@
 				</tr>
 				<tr>
 					<th>氏名(漢字)</th>
-					<td>氏&nbsp;<input type="text" name="l_name" placeholder="例) 田中" >　名&nbsp;<input
-						type="text" name="f_name" placeholder="例) 一郎"></td>
+					<td>氏&nbsp;<input type="text" name="l_name"
+						placeholder="例) 田中"> 名&nbsp;<input type="text"
+						name="f_name" placeholder="例) 一郎"></td>
 				</tr>
 				<tr>
-					<th>氏名(カナ)</th>
-					<td>氏&nbsp;<input type="text" name="l_kana_name" placeholder="例) タナカ">　名&nbsp;<input
-						type="text" name="f_kana_name" placeholder="例) イチロウ"></td>
+					<th>氏名(フリガナ)</th>
+					<td>氏&nbsp;<input type="text" name="l_kana_name"
+						placeholder="例) タナカ"> 名&nbsp;<input type="text"
+						name="f_kana_name" placeholder="例) イチロウ"></td>
 				</tr>
 				<tr>
 					<th>性別</th>
-					<td><input type="radio" name="sex" value="0" checked="checked">男 <input
-						type="radio" name="sex" value="1">女</td>
+					<td><input type="radio" name="sex" value="0" checked="checked">男
+						<input type="radio" name="sex" value="1">女</td>
 				</tr>
 				<tr>
 					<th>生年月日</th>
 					<td><select name="birth_year">
-						<%
-						for(int BY= year; BY>=1900; BY--){
-						%>
-						<option><%= BY %></option>
-						<% } %>
+							<%
+								for (int BY = year; BY >= 1900; BY--) {
+							%>
+							<option><%=BY%></option>
+							<%
+								}
+							%>
 					</select>年 <select name="birth_month">
-							<% for(int BM=1; BM<=12; BM++){  %>
-							<option><%= BM %></option>
-							<% } %>
+							<%
+								for (int BM = 1; BM <= 12; BM++) {
+							%>
+							<option><%=BM%></option>
+							<%
+								}
+							%>
 					</select>月 <select name="birth_day">
-							<% for(int BD=1; BD<=31; BD++){  %>
-							<option><%= BD %></option>
-							<% } %>
+							<%
+								for (int BD = 1; BD <= 31; BD++) {
+							%>
+							<option><%=BD%></option>
+							<%
+								}
+							%>
 					</select>日</td>
 				</tr>
 				<tr>
@@ -67,7 +80,6 @@
 							<%
 								SectionDAO section = new SectionDAO();
 								ArrayList<SectionBean> sec_list = section.SectionAllGet();
-								//request.setAttribute("section", sec_list);
 
 								for (SectionBean sec : sec_list) {
 							%>
@@ -80,61 +92,88 @@
 				<tr>
 					<th>入社日</th>
 					<td><select name="start_year">
-						<%
-						for(int SY= year; SY>=1900; SY--){
-						%>
-						<option><%= SY %></option>
-						<% } %>
+							<%
+								for (int SY = year; SY >= 1900; SY--) {
+							%>
+							<option><%=SY%></option>
+							<%
+								}
+							%>
 					</select>年 <select name="start_month">
-							<% for(int SM=1; SM<=12; SM++) { %>
-							<option><%= SM %></option>
-							<% } %>
+							<%
+								for (int SM = 1; SM <= 12; SM++) {
+							%>
+							<option><%=SM%></option>
+							<%
+								}
+							%>
 					</select>月 <select name="start_day">
-							<% for(int SD=1; SD<=31; SD++)  {%>
-							<option><%= SD %></option>
-							<% } %>
+							<%
+								for (int SD = 1; SD <= 31; SD++) {
+							%>
+							<option><%=SD%></option>
+							<%
+								}
+							%>
 					</select>日</td>
 				</tr>
-				</table>
-				<div class="licensediv">
+			</table>
+			<div class="licensediv">
 				<table class="license_insert">
-				<tr>
-				<%
-					ArrayList<LicenseBean> licenseList = (ArrayList<LicenseBean>) request.getAttribute("licenseList");
-				%>
-					<th class="license_insert_th" style="vertical-align: middle;">保有資格</th></tr></table>
+					<tr>
+						<%
+							ArrayList<LicenseBean> licenseList = (ArrayList<LicenseBean>) request.getAttribute("licenseList");
+						%>
+						<th class="license_insert_th" style="vertical-align: middle;">保有資格</th>
+					</tr>
+				</table>
 
-					<table class="scroll">
+				<table class="scroll">
 
 					<%
 						if (licenseList != null) {
 							for (int i = 0; i < licenseList.size(); i++) {
 								LicenseBean license = licenseList.get(i);
 					%>
-					<td class="check"><input type="checkbox" name="license" value="<%=i%>"></td>
-					 <td class="license_insert_name"><%=license.getLicenseName()%></td>
+					<td class="check"><input type="checkbox" name="license"
+						value="<%=i%>"></td>
+					<td class="license_insert_name"><%=license.getLicenseName()%></td>
 
-						<td class="license_day"><select name="get_year">
-						<%
-						for(int GY= year; GY>=1900; GY--){
-						%>
-						<option><%= GY %></option>
-						<% } %>
+					<td class="license_day"><select name="get_year">
+							<%
+								for (int GY = year; GY >= 1900; GY--) {
+							%>
+							<option><%=GY%></option>
+							<%
+								}
+							%>
 					</select>年 <select name="get_month">
-							<% for(int GM=1; GM<=12; GM++) { %>
-							<option><%= GM %></option>
-							<% } %>
+							<%
+								for (int GM = 1; GM <= 12; GM++) {
+							%>
+							<option><%=GM%></option>
+							<%
+								}
+							%>
 					</select>月 <select name="get_day">
-							<% for(int GD=1; GD<=31; GD++)  {%>
-							<option><%= GD %></option>
-							<% } %>
-					</select>日</td></tr>
-				<%
-					}
-					}
-				%>
+							<%
+								for (int GD = 1; GD <= 31; GD++) {
+							%>
+							<option><%=GD%></option>
+							<%
+								}
+							%>
+					</select>日</td>
+					</tr>
+					<%
+						}
+						}else{
+							/* DO NOTHING */
+						}
+					%>
 
-			</table></div>
+				</table>
+			</div>
 			<input type="submit" name="page" value="登録" class="botan">
 		</form>
 	</div>
