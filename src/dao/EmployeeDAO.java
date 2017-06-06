@@ -11,6 +11,11 @@ import entity.EmployeeBean;
 import exception.ServletServiceException;
 
 /**
+ * TeamB-YDK EmployeeDAO.java
+ *
+ * Copyright(C) 2017 TeamB-YDK All Rights Reserved.
+ *
+ * 従業員情報にかかわるデータベースとのやり取りを行うクラスです
  *
  * @author KIKUCHI
  * @version 1.35
@@ -21,8 +26,10 @@ public class EmployeeDAO {
 	 * employeeAllGetから呼ばれるメソッドです
 	 *
 	 * @param con
+	 *            データベースのConnnection
 	 * @param employee
-	 * @return
+	 *            setしたいEmployeeBean
+	 * @return EmployeeBean setしたEmployeeBean
 	 * @throws SQLException
 	 */
 	private EmployeeBean mSectionGet(Connection con, EmployeeBean employee) throws SQLException {
@@ -36,6 +43,8 @@ public class EmployeeDAO {
 					// m_section
 					employee.setSectionName(section_res.getString("section_name"));
 					employee.setSectionUpdateDate(section_res.getTimestamp("update_date"));
+				} else {
+					/* DO NOTHING */
 				}
 			} catch (SQLException e) {
 				throw e;
@@ -51,8 +60,10 @@ public class EmployeeDAO {
 	 * employeeAllGetから呼ばれるメソッドです
 	 *
 	 * @param con
+	 *            データベースのConnnection
 	 * @param employee
-	 * @return
+	 *            setしたいEmployeeBean
+	 * @return EmployeeBean setしたEmployeeBean
 	 * @throws SQLException
 	 */
 	private EmployeeBean tGetLicenseGet(Connection con, EmployeeBean employee) throws SQLException {
@@ -85,8 +96,10 @@ public class EmployeeDAO {
 	 * employeeAllGetから呼ばれるメソッドです
 	 *
 	 * @param con
+	 *            データベースのConnnection
 	 * @param employee
-	 * @return
+	 *            setしたいEmployeeBean
+	 * @return EmployeeBean setしたEmployeeBean
 	 * @throws SQLException
 	 */
 	private EmployeeBean mLicenseGet(Connection con, EmployeeBean employee) throws SQLException {
@@ -102,6 +115,8 @@ public class EmployeeDAO {
 					if (licenseRes.next()) {
 						// m_license
 						licenseName.add(licenseRes.getString("license_name"));
+					} else {
+						/* DO NOTHING */
 					}
 				} catch (SQLException e) {
 					throw e;
@@ -116,6 +131,8 @@ public class EmployeeDAO {
 
 	/**
 	 * 従業員情報にかかわる全レコードの取得 ---返り値:ArrayList(EmployeeBean)
+	 *
+	 * @return ArrayList<EmployeeBean> 全従業員情報のArrayList
 	 */
 	public ArrayList<EmployeeBean> employeeAllGet() {
 
@@ -163,6 +180,7 @@ public class EmployeeDAO {
 	 * 従業員情報の登録 ---Bean内のm_employeeとt_get_licenseの情報のみ登録されます
 	 *
 	 * @param employee
+	 *            処理したい資格情報
 	 */
 	public void employeeInsert(EmployeeBean employee) throws ServletServiceException {
 
@@ -170,12 +188,16 @@ public class EmployeeDAO {
 		String call = "";
 
 		ArrayList<EmployeeBean> empAllList = new EmployeeDAO().employeeAllGet();
-		if (!(CheckFormat.checkPkEmpCode(employee, empAllList))) {
+		if (!(CheckFormat.isCheckPkEmpCode(employee, empAllList))) {
 			call = call + "従業員コードが重複しています<br>";
+		} else {
+			/* DO NOTHING */
 		}
 		if ((employee.getEmpCode() != null) && (employee.getLicenseCdSQLinsert() != null)
 				&& (employee.getGetLicenseDateSQLinsert() != null)) {
 			flag = true;
+		} else {
+			/* DO NOTHING */
 		}
 
 		CheckFormat.checkEmployeeBean(employee, flag, call);
@@ -216,6 +238,8 @@ public class EmployeeDAO {
 					} catch (SQLException e) {
 						throw e;
 					}
+				} else {
+					/* DO NOTHING */
 				}
 
 				con.commit();
@@ -243,6 +267,7 @@ public class EmployeeDAO {
 	 * 保有資格を追加するためには、一覧から取得したEmployeeBeanの_SQLinsertにデータを格納してこのメソッドに渡してください
 	 *
 	 * @param employee
+	 *            処理したい資格情報
 	 */
 	public void employeeUpdate(EmployeeBean employee) throws ServletServiceException {
 
@@ -250,18 +275,22 @@ public class EmployeeDAO {
 		String call = "";
 
 		ArrayList<EmployeeBean> empAllList = new EmployeeDAO().employeeAllGet();
-		if (CheckFormat.checkPkEmpCode(employee, empAllList)) {
+		if (CheckFormat.isCheckPkEmpCode(employee, empAllList)) {
 			call = call + "従業員コードが存在しません<br>";
+		} else {
+			/* DO NOTHING */
 		}
 
 		if ((employee.getEmpCode() != null) && (employee.getLicenseCdSQLinsert() != null)
 				&& (employee.getGetLicenseDateSQLinsert() != null)) {
-			if (CheckFormat.checkPkTGetLicense(employee, empAllList)) {
+			if (CheckFormat.isCheckPkTGetLicense(employee, empAllList)) {
 				flag = true;
 			} else {
 				call = call + "すでに取得済みの資格です<br>";
 			}
 
+		} else {
+			/* DO NOTHING */
 		}
 
 		CheckFormat.checkEmployeeBean(employee, flag, call);
@@ -290,7 +319,7 @@ public class EmployeeDAO {
 				// t_get_license
 				if ((employee.getEmpCode() != null) && (employee.getLicenseCdSQLinsert() != null)
 						&& (employee.getGetLicenseDateSQLinsert() != null)
-						&& (CheckFormat.checkPkTGetLicense(employee, empAllList))) {
+						&& (CheckFormat.isCheckPkTGetLicense(employee, empAllList))) {
 					try (PreparedStatement get_license_pstmt = con.prepareStatement(tGetLicenseSql);) {
 						get_license_pstmt.setString(1, employee.getEmpCode());
 						get_license_pstmt.setString(2, employee.getLicenseCdSQLinsert());
@@ -300,6 +329,8 @@ public class EmployeeDAO {
 					} catch (SQLException e) {
 						throw e;
 					}
+				} else {
+					/* DO NOTHING */
 				}
 
 				con.commit();
@@ -325,12 +356,15 @@ public class EmployeeDAO {
 	 * 従業員情報の削除 ---m_employeeとt_get_licenseから、Bean内のemp_idを元に情報を削除します
 	 *
 	 * @param employee
+	 *            処理したい資格情報
 	 */
 	public void employeeDelete(EmployeeBean employee) throws ServletServiceException {
 
 		ArrayList<EmployeeBean> empAllList = new EmployeeDAO().employeeAllGet();
-		if (CheckFormat.checkPkEmpCode(employee, empAllList)) {
-			throw new ServletServiceException("従業員コードが存在しません");
+		if (CheckFormat.isCheckPkEmpCode(employee, empAllList)) {
+			throw new ServletServiceException("従業員コードが存在しません<br>");
+		} else {
+			/* DO NOTHING */
 		}
 
 		ConnectionManager cm = ConnectionManager.getInstance();

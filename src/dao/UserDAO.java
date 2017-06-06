@@ -10,6 +10,11 @@ import entity.UserBean;
 import exception.ServletServiceException;
 
 /**
+ * TeamB-YDK UserDAO.java
+ *
+ * Copyright(C) 2017 TeamB-YDK All Rights Reserved.
+ *
+ * ユーザー情報にかかわるデータベースとのやり取りを行うクラスです
  *
  * @author KIKUCHI
  * @version 1.10
@@ -17,6 +22,8 @@ import exception.ServletServiceException;
 public class UserDAO {
 	/**
 	 * ログインにかかわるユーザー情報の全レコードを取得 ---返り値:ArrayList(UserBean)
+	 *
+	 * @return ArrayList<UserBean> 全ユーザー情報
 	 */
 	public ArrayList<UserBean> userAllGet() {
 
@@ -53,13 +60,16 @@ public class UserDAO {
 	 * ユーザ情報の登録 ---UserBean内の情報を元に登録します
 	 *
 	 * @param user
+	 *            処理したい資格情報
 	 */
 	public void userInsert(UserBean user) throws ServletServiceException {
 
 		String call = "";
 		ArrayList<UserBean> userAllList = new UserDAO().userAllGet();
-		if (!(CheckFormat.checkPkUser(user, userAllList))) {
-			call = call + "ユーザIDが重複しています";
+		if (!(CheckFormat.isCheckPkUser(user, userAllList))) {
+			call = call + "ユーザIDが重複しています<br>";
+		} else {
+			/* DO NOTHING */
 		}
 
 		CheckFormat.checkUserBean(user, call);
@@ -101,12 +111,15 @@ public class UserDAO {
 	 * ユーザ情報の削除 ---UserBean内の情報を元にユーザ情報を削除します
 	 *
 	 * @param user
+	 *            処理したい資格情報
 	 */
 	public void userDelete(UserBean user) throws ServletServiceException {
 
 		ArrayList<UserBean> userAllList = new UserDAO().userAllGet();
-		if (CheckFormat.checkPkUser(user, userAllList)) {
-			throw new ServletServiceException("ユーザIDが存在しません");
+		if (CheckFormat.isCheckPkUser(user, userAllList)) {
+			throw new ServletServiceException("ユーザIDが存在しません<br>");
+		} else {
+			/* DO NOTHING */
 		}
 
 		ConnectionManager cm = ConnectionManager.getInstance();

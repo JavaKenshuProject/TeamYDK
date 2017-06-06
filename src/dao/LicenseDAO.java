@@ -10,6 +10,11 @@ import entity.LicenseBean;
 import exception.ServletServiceException;
 
 /**
+ * TeamB-YDK LicenseDAO.java
+ *
+ * Copyright(C) 2017 TeamB-YDK All Rights Reserved.
+ *
+ * 資格情報にかかわるデータベースとのやり取りを行うクラスです
  *
  * @author KIKUCHI
  * @version 1.10
@@ -17,6 +22,8 @@ import exception.ServletServiceException;
 public class LicenseDAO {
 	/**
 	 * 資格情報の全レコードを取得 ---返り値:ArrayList(LicenseBean)
+	 *
+	 * @return ArrayList<LicenseBean> 全資格情報
 	 */
 	public ArrayList<LicenseBean> licenseAllGet() {
 
@@ -52,19 +59,25 @@ public class LicenseDAO {
 	 * 資格情報の登録 ---LicenseBean内の情報を元に登録します
 	 *
 	 * @param license
+	 *            処理したい資格情報
 	 */
 	public void licenseInsert(LicenseBean license) throws ServletServiceException {
 
 		ArrayList<LicenseBean> licenseAllList = new LicenseDAO().licenseAllGet();
 		String call = "";
-		for (LicenseBean licenseLoop : licenseAllList) {
-			if (license.getLicenseName().equals(licenseLoop.getLicenseName())) {
-				call = call + "資格コードが重複しています<br>";
-			}
+
+		if (!(CheckFormat.isCheckPkLicense(license, licenseAllList))) {
+			call = call + "資格コードが重複しています<br>";
+		} else {
+			/* DO NOTHING */
 		}
 
-		if (!(CheckFormat.checkPkLicense(license, licenseAllList))) {
-			call = call + "資格名が重複しています<br>";
+		for (LicenseBean licenseLoop : licenseAllList) {
+			if (license.getLicenseName().equals(licenseLoop.getLicenseName())) {
+				call = call + "資格名が重複しています<br>";
+			} else {
+				/* DO NOTHING */
+			}
 		}
 
 		CheckFormat.checkLicenseBean(license, call);
@@ -73,8 +86,7 @@ public class LicenseDAO {
 
 		String license_sql = "INSERT INTO m_license (license_cd,license_name) VALUES (?,?)";
 
-		try (Connection con = cm.getConnection();
-				PreparedStatement licensePstmt = con.prepareStatement(license_sql);) {
+		try (Connection con = cm.getConnection(); PreparedStatement licensePstmt = con.prepareStatement(license_sql);) {
 			try {
 				con.setAutoCommit(false);
 
@@ -107,20 +119,22 @@ public class LicenseDAO {
 	 * 資格情報の削除 ---LicenseBean内の情報を元に資格情報を削除します
 	 *
 	 * @param license
+	 *            処理したい資格情報
 	 */
 	public void licenseDelete(LicenseBean license) throws ServletServiceException {
 
 		ArrayList<LicenseBean> licenseAllList = new LicenseDAO().licenseAllGet();
-		if (CheckFormat.checkPkLicense(license, licenseAllList)) {
-			throw new ServletServiceException("資格コードが存在しません");
+		if (CheckFormat.isCheckPkLicense(license, licenseAllList)) {
+			throw new ServletServiceException("資格コードが存在しません<br>");
+		} else {
+			/* DO NOTHING */
 		}
 
 		ConnectionManager cm = ConnectionManager.getInstance();
 
 		String licenseSql = "DELETE FROM m_license WHERE license_cd = ?";
 
-		try (Connection con = cm.getConnection();
-				PreparedStatement licensePstmt = con.prepareStatement(licenseSql);) {
+		try (Connection con = cm.getConnection(); PreparedStatement licensePstmt = con.prepareStatement(licenseSql);) {
 			try {
 				con.setAutoCommit(false);
 

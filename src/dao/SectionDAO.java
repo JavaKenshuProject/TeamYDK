@@ -9,6 +9,11 @@ import java.util.ArrayList;
 import entity.SectionBean;
 
 /**
+ * TeamB-YDK UserDAO.java
+ *
+ * Copyright(C) 2017 TeamB-YDK All Rights Reserved.
+ *
+ * 所属情報にかかわるデータベースとのやり取りを行うクラスです
  *
  * @author KIKUCHI
  * @version 1.00
@@ -16,6 +21,8 @@ import entity.SectionBean;
 public class SectionDAO {
 	/**
 	 * 所属情報の全レコードを取得 ---返り値:ArrayList(SectionBean)
+	 *
+	 * @return ArrayList<SectionBean> 全所属情報
 	 */
 	public ArrayList<SectionBean> SectionAllGet() {
 
