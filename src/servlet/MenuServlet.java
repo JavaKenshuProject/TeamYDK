@@ -11,8 +11,19 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class MenuServlet
+ * TeamB-YDK MenuServlet.java
+ *
+ * Copyright(C) 2017 TeamB-YDK All Righta Reserved.
+ *
  */
+
+/**
+ * メニュー画面に遷移するクラス
+ *
+ * @author TeamB-YDK
+ * @version 1.00
+ */
+
 @WebServlet("/MenuServlet")
 public class MenuServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -39,34 +50,44 @@ public class MenuServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+
+	/**
+	 * ポストされたときに用いるメソッド
+	 *
+	 * @param request
+	 *            response
+	 * @return
+	 * @throws ServletException
+	 *             IOException
+	 */
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		// doGet(request, response);
 
-		// 移譲する先のjspを格納する変数url
-		String url = null;
+		String url = null; // 移譲する先のjspを格納する変数url
 
-		HttpSession session = request.getSession(true);
+		HttpSession session = request.getSession(true); // セッションの取得
 
+		/* ログイン状況の確認 */
 		if ((String) session.getAttribute("login") == null) {
 			url = "Login.jsp";
 		} else {
 
-			// エンコーディング指定
+			/* エンコーディング指定 */
 			request.setCharacterEncoding("Windows-31J");
 			response.setCharacterEncoding("Windows-31J");
 
-			// formからの値を取得
-			String page = request.getParameter("page");
+			String page = request.getParameter("page"); // formからの値を取得
 
-			// メニューボタンの値から行き先をurlに格納する
+			/* メニューボタンの値から行き先をurlに格納する */
 			if (page.equals("メニューに戻る") || page.equals("従業員管理システム")) {
 				url = "Menu.jsp";
+			} else {
+				/* DO NOTHING */
 			}
-
 		}
 
+		/* 転送先 */
 		RequestDispatcher rd = request.getRequestDispatcher(url);
 		rd.forward(request, response);
 	}

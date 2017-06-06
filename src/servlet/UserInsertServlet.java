@@ -14,8 +14,19 @@ import dao.UserDAO;
 import entity.UserBean;
 
 /**
- * Servlet implementation class UserInsertServlet
+ * TeamB-YDK UserInsertServlet.java
+ *
+ * Copyright(C) 2017 TeamB-YDK All Righta Reserved.
+ *
  */
+
+/**
+ * システムユーザを新規登録するクラス
+ *
+ * @author TeamB-YDK
+ * @version 1.00
+ */
+
 @WebServlet("/UserInsertServlet")
 public class UserInsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -36,14 +47,24 @@ public class UserInsertServlet extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
+	/**
+	 * ポストされたときに用いるメソッド
+	 *
+	 * @param request
+	 *            response
+	 * @return
+	 * @throws ServletException
+	 *             IOException
+	 */
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		/* url宣言 */
-		String url = null;
+		String url = null; // 移譲する先のjspを格納する変数url
 
-		HttpSession session = request.getSession(true);
+		HttpSession session = request.getSession(true); // セッションの取得
 
+		/* ログイン状況の確認 */
 		if ((String) session.getAttribute("login") == null) {
 			url = "Login.jsp";
 		} else {
@@ -63,18 +84,25 @@ public class UserInsertServlet extends HttpServlet {
 			/* Beanのインスタンス化 */
 			UserBean user = new UserBean();
 
+			/* ユーザ登録を押下したとき */
 			if (page.equals("ユーザ登録")) {
 				url = "UserInsert.jsp";
+			} else {
+				/* DO NOTHING */
 			}
 
+			/* 登録を押下したとき */
 			if (page.equals("登録")) {
 				user.setUserId(userId);
 				user.setPassword(password);
 				userD.userInsert(user);
 
 				url = "UserInsertSuccess.jsp";
+			} else {
+				/* DO NOTHING */
 			}
 		}
+
 		/* 転送先 */
 		RequestDispatcher rd = request.getRequestDispatcher(url);
 		rd.forward(request, response);

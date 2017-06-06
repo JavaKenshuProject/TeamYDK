@@ -15,8 +15,19 @@ import dao.EmployeeDAO;
 import entity.EmployeeBean;
 
 /**
- * Servlet implementation class ShowServlet
+ * TeamB-YDK ShowServlet.java
+ *
+ * Copyright(C) 2017 TeamB-YDK All Righta Reserved.
+ *
  */
+
+/**
+ * 従業員一覧を表示するクラス
+ *
+ * @author TeamB-YDK
+ * @version 1.00
+ */
+
 @WebServlet("/ShowServlet")
 public class ShowServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -33,20 +44,30 @@ public class ShowServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+
+	/**
+	 * ポストされたときに用いるメソッド
+	 *
+	 * @param request
+	 *            response
+	 * @return
+	 * @throws ServletException
+	 *             IOException
+	 */
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		// 移譲する先のjspを格納する変数url
-		String url = null;
+		String url = null; // 移譲する先のjspを格納する変数url
 
-		HttpSession session = request.getSession(true);
+		HttpSession session = request.getSession(true); // セッションの取得
 
+		/* ログイン状況の確認 */
 		if ((String) session.getAttribute("login") == null) {
 			url = "Login.jsp";
 		} else {
 
 			// エンコーディング指定
-
 			request.setCharacterEncoding("Windows-31J");
 			response.setCharacterEncoding("Windows-31J");
 
@@ -56,6 +77,7 @@ public class ShowServlet extends HttpServlet {
 			/* DAOの生成 */
 			EmployeeDAO emp = new EmployeeDAO();
 
+			/* 従業員一覧を押下したとき */
 			if (page.equals("従業員一覧")) {
 				ArrayList<EmployeeBean> employeeList = emp.employeeAllGet();
 
@@ -64,17 +86,26 @@ public class ShowServlet extends HttpServlet {
 
 				// 移動先の設定
 				url = "ShowEmployee.jsp";
-
+			} else {
+				/* DO NOTHING */
 			}
+
+			/* 削除を押下したとき */
 			if (page.equals("削除")) {
 				url = "DeleteServlet";
+			} else {
+				/* DO NOTHING */
 			}
 
+			/* 変更を押下したとき */
 			if (page.equals("変更")) {
 				url = "ChangeServlet";
 				request.setAttribute("page", page);
+			} else {
+				/* DO NOTHING */
 			}
 		}
+
 		/* 転送先 */
 		RequestDispatcher rd = request.getRequestDispatcher(url);
 		rd.forward(request, response);

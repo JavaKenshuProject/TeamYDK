@@ -16,8 +16,19 @@ import entity.UserBean;
 import exception.ServletServiceException;
 
 /**
- * Servlet implementation class LoginServlet
+ * TeamB-YDK LoginServlet.java
+ *
+ * Copyright(C) 2017 TeamB-YDK All Righta Reserved.
+ *
  */
+
+/**
+ * ログインするクラス
+ *
+ * @author TeamB-YDK
+ * @version 1.00
+ */
+
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -31,58 +42,69 @@ public class LoginServlet extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
+	/**
+	 * ポストされたときに用いるメソッド
+	 *
+	 * @param request
+	 *            response
+	 * @return
+	 * @throws ServletException
+	 *             IOException
+	 */
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		// エンコーディング指定
-		// テスト
+		/* エンコーディング指定 */
 		request.setCharacterEncoding("Windows-31J");
 		response.setCharacterEncoding("Windows-31J");
 
-		// formからの値を取得
-		String login = request.getParameter("login");
+		String login = request.getParameter("login"); // formからの値を取得
 
-		// 移譲する先のjspを格納する変数url
-		String url = "/Login.jsp";
+		String url = "/Login.jsp"; // 移譲する先のjspを格納する変数url
 
+		/* ログインを押下したとき */
 		if (login.equals("ログイン")) {
 
-			// パラメーター取得
+			/* パラメーター取得 */
 			String userID = request.getParameter("userID");
 			String password = request.getParameter("password");
 
-			// DAO,Beanをインスタンス化
+			/* DAO,Beanをインスタンス化 */
 			ArrayList<UserBean> userList = new ArrayList<UserBean>();
 			UserDAO dao = new UserDAO();
 
-			// セッション管理
-			HttpSession session = request.getSession();
+			HttpSession session = request.getSession(); // セッション管理
 
-			// DAOからのreturnをBeanに格納
+			/* DAOからのreturnをBeanに格納 */
 			try {
 				userList = dao.userAllGet();
 			} catch (Exception e) {
 			}
 
-			// userList = (ArrayList<UserBean>)request.getAttribute("userList");
+			boolean hasFlag = false; // データがあるかの有無を確認する変数
 
-			boolean flag = false;
-
+			/* ユーザ情報の詮索 */
 			for (UserBean user : userList) {
 				if ((user.getUserId().equals(userID)) && (user.getPassword().equals(password))) {
-					flag = true;
+					hasFlag = true;
 					session.setAttribute("login", (String) "OK");
+				} else {
+					/* DO NOTHING */
 				}
 			}
 
-			if (flag) {
+			/* hasFlagがtrueのとき */
+			if (hasFlag) {
 				url = "/Menu.jsp";
 			} else {
 				throw new ServletServiceException("ログインに失敗しました");
 			}
-
+		} else {
+			/* DO NOTHING */
 		}
 
+		/* 転送先 */
 		RequestDispatcher rd = request.getRequestDispatcher(url);
 		rd.forward(request, response);
 	}

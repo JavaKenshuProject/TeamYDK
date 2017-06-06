@@ -21,8 +21,8 @@
 
 
 		<%
-			ArrayList<EmployeeBean> employeeList = (ArrayList<EmployeeBean>) request.getAttribute("employeeList");
-			String color;
+			ArrayList<EmployeeBean> employeeList = (ArrayList<EmployeeBean>) request.getAttribute("employeeList"); //EmployeeBean‚ÌƒŠƒXƒg‚ðéŒ¾
+			String color; /* color‚ÌŠi”[•Ï”*/
 		%>
 		<form action="ShowServlet" method="post">
 			<table class="employee_table" style="text-align: center;">
@@ -41,14 +41,17 @@
 				</thead>
 				<tbody class="datebody">
 					<%
+						/* employeeList‚ªnull‚Å‚È‚¢‚Æ‚« */
 						if (employeeList != null) {
 							for (int i = 0; i < employeeList.size(); i++) {
 								EmployeeBean employee = employeeList.get(i);
+								/* F‚ÌÝ’è */
 								if (i % 2 == 0) {
 									color = "#dbffed";
 								} else {
 									color = "#fdfdfd";
 								}
+
 								String sex = "";
 								switch (employee.getSex()) {
 								case 0:
