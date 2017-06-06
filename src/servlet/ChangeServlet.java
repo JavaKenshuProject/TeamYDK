@@ -41,6 +41,8 @@ public class ChangeServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		throw new ServletServiceException("最初からやり直してください");
 	}
 
 	/**

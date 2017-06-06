@@ -33,11 +33,15 @@ public class EmployeeInsertServlet extends HttpServlet {
 		super();
 	}
 
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		// TODO Auto-generated method stub
+		throw new ServletServiceException("最初からやり直してください");
 	}
-
 	/**
 	 * ポストされたときに用いるメソッド
 	 *

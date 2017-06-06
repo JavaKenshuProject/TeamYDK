@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import dao.EmployeeDAO;
 import entity.EmployeeBean;
+import exception.ServletServiceException;
 
 /**
  * TeamB-YDK ShowServlet.java
@@ -41,9 +42,14 @@ public class ShowServlet extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		throw new ServletServiceException("最初からやり直してください");
+	}
 
 	/**
 	 * ポストされたときに用いるメソッド

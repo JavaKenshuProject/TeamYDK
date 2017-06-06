@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import dao.LicenseDAO;
 import entity.LicenseBean;
+import exception.ServletServiceException;
 
 /**
  * 資格を取得するクラス
@@ -37,6 +38,8 @@ public class LicenseInsertServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		throw new ServletServiceException("最初からやり直してください");
 	}
 
 	/**

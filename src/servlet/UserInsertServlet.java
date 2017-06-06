@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import dao.UserDAO;
 import entity.UserBean;
+import exception.ServletServiceException;
 
 /**
  * TeamB-YDK UserInsertServlet.java
@@ -44,9 +45,9 @@ public class UserInsertServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		// TODO Auto-generated method stub
+		throw new ServletServiceException("最初からやり直してください");
 	}
-
 	/**
 	 * ポストされたときに用いるメソッド
 	 *
