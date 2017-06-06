@@ -456,7 +456,37 @@ word-break:break-all;
       padding:0;
       word-break:break-all;
 }
+
+
+/*-----------------------従業員変更フォーム------------------------------*/
+.botan_change{
+	margin:3% 0 3% 33px;
+    font-family: "メイリオ", meiryo, Arial, sans-serif;
+	font-size:90%;
+	font-weight:400;
+	color:#fff;
+	width:100px;
+	height:35px;
+	background-color: #6ec2ac;
+	border-style: none;
+	border-radius: 5px;
+	box-shadow:.5px .5px .5px #888;
+	}
+
+
+.botan_change:hover{
+    font-family: "メイリオ", meiryo, Arial, sans-serif;
+	font-weight:400;
+	color:#fff;
+	width:100px;
+	height:35px;
+	background-color: #6ec2ac;
+	border-style: none;
+	border-radius: 5px;
+	box-shadow:none;
 }
+
+
 /*-----------------------システム利用者登録フォーム------------------------------*/
 .user_form_title{
       background-color:#339999;
