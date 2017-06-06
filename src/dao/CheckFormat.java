@@ -209,25 +209,25 @@ public class CheckFormat {
 		}
 
 		if (employee.getLKanaName() == null) {
-			call = call + "氏(カナ)" + TEMP;
+			call = call + "氏(フリガナ)" + TEMP;
 		} else if (isCheckSize31J(employee.getLKanaName(), 24) == false) {
-			call = call + "氏(カナ)" + VOID_C;
+			call = call + "氏(フリガナ)" + VOID_C;
 		} else if (isCheckZero31J(employee.getLKanaName()) == false) {
-			call = call + "氏(カナ)" + ZERO_C;
+			call = call + "氏(フリガナ)" + ZERO_C;
 		} else if (employee.getLKanaName().matches(KATAKANA) == false) {
-			call = call + "氏(カナ)" + KANA;
+			call = call + "氏(フリガナ)" + KANA;
 		} else {
 			/* DO NOTHING */
 		}
 
 		if (employee.getFKanaName() == null) {
-			call = call + "名(カナ)" + TEMP;
+			call = call + "名(フリガナ)" + TEMP;
 		} else if (isCheckSize31J(employee.getFKanaName(), 24) == false) {
-			call = call + "名(カナ)" + VOID_C;
+			call = call + "名(フリガナ)" + VOID_C;
 		} else if (isCheckZero31J(employee.getFKanaName()) == false) {
-			call = call + "名(カナ)" + ZERO_C;
+			call = call + "名(フリガナ)" + ZERO_C;
 		} else if (employee.getFKanaName().matches(KATAKANA) == false) {
-			call = call + "名(カナ)" + KANA;
+			call = call + "名(フリガナ)" + KANA;
 		} else {
 			/* DO NOTHING */
 		}
