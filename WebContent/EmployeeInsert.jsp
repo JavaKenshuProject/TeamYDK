@@ -27,7 +27,7 @@
 			<table class="employee_add">
 				<tr>
 					<th>]‹ÆˆõƒR[ƒh</th>
-					<td><input type="text" name="emp_cd" placeholder="”¼Šp‰p”Žš‚S•¶ŽšˆÈ“à"></td>
+					<td><input type="text" name="emp_cd" placeholder="”¼Šp‰p”Žš4•¶ŽšˆÈ“à"></td>
 				</tr>
 				<tr>
 					<th>Ž–¼(Š¿Žš)</th>

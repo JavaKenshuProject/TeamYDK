@@ -19,12 +19,12 @@
 				<tr>
 					<th>ƒ†[ƒUID</th>
 					<td align="center"><input type="text" name="user_id"
-						placeholder="”¼Šp‰p”Žš24•¶Žš" class="user_add_date"></td>
+						placeholder="”¼Šp‰p”Žš24•¶ŽšˆÈ“à" class="user_add_date"></td>
 				</tr>
 				<tr>
 					<th>ƒpƒXƒ[ƒh</th>
 					<td align="center"><input type="text" name="password"
-						placeholder="”¼Šp‰p”Žš32•¶Žš" class="user_add_date"></td>
+						placeholder="”¼Šp‰p”Žš32•¶ŽšˆÈ“à" class="user_add_date"></td>
 				</tr>
 			</table>
 			<input type="submit" value="“o˜^" name="page" class="botan_get">

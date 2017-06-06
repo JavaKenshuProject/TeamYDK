@@ -19,7 +19,7 @@
 				<tr>
 					<th>Ž‘ŠiƒR[ƒh</th>
 					<td><input type="text" name="license_cd"
-						placeholder="”¼Šp‰p”Žš5•¶Žš"></td>
+						placeholder="”¼Šp‰p”Žš5•¶ŽšˆÈ“à"></td>
 				</tr>
 				<tr>
 					<th>Ž‘Ši–¼</th>
