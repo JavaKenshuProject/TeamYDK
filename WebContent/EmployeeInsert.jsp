@@ -174,7 +174,7 @@
 
 				</table>
 			</div>
-			<input type="submit" name="page" value="“o˜^" class="botan">
+			<input type="submit" name="page" value="“o˜^" class="botan_change">
 		</form>
 	</div>
 </body>

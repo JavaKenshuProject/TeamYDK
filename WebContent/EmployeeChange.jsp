@@ -87,7 +87,7 @@
 				</tr>
 			</table>
 			<input type="hidden" name="hidden" value="<%=num%>"> <input
-				type="submit" class="botan_get" value="変更確定" name="page">
+				type="submit" class="botan_change" value="変更確定" name="page">
 		</form>
 	</div>
 </body>
