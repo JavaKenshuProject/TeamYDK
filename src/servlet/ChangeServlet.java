@@ -18,7 +18,10 @@ import entity.SectionBean;
 import exception.ServletServiceException;
 
 /**
- * Servlet implementation class ChangeServlet
+ * 従業員情報を変更するクラス
+ *
+ * @author TeamB-YDK
+ * @version 1.00
  */
 @WebServlet("/ChangeServlet")
 public class ChangeServlet extends HttpServlet {
@@ -41,8 +44,13 @@ public class ChangeServlet extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
+	 * ポストされたときに用いるメソッド
+	 *
+	 * @param request
+	 *            response
+	 * @return
+	 * @throws ServletException
+	 *             IOException
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -63,6 +71,8 @@ public class ChangeServlet extends HttpServlet {
 			String page = request.getParameter("page");
 			if (page == null) {
 				page = (String) request.getAttribute("page");
+			} else {
+				/* DO NOTHING */
 			}
 
 			/* DAOのインスタンス化 */
@@ -77,6 +87,8 @@ public class ChangeServlet extends HttpServlet {
 				String cEmp = request.getParameter("employee");
 				if (cEmp == null) {
 					throw new ServletServiceException("チェックボックスにチェックを入れてください");
+				} else {
+					/* DO NOTHING */
 				}
 
 				ArrayList<SectionBean> sectionList = sec.SectionAllGet();
@@ -89,6 +101,8 @@ public class ChangeServlet extends HttpServlet {
 				request.setAttribute("empB", empB);
 
 				url = "EmployeeChange.jsp";
+			} else {
+				/* DO NOTHING */
 			}
 
 			if (page.equals("変更確定")) {
@@ -97,6 +111,8 @@ public class ChangeServlet extends HttpServlet {
 				String cEmp = request.getParameter("sex");
 				if (cEmp == null) {
 					throw new ServletServiceException("性別にチェックを入れてください");
+				} else {
+					/* DO NOTHING */
 				}
 
 				int num = Integer.parseInt(request.getParameter("hidden"));
@@ -118,6 +134,8 @@ public class ChangeServlet extends HttpServlet {
 				emp.employeeUpdate(empB);
 
 				url = "ChangeSuccess.jsp";
+			} else {
+				/* DO NOTHING */
 			}
 		}
 		/* 転送先 */

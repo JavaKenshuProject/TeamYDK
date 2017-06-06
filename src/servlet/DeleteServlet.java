@@ -16,7 +16,10 @@ import entity.EmployeeBean;
 import exception.ServletServiceException;
 
 /**
- * Servlet implementation class DeleteServlet
+ * 従業員を削除するクラス
+ *
+ * @author TeamB-YDK
+ * @version 1.00
  */
 @WebServlet("/DeleteServlet")
 public class DeleteServlet extends HttpServlet {
@@ -41,8 +44,13 @@ public class DeleteServlet extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
+	 * ポストされたときに用いるメソッド
+	 *
+	 * @param request
+	 *            response
+	 * @return
+	 * @throws ServletException
+	 *             IOException
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -73,10 +81,14 @@ public class DeleteServlet extends HttpServlet {
 				ArrayList<EmployeeBean> empList = dao.employeeAllGet();
 				dao.employeeDelete(empList.get(val));
 				url = "DeleteSuccess.jsp";
+			} else {
+				/* DO NOTHING */
 			}
 
 			if (url == null) {
 				throw new ServletServiceException("削除に失敗しました");
+			} else {
+				/* DO NOTHING */
 			}
 
 		}

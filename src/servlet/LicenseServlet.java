@@ -18,7 +18,17 @@ import entity.LicenseBean;
 import exception.ServletServiceException;
 
 /**
- * Servlet implementation class LicenseServlet
+ * TeamB-YDK LicenseServlett.java
+ *
+ * Copyright(C) 2017 TeamB-YDK All Righta Reserved.
+ *
+ */
+
+/**
+ * 資格を追加するクラス
+ *
+ * @author TeamB-YDK
+ * @version 1.00
  */
 @WebServlet("/LicenseServlet")
 public class LicenseServlet extends HttpServlet {
@@ -42,8 +52,13 @@ public class LicenseServlet extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
+	 * ポストされたときに用いるメソッド
+	 *
+	 * @param request
+	 *            response
+	 * @return
+	 * @throws ServletException
+	 *             IOException
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -84,19 +99,27 @@ public class LicenseServlet extends HttpServlet {
 
 				/* 移動先の設定 */
 				url = "LicenseGet.jsp";
+			} else {
+				/* DO NOTHING */
 			}
 
 			if (page.equals("取得")) {
 				String call = "";
 				if (employee == null) {
 					call = call + "保有資格を追加する従業員にチェックを入れてください<br>";
+				} else {
+					/* DO NOTHING */
 				}
 				if (license == null) {
 					call = call + "保有資格に追加する資格へチェックを入れてください<br>";
+				} else {
+					/* DO NOTHING */
 				}
 
 				if (!(call.equals(""))) {
 					throw new ServletServiceException(call);
+				} else {
+					/* DO NOTHING */
 				}
 
 				String licenseDay = getLicenseDay[0] + "-" + getLicenseDay[1] + "-" + getLicenseDay[2];
@@ -107,6 +130,8 @@ public class LicenseServlet extends HttpServlet {
 				emp.employeeUpdate(empB);
 
 				url = "GetSuccess.jsp";
+			} else {
+				/* DO NOTHING */
 			}
 		}
 

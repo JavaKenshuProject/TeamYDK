@@ -14,7 +14,10 @@ import dao.LicenseDAO;
 import entity.LicenseBean;
 
 /**
- * Servlet implementation class LicenseInsertServlet
+ * 資格を取得するクラス
+ *
+ * @author TeamB-YDK
+ * @version 1.00
  */
 @WebServlet("/LicenseInsertServlet")
 public class LicenseInsertServlet extends HttpServlet {
@@ -37,8 +40,13 @@ public class LicenseInsertServlet extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
+	 * ポストされたときに用いるメソッド
+	 *
+	 * @param request
+	 *            response
+	 * @return
+	 * @throws ServletException
+	 *             IOException
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -68,6 +76,8 @@ public class LicenseInsertServlet extends HttpServlet {
 
 			if (page.equals("資格追加")) {
 				url = "LicenseInsert.jsp";
+			} else {
+				/* DO NOTHING */
 			}
 
 			if (page.equals("追加")) {
@@ -76,6 +86,8 @@ public class LicenseInsertServlet extends HttpServlet {
 				lic.licenseInsert(licB);
 
 				url = "LicenseInsertSuccess.jsp";
+			} else {
+				/* DO NOTHING */
 			}
 		}
 

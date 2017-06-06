@@ -25,6 +25,21 @@ import exception.ServletServiceException;
 public class CheckFormat {
 
 	/**
+	 * Date型の定数です
+	 */
+	static public final String DATE_PATTERN = "yyyy-MM-dd";
+	// String DATE_PATTERN ="yyyy/MM/dd HH:mm:ss";
+
+
+	public static final String KATAKANA = "^[\\u30A0-\\u30FF]+$";
+	public static final String ALPHA_NUMBER = "^[0-9a-zA-Z]+$";
+
+	public static final String TEMP = "が不正です<br>";
+	public static final String VOID_C = "が入力可能文字数を超えています<br>";
+	public static final String ZERO_C = "を入力してください<br>";
+	public static final String KANA = "をカタカナ(全角)で記入してください<br>";
+
+	/**
 	 * 指定された文字エンコーディングでのバイト数をintで返します
 	 *
 	 * @param string
@@ -97,12 +112,6 @@ public class CheckFormat {
 	}
 
 	/**
-	 * Date型の定数です
-	 */
-	static public final String DATE_PATTERN = "yyyy-MM-dd";
-	// String DATE_PATTERN ="yyyy/MM/dd HH:mm:ss";
-
-	/**
 	 * 文字列型のDate型としての妥当性を精査します
 	 *
 	 * @param date
@@ -164,81 +173,73 @@ public class CheckFormat {
 	 */
 	public static void checkEmployeeBean(EmployeeBean employee, boolean flag, String call)
 			throws ServletServiceException {
-		String katakana = "^[\\u30A0-\\u30FF]+$";
-		String alphaNumber = "^[0-9a-zA-Z]+$";
 		java.util.Date uNow = new java.util.Date();
 		java.sql.Date now = new java.sql.Date(uNow.getTime());
 
-		// String call = "";
-		String temp = "が不正です<br>";
-		String voidC = "が入力可能文字数を超えています<br>";
-		String zeroC = "を入力してください<br>";
-		String kana = "をカタカナで記入してください<br>";
-
 		if (employee.getEmpCode() == null) {
-			call = call + "従業員コード" + temp;
+			call = call + "従業員コード" + TEMP;
 		} else if (isCheckSize31J(employee.getEmpCode(), 4) == false) {
-			call = call + "従業員コード" + voidC;
+			call = call + "従業員コード" + VOID_C;
 		} else if (isCheckZero31J(employee.getEmpCode()) == false) {
-			call = call + "従業員コード" + zeroC;
-		} else if ((employee.getEmpCode().matches(alphaNumber) == false)) {
+			call = call + "従業員コード" + ZERO_C;
+		} else if ((employee.getEmpCode().matches(ALPHA_NUMBER) == false)) {
 			call = call + "従業員コードは半角英数字のみで入力してください<br>";
 		} else {
 			/* DO NOTHING */
 		}
 
 		if (employee.getLName() == null) {
-			call = call + "氏" + temp;
+			call = call + "氏" + TEMP;
 		} else if (isCheckSize31J(employee.getLName(), 16) == false) {
-			call = call + "氏" + voidC;
+			call = call + "氏" + VOID_C;
 		} else if (isCheckZero31J(employee.getLName()) == false) {
-			call = call + "氏" + zeroC;
+			call = call + "氏" + ZERO_C;
 		} else {
 			/* DO NOTHING */
 		}
 
 		if (employee.getFName() == null) {
-			call = call + "名" + temp;
+			call = call + "名" + TEMP;
 		} else if (isCheckSize31J(employee.getFName(), 16) == false) {
-			call = call + "名" + voidC;
+			call = call + "名" + VOID_C;
 		} else if (isCheckZero31J(employee.getFName()) == false) {
-			call = call + "名" + zeroC;
+			call = call + "名" + ZERO_C;
 		} else {
 			/* DO NOTHING */
 		}
 
 		if (employee.getLKanaName() == null) {
-			call = call + "氏(カナ)" + temp;
+			call = call + "氏(カナ)" + TEMP;
 		} else if (isCheckSize31J(employee.getLKanaName(), 24) == false) {
-			call = call + "氏(カナ)" + voidC;
+			call = call + "氏(カナ)" + VOID_C;
 		} else if (isCheckZero31J(employee.getLKanaName()) == false) {
-			call = call + "氏(カナ)" + zeroC;
-		} else if (employee.getLKanaName().matches(katakana) == false) {
-			call = call + "氏(カナ)" + kana;
+			call = call + "氏(カナ)" + ZERO_C;
+		} else if (employee.getLKanaName().matches(KATAKANA) == false) {
+			call = call + "氏(カナ)" + KANA;
 		} else {
 			/* DO NOTHING */
 		}
 
 		if (employee.getFKanaName() == null) {
-			call = call + "名(カナ)" + temp;
+			call = call + "名(カナ)" + TEMP;
 		} else if (isCheckSize31J(employee.getFKanaName(), 24) == false) {
-			call = call + "名(カナ)" + voidC;
+			call = call + "名(カナ)" + VOID_C;
 		} else if (isCheckZero31J(employee.getFKanaName()) == false) {
-			call = call + "名(カナ)" + zeroC;
-		} else if (employee.getFKanaName().matches(katakana) == false) {
-			call = call + "名(カナ)" + kana;
+			call = call + "名(カナ)" + ZERO_C;
+		} else if (employee.getFKanaName().matches(KATAKANA) == false) {
+			call = call + "名(カナ)" + KANA;
 		} else {
 			/* DO NOTHING */
 		}
 
 		if (!(employee.getSex() == 0 || employee.getSex() == 1)) {
-			call = call + "性別" + temp;
+			call = call + "性別" + TEMP;
 		} else {
 			/* DO NOTHING */
 		}
 
 		if ((employee.getBirthDay() == null) || (isCheckDate(employee.getBirthDay()) == false)) {
-			call = call + "生年月日" + temp;
+			call = call + "生年月日" + TEMP;
 		} else if (now.compareTo(convertString2Date(employee.getBirthDay())) < 0) {
 			call = call + "生年月日-あなたはまだ生まれていません・・・！<br>";
 		} else {
@@ -246,17 +247,17 @@ public class CheckFormat {
 		}
 
 		if (employee.getSectionCode() == null) {
-			call = call + "所属コード" + temp;
+			call = call + "所属コード" + TEMP;
 		} else if (isCheckSize31J(employee.getSectionCode(), 2) == false) {
-			call = call + "所属コード" + voidC;
+			call = call + "所属コード" + VOID_C;
 		} else if (isCheckZero31J(employee.getSectionCode()) == false) {
-			call = call + "所属コード" + zeroC;
+			call = call + "所属コード" + ZERO_C;
 		} else {
 			/* DO NOTHING */
 		}
 
 		if ((employee.getEmpDate() == null) || (isCheckDate(employee.getEmpDate()) == false)) {
-			call = call + "入社日" + temp;
+			call = call + "入社日" + TEMP;
 		} else if (convertString2Date(employee.getEmpDate())
 				.compareTo(convertString2Date(employee.getBirthDay())) < 0) {
 			call = call + "入社日が生年月日より昔です<br>";
@@ -285,22 +286,18 @@ public class CheckFormat {
 	 * @return String エラーが発生した場合にエラー文を返す
 	 */
 	public static String checkTGetLicense(EmployeeBean employee) {
-		String alphaNumber = "^[0-9a-zA-Z]+$";
 		java.util.Date uNow = new java.util.Date();
 		java.sql.Date now = new java.sql.Date(uNow.getTime());
 
 		String call = "";
-		String temp = "が不正です<br>";
-		String voidC = "が入力可能文字数を超えています<br>";
-		String zeroC = "を入力してください<br>";
 
 		if (employee.getLicenseCdSQLinsert() == null) {
-			call = call + "資格コード" + temp;
+			call = call + "資格コード" + TEMP;
 		} else if (isCheckSize31J(employee.getLicenseCdSQLinsert(), 5) == false) {
-			call = call + "資格コード" + voidC;
+			call = call + "資格コード" + VOID_C;
 		} else if (isCheckZero31J(employee.getLicenseCdSQLinsert()) == false) {
-			call = call + "資格コード" + zeroC;
-		} else if ((employee.getLicenseCdSQLinsert().matches(alphaNumber) == false)) {
+			call = call + "資格コード" + ZERO_C;
+		} else if ((employee.getLicenseCdSQLinsert().matches(ALPHA_NUMBER) == false)) {
 			call = call + "資格コードは半角英数字のみで入力してください<br>";
 		} else {
 			/* DO NOTHING */
@@ -308,7 +305,7 @@ public class CheckFormat {
 
 		if ((employee.getGetLicenseDateSQLinsert() == null)
 				|| (isCheckDate(employee.getGetLicenseDateSQLinsert()) == false)) {
-			call = call + "取得日" + temp;
+			call = call + "取得日" + TEMP;
 		} else if (now.compareTo(convertString2Date(employee.getGetLicenseDateSQLinsert())) < 0) {
 			call = call + "取得日が未来を指定しています<br>";
 		} else if (convertString2Date(employee.getGetLicenseDateSQLinsert())
@@ -330,30 +327,26 @@ public class CheckFormat {
 	 * @throws ServletServiceException
 	 */
 	public static void checkUserBean(UserBean user, String call) throws ServletServiceException {
-		String alphaNumber = "^[0-9a-zA-Z]+$";
-		String temp = "が不正です\n";
-		String voidC = "が入力可能文字数を超えています<br>";
-		String zeroC = "を入力してください<br>";
 
 		if (isCheckSize31J(user.getUserId(), 24) == false) {
-			call = call + "ユーザID" + temp;
+			call = call + "ユーザID" + TEMP;
 		} else if (isCheckSize31J(user.getUserId(), 24) == false) {
-			call = call + "ユーザID" + voidC;
+			call = call + "ユーザID" + VOID_C;
 		} else if (isCheckZero31J(user.getUserId()) == false) {
-			call = call + "ユーザID" + zeroC;
-		} else if ((user.getUserId().matches(alphaNumber) == false)) {
+			call = call + "ユーザID" + ZERO_C;
+		} else if ((user.getUserId().matches(ALPHA_NUMBER) == false)) {
 			call = call + "ユーザIDは半角英数字のみで入力してください<br>";
 		} else {
 			/* DO NOTHING */
 		}
 
 		if (user.getPassword() == null) {
-			call = call + "パスワード" + temp;
+			call = call + "パスワード" + TEMP;
 		} else if (isCheckSize31J(user.getPassword(), 32) == false) {
-			call = call + "パスワード" + voidC;
+			call = call + "パスワード" + VOID_C;
 		} else if (isCheckZero31J(user.getPassword()) == false) {
-			call = call + "パスワード" + zeroC;
-		} else if ((user.getPassword().matches(alphaNumber) == false)) {
+			call = call + "パスワード" + ZERO_C;
+		} else if ((user.getPassword().matches(ALPHA_NUMBER) == false)) {
 			call = call + "パスワードは半角英数字のみで入力してください<br>";
 		} else {
 			/* DO NOTHING */
@@ -375,29 +368,25 @@ public class CheckFormat {
 	 * @throws ServletServiceException
 	 */
 	public static void checkLicenseBean(LicenseBean license, String call) throws ServletServiceException {
-		String alphaNumber = "^[0-9a-zA-Z]+$";
-		String temp = "が不正です\n";
-		String voidC = "が入力可能文字数を超えています<br>";
-		String zeroC = "を入力してください<br>";
 
 		if (license.getLicenseCd() == null) {
-			call = call + "資格コード" + temp;
+			call = call + "資格コード" + TEMP;
 		} else if (isCheckSize31J(license.getLicenseCd(), 5) == false) {
-			call = call + "資格コード" + voidC;
+			call = call + "資格コード" + VOID_C;
 		} else if (isCheckZero31J(license.getLicenseCd()) == false) {
-			call = call + "資格コード" + zeroC;
-		} else if ((license.getLicenseCd().matches(alphaNumber) == false)) {
+			call = call + "資格コード" + ZERO_C;
+		} else if ((license.getLicenseCd().matches(ALPHA_NUMBER) == false)) {
 			call = call + "資格コードは半角英数字のみで入力してください<br>";
 		} else {
 			/* DO NOTHING */
 		}
 
 		if (license.getLicenseName() == null) {
-			call = call + "資格名" + temp;
+			call = call + "資格名" + TEMP;
 		} else if (isCheckSize31J(license.getLicenseName(), 100) == false) {
-			call = call + "資格名" + voidC;
+			call = call + "資格名" + VOID_C;
 		} else if (isCheckZero31J(license.getLicenseName()) == false) {
-			call = call + "資格名" + zeroC;
+			call = call + "資格名" + ZERO_C;
 		} else {
 			/* DO NOTHING */
 		}

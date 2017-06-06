@@ -20,7 +20,10 @@ import entity.SectionBean;
 import exception.ServletServiceException;
 
 /**
- * Servlet implementation class EmployeeInsertServlet
+ * 従業員情報を追加するクラス
+ *
+ * @author TeamB-YDK
+ * @version 1.00
  */
 @WebServlet("/EmployeeInsertServlet")
 public class EmployeeInsertServlet extends HttpServlet {
@@ -35,6 +38,15 @@ public class EmployeeInsertServlet extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
+	/**
+	 * ポストされたときに用いるメソッド
+	 *
+	 * @param request
+	 *            response
+	 * @return
+	 * @throws ServletException
+	 *             IOException
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -69,6 +81,8 @@ public class EmployeeInsertServlet extends HttpServlet {
 				// セットする
 				request.setAttribute("licenseList", licenseList);
 				url = "EmployeeInsert.jsp";
+			} else {
+				/* DO NOTHING */
 			}
 
 			/*
@@ -77,6 +91,8 @@ public class EmployeeInsertServlet extends HttpServlet {
 			if ((page != null) && (page.equals("登録"))) {
 				if (request.getParameter("sex") == null) {
 					throw new ServletServiceException("性別にチェックを入れてください<br>");
+				} else {
+					/* DO NOTHING */
 				}
 				// formの取得
 				String empCd = request.getParameter("emp_cd"); // 従業員コード
@@ -106,6 +122,8 @@ public class EmployeeInsertServlet extends HttpServlet {
 				for (SectionBean sec : secList) {
 					if ((sectionName != null) && (sec.getSectionName().equals(sectionName))) {
 						sectionCode = sec.getSectionCode();
+					} else {
+						/* DO NOTHING */
 					}
 				}
 				String[] license = request.getParameterValues("license"); // 資格チェック
@@ -130,6 +148,8 @@ public class EmployeeInsertServlet extends HttpServlet {
 					getdate.add(getYear[Integer.parseInt(license[0])] + "-" + getMonth[Integer.parseInt(license[0])]
 							+ "-" + getDay[Integer.parseInt(license[0])]);
 					empB.setGetLicenseDateSQLinsert(getdate.get(0));
+				} else {
+					/* DO NOTHING */
 				}
 
 				emp.employeeInsert(empB);
@@ -143,9 +163,13 @@ public class EmployeeInsertServlet extends HttpServlet {
 						empB.setGetLicenseDateSQLinsert(getdate.get(i));
 						emp.employeeUpdate(empB);
 					}
+				} else {
+					/* DO NOTHING */
 				}
 
 				url = "EmployeeInsertSuccess.jsp";
+			} else {
+				/* DO NOTHING */
 			}
 		}
 
