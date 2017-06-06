@@ -184,7 +184,7 @@ public class EmployeeDAO {
 	 */
 	public void employeeInsert(EmployeeBean employee) throws ServletServiceException {
 
-		boolean flag = false;
+		boolean hasFlag = false;
 		String call = "";
 
 		ArrayList<EmployeeBean> empAllList = new EmployeeDAO().employeeAllGet();
@@ -195,12 +195,12 @@ public class EmployeeDAO {
 		}
 		if ((employee.getEmpCode() != null) && (employee.getLicenseCdSQLinsert() != null)
 				&& (employee.getGetLicenseDateSQLinsert() != null)) {
-			flag = true;
+			hasFlag = true;
 		} else {
 			/* DO NOTHING */
 		}
 
-		CheckFormat.checkEmployeeBean(employee, flag, call);
+		CheckFormat.checkEmployeeBean(employee, hasFlag, call);
 
 		ConnectionManager cm = ConnectionManager.getInstance();
 
@@ -271,7 +271,7 @@ public class EmployeeDAO {
 	 */
 	public void employeeUpdate(EmployeeBean employee) throws ServletServiceException {
 
-		boolean flag = false;
+		boolean hasFlag = false;
 		String call = "";
 
 		ArrayList<EmployeeBean> empAllList = new EmployeeDAO().employeeAllGet();
@@ -284,7 +284,7 @@ public class EmployeeDAO {
 		if ((employee.getEmpCode() != null) && (employee.getLicenseCdSQLinsert() != null)
 				&& (employee.getGetLicenseDateSQLinsert() != null)) {
 			if (CheckFormat.isCheckPkTGetLicense(employee, empAllList)) {
-				flag = true;
+				hasFlag = true;
 			} else {
 				call = call + "すでに取得済みの資格です<br>";
 			}
@@ -293,7 +293,7 @@ public class EmployeeDAO {
 			/* DO NOTHING */
 		}
 
-		CheckFormat.checkEmployeeBean(employee, flag, call);
+		CheckFormat.checkEmployeeBean(employee, hasFlag, call);
 
 		ConnectionManager cm = ConnectionManager.getInstance();
 
