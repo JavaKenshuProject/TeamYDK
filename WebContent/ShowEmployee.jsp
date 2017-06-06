@@ -69,8 +69,8 @@
 						<td class="radiotd"><input type="radio" name="employee"
 							value="<%=i%>"></td>
 						<td class="notd"><%=employee.getEmpCode()%></td>
-						<td class="nametd"><%=employee.getLName()%><%=employee.getFName()%></td>
-						<td class="name_kanatd"><%=employee.getLKanaName()%><%=employee.getFKanaName()%></td>
+						<td class="nametd"><%=employee.getLName()%>&nbsp;<%=employee.getFName()%></td>
+						<td class="name_kanatd"><%=employee.getLKanaName()%>&nbsp;<%=employee.getFKanaName()%></td>
 						<td class="sextd"><%=sex%></td>
 						<td class="birthtd"><%=employee.getBirthDay()%></td>
 						<td class="sectiontd"><%=employee.getSectionName()%></td>
