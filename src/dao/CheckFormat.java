@@ -37,7 +37,7 @@ public class CheckFormat {
 	public static final String TEMP = "が不正です<br>";
 	public static final String VOID_C = "が入力可能文字数を超えています<br>";
 	public static final String ZERO_C = "を入力してください<br>";
-	public static final String KANA = "をカタカナ(全角)で記入してください<br>";
+	public static final String KANA = "をカタカナ(全角)で入力してください<br>";
 
 	/**
 	 * 指定された文字エンコーディングでのバイト数をintで返します
