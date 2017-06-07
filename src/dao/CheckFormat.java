@@ -309,7 +309,7 @@ public class CheckFormat {
 		if (employee.getGetLicenseDateSQLinsert() == null) {
 			call = call + "取得日" + TEMP;
 		} else if (convertString2Date(employee.getGetLicenseDateSQLinsert()) == null) {
-			call = call + "取得日の日時が存在しません<br>";
+			call = call + "取得日が存在しない日時です<br>";
 		} else if (now.compareTo(convertString2Date(employee.getGetLicenseDateSQLinsert())) < 0) {
 			call = call + "取得日が未来を指定しています<br>";
 		} else if ((convertString2Date(employee.getBirthDay()) != null)
