@@ -30,7 +30,6 @@ public class CheckFormat {
 	static public final String DATE_PATTERN = "yyyy-MM-dd";
 	// String DATE_PATTERN ="yyyy/MM/dd HH:mm:ss";
 
-
 	public static final String KATAKANA = "^[\\u30A0-\\u30FF]+$";
 	public static final String ALPHA_NUMBER = "^[0-9a-zA-Z]+$";
 
@@ -238,8 +237,10 @@ public class CheckFormat {
 			/* DO NOTHING */
 		}
 
-		if ((employee.getBirthDay() == null) || (isCheckDate(employee.getBirthDay()) == false)) {
+		if (employee.getBirthDay() == null) {
 			call = call + "生年月日" + TEMP;
+		} else if (convertString2Date(employee.getBirthDay()) == null) {
+			call = call + "生年月日が存在しない日時です<br>";
 		} else if (now.compareTo(convertString2Date(employee.getBirthDay())) < 0) {
 			call = call + "生年月日-あなたはまだ生まれていません・・・！<br>";
 		} else {
@@ -256,10 +257,12 @@ public class CheckFormat {
 			/* DO NOTHING */
 		}
 
-		if ((employee.getEmpDate() == null) || (isCheckDate(employee.getEmpDate()) == false)) {
+		if (employee.getEmpDate() == null) {
 			call = call + "入社日" + TEMP;
-		} else if (convertString2Date(employee.getEmpDate())
-				.compareTo(convertString2Date(employee.getBirthDay())) < 0) {
+		} else if (convertString2Date(employee.getEmpDate()) == null) {
+			call = call + "入社日が存在しない日時です<br>";
+		} else if ((convertString2Date(employee.getBirthDay()) != null) && (convertString2Date(employee.getEmpDate())
+				.compareTo(convertString2Date(employee.getBirthDay()))) < 0) {
 			call = call + "入社日が生年月日より昔です<br>";
 		} else {
 			/* DO NOTHING */
@@ -303,13 +306,15 @@ public class CheckFormat {
 			/* DO NOTHING */
 		}
 
-		if ((employee.getGetLicenseDateSQLinsert() == null)
-				|| (isCheckDate(employee.getGetLicenseDateSQLinsert()) == false)) {
+		if (employee.getGetLicenseDateSQLinsert() == null) {
 			call = call + "取得日" + TEMP;
+		} else if (convertString2Date(employee.getGetLicenseDateSQLinsert()) == null) {
+			call = call + "取得日の日時が存在しません<br>";
 		} else if (now.compareTo(convertString2Date(employee.getGetLicenseDateSQLinsert())) < 0) {
 			call = call + "取得日が未来を指定しています<br>";
-		} else if (convertString2Date(employee.getGetLicenseDateSQLinsert())
-				.compareTo(convertString2Date(employee.getBirthDay())) < 0) {
+		} else if ((convertString2Date(employee.getBirthDay()) != null)
+				&& (convertString2Date(employee.getGetLicenseDateSQLinsert())
+						.compareTo(convertString2Date(employee.getBirthDay())) < 0)) {
 			call = call + "取得日が生年月日より昔です<br>";
 		} else {
 			/* DO NOTHING */
