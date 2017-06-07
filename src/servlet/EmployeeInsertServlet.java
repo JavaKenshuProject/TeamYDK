@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.CheckFormat;
 import dao.EmployeeDAO;
 import dao.LicenseDAO;
 import dao.SectionDAO;
@@ -42,6 +43,7 @@ public class EmployeeInsertServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		throw new ServletServiceException("最初からやり直してください");
 	}
+
 	/**
 	 * ポストされたときに用いるメソッド
 	 *
@@ -145,6 +147,19 @@ public class EmployeeInsertServlet extends HttpServlet {
 				empB.setBirthDay(birthDay);
 				empB.setSectionCode(sectionCode);
 				empB.setEmpDate(empDate);
+
+				if (license != null) {
+					for (int i = 0; i < license.length; i++) {
+						licB = lic.licenseAllGet().get(Integer.parseInt(license[i]));
+						empB.setLicenseCdSQLinsert(licB.getLicenseCd());
+						getdate.add(getYear[Integer.parseInt(license[i])] + "-" + getMonth[Integer.parseInt(license[i])]
+								+ "-" + getDay[Integer.parseInt(license[i])]);
+						empB.setGetLicenseDateSQLinsert(getdate.get(i));
+						CheckFormat.checkEmployeeBean(empB, (boolean) true, (String) "");
+					}
+				} else {
+					/* DO NOTHING */
+				}
 
 				if (license != null) {
 					licB = lic.licenseAllGet().get(Integer.parseInt(license[0]));
