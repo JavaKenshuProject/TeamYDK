@@ -165,7 +165,7 @@ public class CheckFormat {
 	/**
 	 * EmployeeBeanの中身がDBのテーブル内と適合しているかチェックします
 	 *
-	 * @param employee,flag,call
+	 * @param employee,hasFlag,call
 	 *            照合したい従業員情報, 資格情報も含めたチェックをするか,スロー文に含めたい文字列
 	 * @return void
 	 * @throws ServletServiceException
