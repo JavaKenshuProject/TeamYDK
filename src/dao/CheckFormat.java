@@ -170,7 +170,7 @@ public class CheckFormat {
 	 * @return void
 	 * @throws ServletServiceException
 	 */
-	public static void checkEmployeeBean(EmployeeBean employee, boolean flag, String call)
+	public static void checkEmployeeBean(EmployeeBean employee, boolean hasFlag, String call)
 			throws ServletServiceException {
 		java.util.Date uNow = new java.util.Date();
 		java.sql.Date now = new java.sql.Date(uNow.getTime());
@@ -268,7 +268,7 @@ public class CheckFormat {
 			/* DO NOTHING */
 		}
 
-		if (flag) {
+		if (hasFlag) {
 			call = call + checkTGetLicense(employee);
 		} else {
 			/* DO NOTHING */
